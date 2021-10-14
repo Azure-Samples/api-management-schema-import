@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><!--Version     Date                Description
+_______     __________          ____________________________
+3.1        2013-18-04         Added LTEPacketDataRegistrationData and TurnByTurnRequestData
+3.2        2013-05-09         Updated LTEPacketDataRegistrationDataType to have only APNType.Updated CallCenterPhoneNumbersRequestDataType and CallCenterPhoneNumberType for additional inputs\
+3.3        2013-05-21         Corrected element name from PacketDataRegistrationData to PacketDataRegistrationRequestData
+3.4        2013-10-07         Added ManageAudioFileAlertRequestData of  ManageAudioFileAlertRequestDataType 
+3.5        2014-10-29         Added ManageWiFiSettingsRequestData of ManageWiFiSettingsRequestDataType
+									 Added   RetrieveHotspotConfigurationRequestData of RetrieveHotspotConfigurationRequestDataType
+									 Added   ManageHotspotConfigurationRequestData of ManageHotspotConfigurationRequestDataType
+									 Added   RetrieveWiFiSettingsRequestData of RetrieveWiFiSettingsRequestDataType
+									 Added   VehicleInformationRequestData of VehicleInformationRequestDataType--><xsd:schema targetNamespace="urn:com:onstar:global:common:schema:VehicleServicesTypes:3" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.4" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:com:onstar:global:common:schema:VehicleServicesTypes:3" xmlns:eac="urn:com:onstar:global:common:schema:components:4" xmlns:oagis="http://www.openapplications.org/oagis/9" xmlns:star="http://www.starstandard.org/STAR/5">
+  <xsd:import namespace="urn:com:onstar:global:common:schema:components:4" schemaLocation="GetVehicleWearItemDataRS_Service_7.xsd"/>
+  <xsd:import namespace="http://www.starstandard.org/STAR/5" schemaLocation="GetVehicleWearItemDataRS_Service_15.xsd"/>
+  <xsd:import namespace="http://www.openapplications.org/oagis/9" schemaLocation="GetVehicleWearItemDataRS_Service_1.xsd"/>
+  <xsd:complexType name="VehicleServicesRequestType">
+    <xsd:choice maxOccurs="unbounded">
+      <xsd:element name="LockUnlockRequestData" type="LockUnlockRequestDataType"/>
+      <xsd:element name="UnitActivationRequestData" type="UnitActivationRequestDataType"/>
+      <xsd:element name="PacketDataRegistrationRequestData" type="PacketDataRegistrationRequestDataType"/>
+      <xsd:element name="SetVDUTriggerRequestData" type="SetVDUTriggerRequestData"/>
+      <xsd:element name="DeactivateUnitRequestData" type="DeactivateUnitRequestDataType"/>
+      <xsd:element name="RefreshVDUTriggerRequestData" type="RefreshVDUTriggerRequestDataType"/>
+      <xsd:element name="ClearVDUTriggerRequestData" type="ClearVDUTriggerRequestDataType"/>
+      <xsd:element name="MobileConfigurationRequestData" type="MobileConfigurationRequestDataType"/>
+      <xsd:element name="OutdatedPRLFlagRequestData" type="OutdatedPRLFlagRequestDataType"/>
+      <xsd:element name="MobileNumberSettingsRequestData" type="MobileNumberSettingsRequestDataType"/>
+      <xsd:element name="PRLVersionRequestData" type="PRLVersionRequestDataType"/>
+      <xsd:element name="RetryRequestData" type="RetryRequestDataType"/>
+      <xsd:element name="ConnectionRequestData" type="ConnectionRequestDataType"/>
+      <xsd:element name="CallCenterPhoneNumbersRequestData" type="CallCenterPhoneNumbersRequestDataType"/>
+      <xsd:element name="DestinationDownloadRequestData" type="DestinationDownloadRequestDataType"/>
+      <xsd:element name="ReconfigureUnitRequestData" type="ReconfigureUnitRequestDataType"/>
+      <xsd:element name="TurnByTurnRequestData" type="TurnByTurnRequestDataType"/>
+      <xsd:element name="AudioFileDownloadRequestData" type="AudioFileDownloadRequestDataType"/>
+      <xsd:element name="FreeNumberRequestData" type="FreeNumberRequestDataType"/>
+      <xsd:element name="PLMNVersionRequestData" type="PLMNVersionRequestDataType"/>
+      <xsd:element name="RemoteStartStopRequestData" type="RemoteStartStopRequestDataType"/>
+      <xsd:element name="AlertRequestData" type="AlertRequestDataType"/>
+      <xsd:element name="PCUManagementRequestData" type="PCUManagementRequestDataType"/>
+      <xsd:element name="PacketDataConnectionRequestData" type="PacketDataConnectionRequestType"/>
+      <xsd:element name="ManageAudioFileAlertRequestData" type="ManageAudioFileAlertRequestDataType"/>
+      <xsd:element name="ManageWiFiSettingsRequestData" type="ManageWiFiSettingsRequestDataType"/>
+      <xsd:element name="RetrieveWiFiSettingsRequestData" type="RetrieveWiFiSettingsRequestDataType"/>
+      <xsd:element name="RetrieveHotspotConfigurationRequestData" type="RetrieveHotspotConfigurationRequestDataType"/>
+      <xsd:element name="ManageHotspotConfigurationRequestData" type="ManageHotspotConfigurationRequestDataType"/>
+      <xsd:element name="VehicleInformationRequestData" type="VehicleInformationRequestDataType"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:element name="SetVDUTriggerRequestData" type="SetVDUTriggerRequestData"/>
+  <xsd:complexType name="SetVDUTriggerRequestData">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="TaskData" type="TaskDataType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TaskDataType">
+    <xsd:sequence>
+      <xsd:any maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="oagis:ShortNumericType"/>
+  </xsd:complexType>
+  <xsd:element name="PreferredLanguageCode" type="eac:PreferredLanguageType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies the persons preferred language.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="DeactivateUnitRequestData" type="DeactivateUnitRequestDataType"/>
+  <xsd:complexType name="DeactivateUnitRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element ref="PreferredLanguageCode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Subscriber preferred language code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RefreshVDUTriggerRequestData" type="RefreshVDUTriggerRequestDataType"/>
+  <xsd:complexType name="RefreshVDUTriggerRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="VDUTriggerType" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: FORCED, ONDEMAND, REFRESH, RETRY</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="PreferredLanguageCode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Subscriber preferred language code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ClearVDUTriggerRequestData" type="ClearVDUTriggerRequestDataType"/>
+  <xsd:complexType name="ClearVDUTriggerRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="ClearAllTriggerIndicator" type="oagis:IndicatorType"/>
+          <xsd:element name="TriggerID" type="oagis:ShortNumericType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>1-254, except 2, matching the input value</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MobileConfigurationRequestData" type="MobileConfigurationRequestDataType"/>
+  <xsd:complexType name="MobileConfigurationRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="AnalogHomeSID" type="oagis:IntegerNumericType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="HomeArea" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewCarrier" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PRLDownloadMode" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "PRL_DOWNLOAD_DEFAULT", "PRL_DOWNLOAD_FORCE_FULL", "PRL_DOWNLOAD_FORCE_PARTIAL"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HomeArea" type="star:AddressABIEType">
+    <xsd:annotation>
+      <xsd:documentation>The subscriber home area address details to determine the cellular network home area..</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="OutdatedPRLFlagRequestData" type="OutdatedPRLFlagRequestDataType"/>
+  <xsd:complexType name="OutdatedPRLFlagRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="OutdatedPRLFlagMode" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "OUTDATED_PRL_FLAG_MODE_CLEAR", "OUTDATED_PRL_FLAG_MODE_DEFAULT", "OUTDATED_PRL_FLAG_MODE_GET", "OUTDATED_PRL_FLAG_MODE_NO_ACTION_TAKEN", "OUTDATED_PRL_FLAG_MODE_SET"SS</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PacketDataRegistrationRequestData" type="PacketDataRegistrationRequestDataType"/>
+  <xsd:complexType name="PacketDataRegistrationRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element ref="CDMAPacketDataRegistrationData" minOccurs="0"/>
+          <xsd:element ref="GSMPacketDataRegistrationData" minOccurs="0"/>
+          <xsd:element ref="LTEPacketDataRegistrationData" minOccurs="0"/>
+          <xsd:element ref="DialableNumber" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="DeviceID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Device ID (IMEI/MEID/ESN)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NetworkCapability" type="eac:NameValueType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The unit capabilities.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CDMAPacketDataRegistrationData" type="CDMAPacketDataRegistrationDataType"/>
+  <xsd:complexType name="CDMAPacketDataRegistrationDataType">
+    <xsd:complexContent>
+      <xsd:extension base="PacketDataRegistrationDataType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PacketDataRegistrationDataType">
+    <xsd:sequence>
+      <xsd:element name="AuthenticationPassword" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="AuthenticationUserName" type="oagis:IdentifierType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GSMPacketDataRegistrationData" type="GSMPacketDataRegistrationDataType"/>
+  <xsd:complexType name="GSMPacketDataRegistrationDataType">
+    <xsd:complexContent>
+      <xsd:extension base="PacketDataRegistrationDataType">
+        <xsd:sequence>
+          <xsd:element name="APN" type="oagis:StringType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LTEPacketDataRegistrationData" type="LTEPacketDataRegistrationDataType"/>
+  <xsd:complexType name="LTEPacketDataRegistrationDataType">
+    <xsd:sequence>
+      <xsd:element name="APNType" type="oagis:StringType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="DialableNumber" type="oagis:StringType">
+    <xsd:annotation>
+      <xsd:documentation>The Dialable Number (MSISDN/MDN)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="DeviceID" type="oagis:IdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>The Device ID (IMEI/MEID/ESN)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="MobileNumberSettingsRequestData" type="MobileNumberSettingsRequestDataType"/>
+  <xsd:complexType name="MobileNumberSettingsRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element ref="HomeArea" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The subscriber home area address details to determine the cellular network home area..</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="CDMAHomeSIDData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="GSMHomeSIDData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="LTEHomeSIDData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewDialableNumber" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewNetworkNumber" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewCarrier" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="CDMAPacketDataRegistrationData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="GSMPacketDataRegistrationData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="LTEPacketDataRegistrationData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="VerifyNetworkandDialableNumber" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UseNewDialableNumber" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if the new MDN is to be used for dialing</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MobileNumber" type="VehicleServicesMobileNumberType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CDMAHomeSIDData" type="CDMAHomeSIDDataType">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CDMAHomeSIDDataType">
+    <xsd:annotation>
+      <xsd:documentation>Contains the data associated with the CDMA home SID in a vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HomeSIDDataType">
+        <xsd:sequence>
+          <xsd:element ref="HomeSID" minOccurs="0"/>
+          <xsd:element ref="SIDNIDPair" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="HomeSIDDataType" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Contains the data associated with the home SID in a vehicle.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:element name="HomeSID" type="SIDType">
+    <xsd:annotation>
+      <xsd:documentation>The home SID (HomeSID).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="SIDType">
+    <xsd:annotation>
+      <xsd:documentation>The SID type represents a SID in the SID range.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="oagis:IntegerNumericType">
+      <xsd:minInclusive value="-1"/>
+      <xsd:maxInclusive value="32767"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="SIDNIDPair" type="SIDNIDPairType">
+    <xsd:annotation>
+      <xsd:documentation>The list of SID NID Pairs configured in this unit.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="SIDNIDPairType">
+    <xsd:annotation>
+      <xsd:documentation>The SIDNIDPair type represents a SID-NID pair.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="SID">
+        <xsd:annotation>
+          <xsd:documentation>The SID.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="NID">
+        <xsd:annotation>
+          <xsd:documentation>The NID.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SID" type="SIDType">
+    <xsd:annotation>
+      <xsd:documentation>The SID.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="NID" type="NIDType">
+    <xsd:annotation>
+      <xsd:documentation>The NID.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="NIDType">
+    <xsd:annotation>
+      <xsd:documentation>The NID type represents a NID in the NID range.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="oagis:IntegerNumericType">
+      <xsd:minInclusive value="0"/>
+      <xsd:maxInclusive value="65535"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="GSMHomeSIDData" type="GSMHomeSIDDataType">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="GSMHomeSIDDataType">
+    <xsd:annotation>
+      <xsd:documentation>Contains the data associated with the GSM  and LTE home SID in a vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HomeSIDDataType">
+        <xsd:sequence>
+          <xsd:element name="HomePLMNMCC" type="oagis:StringType" minOccurs="0"/>
+          <xsd:element name="HomePLMNMNC" type="oagis:StringType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LTEHomeSIDData" type="GSMHomeSIDDataType">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="VehicleServicesMobileNumberType">
+    <xsd:sequence>
+      <xsd:element ref="DeviceID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Device ID (MEID/ESN/IMEI)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="UnitCapability" type="eac:NameValueType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The unit capabilities.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TelephoneCommunication" type="star:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The phone number(s) to determine network capabilities.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Subscriber" type="VehicleServicesSubscriberType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Subscriber details required for on\off bording.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AdditionalParameter" type="eac:NameValueType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The unit capabilities.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleServicesSubscriberType">
+    <xsd:sequence>
+      <xsd:element name="ResidenceAddress" type="star:AddressABIEType" minOccurs="0"/>
+      <xsd:element name="TelephoneCommunication" type="star:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="PRLVersionRequestData" type="PRLVersionRequestDataType"/>
+  <xsd:complexType name="PRLVersionRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RetryRequestData" type="RetryRequestDataType"/>
+  <xsd:complexType name="RetryRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ConnectionRequestData" type="ConnectionRequestDataType"/>
+  <xsd:complexType name="ConnectionRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="DestinationID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Destination ID for the destination to be downloaded.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ConnectionType" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "CIRCUIT_SWITCH", "PACKET_DATA"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PacketDataConnectionRequestData" type="PacketDataConnectionRequestType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PacketDataConnectionRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="IPAddress" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the IPAddress to set.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Port" type="oagis:LongNumericType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the port number to be set.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ServiceTimer" type="oagis:IntegerNumericType" minOccurs="0"/>
+          <xsd:element name="ServiceType" type="oagis:ShortNumericType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CallCenterPhoneNumbersRequestData" type="CallCenterPhoneNumbersRequestDataType"/>
+  <xsd:complexType name="CallCenterPhoneNumbersRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="CallCenterPhoneNumber" type="CallCenterPhoneNumberType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UseAllCallCenterDefaults" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>If true, Indicates if the client passed CallCenterAddress settings should be ignored and default Call Center Address values in VCS should be used.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="PreferredLanguageCode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Subscriber preferred language code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CallCenterPhoneNumberType">
+    <xsd:sequence>
+      <xsd:element name="ParameterID" type="oagis:ShortNumericType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ParameterDescription" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ProcessedByVehicle" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Used while sending VCS response, indicates if this parameter was processed successfully by the vehicle</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CompleteNumber" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OnstarSMSCode" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>SMS Code for Inbound SMS call</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PacketURI" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Packet URI for Inbound Packet Data call</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MustBeDefaultIndicator" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="DestinationDownloadRequestData" type="DestinationDownloadRequestDataType"/>
+  <xsd:complexType name="DestinationDownloadRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="DestinationID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Destination ID for the destination to be downloaded.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Name" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Address" type="VehicleServicesAddressType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Coordinate" type="oagis:CoordinateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Communication" type="oagis:CommunicationABIEType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleServicesAddressType">
+    <xsd:complexContent>
+      <xsd:extension base="star:AddressABIEType">
+        <xsd:sequence>
+          <xsd:element name="DirectionalPrefix" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The direction for a street (e.g., North), placed before the official name.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="TypeSuffix" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The street type (e.g., Rd or Ave) specified after the official name</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DirectionalSuffix" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The direction for a street (e.g., North), placed after the official name.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="District" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LockUnlockRequestData" type="LockUnlockRequestDataType"/>
+  <xsd:complexType name="LockUnlockRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="LockingIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UnLockingIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Delay" type="oagis:ShortNumericType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Delay value of 0-15 (delay will be minutes from submission time)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ParkNeutralCheckIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="UnitActivationRequestData" type="UnitActivationRequestDataType"/>
+  <xsd:complexType name="UnitActivationRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <!--Unit config request data-->
+          <xsd:element name="NewUnitState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid Values: UNIT_STATE_UNKNOWN,UNIT_STATE_ENABLED,UNIT_STATE_DISABLED,UNIT_STATE_NOT_CONFIGURED</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewPersonalCallingState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid Values: PERSONAL_CALLING_STATE_UNKNOWN,PERSONAL_CALLING_STATE_ENABLED_PREPAY,PERSONAL_CALLING_STATE_ENABLED_POSTPAY,PERSONAL_CALLING_STATE_DISABLED,PERSONAL_CALLING_STATE_NOT_CONFIGURED</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewVDUState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid Values: VDU_STATE_UNKNOWN,VDU_STATE_ENABLED,VDU_STATE_DISABLED,VDU_STATE_NOT_CONFIGURED</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewVirtualAdvisorState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid Values: VIRTUAL_ADVISOR_STATE_UNKNOWN, VIRTUAL_ADVISOR_STATE_ENABLED_PREPAY, VIRTUAL_ADVISOR_STATE_ENABLED_POSTPAY, VIRTUAL_ADVISOR_STATE_DISABLED, VIRTUAL_ADVISOR_STATE_NOT_CONFIGURED</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--For Updating the langauge-->
+          <xsd:element name="TTYIndicator" type="oagis:IndicatorType" minOccurs="0"/>
+          <!--MR01 - change-->
+          <xsd:element name="NewVehicleTheftState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid Values: VEHICLE_THEFT_STATE_UNKNOWN,VEHICLE_THEFT_STATE_ENABLED,VEHICLE_THEFT_STATE_DISABLED,VEHICLE_THEFT_STATE_NOT_CONFIGURED</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewContentTheftState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid Values: CONTENT_THEFT_STATE_UNKNOWN,CONTENT_THEFT_STATE_ENABLED,CONTENT_THEFT_STATE_DISABLED,CONTENT_THEFT_STATE_NOT_CONFIGURED</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="ForceAllConfigFlag" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>true or false to indicate whether all unit states should be forcefuly reconfigured.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="PreferredLanguageCode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Subscriber preferred language code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--No longer a possible options for Activate Unit
+					<xsd:element ref="ForceVDUConfigFlag" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>true or false to indicate whether all triggers should be forcefuly refreshed.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>-->
+          <!--Mobile Number Change request data-->
+          <xsd:element ref="NetworkNumber" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="DialableNumber" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="DeviceID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="ICCID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewCarrier" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="CDMAHomeSIDData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="GSMHomeSIDData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="LTEHomeSIDData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="CDMAPacketDataRegistrationData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="GSMPacketDataRegistrationData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="LTEPacketDataRegistrationData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UseNewDialableNumber" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if the new MDN is to be used for dialing</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--PCU request management request data-->
+          <xsd:element ref="PCUManagementData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="IntermediateRespRequiredAfterBaseConfigIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="HomeArea" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The subscriber home area address details to determine the cellular network home area..</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--Gen9 - change-->
+          <xsd:element name="NewAIFSecurityMode" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "CERIFICATE", "NONE", "SHARED"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewPacketDataSecurityMode" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "CERIFICATE", "NONE", "SHARED"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewSMSSecurityMode" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "CERIFICATE", "NONE", "SHARED"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NewTBTSecurityMode" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "CERIFICATE", "NONE", "SHARED"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--Additional information for processing-->
+          <xsd:element name="AdditionalParameter" type="eac:NameValueType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The unit capabilities.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--Family link changes-->
+          <xsd:element name="NewTrafficProbeState" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ForceAllConfigFlag" type="oagis:IndicatorType">
+    <xsd:annotation>
+      <xsd:documentation>true or false to indicate whether all unit states should be forcefuly reconfigured.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="NetworkNumber" type="oagis:StringType">
+    <xsd:annotation>
+      <xsd:documentation>The Network Number (IMSI/MIN)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ICCID" type="oagis:StringType">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PCUManagementData" type="PCUManagementDataType"/>
+  <xsd:complexType name="PCUManagementDataType">
+    <xsd:sequence>
+      <xsd:element name="Operation" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>ValidValues: Set | Clear | Add | Subtract</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Units" type="oagis:ShortNumericType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The number of HFC Minutes</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ExpirationDate" type="oagis:DateTimeType" nillable="false" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The expiration date/time of the HFC Minutes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ReconfigureUnitRequestData" type="ReconfigureUnitRequestDataType"/>
+  <xsd:complexType name="ReconfigureUnitRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="TTYIndicator" type="oagis:IndicatorType" minOccurs="0"/>
+          <xsd:element ref="PreferredLanguageCode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Subscriber preferred language code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PCUManagementRequestData" type="PCUManagementRequestDataType"/>
+  <xsd:complexType name="PCUManagementRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element ref="PCUManagementData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues for Operation: OPERATION_CLEAR_UNITS, OPERATION_ADD_UNITS, OPERATION_SUBTRACT_UNITS, OPERATION_SET_UNITS, OPERATION_GET_UNITS</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DownloadData" type="DownloadDataType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DownloadDataType">
+    <xsd:sequence>
+      <xsd:element ref="eac:AccountID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The account number identifier.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OrderDetails" type="eac:OrderDetailType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Order details associated with the download</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="AlertRequestData" type="AlertRequestDataType"/>
+  <xsd:complexType name="AlertRequestDataType">
+    <xsd:annotation>
+      <xsd:documentation>The AlertRequestData type represents the data required for performing a Alert Service Request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="HonkHorn" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates whether the horn should be honked or not.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DefaultLightsAlert" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates whether default lights Alert behavior is selected</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AlertOverride" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates which default lights Alert behavior is selected. Valid Values: OVERRIDE_NONE, OVERRIDE_DEFAULT, OVERRIDE_DOOR_OPEN, OVERRIDE_IGNITION_ON</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AlertActivationTime" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the activation time for the alert. Optional data.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Duration" type="oagis:ShortNumericType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates how long the alert should be the duration.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="FlashHeadLights" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates whether the flash headlights behavior is selected. Optional data.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="FlashInteriorLights" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates whether the flash interior lights behavior is selected. Optional data.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="FlashParkingLights" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates whether the flash parking lights behavior is selected. Optional data.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ParkNeutralCheckIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RemoteStartStopRequestData" type="RemoteStartStopRequestDataType"/>
+  <xsd:complexType name="RemoteStartStopRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="RemoteStartStopOperation" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Valid values:OPERATION_REMOTE_START or OPERATION_REMOTE_STOP</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ParkNeutralCheckIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PLMNVersionRequestData" type="PLMNVersionRequestDataType"/>
+  <xsd:complexType name="PLMNVersionRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="FreeNumberRequestData" type="FreeNumberRequestDataType"/>
+  <xsd:complexType name="FreeNumberRequestDataType">
+    <xsd:annotation>
+      <xsd:documentation>Contains the request data for an Update Free Numbers service request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="AudioFileDownloadRequestData" type="AudioFileDownloadRequestDataType"/>
+  <xsd:complexType name="AudioFileDownloadRequestDataType">
+    <xsd:annotation>
+      <xsd:documentation>The AudioFileDownloadRequestData type represents the data required for performing Audio File download to the vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="FileTagName" type="oagis:StringType">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the file tag name to download.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ForceDownloadFlag" type="oagis:IndicatorType">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if the download is done irrespective of the hardware already having this file.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="PreferredLanguageCode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Subscriber preferred language code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TurnByTurnRequestData" type="TurnByTurnRequestDataType"/>
+  <xsd:complexType name="TurnByTurnRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="DestinationID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Destination ID for the destination to be downloaded.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Address" type="Address">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the IP Address and Port to set.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SecureAddress" type="Address">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the Secure IP Address and Port to set.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ServiceTimer" type="oagis:IntegerNumericType">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the Service Timer.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="TBTOperationType" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>ValidValues: "QUICK_TBT_ROUTE", "TBT_ROUTE"</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Address">
+    <xsd:annotation>
+      <xsd:documentation>IP Address and Port.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IPAddress" type="oagis:StringType">
+        <xsd:annotation>
+          <xsd:documentation>Indicates the IPAddress to set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Port" type="oagis:LongNumericType">
+        <xsd:annotation>
+          <xsd:documentation>Indicates the port number to be set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ManageAudioFileAlertRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="EnableAudioFileAlert" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if the Audio File needs to be enabled or not</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ManageWiFiSettingsRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="ConsumerWiFiHotspotEnabled" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>If set to true, enables the consumer WiFi Hotspot.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SSIDBroadcastEnabled" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>If set to true, enables the consumer WiFi Hotspot's SSID broadcast.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RetrieveWiFiSettingsRequestDataType">
+    <xsd:annotation>
+      <xsd:documentation>The RetrieveWiFiSettingsRequestData type represents the data required for performing retrieve WiFi settings from the vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RetrieveHotspotConfigurationRequestDataType">
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="RetrieveHotspotConfigurationType" type="xsd:string" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>hotspot configuration types that can be retrieved from the unit.Valid Values: SSID, Passphrase or ALL</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ManageHotspotConfigurationRequestDataType">
+    <xsd:annotation>
+      <xsd:documentation>The ManageHotspotConfigurationRequestData type represents the request data for managing hotspot configuration on the vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="SSID" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>If set, sets the consumer WiFi Hotspot's SSID.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Passphrase" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>If set, sets the consumer WiFi Hotspot's passphrase.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="InformationElement">
+    <xsd:annotation>
+      <xsd:documentation>Represent Information Elements</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="elementName" type="oagis:StringType" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Indicate Information element name</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="inputParams" type="eac:NameValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleInformationRequestDataType">
+    <xsd:annotation>
+      <xsd:documentation>Represent Vehicle Information Request Data.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="eac:ServiceRequestData">
+        <xsd:sequence>
+          <xsd:element name="requestedInformationElement" type="InformationElement" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Represent Information Elements key value pairs.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

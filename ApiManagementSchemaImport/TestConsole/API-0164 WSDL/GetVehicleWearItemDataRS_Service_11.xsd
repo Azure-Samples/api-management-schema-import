@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" xmlns:SIDBusCm="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" xmlns:SIDBusPr="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" xmlns:SIDBusRe="http://www.tmforum.org/NGOSS/SID/Business/8.0/Resource" xmlns:SIDBusSe="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Resource" schemaLocation="GetVehicleWearItemDataRS_Service_10.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" schemaLocation="GetVehicleWearItemDataRS_Service_9.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" schemaLocation="GetVehicleWearItemDataRS_Service_12.xsd"/>
+  <xs:complexType name="Service">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isServiceEnabled" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="hasStarted" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isMandatory" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="startMode" type="xs:int"/>
+          <xs:element minOccurs="0" name="isStateful" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionItem" type="SIDBusCm:BusinessInteractionItem"/>
+          <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+          <xs:element minOccurs="0" name="Device" type="SIDBusRe:Device"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AdministerServiceDetailsForService" type="SIDBusSe:AdministerServiceDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceRole" type="SIDBusSe:ServiceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogicalResourceRole" type="SIDBusRe:LogicalResourceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PhysicalResourceRole" type="SIDBusRe:PhysicalResourceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceCharacteristicValue" type="SIDBusSe:ServiceCharacteristicValue"/>
+          <xs:element minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServicePerformance" type="SIDBusSe:ServicePerformance"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingServiceSpecRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecificationRole">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceSpecRole" type="SIDBusSe:CustomerFacingServiceSpecRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogicalResourceRoleSpec" type="SIDBusRe:LogicalResourceRoleSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PhysicalResourceRoleSpec" type="SIDBusRe:PhysicalResourceRoleSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceSpec" type="SIDBusSe:ResourceFacingServiceSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecificationRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:SpecificationRole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceRole" type="SIDBusSe:ServiceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationRoleHas" type="SIDBusSe:ServiceSpecificationRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationRoleFor" type="SIDBusSe:ServiceSpecificationRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionItem" type="SIDBusCm:BusinessInteractionItem"/>
+          <xs:element minOccurs="0" name="ServiceSpecificationType" type="SIDBusSe:ServiceSpecificationType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationHas" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationFor" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationRole" type="SIDBusSe:ServiceSpecificationRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecVersion" type="SIDBusSe:ServiceSpecVersion"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceUsageSpec" type="SIDBusSe:ServiceUsageSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecCharUse" type="SIDBusSe:ServiceSpecCharUse"/>
+          <xs:element minOccurs="0" name="ServiceSpecComposite" type="SIDBusSe:ServiceSpecComposite"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServicePerformanceSpec" type="SIDBusSe:ServicePerformanceSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecification" type="SIDBusSe:ServiceLevelSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecificationType">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationTypeHas" type="SIDBusSe:ServiceSpecificationType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecificationTypeFor" type="SIDBusSe:ServiceSpecificationType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecVersion">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="svcSpecRevisionName" type="xs:string"/>
+          <xs:element minOccurs="0" name="svcSpecRevisionFormat" type="xs:string"/>
+          <xs:element minOccurs="0" name="svcSpecRevisionNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="svcSpecRevisionReason" type="xs:string"/>
+          <xs:element minOccurs="0" name="svcSpecRevisionSemantics" type="xs:string"/>
+          <xs:element minOccurs="0" name="svcSpecRevisionTimestamp" type="xs:date"/>
+          <xs:element minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element minOccurs="0" name="svcSpecRevisionValidityPeriod" type="SIDBusCm:TimePeriod"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceUsageSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:UsageSpecification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceUsageSpec" type="SIDBusRe:ResourceUsageSpec"/>
+          <xs:element minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AtomicProductUsageSpec" type="SIDBusPr:AtomicProductUsageSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceLevelSpecification">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelAgreementItem" type="SIDBusCm:ServiceLevelAgreementItem"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecApplicability" type="SIDBusSe:ServiceLevelSpecApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelObjective" type="SIDBusSe:ServiceLevelObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecConsequence" type="SIDBusSe:ServiceLevelSpecConsequence"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductSpecification" type="SIDBusPr:ProductSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductOffering" type="SIDBusPr:ProductOffering"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceLevelSpecApplicability">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableDays" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelObjective" type="SIDBusSe:ServiceLevelObjective"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableDuring" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecConsequence" type="SIDBusSe:ServiceLevelSpecConsequence"/>
+      <xs:element minOccurs="0" name="ServiceLevelSpecification" type="SIDBusSe:ServiceLevelSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceLevelObjective">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="conformanceTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="conformanceComparator" type="xs:string"/>
+      <xs:element minOccurs="0" name="thresholdTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="toleranceTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="gracePeriods" type="xs:int"/>
+      <xs:element minOccurs="0" name="conformancePeriod" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="tolerancePeriod" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="ServiceLevelSpecParameter" type="SIDBusSe:ServiceLevelSpecParameter"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecApplicability" type="SIDBusSe:ServiceLevelSpecApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecConsequence" type="SIDBusSe:ServiceLevelSpecConsequence"/>
+      <xs:element minOccurs="0" name="ServiceLevelSpecification" type="SIDBusSe:ServiceLevelSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceLevelSpecParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="serviceParmPerspective" type="xs:string"/>
+      <xs:element minOccurs="0" name="serviceParmCategory" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelObjective" type="SIDBusSe:ServiceLevelObjective"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceLevelSpecConsequence">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="prescribedAction" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelObjective" type="SIDBusSe:ServiceLevelObjective"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecApplicability" type="SIDBusSe:ServiceLevelSpecApplicability"/>
+      <xs:element minOccurs="0" name="ServiceLevelSpecification" type="SIDBusSe:ServiceLevelSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingServiceSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceSpec" type="SIDBusSe:ResourceFacingServiceSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingService" type="SIDBusSe:CustomerFacingService"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceSpecRole" type="SIDBusSe:CustomerFacingServiceSpecRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CFSSpecVersionDetails" type="SIDBusSe:CFSSpecVersionDetails"/>
+          <xs:element minOccurs="0" name="CustomerFacingServiceSpecComposite" type="SIDBusSe:CustomerFacingServiceSpecComposite"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductSpecification" type="SIDBusPr:ProductSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingServiceSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceSpec" type="SIDBusSe:CustomerFacingServiceSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceSpecification" type="SIDBusRe:ResourceSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingService" type="SIDBusSe:ResourceFacingService"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceSpecRole" type="SIDBusSe:ResourceFacingServiceSpecRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RFSSpecVersionDetails" type="SIDBusSe:RFSSpecVersionDetails"/>
+          <xs:element minOccurs="0" name="ResourceFacingServiceSpecComposite" type="SIDBusSe:ResourceFacingServiceSpecComposite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingService">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:Service">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="rfsStatus" type="xs:int"/>
+          <xs:element minOccurs="0" name="ServiceDeviceInterfaceDetailsForResourceFacingService" type="SIDBusRe:ServiceDeviceInterfaceDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Resource" type="SIDBusRe:Resource"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingService" type="SIDBusSe:CustomerFacingService"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceRole" type="SIDBusSe:ResourceFacingServiceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProtocolServiceDetails" type="SIDBusSe:ProtocolServiceDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServicePRDependency" type="SIDBusSe:ServicePRDependency"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLRDependency" type="SIDBusSe:ServiceLRDependency"/>
+          <xs:element minOccurs="0" name="ResourceFacingServiceComposite" type="SIDBusSe:ResourceFacingServiceComposite"/>
+          <xs:element minOccurs="0" name="ResourceFacingServiceSpec" type="SIDBusSe:ResourceFacingServiceSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingService">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:Service">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cfsStatus" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingService" type="SIDBusSe:ResourceFacingService"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceRole" type="SIDBusSe:CustomerFacingServiceRole"/>
+          <xs:element minOccurs="0" name="CustomerFacingServiceComposite" type="SIDBusSe:CustomerFacingServiceComposite"/>
+          <xs:element minOccurs="0" name="CustomerFacingServiceSpec" type="SIDBusSe:CustomerFacingServiceSpec"/>
+          <xs:element minOccurs="0" name="Product" type="SIDBusPr:Product"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingServiceRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceRole">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceRole" type="SIDBusSe:ResourceFacingServiceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingService" type="SIDBusSe:CustomerFacingService"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Role">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceRoleHas" type="SIDBusSe:ServiceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceRoleFor" type="SIDBusSe:ServiceRole"/>
+          <xs:element minOccurs="0" name="ServiceSpecificationRole" type="SIDBusSe:ServiceSpecificationRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingServiceRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceRole">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceRole" type="SIDBusSe:CustomerFacingServiceRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingService" type="SIDBusSe:ResourceFacingService"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingServiceComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:CustomerFacingService">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingService" type="SIDBusSe:CustomerFacingService"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceCharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceCharacteristicValue" type="SIDBusRe:ResourceCharacteristicValue"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristicValue" type="SIDBusSe:ServiceSpecCharacteristicValue"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristic" type="SIDBusSe:ServiceSpecCharacteristic"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductCharacteristicValue" type="SIDBusPr:ProductCharacteristicValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecCharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="_default" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="unitOfMeasure" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueFrom" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueTo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rangeInterval" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceCharacteristicValue" type="SIDBusSe:ServiceCharacteristicValue"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristic" type="SIDBusSe:ServiceSpecCharacteristic"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceSpecCharacteristicValue" type="SIDBusRe:ResourceSpecCharacteristicValue"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharValueRelationshipHas" type="SIDBusSe:ServiceSpecCharValueRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecCharValueRelationshipFor" type="SIDBusSe:ServiceSpecCharValueRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductSpecCharacteristicValue" type="SIDBusPr:ProductSpecCharacteristicValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecCharacteristic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="derivationFormula" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceCharacteristicValue" type="SIDBusSe:ServiceCharacteristicValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceSpecCharacteristic" type="SIDBusRe:ResourceSpecCharacteristic"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecCharacteristicValue" type="SIDBusSe:ServiceSpecCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecCharRelationshipHas" type="SIDBusSe:ServiceSpecCharRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecCharRelationshipFor" type="SIDBusSe:ServiceSpecCharRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecCharUseForServiceSpecCharacteristic" type="SIDBusSe:ServiceSpecCharUse"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductSpecCharacteristic" type="SIDBusPr:ProductSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecCharRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="charRelationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="charSpecSeq" type="xs:int"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristicFor" type="SIDBusSe:ServiceSpecCharacteristic"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristicHas" type="SIDBusSe:ServiceSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecCharUse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="_package" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="canBeOveridden" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="globallySet" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="ServiceSpecificationForServiceSpecCharUse" type="SIDBusSe:ServiceSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristic" type="SIDBusSe:ServiceSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecCharValueRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="charValueRelationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristicValueFor" type="SIDBusSe:ServiceSpecCharacteristicValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="ServiceSpecCharacteristicValueHas" type="SIDBusSe:ServiceSpecCharacteristicValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProtocolServiceDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ManagedEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResourceFacingServiceForProtocolServiceDetails" type="SIDBusSe:ResourceFacingService"/>
+          <xs:element minOccurs="0" name="Protocol" type="SIDBusRe:Protocol"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServicePRDependency">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResourceFacingServiceForServicePRDependency" type="SIDBusSe:ResourceFacingService"/>
+          <xs:element minOccurs="0" name="PhysicalResource" type="SIDBusRe:PhysicalResource"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceLRDependency">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResourceFacingServiceForServiceLRDependency" type="SIDBusSe:ResourceFacingService"/>
+          <xs:element minOccurs="0" name="LogicalResource" type="SIDBusRe:LogicalResource"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingServiceComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ResourceFacingService">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingService" type="SIDBusSe:ResourceFacingService"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RFSSpecVersionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="rfsSpecPreferredVersionToUse" type="xs:string"/>
+          <xs:element minOccurs="0" name="rfsSpecMinVersionForUse" type="xs:string"/>
+          <xs:element minOccurs="0" name="ResourceFacingServiceSpecForRFSSpecVersionDetails" type="SIDBusSe:ResourceFacingServiceSpec"/>
+          <xs:element minOccurs="0" name="rfsSpecVerValidFor" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="ResourceFacingServiceSpecVersion" type="SIDBusSe:ResourceFacingServiceSpecVersion"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingServiceSpecVersion">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecVersion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RFSSpecVersionDetailsForResourceFacingServiceSpecVersion" type="SIDBusSe:RFSSpecVersionDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceFacingServiceSpecComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ResourceFacingServiceSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceSpec" type="SIDBusSe:ResourceFacingServiceSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingServiceSpecRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecificationRole">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceFacingServiceSpecRole" type="SIDBusSe:ResourceFacingServiceSpecRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceSpec" type="SIDBusSe:CustomerFacingServiceSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CFSSpecVersionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cfsSpecPreferredVersionToUse" type="xs:string"/>
+          <xs:element minOccurs="0" name="cfsSpecMinVersionForUse" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustomerFacingServiceSpecForCFSSpecVersionDetails" type="SIDBusSe:CustomerFacingServiceSpec"/>
+          <xs:element minOccurs="0" name="cfsSpecVerValidFor" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="CustomerFacingServiceSpecVersion" type="SIDBusSe:CustomerFacingServiceSpecVersion"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingServiceSpecVersion">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecVersion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CFSSpecVersionDetailsForCustomerFacingServiceSpecVersion" type="SIDBusSe:CFSSpecVersionDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerFacingServiceSpecComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:CustomerFacingServiceSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerFacingServiceSpec" type="SIDBusSe:CustomerFacingServiceSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServiceSpecComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusSe:ServiceSpecification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServicePerformanceSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PerformanceSpecification">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AdministerServiceDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValueNetworkRoleForAdministerServiceDetails" type="SIDBusCm:ValueNetworkRole"/>
+          <xs:element minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServicePerformance">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Performance">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xsd:schema>

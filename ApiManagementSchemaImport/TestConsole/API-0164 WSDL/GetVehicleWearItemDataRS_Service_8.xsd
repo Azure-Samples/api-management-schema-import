@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" xmlns:SIDBusCm="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" xmlns:SIDBusCu="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" xmlns:SIDBusMa="http://www.tmforum.org/NGOSS/SID/Business/8.0/MarketSales" xmlns:SIDBusPr="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" schemaLocation="GetVehicleWearItemDataRS_Service_9.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" schemaLocation="GetVehicleWearItemDataRS_Service_12.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/MarketSales" schemaLocation="GetVehicleWearItemDataRS_Service_13.xsd"/>
+  <xs:complexType name="CustomerOrder">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerOrderType" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="purchaseOrderNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="assignedPriority" type="xs:long"/>
+          <xs:element minOccurs="0" name="assignedResponsibilityDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="dueDate" type="xs:date"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerOrderItem" type="SIDBusCu:CustomerOrderItem"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ChurnRetentionStatistic">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketSegment" type="SIDBusMa:MarketSegment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketingCampaign" type="SIDBusMa:MarketingCampaign"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingProductChargeSumSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:CustomerBillingStatisticSpec">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductSpecification" type="SIDBusPr:ProductSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingStatisticSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="lifecycleStatus" type="xs:int"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillingStatistic" type="SIDBusCu:CustomerBillingStatistic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingStatistic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="statisticForPeriod" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillingStatisticBalance" type="SIDBusCu:CustomerBillingStatisticBalance"/>
+      <xs:element minOccurs="0" name="CustomerBillingStatisticSpec" type="SIDBusCu:CustomerBillingStatisticSpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingStatisticBalance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerBillingStatistic" type="SIDBusCu:CustomerBillingStatistic"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingProductChargeSum">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:CustomerBillingStatistic">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Product" type="SIDBusPr:Product"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingProductUsageRate">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AppliedCustomerBillingProductCharge">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductUsage" type="SIDBusPr:ProductUsage"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingProductCharge">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AppliedCustomerBillingCharge">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProdPriceCharge" type="SIDBusPr:ProdPriceCharge"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingCharge">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AtomicAppliedCustomerBillingRate">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AtomicAppliedCustomerBillingRate">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AppliedCustomerBillingRate">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date" type="xs:date"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AppliedCustomerBillingProductAlteration" type="SIDBusCu:AppliedCustomerBillingProductAlteration"/>
+      <xs:element minOccurs="0" name="quantity" type="SIDBusCm:Money"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CompositeAppliedCustomerBillingRate" type="SIDBusCu:CompositeAppliedCustomerBillingRate"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AppliedCustomerBillingTaxRate" type="SIDBusCu:AppliedCustomerBillingTaxRate"/>
+      <xs:element minOccurs="0" name="CustomerBill" type="SIDBusCu:CustomerBill"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditLimit" type="xs:long"/>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountInteractionRole" type="SIDBusCm:CustomerAccountInteractionRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Customer" type="SIDBusCu:Customer"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountTaxExemption" type="SIDBusCu:CustomerAccountTaxExemption"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AppliedCustomerBillingRate" type="SIDBusCu:AppliedCustomerBillingRate"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountChargeSum" type="SIDBusCu:CustomerAccountChargeSum"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountChargeSumSpec" type="SIDBusCu:CustomerAccountChargeSumSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBill" type="SIDBusCu:CustomerBill"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillSpec" type="SIDBusCu:CustomerBillSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountProductInvolvement" type="SIDBusPr:CustomerAccountProductInvolvement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountContact" type="SIDBusCu:CustomerAccountContact"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountRelationshipHas" type="SIDBusCu:CustomerAccountRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountRelationshipFor" type="SIDBusCu:CustomerAccountRelationship"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Customer">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PartyRole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerRank" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Performance" type="SIDBusCm:Performance"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerCreditProfile" type="SIDBusCu:CustomerCreditProfile"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerQuote" type="SIDBusCu:CustomerQuote"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerCreditProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditProfileDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="creditRiskRating" type="xs:int"/>
+      <xs:element minOccurs="0" name="creditScore" type="xs:int"/>
+      <xs:element minOccurs="0" name="Customer" type="SIDBusCu:Customer"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustCreditProfileReference" type="SIDBusCu:CustCreditProfileReference"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustCreditProfileReference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="financialInstitutionName" type="xs:string"/>
+      <xs:element minOccurs="0" name="financialInstitutionAccoutNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="financialInstitutionAccountType" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element minOccurs="0" name="CustomerCreditProfile" type="SIDBusCu:CustomerCreditProfile"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerQuote">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:InquiryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Customer" type="SIDBusCu:Customer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="InquiryResponse">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Response">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccountTaxExemption">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="issuingJurisdiction" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccountChargeSum">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:CustomerBillingStatistic">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccountChargeSumSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:CustomerBillingStatisticSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerBill">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="billNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="billDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="chargeDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="creditDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="mailingDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="paymentDueDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+      <xs:element minOccurs="0" name="CustomerBillingCycle" type="SIDBusCu:CustomerBillingCycle"/>
+      <xs:element minOccurs="0" name="billAmount" type="SIDBusCm:Money"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AppliedCustomerBillingRate" type="SIDBusCu:AppliedCustomerBillingRate"/>
+      <xs:element minOccurs="0" name="CustomerBillSpec" type="SIDBusCu:CustomerBillSpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingCycle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="billingDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="chargeDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="creditDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="mailingDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="paymentDueDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="triggeredByScheduler" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="triggeredByCustomer" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="triggeredByProvider" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="triggeredByAccountClose" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="CustomerBillingCycleSpecification" type="SIDBusCu:CustomerBillingCycleSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBill" type="SIDBusCu:CustomerBill"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillSpec" type="SIDBusCu:CustomerBillSpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingCycleSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingDateShift" type="xs:int"/>
+      <xs:element minOccurs="0" name="chargeDateOffset" type="xs:int"/>
+      <xs:element minOccurs="0" name="creditDateOffset" type="xs:int"/>
+      <xs:element minOccurs="0" name="mailingDateOffset" type="xs:int"/>
+      <xs:element minOccurs="0" name="paymentDueDateOffset" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillingCycle" type="SIDBusCu:CustomerBillingCycle"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="BillingPeriod" type="SIDBusCu:BillingPeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillSpec" type="SIDBusCu:CustomerBillSpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BillingPeriod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillingCycleSpecification" type="SIDBusCu:CustomerBillingCycleSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillingCycle" type="SIDBusCu:CustomerBillingCycle"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillingCycleSpecification" type="SIDBusCu:CustomerBillingCycleSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillFormat" type="SIDBusCu:CustomerBillFormat"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBill" type="SIDBusCu:CustomerBill"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillFormat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillPresentationMedia" type="SIDBusCu:CustomerBillPresentationMedia"/>
+      <xs:element minOccurs="0" name="CustomerBillSpec" type="SIDBusCu:CustomerBillSpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillPresentationMedia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerBillFormat" type="SIDBusCu:CustomerBillFormat"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccountContact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contactType" type="xs:string"/>
+      <xs:element minOccurs="0" name="CustomerAccountForCustomerAccountContact" type="SIDBusCu:CustomerAccount"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccountRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="CustomerAccountFor" type="SIDBusCu:CustomerAccount"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CustomerAccountHas" type="SIDBusCu:CustomerAccount"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingProductAlteration">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AppliedCustomerBillingCredit">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProdPriceAlteration" type="SIDBusPr:ProdPriceAlteration"/>
+          <xs:element minOccurs="0" name="AppliedCustomerBillingRate" type="SIDBusCu:AppliedCustomerBillingRate"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingCredit">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AtomicAppliedCustomerBillingRate">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CompositeAppliedCustomerBillingRate">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AppliedCustomerBillingRate">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AppliedCustomerBillingRate" type="SIDBusCu:AppliedCustomerBillingRate"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingTaxRate">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:AtomicAppliedCustomerBillingRate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="taxCategory" type="xs:string"/>
+          <xs:element minOccurs="0" name="AppliedCustomerBillingRate" type="SIDBusCu:AppliedCustomerBillingRate"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UsageCharacteristicSum">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:CustomerBillingStatistic">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UsageCharacteristicValue" type="SIDBusCm:UsageCharacteristicValue"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UsageCharacteristicSumSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCu:CustomerBillingStatisticSpec">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharacteristic"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerOrderItem">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerOrder" type="SIDBusCu:CustomerOrder"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xsd:schema>

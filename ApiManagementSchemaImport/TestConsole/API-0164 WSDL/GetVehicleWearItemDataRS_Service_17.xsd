@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nmma.org/CodeLists" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.nmma.org/CodeLists">
+  <xsd:simpleType name="BoatEngineLocationContentType">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:normalizedString">
+      <xsd:enumeration value="Port">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Port</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Center Port">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Center Port</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Starboard">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Starboard</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Center Starboard">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Center Starboard</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Center">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Center</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Bow">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Bow</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

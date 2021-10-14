@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BindingNotFound" xml:space="preserve">
+    <value>Binding '{0}' not found.</value>
+  </data>
+  <data name="CannotResolveType" xml:space="preserve">
+    <value>Could not resolve type '{0}'.</value>
+  </data>
+  <data name="FailedToImport" xml:space="preserve">
+    <value>Could not retrieve import from '{0}'. The request failed with error '{1}' and message '{2}'.</value>
+  </data>
+  <data name="FailedToParseImportedSchemaResponse" xml:space="preserve">
+    <value>Could not retrieve import from '{0}'. The request response code was '{1}' and parsing the response content failed with '{2}' and message '{3}'.</value>
+  </data>
+  <data name="InputMessageNotFound" xml:space="preserve">
+    <value>Cannot resolve referenced input message '{0}'.</value>
+  </data>
+  <data name="InterfaceNotFound" xml:space="preserve">
+    <value>Interface '{0}' not found.</value>
+  </data>
+  <data name="InvalidXmlSchema" xml:space="preserve">
+    <value>The provided schema '{0}' is invalid and cannot be parsed.</value>
+  </data>
+  <data name="LoadedBindings" xml:space="preserve">
+    <value>Loaded '{0}' bindings.</value>
+  </data>
+  <data name="LoadedInterfaces" xml:space="preserve">
+    <value>Loaded '{0}' interfaces.</value>
+  </data>
+  <data name="LoadedMessages" xml:space="preserve">
+    <value>Loaded '{0}' messages.</value>
+  </data>
+  <data name="LoadedNoSchemas" xml:space="preserve">
+    <value>No schemas found.</value>
+  </data>
+  <data name="LoadedSchema" xml:space="preserve">
+    <value>Target Namespace: '{0}'.</value>
+  </data>
+  <data name="LoadedSchemas" xml:space="preserve">
+    <value>Loaded '{0}' schemas.</value>
+  </data>
+  <data name="LoadedServices" xml:space="preserve">
+    <value>Loaded '{0}' services.</value>
+  </data>
+  <data name="LoadedTypes" xml:space="preserve">
+    <value>Loaded '{0}' types.</value>
+  </data>
+  <data name="NoInterfacesFound" xml:space="preserve">
+    <value>No interfaces found.</value>
+  </data>
+  <data name="NotificationOperationNotSupported" xml:space="preserve">
+    <value>Notification Operation '{0}' is not supported. Only Request-response and Solicit-response Operations are supported.</value>
+  </data>
+  <data name="OneWayOperationNotSupported" xml:space="preserve">
+    <value>One-way Operation '{0}' is not supported. Only Request-response and Solicit-response Operations are supported.</value>
+  </data>
+  <data name="OperationsActionsBothDoConflict" xml:space="preserve">
+    <value>Unable to generate unique resource identifiers for operations, both operation names and SOAP actions conflict. Please modify the WSDL document to avoid redundant operation names, including redundant use of empty string.</value>
+  </data>
+  <data name="OutputMessageNotFound" xml:space="preserve">
+    <value>Cannot resolve referenced output message '{0}'.</value>
+  </data>
+  <data name="ParsingXmlComplete" xml:space="preserve">
+    <value>Completed parsing XML.</value>
+  </data>
+  <data name="ParsingXmlStarted" xml:space="preserve">
+    <value>Started parsing XML.</value>
+  </data>
+  <data name="RecursiveTypesNotSupported" xml:space="preserve">
+    <value>Element named '{0}' has a recursive definition. Recursive types are not supported.</value>
+  </data>
+  <data name="SoapAddressLocationRequired" xml:space="preserve">
+    <value>A soap:address element with location attribute is required in the wsdl:port element named '{0}' of the WSDL document.</value>
+  </data>
+  <data name="UnableToImportApiFromWsdl" xml:space="preserve">
+    <value>Unable to import API from WSDL.</value>
+  </data>
+  <data name="UnableToParseWsdl" xml:space="preserve">
+    <value>Unable to parse WSDL.</value>
+  </data>
+  <data name="UnexpectedNullOperationOrBinding" xml:space="preserve">
+    <value>Unexpected null binding operation or null operation. Please check the WSDL document operations and bindings.</value>
+  </data>
+  <data name="UnknownWsdlVersion" xml:space="preserve">
+    <value>Unknown WSDL Version: '{0}'.</value>
+  </data>
+  <data name="Wsdl20CurrentlyNotSupported" xml:space="preserve">
+    <value>WSDL 2.0 currently not supported for import.</value>
+  </data>
+  <data name="WsdlIdentification" xml:space="preserve">
+    <value>WsdlVersion: '{0}' TargetNamespace: '{1}'.</value>
+  </data>
+  <data name="WsdlImportRuleCheckXmlSchemaNamespace" xml:space="preserve">
+    <value>XSD Schema http://www.w3.org/2000/10/XMLSchema is not supported. Use http://www.w3.org/2001/XMLSchema instead.</value>
+  </data>
+  <data name="WsdlImportRuleImportNotSupported" xml:space="preserve">
+    <value>WSDL Import is currently not supported.</value>
+  </data>
+  <data name="WsdlImportRuleSingleParts" xml:space="preserve">
+    <value>Message '{0}' contains multiple parts.</value>
+  </data>
+  <data name="WsdlMessageNameAttributeNotFound" xml:space="preserve">
+    <value>WSDL message '{0}' has no name attribute. The name attribute is required per WSDL 1.1 specification.</value>
+  </data>
+  <data name="WsdlPrecheckComplete" xml:space="preserve">
+    <value>Completed WSDL verification. WSDL is considered valid.</value>
+  </data>
+  <data name="WsdlPrecheckFailed" xml:space="preserve">
+    <value>Failed WSDL verification.</value>
+  </data>
+  <data name="XsdImport" xml:space="preserve">
+    <value>Location: '{0}' TargetNamespace: '{1}'.</value>
+  </data>
+  <data name="XsdImportFailure" xml:space="preserve">
+    <value>Location '{0}' cannot be resolved. Cannot resolve WSDL Imports that use relative URLs.</value>
+  </data>
+  <data name="XsdImportsFound" xml:space="preserve">
+    <value>Found '{0}' imports.</value>
+  </data>
+</root>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Enterprise" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tmforum.org/NGOSS/SID/Business/8.0/Enterprise" xmlns:SIDBusCm="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" xmlns:SIDBusEn="http://www.tmforum.org/NGOSS/SID/Business/8.0/Enterprise" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" schemaLocation="GetVehicleWearItemDataRS_Service_12.xsd"/>
+  <xs:complexType name="RevenueAssuranceParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="raParmPerspective" type="xs:string"/>
+      <xs:element minOccurs="0" name="raParmCategory" type="xs:string"/>
+      <xs:element minOccurs="0" name="calculationFrequency" type="xs:string"/>
+      <xs:element minOccurs="0" name="raParmDerivationAlgorithm" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceApplicability" type="SIDBusEn:RevenueAssuranceApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceObjective" type="SIDBusEn:RevenueAssuranceObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParmValue" type="SIDBusEn:RevenueAssuranceParmValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntityType" type="SIDBusCm:RootEntityType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessmentItem" type="SIDBusEn:RevenueAssuranceAssessmentItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceApplicability">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableDays" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParameter" type="SIDBusEn:RevenueAssuranceParameter"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceObjective" type="SIDBusEn:RevenueAssuranceObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceConsequence" type="SIDBusEn:RevenueAssuranceConsequence"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableDuring" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessmentItem" type="SIDBusEn:RevenueAssuranceAssessmentItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceObjective">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="conformanceTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="conformanceComparator" type="xs:string"/>
+      <xs:element minOccurs="0" name="thresholdTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="toleranceTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="gracePeriods" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParameter" type="SIDBusEn:RevenueAssuranceParameter"/>
+      <xs:element minOccurs="0" name="conformancePeriod" type="SIDBusCm:Duration"/>
+      <xs:element minOccurs="0" name="tolerancePeriod" type="SIDBusCm:Duration"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicySet" type="SIDBusCm:PolicySet"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceApplicability" type="SIDBusEn:RevenueAssuranceApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceConsequence" type="SIDBusEn:RevenueAssuranceConsequence"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessmentItem" type="SIDBusEn:RevenueAssuranceAssessmentItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceConsequence">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="prescribedAction" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceObjective" type="SIDBusEn:RevenueAssuranceObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParmValue" type="SIDBusEn:RevenueAssuranceParmValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceApplicability" type="SIDBusEn:RevenueAssuranceApplicability"/>
+      <xs:element minOccurs="0" name="PolicyAction" type="SIDBusCm:PolicyAction"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessmentItem" type="SIDBusEn:RevenueAssuranceAssessmentItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceParmValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateCreated" type="xs:date"/>
+      <xs:element minOccurs="0" name="RevenueAssuranceParameter" type="SIDBusEn:RevenueAssuranceParameter"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceViolation" type="SIDBusEn:RevenueAssuranceViolation"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTroubleTicket" type="SIDBusEn:RevenueAssuranceTroubleTicket"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceConsequence" type="SIDBusEn:RevenueAssuranceConsequence"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntity" type="SIDBusCm:RootEntity"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTrend" type="SIDBusEn:RevenueAssuranceTrend"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceViolation">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Notification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParmValue" type="SIDBusEn:RevenueAssuranceParmValue"/>
+          <xs:element minOccurs="0" name="RevenueAssuranceViolationSpec" type="SIDBusEn:RevenueAssuranceViolationSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTroubleTicket" type="SIDBusEn:RevenueAssuranceTroubleTicket"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceViolationSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceControlConsequence" type="SIDBusEn:RevenueAssuranceControlConsequence"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTroubleTicketSpec" type="SIDBusEn:RevenueAssuranceTroubleTicketSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceViolation" type="SIDBusEn:RevenueAssuranceViolation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceControlConsequence">
+    <xs:complexContent>
+      <xs:extension base="SIDBusEn:RevenueAssuranceConsequence">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceViolationSpec" type="SIDBusEn:RevenueAssuranceViolationSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceTroubleTicketSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTroubleTicket" type="SIDBusEn:RevenueAssuranceTroubleTicket"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceActionSpec" type="SIDBusEn:RevenueAssuranceActionSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceViolationSpec" type="SIDBusEn:RevenueAssuranceViolationSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceKPIConsequence" type="SIDBusEn:RevenueAssuranceKPIConsequence"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceTroubleTicket">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:TroubleTicket">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RevenueAssuranceTroubleTicketSpec" type="SIDBusEn:RevenueAssuranceTroubleTicketSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAction" type="SIDBusEn:RevenueAssuranceAction"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParmValue" type="SIDBusEn:RevenueAssuranceParmValue"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceViolation" type="SIDBusEn:RevenueAssuranceViolation"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceAction">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Activity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RevenueAssuranceTroubleTicket" type="SIDBusEn:RevenueAssuranceTroubleTicket"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceResponse" type="SIDBusEn:RevenueAssuranceResponse"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceResponse">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RevenueAssuranceAction" type="SIDBusEn:RevenueAssuranceAction"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceActionSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ActivitySpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTroubleTicketSpec" type="SIDBusEn:RevenueAssuranceTroubleTicketSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceResponseSpec" type="SIDBusEn:RevenueAssuranceResponseSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceResponseSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceActionSpec" type="SIDBusEn:RevenueAssuranceActionSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceKPIConsequence">
+    <xs:complexContent>
+      <xs:extension base="SIDBusEn:RevenueAssuranceConsequence">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceTroubleTicketSpec" type="SIDBusEn:RevenueAssuranceTroubleTicketSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceTrend">
+    <xs:complexContent>
+      <xs:extension base="SIDBusEn:RevenueAssuranceAssessmentResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParmValue" type="SIDBusEn:RevenueAssuranceParmValue"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceAssessmentResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateCreated" type="xs:date"/>
+      <xs:element minOccurs="0" name="RevenueAssuranceAssessmentItem" type="SIDBusEn:RevenueAssuranceAssessmentItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceAssessmentItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateStarted" type="xs:date"/>
+      <xs:element minOccurs="0" name="dateComplete" type="xs:date"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParameter" type="SIDBusEn:RevenueAssuranceParameter"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceObjective" type="SIDBusEn:RevenueAssuranceObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceConsequence" type="SIDBusEn:RevenueAssuranceConsequence"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceApplicability" type="SIDBusEn:RevenueAssuranceApplicability"/>
+      <xs:element minOccurs="0" name="RevenueAssuranceAssessment" type="SIDBusEn:RevenueAssuranceAssessment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessmentResult" type="SIDBusEn:RevenueAssuranceAssessmentResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevenueAssuranceAssessment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="raAssessmentType" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateCreated" type="xs:date"/>
+      <xs:element minOccurs="0" name="dateStarted" type="xs:date"/>
+      <xs:element minOccurs="0" name="dateComplete" type="xs:date"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessmentItem" type="SIDBusEn:RevenueAssuranceAssessmentItem"/>
+    </xs:sequence>
+  </xs:complexType>
+</xsd:schema>

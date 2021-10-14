@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.starstandard.org/STAR/5/qualifieddatatypes/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.starstandard.org/STAR/5/qualifieddatatypes/1.0" xmlns:nmmacl="http://www.nmma.org/CodeLists" xmlns:scl="http://www.starstandard.org/STAR/5/codelists" xmlns:xfUOMcl="http://www.xfront.com/UnitsOfMeasure">
+  <xsd:import namespace="http://www.nmma.org/CodeLists" schemaLocation="GetVehicleWearItemDataRS_Service_17.xsd"/>
+  <xsd:import namespace="http://www.xfront.com/UnitsOfMeasure" schemaLocation="GetVehicleWearItemDataRS_Service_18.xsd"/>
+  <xsd:import namespace="http://www.starstandard.org/STAR/5/codelists" schemaLocation="GetVehicleWearItemDataRS_Service_19.xsd"/>
+  <xsd:simpleType name="QuantityContentType">
+    <xsd:union memberTypes="scl:UOMEnumeratedType xfUOMcl:LengthUnitsContentType xfUOMcl:WeightUnitsContentType xfUOMcl:VolumeUnitsContentType"/>
+  </xsd:simpleType>
+  <xsd:complexType name="QuantityType">
+    <xsd:annotation>
+      <xsd:documentation>This is used to indicate general quantity information.  It is combination of several code lists.  Including
+                The STAR Codelist UOMEnumeratedtype.  The XFront code lists, LengthUnitsContentType, WeightUnitsContentType, and VolumeUnitsContentType</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="QuantityContentType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation source="http://www.starstandard.org/STAR/5">This is used to indicate general quantity information.  It is combination of several code lists.  Including
+                            The STAR Codelist UOMEnumeratedtype.  The XFront code lists, LengthUnitsContentType, WeightUnitsContentType, and VolumeUnitsContentType</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="AgencyRoleCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org" xml:lang="en">Indicates the type of keel on the boat.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scl:AgencyRoleCodeContentType"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="ItemIDCategoryTypeCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org">Indicates the category that a part number is associated with.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scl:ItemIDCategoryTypeContentType"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="LanguageCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org" xml:lang="en">The ISO Language Code used to represent a spoken or written language.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scl:LanguageContentType"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="CountryCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org" xml:lang="en">The ISO Country Code.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scl:CountryContentType"/>
+  </xsd:simpleType>
+  <xsd:complexType name="TimeMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate the amount of time in hours, minutues, seconds, etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:TimeUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indciate a the time measurement.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ContactMethodTypeCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org">Indicates the preferred method of contact.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scl:ContactMethodTypeContentType"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="FuelTypeCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org" xml:lang="en">Type of vehicle fuel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scl:FuelTypeContentType"/>
+  </xsd:simpleType>
+  <xsd:complexType name="SpeedMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate a speed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:SpeedUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indciate a speed type.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="ElectricityMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate pressure measurements.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:ElectricityUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indicate electricity measurements.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="ForceMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate force measurements.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:ForceUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indicate force measurements.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="LengthMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate a length.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:LengthUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Use to indicate the length or distance.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="BoatEngineLocationCodeType">
+    <xsd:annotation>
+      <xsd:documentation source="http://www.starstandard.org" xml:lang="en">Defines the location on the boat that the engine can be mounted.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="nmmacl:BoatEngineLocationContentType"/>
+  </xsd:simpleType>
+  <xsd:complexType name="FuelConsumptionMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicates fuel consumption speed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="volumeUnitCode" type="xfUOMcl:VolumeUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indicate the volume of consumption.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="timeUnitCode" type="xfUOMcl:TimeUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indicate the duration or speed of consumption.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="WeightMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate a weight.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:WeightUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Use to indicate how much something weighs.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PressureMeasureType">
+    <xsd:annotation>
+      <xsd:documentation>Used to indicate pressure measurements.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="unitCode" type="xfUOMcl:PressureUnitsContentType" use="required">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">Used to indicate pressure measurements.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

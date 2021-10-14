@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><!--Version Details
+
+Version     Date                Description
+_______     _________           ____________________________
+1           2008                base version
+2           2009-05-15          updated namespace to global--><xsd:schema version="1.0" targetNamespace="urn:com:onstar:global:common:schema:GenericFault:2" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:tns="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="GenericFault" type="tns:Fault"/>
+  <xsd:complexType name="Fault" final="extension">
+    <xsd:annotation>
+      <xsd:documentation>Fault reporting structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="faultcode" type="xsd:QName"/>
+      <xsd:element name="faultstring" type="xsd:string"/>
+      <xsd:element name="faultactor" type="xsd:anyURI" minOccurs="0"/>
+      <xsd:element name="detail" type="tns:detail" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="detail">
+    <xsd:sequence>
+      <xsd:any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xsd:sequence>
+    <xsd:anyAttribute namespace="##any" processContents="lax"/>
+  </xsd:complexType>
+</xsd:schema>

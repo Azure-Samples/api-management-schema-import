@@ -1,0 +1,2970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" xmlns:SIDBusCm="http://www.tmforum.org/NGOSS/SID/Business/8.0/Common" xmlns:SIDBusCu="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" xmlns:SIDBusEn="http://www.tmforum.org/NGOSS/SID/Business/8.0/Enterprise" xmlns:SIDBusMa="http://www.tmforum.org/NGOSS/SID/Business/8.0/MarketSales" xmlns:SIDBusPr="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" xmlns:SIDBusRe="http://www.tmforum.org/NGOSS/SID/Business/8.0/Resource" xmlns:SIDBusSe="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Resource" schemaLocation="GetVehicleWearItemDataRS_Service_10.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" schemaLocation="GetVehicleWearItemDataRS_Service_8.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" schemaLocation="GetVehicleWearItemDataRS_Service_11.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" schemaLocation="GetVehicleWearItemDataRS_Service_9.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/MarketSales" schemaLocation="GetVehicleWearItemDataRS_Service_13.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Enterprise" schemaLocation="GetVehicleWearItemDataRS_Service_14.xsd"/>
+  <xs:complexType name="Request">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteraction">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteraction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="interactionDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="interactionDateComplete" type="xs:date"/>
+      <xs:element minOccurs="0" name="interactionStatus" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionItem" type="SIDBusCm:BusinessInteractionItem"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionRole" type="SIDBusCm:BusinessInteractionRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionVersion" type="SIDBusCm:BusinessInteractionVersion"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionRelationshipHas" type="SIDBusCm:BusinessInteractionRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionLocation" type="SIDBusCm:BusinessInteractionLocation"/>
+      <xs:element minOccurs="0" name="BusinessInteractionType" type="SIDBusCm:BusinessInteractionType"/>
+      <xs:element minOccurs="0" name="BusinessInteractionSpec" type="SIDBusCm:BusinessInteractionSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionRelationshipFor" type="SIDBusCm:BusinessInteractionRelationship"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="action" type="xs:string"/>
+      <xs:element minOccurs="0" name="BusinessInteraction" type="SIDBusCm:BusinessInteraction"/>
+      <xs:element minOccurs="0" name="quantity" type="SIDBusCm:Quantity"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionItemHas" type="SIDBusCm:BusinessInteractionItem"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionItemFor" type="SIDBusCm:BusinessInteractionItem"/>
+      <xs:element minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+      <xs:element minOccurs="0" name="Resource" type="SIDBusRe:Resource"/>
+      <xs:element minOccurs="0" name="ResourceSpecification" type="SIDBusRe:ResourceSpecification"/>
+      <xs:element minOccurs="0" name="ServiceSpecification" type="SIDBusSe:ServiceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionRole" type="SIDBusCm:BusinessInteractionRole"/>
+      <xs:element minOccurs="0" name="ProductSpecification" type="SIDBusPr:ProductSpecification"/>
+      <xs:element minOccurs="0" name="Product" type="SIDBusPr:Product"/>
+      <xs:element minOccurs="0" name="BusinessInteractionItemPrice" type="SIDBusCm:BusinessInteractionItemPrice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Quantity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="units" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RootEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="commonName" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="objectID" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicValue" type="SIDBusCm:CharacteristicValue"/>
+      <xs:element minOccurs="0" name="RootEntityType" type="SIDBusCm:RootEntityType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParmValue" type="SIDBusEn:RevenueAssuranceParmValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecValue" type="SIDBusCm:CharacteristicSpecValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicValueHas" type="SIDBusCm:CharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicValueFor" type="SIDBusCm:CharacteristicValue"/>
+      <xs:element minOccurs="0" name="RootEntity" type="SIDBusCm:RootEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CharacteristicSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="derivationFormula" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecValue" type="SIDBusCm:CharacteristicSpecValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicValue" type="SIDBusCm:CharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorDerivationParameter" type="SIDBusCm:PerformanceIndicatorDerivationParameter"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecRelationshipHas" type="SIDBusCm:CharacteristicSpecRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecRelationshipFor" type="SIDBusCm:CharacteristicSpecRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="EntitySpecCharUseForCharacteristicSpecification" type="SIDBusCm:EntitySpecCharUse"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntityTypeCharUseForCharacteristicSpecification" type="SIDBusCm:RootEntityTypeCharUse"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatSpecification" type="SIDBusCm:PerformanceCatSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatCharacteristicValue" type="SIDBusCm:PerformanceCatCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCharacteristicValue" type="SIDBusCm:PerformanceCharacteristicValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TimePeriod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="startDateTime" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="endDateTime" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CharacteristicSpecValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="_default" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="unitOfMeasure" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueFrom" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueTo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rangeInterval" type="xs:string"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicValue" type="SIDBusCm:CharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatSpecification" type="SIDBusCm:PerformanceCatSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharSpecValueRelationshipHas" type="SIDBusCm:CharSpecValueRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharSpecValueRelationshipFor" type="SIDBusCm:CharSpecValueRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCharacteristicValue" type="SIDBusCm:PerformanceCharacteristicValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceCatSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecValue" type="SIDBusCm:CharacteristicSpecValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatSpecRelationshipHas" type="SIDBusCm:PerformanceCatSpecRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatSpecRelationshipFor" type="SIDBusCm:PerformanceCatSpecRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCategory" type="SIDBusCm:PerformanceCategory"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceCatSpecRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="numberRelCatLowerLimit" type="xs:int"/>
+      <xs:element minOccurs="0" name="numberRelCatUpperLimit" type="xs:int"/>
+      <xs:element minOccurs="0" name="PerformanceCatSpecificationFor" type="SIDBusCm:PerformanceCatSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PerformanceCatSpecificationHas" type="SIDBusCm:PerformanceCatSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatCharacteristicValue" type="SIDBusCm:PerformanceCatCharacteristicValue"/>
+      <xs:element minOccurs="0" name="PerformanceCatSpecification" type="SIDBusCm:PerformanceCatSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCategoryRelationshipHas" type="SIDBusCm:PerformanceCategoryRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCategoryRelationshipFor" type="SIDBusCm:PerformanceCategoryRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Performance" type="SIDBusCm:Performance"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceNetworkAddress" type="SIDBusCm:PerformanceNetworkAddress"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceCatCharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="PerformanceCategory" type="SIDBusCm:PerformanceCategory"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceCategoryRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="PerformanceCategoryFor" type="SIDBusCm:PerformanceCategory"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PerformanceCategoryHas" type="SIDBusCm:PerformanceCategory"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Performance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="intervalTime" type="xs:date"/>
+      <xs:element minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicator" type="SIDBusCm:PerformanceIndicator"/>
+      <xs:element minOccurs="0" name="Customer" type="SIDBusCu:Customer"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCharacteristicValue" type="SIDBusCm:PerformanceCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceNetworkAddress" type="SIDBusCm:PerformanceNetworkAddress"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceHas" type="SIDBusCm:Performance"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceFor" type="SIDBusCm:Performance"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecificationInterval" type="SIDBusCm:PerformanceSpecificationInterval"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCategory" type="SIDBusCm:PerformanceCategory"/>
+      <xs:element minOccurs="0" name="Resource" type="SIDBusRe:Resource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorSpecification" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecificationInterval" type="SIDBusCm:PerformanceSpecificationInterval"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecificationHas" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecificationFor" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCatSpecification" type="SIDBusCm:PerformanceCatSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecValue" type="SIDBusCm:CharacteristicSpecValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceApplicability" type="SIDBusCm:PerformanceApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Performance" type="SIDBusCm:Performance"/>
+      <xs:element minOccurs="0" name="ResourceSpecificationPerfRoleForPerformanceSpecification" type="SIDBusRe:ResourceSpecificationPerfRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceIndicatorSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="perspective" type="xs:string"/>
+      <xs:element minOccurs="0" name="indicatorCategory" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="derivationAlgorithm" type="xs:string"/>
+      <xs:element minOccurs="0" name="derivationMethod" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorDerivationParameter" type="SIDBusCm:PerformanceIndicatorDerivationParameter"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceObjective" type="SIDBusCm:PerformanceObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceApplicability" type="SIDBusCm:PerformanceApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorSpecRelationshipHas" type="SIDBusCm:PerformanceIndicatorSpecRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorSpecRelationshipFor" type="SIDBusCm:PerformanceIndicatorSpecRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicator" type="SIDBusCm:PerformanceIndicator"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceIndicatorDerivationParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorSpecification" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceObjective">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="conformanceTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="conformanceComparator" type="xs:string"/>
+      <xs:element minOccurs="0" name="thresholdTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="toleranceTarget" type="xs:long"/>
+      <xs:element minOccurs="0" name="gracePeriods" type="xs:int"/>
+      <xs:element minOccurs="0" name="conformancePeriod" type="SIDBusCm:Duration"/>
+      <xs:element minOccurs="0" name="tolerancePeriod" type="SIDBusCm:Duration"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceConsequence" type="SIDBusCm:PerformanceConsequence"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceObjectiveApplicability" type="SIDBusCm:PerformanceObjectiveApplicability"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorSpecification" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicator" type="SIDBusCm:PerformanceIndicator"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Duration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="units" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="amount" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceConsequence">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="prescribedAction" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceObjective" type="SIDBusCm:PerformanceObjective"/>
+      <xs:element minOccurs="0" name="ConsequencePerformanceNotificationSpec" type="SIDBusCm:ConsequencePerformanceNotificationSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ConsequencePerformanceNotification" type="SIDBusCm:ConsequencePerformanceNotification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicator" type="SIDBusCm:PerformanceIndicator"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsequencePerformanceNotificationSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PerformanceNotificationSpecification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceConsequence" type="SIDBusCm:PerformanceConsequence"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ConsequencePerformanceNotification" type="SIDBusCm:ConsequencePerformanceNotification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PerformanceNotificationSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsequencePerformanceNotification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PerformanceNotification">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PerformanceConsequence" type="SIDBusCm:PerformanceConsequence"/>
+          <xs:element minOccurs="0" name="ConsequencePerformanceNotificationSpec" type="SIDBusCm:ConsequencePerformanceNotificationSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PerformanceNotification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Notification">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PerformanceIndicator" type="SIDBusCm:PerformanceIndicator"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Notification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteraction">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PerformanceIndicator">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="PerformanceIndicatorSpecification" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceObjective" type="SIDBusCm:PerformanceObjective"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceConsequence" type="SIDBusCm:PerformanceConsequence"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorRelationshipHas" type="SIDBusCm:PerformanceIndicatorRelationship"/>
+      <xs:element minOccurs="0" name="Performance" type="SIDBusCm:Performance"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceNotification" type="SIDBusCm:PerformanceNotification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorRelationshipFor" type="SIDBusCm:PerformanceIndicatorRelationship"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceIndicatorRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateCreated" type="xs:date"/>
+      <xs:element minOccurs="0" name="PerformanceIndicatorFor" type="SIDBusCm:PerformanceIndicator"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PerformanceIndicatorHas" type="SIDBusCm:PerformanceIndicator"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceObjectiveApplicability">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PerformanceObjectiveForPerformanceObjectiveApplicability" type="SIDBusCm:PerformanceObjective"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PerformanceApplicability" type="SIDBusCm:PerformanceApplicability"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceApplicability">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableDays" type="xs:string"/>
+      <xs:element minOccurs="0" name="__LPAREN_un_RPAREN_applicableDuring" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceIndicatorSpecification" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceObjectiveApplicabilityForPerformanceApplicability" type="SIDBusCm:PerformanceObjectiveApplicability"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceIndicatorSpecRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="PerformanceIndicatorSpecificationFor" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PerformanceIndicatorSpecificationHas" type="SIDBusCm:PerformanceIndicatorSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceSpecificationInterval">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="interval" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecification" type="SIDBusCm:PerformanceSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecIntervalConversionHas" type="SIDBusCm:PerformanceSpecIntervalConversion"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceSpecIntervalConversionFor" type="SIDBusCm:PerformanceSpecIntervalConversion"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Performance" type="SIDBusCm:Performance"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceSpecIntervalConversion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="conversionFactor" type="xs:long"/>
+      <xs:element minOccurs="0" name="PerformanceSpecificationIntervalFor" type="SIDBusCm:PerformanceSpecificationInterval"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PerformanceSpecificationIntervalHas" type="SIDBusCm:PerformanceSpecificationInterval"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EntitySpecification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityIdentificationSpecification" type="SIDBusCm:EntityIdentificationSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagedEntity" type="SIDBusCm:ManagedEntity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Entity" type="SIDBusCm:Entity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EntitySpecCharUse" type="SIDBusCm:EntitySpecCharUse"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Specification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityIdentificationSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityIdentification" type="SIDBusCm:EntityIdentification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityIdentificationSpecFormatForEntityIdentificationSpecification" type="SIDBusCm:EntityIdentificationSpecFormat"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntityTypeIdentificationSpecForEntityIdentificationSpecification" type="SIDBusCm:RootEntityTypeIdentificationSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="EntitySpecification" type="SIDBusCm:EntitySpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EntityIdentification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="EntityIdentificationSpecification" type="SIDBusCm:EntityIdentificationSpecification"/>
+      <xs:element minOccurs="0" name="CompositeEntityIdentification" type="SIDBusCm:CompositeEntityIdentification"/>
+      <xs:element minOccurs="0" name="Entity" type="SIDBusCm:Entity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompositeEntityIdentification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:EntityIdentification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityIdentification" type="SIDBusCm:EntityIdentification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Entity">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="version" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityIdentification" type="SIDBusCm:EntityIdentification"/>
+          <xs:element minOccurs="0" name="EntitySpecification" type="SIDBusCm:EntitySpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityIdentificationSpecFormat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sequence" type="xs:int"/>
+      <xs:element minOccurs="0" name="preceededBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="followedBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="CompositeEntityIdentificationSpecForEntityIdentificationSpecFormat" type="SIDBusCm:CompositeEntityIdentificationSpec"/>
+      <xs:element minOccurs="0" name="EntityIdentificationSpecification" type="SIDBusCm:EntityIdentificationSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompositeEntityIdentificationSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:EntityIdentificationSpecification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityIdentificationSpecFormat" type="SIDBusCm:EntityIdentificationSpecFormat"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RootEntityTypeIdentificationSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="use" type="xs:string"/>
+      <xs:element minOccurs="0" name="EntityIdentificationSpecification" type="SIDBusCm:EntityIdentificationSpecification"/>
+      <xs:element minOccurs="0" name="RootEntityTypeForRootEntityTypeIdentificationSpec" type="SIDBusCm:RootEntityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RootEntityType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntity" type="SIDBusCm:RootEntity"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntityTypeIdentificationSpec" type="SIDBusCm:RootEntityTypeIdentificationSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RootEntityTypeCharUse" type="SIDBusCm:RootEntityTypeCharUse"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceParameter" type="SIDBusEn:RevenueAssuranceParameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RootEntityTypeCharUse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="_package" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="canBeOveridden" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element minOccurs="0" name="RootEntityTypeForRootEntityTypeCharUse" type="SIDBusCm:RootEntityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PolicySet">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isMandatoryEvaluation" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="usage" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductPricePartyRole" type="SIDBusPr:ProductPricePartyRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ContainedPolicySetsDetailHas" type="SIDBusCm:ContainedPolicySetsDetail"/>
+          <xs:element minOccurs="0" name="ContainedPolicySetsDetailFor" type="SIDBusCm:ContainedPolicySetsDetail"/>
+          <xs:element minOccurs="0" name="PolicySetSpec" type="SIDBusCm:PolicySetSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceObjective" type="SIDBusEn:RevenueAssuranceObjective"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductOffering" type="SIDBusPr:ProductOffering"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductPrice" type="SIDBusPr:ProductPrice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Policy">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="keywords" type="xs:string"/>
+          <xs:element minOccurs="0" name="policyName" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyApplication" type="SIDBusCm:PolicyApplication"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyRepository" type="SIDBusCm:PolicyRepository"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyAppliesToDetails" type="SIDBusCm:PolicyAppliesToDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyApplication">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PolicyServer" type="SIDBusCm:PolicyServer"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyApplicationRole" type="SIDBusCm:PolicyApplicationRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagedEntity" type="SIDBusCm:ManagedEntity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ScopedPolicyDetailsForPolicyApplication" type="SIDBusCm:ScopedPolicyDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Policy" type="SIDBusCm:Policy"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyServer">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyApplication">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyApplication" type="SIDBusCm:PolicyApplication"/>
+          <xs:element minOccurs="0" name="BrokerCoordinationDetails" type="SIDBusCm:BrokerCoordinationDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BrokerCoordinationDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="brokerCommMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyServerForBrokerCoordinationDetails" type="SIDBusCm:PolicyServer"/>
+          <xs:element minOccurs="0" name="brokerCoordinationTimePeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="PolicyBroker" type="SIDBusCm:PolicyBroker"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyBroker">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyApplication">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="BrokerCoordinationDetailsForPolicyBroker" type="SIDBusCm:BrokerCoordinationDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyApplicationRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Role">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyApplication" type="SIDBusCm:PolicyApplication"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Role">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="roleCombination" type="xs:string"/>
+          <xs:element minOccurs="0" name="roleSelectionMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="SpecificationRole" type="SIDBusCm:SpecificationRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SpecificationRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Role" type="SIDBusCm:Role"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceRole" type="SIDBusRe:ResourceRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Role">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagedEntity" type="SIDBusCm:ManagedEntity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ManagedEntity">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="managementMethodCurrent" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="managementMethodSupported" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyEnforcementPoint" type="SIDBusCm:PolicyEnforcementPoint"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyActionPerformedDetailsForManagedEntity" type="SIDBusCm:PolicyActionPerformedDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyApplication" type="SIDBusCm:PolicyApplication"/>
+          <xs:element minOccurs="0" name="Collection" type="SIDBusCm:Collection"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EntityRole" type="SIDBusCm:EntityRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DecisionRequestedDetails" type="SIDBusCm:DecisionRequestedDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DescribedMgmtInfoDetails" type="SIDBusRe:DescribedMgmtInfoDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="SupportedMgmtMethodDetail" type="SIDBusRe:SupportedMgmtMethodDetail"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagementDomain" type="SIDBusCm:ManagementDomain"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyEnforcementPoint">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PEPDirectionDetails" type="SIDBusCm:PEPDirectionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PXPEnforcementDetails" type="SIDBusCm:PXPEnforcementDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PEPDirectionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pepCommMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyEnforcementPointForPEPDirectionDetails" type="SIDBusCm:PolicyEnforcementPoint"/>
+          <xs:element minOccurs="0" name="pepRequestTimePeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="PolicyDecisionPoint" type="SIDBusCm:PolicyDecisionPoint"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyDecisionPoint">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyApplication">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DecisionRequestedDetailsForPolicyDecisionPoint" type="SIDBusCm:DecisionRequestedDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PEPDirectionDetailsForPolicyDecisionPoint" type="SIDBusCm:PEPDirectionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PXPDirectionDetailsForPolicyDecisionPoint" type="SIDBusCm:PXPDirectionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogicalDevice" type="SIDBusRe:LogicalDevice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DecisionRequestedDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pdpCommMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="pdpRequestTimePeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="PolicyDecisionPoint" type="SIDBusCm:PolicyDecisionPoint"/>
+          <xs:element minOccurs="0" name="ManagedEntityForDecisionRequestedDetails" type="SIDBusCm:ManagedEntity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PXPDirectionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pxpCommMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyExecutionPointForPXPDirectionDetails" type="SIDBusCm:PolicyExecutionPoint"/>
+          <xs:element minOccurs="0" name="pxpRequestTimePeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="PolicyDecisionPoint" type="SIDBusCm:PolicyDecisionPoint"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyExecutionPoint">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PXPDirectionDetails" type="SIDBusCm:PXPDirectionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyActionPerformedDetails" type="SIDBusCm:PolicyActionPerformedDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PXPEnforcementDetailsForPolicyExecutionPoint" type="SIDBusCm:PXPEnforcementDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyActionPerformedDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pxpActionCommMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyExecutionPointForPolicyActionPerformedDetails" type="SIDBusCm:PolicyExecutionPoint"/>
+          <xs:element minOccurs="0" name="pxpAllowedActionTimePeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="ManagedEntity" type="SIDBusCm:ManagedEntity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PXPEnforcementDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pxpEnforcementCommMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyEnforcementPointForPXPEnforcementDetails" type="SIDBusCm:PolicyEnforcementPoint"/>
+          <xs:element minOccurs="0" name="pxpEnforcementRequestTimePeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="PolicyExecutionPoint" type="SIDBusCm:PolicyExecutionPoint"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Place">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionLocationForPlace" type="SIDBusCm:BusinessInteractionLocation"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectElement" type="SIDBusCm:ProjectElement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Resource" type="SIDBusRe:Resource"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PlacePartyRoleAssoc" type="SIDBusCm:PlacePartyRoleAssoc"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PlacePhysicalResourceAssoc" type="SIDBusCm:PlacePhysicalResourceAssoc"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourcePool" type="SIDBusCm:ProjectResourcePool"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceHolding" type="SIDBusCm:ProjectResourceHolding"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarActionEntry" type="SIDBusCm:CalendarActionEntry"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Usage" type="SIDBusCm:Usage"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductOffering" type="SIDBusPr:ProductOffering"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Product" type="SIDBusPr:Product"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessInteractionForBusinessInteractionLocation" type="SIDBusCm:BusinessInteraction"/>
+      <xs:element minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lifecycleStatus" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="priority" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="timingConstraint" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="timingConstraintDate" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element minOccurs="0" name="BCWS" type="SIDBusCm:Money"/>
+      <xs:element minOccurs="0" name="BCWP" type="SIDBusCm:Money"/>
+      <xs:element minOccurs="0" name="ACWP" type="SIDBusCm:Money"/>
+      <xs:element minOccurs="0" name="plannedDuration" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="actualDuration" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="currentDuration" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="scheduledDuration" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrderItem" type="SIDBusCm:WorkOrderItem"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrder" type="SIDBusCm:WorkOrder"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectElementRelationshipHas" type="SIDBusCm:ProjectElementRelationship"/>
+      <xs:element minOccurs="0" name="ProjectElementSpec" type="SIDBusCm:ProjectElementSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectElementRelationshipFor" type="SIDBusCm:ProjectElementRelationship"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="partyRoleId" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="status" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyInteractionRole" type="SIDBusCm:PartyInteractionRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionVersion" type="SIDBusCm:BusinessInteractionVersion"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AdministrativeArea" type="SIDBusCm:AdministrativeArea"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PlacePartyRoleAssocForPartyRole" type="SIDBusCm:PlacePartyRoleAssoc"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PartyRoleType" type="SIDBusCm:PartyRoleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRoleCategory" type="SIDBusCm:PartyRoleCategory"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContactMedium" type="SIDBusCm:ContactMedium"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrder" type="SIDBusCm:WorkOrder"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectElement" type="SIDBusCm:ProjectElement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Calendar" type="SIDBusCm:Calendar"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarPartyRole" type="SIDBusCm:CalendarPartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Resource" type="SIDBusRe:Resource"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Service" type="SIDBusSe:Service"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustCreditProfileReference" type="SIDBusCu:CustCreditProfileReference"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceAssessment" type="SIDBusEn:RevenueAssuranceAssessment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyDemographic" type="SIDBusMa:PartyDemographic"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Competitor" type="SIDBusMa:Competitor"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductPricePartyRole" type="SIDBusPr:ProductPricePartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRoleProductInvolvement" type="SIDBusPr:PartyRoleProductInvolvement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRoleAssociationHas" type="SIDBusCm:PartyRoleAssociation"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRoleLicenseOSDetails" type="SIDBusRe:PartyRoleLicenseOSDetails"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRoleUsesProcessesDetails" type="SIDBusRe:PartyRoleUsesProcessesDetails"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRoleAssociationFor" type="SIDBusCm:PartyRoleAssociation"/>
+      <xs:element minOccurs="0" name="Party" type="SIDBusCm:Party"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntryParticipationForPartyRole" type="SIDBusCm:CalendarEntryParticipation"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Usage" type="SIDBusCm:Usage"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceRolePartyRoleDetailsForPartyRole" type="SIDBusRe:ResourceRolePartyRoleDetails"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomerAccountContactForPartyRole" type="SIDBusCu:CustomerAccountContact"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyProfile" type="SIDBusMa:PartyProfile"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketStatistic" type="SIDBusMa:MarketStatistic"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CompetitorIntelligencePartyRoleForPartyRole" type="SIDBusMa:CompetitorIntelligencePartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductOffering" type="SIDBusPr:ProductOffering"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyInteractionRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionRole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="interactionRole" type="xs:string"/>
+      <xs:element minOccurs="0" name="BusinessInteraction" type="SIDBusCm:BusinessInteraction"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionItem" type="SIDBusCm:BusinessInteractionItem"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementAuthorization" type="SIDBusCm:AgreementAuthorization"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgreementAuthorization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agreementAuthorizationState" type="xs:string"/>
+      <xs:element minOccurs="0" name="agreementSignatureRepresentation" type="xs:string"/>
+      <xs:element minOccurs="0" name="AgreementApproval" type="SIDBusCm:AgreementApproval"/>
+      <xs:element minOccurs="0" name="agreementAuthorizationDate" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="BusinessInteractionRole" type="SIDBusCm:BusinessInteractionRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgreementApproval">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Notification">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Agreement" type="SIDBusCm:Agreement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementAuthorization" type="SIDBusCm:AgreementAuthorization"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Agreement">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteraction">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agreementDocumentNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="agreementStatementOfIntent" type="xs:string"/>
+          <xs:element minOccurs="0" name="agreementPeriod" type="SIDBusCm:TimePeriod"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementItem" type="SIDBusCm:AgreementItem"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementTermOrCondition" type="SIDBusCm:AgreementTermOrCondition"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementApproval" type="SIDBusCm:AgreementApproval"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AgreementItem">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Agreement" type="SIDBusCm:Agreement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementTermOrCondition" type="SIDBusCm:AgreementTermOrCondition"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AgreementTermOrCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="term_SLASH_conditionNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="Agreement" type="SIDBusCm:Agreement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AgreementItem" type="SIDBusCm:AgreementItem"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductOfferingTerm" type="SIDBusPr:ProductOfferingTerm"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionItemPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="BusinessInteractionItemForBusinessInteractionItemPrice" type="SIDBusCm:BusinessInteractionItem"/>
+      <xs:element minOccurs="0" name="quantity" type="SIDBusCm:Quantity"/>
+      <xs:element minOccurs="0" name="price" type="SIDBusCm:Money"/>
+      <xs:element minOccurs="0" name="ProductOffering" type="SIDBusPr:ProductOffering"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Money">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="units" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeographicArea">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicLocation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="code" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Country" type="SIDBusCm:Country"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyProfileType" type="SIDBusMa:PartyProfileType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketSegmentCharacteristic" type="SIDBusMa:MarketSegmentCharacteristic"/>
+          <xs:element minOccurs="0" name="State" type="SIDBusCm:State"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyDemographic" type="SIDBusMa:PartyDemographic"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketStatistic" type="SIDBusMa:MarketStatistic"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketSegment" type="SIDBusMa:MarketSegment"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductOfferingPrice" type="SIDBusPr:ProductOfferingPrice"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductCatalogSpecification" type="SIDBusPr:ProductCatalogSpecification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DistChannelProdOfferForGeographicArea" type="SIDBusPr:DistChannelProdOffer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeographicLocation">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicPlace">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accuracy" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="geometry" type="SIDBusCm:Geometry"/>
+          <xs:element minOccurs="0" name="GeographicLocationType" type="SIDBusCm:GeographicLocationType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocationName" type="SIDBusCm:GeographicLocationName"/>
+          <xs:element minOccurs="0" name="GeographicAddress" type="SIDBusCm:GeographicAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocationRelationshipHas" type="SIDBusCm:GeographicLocationRelationship"/>
+          <xs:element minOccurs="0" name="GeographicSite" type="SIDBusCm:GeographicSite"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocationRelationshipFor" type="SIDBusCm:GeographicLocationRelationship"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalCoordinateSystem" type="SIDBusCm:LocalCoordinateSystem"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LinearReferenceSystem" type="SIDBusCm:LinearReferenceSystem"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="StandardWorkCalendar" type="SIDBusCm:StandardWorkCalendar"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeographicPlace">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Place">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceNetworkAddress" type="SIDBusCm:PerformanceNetworkAddress"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PerformanceNetworkAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusRe:NetworkAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceCategory" type="SIDBusCm:PerformanceCategory"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicPlace" type="SIDBusCm:GeographicPlace"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Language">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alphabetName" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="dialectNames" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocationName" type="SIDBusCm:GeographicLocationName"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyIdentification" type="SIDBusCm:PartyIdentification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyName" type="SIDBusCm:PartyName"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="LanguageAbility" type="SIDBusCm:LanguageAbility"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Country" type="SIDBusCm:Country"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Calendar" type="SIDBusCm:Calendar"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Software" type="SIDBusRe:Software"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="OperatingSystem" type="SIDBusRe:OperatingSystem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeographicLocationName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="nameType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="issueDate" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="scan" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+      <xs:element minOccurs="0" name="Organization" type="SIDBusCm:Organization"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyIdentificationSpecification" type="SIDBusCm:PartyIdentificationSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Organization">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Party">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isLegalEntity" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyIdentification" type="SIDBusCm:PartyIdentification"/>
+          <xs:element minOccurs="0" name="existsDuring" type="SIDBusCm:TimePeriod"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OrganizationName" type="SIDBusCm:OrganizationName"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Party">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="partyId" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="LanguageAbility" type="SIDBusCm:LanguageAbility"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LanguageAbility">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="readingProficiency" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="writingProficiency" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="speakingProficiency" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="listeningProficiency" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="Party" type="SIDBusCm:Party"/>
+      <xs:element minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganizationName">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PartyName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tradingName" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="nameType" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Organization" type="SIDBusCm:Organization"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PartyName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+      <xs:element minOccurs="0" name="Country" type="SIDBusCm:Country"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Country">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicLocation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Iso2Code" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Iso3Code" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicArea" type="SIDBusCm:GeographicArea"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="TimeZone" type="SIDBusCm:TimeZone"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyName" type="SIDBusCm:PartyName"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Individual" type="SIDBusCm:Individual"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimeZone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="comment" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Country" type="SIDBusCm:Country"/>
+      <xs:element minOccurs="0" name="timezoneUrl" type="SIDBusCm:URL"/>
+      <xs:element minOccurs="0" name="principalLocation" type="SIDBusCm:Point"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TimeZoneRule" type="SIDBusCm:TimeZoneRule"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AbsoluteCalendarAlarm" type="SIDBusCm:AbsoluteCalendarAlarm"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Calendar" type="SIDBusCm:Calendar"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TemporalExpression" type="SIDBusCm:TemporalExpression"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="URL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="protocol" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="host" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="port" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="path" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="query" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="fragment" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Point">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Geometry">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LineString" type="SIDBusCm:LineString"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiPoint" type="SIDBusCm:MultiPoint"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Geometry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SpatialReferenceSystem" type="SIDBusCm:SpatialReferenceSystem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SpatialReferenceSystem">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Geometry" type="SIDBusCm:Geometry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LineString">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Curve">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Point" type="SIDBusCm:Point"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiLineString" type="SIDBusCm:MultiLineString"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Curve">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Geometry">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MultiLineString">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:MultiCurve">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LineString" type="SIDBusCm:LineString"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MultiCurve">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeometryCollection">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeometryCollection">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Geometry">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MultiPoint">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeometryCollection">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Point" type="SIDBusCm:Point"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimeZoneRule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="UTCOffset" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="abbreviation" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="comment" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="TimeZone" type="SIDBusCm:TimeZone"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AbsoluteCalendarAlarm">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:CalendarAlarm">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alarmDateTime" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="TimeZone" type="SIDBusCm:TimeZone"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CalendarAlarm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alarmAction" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="repeatCount" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="interval" type="SIDBusCm:Duration"/>
+      <xs:element minOccurs="0" name="CalendarActionEntry" type="SIDBusCm:CalendarActionEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarActionEntry">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:CalendarEntry">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="priority" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="resources" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarAlarm" type="SIDBusCm:CalendarAlarm"/>
+          <xs:element minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CalendarEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="summary" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="versionNr" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="comment" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="status" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="accessClassification" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="isRVSPRequested" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="creationDate" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="lastModifiedDate" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="Event" type="SIDBusCm:Event"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarPartyRole" type="SIDBusCm:CalendarPartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntryCategory" type="SIDBusCm:CalendarEntryCategory"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntryAttachment" type="SIDBusCm:CalendarEntryAttachment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntryOrganizer" type="SIDBusCm:CalendarEntryOrganizer"/>
+      <xs:element minOccurs="0" name="TemporalExpression" type="SIDBusCm:TemporalExpression"/>
+      <xs:element minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+      <xs:element minOccurs="0" name="CalendarEntryAssociationHas" type="SIDBusCm:CalendarEntryAssociation"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntryParticipation" type="SIDBusCm:CalendarEntryParticipation"/>
+      <xs:element minOccurs="0" name="Calendar" type="SIDBusCm:Calendar"/>
+      <xs:element minOccurs="0" name="RecurrenceTemporalExpression" type="SIDBusCm:RecurrenceTemporalExpression"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntryAssociationFor" type="SIDBusCm:CalendarEntryAssociation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Event">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Milestone" type="SIDBusCm:Milestone"/>
+      <xs:element minOccurs="0" name="EventType" type="SIDBusCm:EventType"/>
+      <xs:element minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Milestone">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:SimpleActivity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Event" type="SIDBusCm:Event"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SimpleActivity">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Activity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="percentComplete" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="isOnCriticalPath" type="xs:anySimpleType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Activity">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activityNr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="WBSElement" type="SIDBusCm:WBSElement"/>
+          <xs:element minOccurs="0" name="actualCost" type="SIDBusCm:Money"/>
+          <xs:element minOccurs="0" name="ActivityEventEntry" type="SIDBusCm:ActivityEventEntry"/>
+          <xs:element minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceAllocation" type="SIDBusCm:ProjectResourceAllocation"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityStatus" type="SIDBusCm:ActivityStatus"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityHas" type="SIDBusCm:Activity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityFor" type="SIDBusCm:Activity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityParameterUsage" type="SIDBusCm:ActivityParameterUsage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityResourceUsage" type="SIDBusCm:ActivityResourceUsage"/>
+          <xs:element minOccurs="0" name="CompoundActivity" type="SIDBusCm:CompoundActivity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Trigger" type="SIDBusCm:Trigger"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WBSElement">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="wbsNr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="wbsLevel" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="descr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+          <xs:element minOccurs="0" name="WBSElementSpec" type="SIDBusCm:WBSElementSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSResourceUsage" type="SIDBusCm:WBSResourceUsage"/>
+          <xs:element minOccurs="0" name="CompoundWBSElement" type="SIDBusCm:CompoundWBSElement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessDeliverable" type="SIDBusCm:BusinessDeliverable"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Project">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="versionNr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="title" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="projectNr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="assumptions" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="constraints" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="inclusions" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="exclusions" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="ProjectSpec" type="SIDBusCm:ProjectSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectRisk" type="SIDBusCm:ProjectRisk"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElement" type="SIDBusCm:WBSElement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WorksProgram" type="SIDBusCm:WorksProgram"/>
+          <xs:element minOccurs="0" name="ProjectCalendar" type="SIDBusCm:ProjectCalendar"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CompoundProject" type="SIDBusCm:CompoundProject"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Motivation" type="SIDBusCm:Motivation"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectElementSpec">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="specVersionNr" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElementSpec" type="SIDBusCm:WBSElementSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectElementSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="expectedDuration" type="SIDBusCm:Duration"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectElement" type="SIDBusCm:ProjectElement"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WBSElementSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectElementSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectSpec" type="SIDBusCm:ProjectSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElement" type="SIDBusCm:WBSElement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSSpecActivityParamUsage" type="SIDBusCm:WBSSpecActivityParamUsage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSSpecResourceSpecUsage" type="SIDBusCm:WBSSpecResourceSpecUsage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CompoundWBSSpec" type="SIDBusCm:CompoundWBSSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ActivitySpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectElementSpec">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="descr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="unit" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="specVersionNr" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceSpecCostParameter" type="SIDBusCm:ResourceSpecCostParameter"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElementSpec" type="SIDBusCm:WBSElementSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PerformanceMeasure" type="SIDBusCm:PerformanceMeasure"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpecCostParameter" type="SIDBusCm:ActivitySpecCostParameter"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpecHas" type="SIDBusCm:ActivitySpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpecFor" type="SIDBusCm:ActivitySpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CompoundActivitySpec" type="SIDBusCm:CompoundActivitySpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceSpecCostParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="unit" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceParameterUsage" type="SIDBusCm:ResourceParameterUsage"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSSpecResourceSpecUsageForResourceSpecCostParameter" type="SIDBusCm:WBSSpecResourceSpecUsage"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResourceParameterUsage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="ResourceSpecCostParameterForResourceParameterUsage" type="SIDBusCm:ResourceSpecCostParameter"/>
+      <xs:element minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectResource">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Resource">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+          <xs:element minOccurs="0" name="qty" type="SIDBusCm:Quantity"/>
+          <xs:element minOccurs="0" name="actualCost" type="SIDBusCm:Money"/>
+          <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+          <xs:element minOccurs="0" name="ProjectResourcePool" type="SIDBusCm:ProjectResourcePool"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceConsumptionAllocation" type="SIDBusCm:ProjectResourceConsumptionAllocation"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceParameterUsageForProjectResource" type="SIDBusCm:ResourceParameterUsage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSResourceUsageForProjectResource" type="SIDBusCm:WBSResourceUsage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityResourceUsageForProjectResource" type="SIDBusCm:ActivityResourceUsage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="SpecificWOConsumptionFufillment" type="SIDBusCm:SpecificWOConsumptionFufillment"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Resource">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="ProjectResourceSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="versionNr" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="isConsumable" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="isReservable" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="unit" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="unitCost" type="SIDBusCm:Money"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="resourceRate" type="SIDBusCm:CostRate"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ResourceSpecCostParameter" type="SIDBusCm:ResourceSpecCostParameter"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourcePool" type="SIDBusCm:ProjectResourcePool"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CompoundProjectResourceSpec" type="SIDBusCm:CompoundProjectResourceSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceHolding" type="SIDBusCm:ProjectResourceHolding"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="GeneralWOFufillment" type="SIDBusCm:GeneralWOFufillment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CostRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numerator" type="SIDBusCm:Money"/>
+      <xs:element minOccurs="0" name="denominator" type="SIDBusCm:Duration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectResourcePool">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="SpecificWOUsageFufillment" type="SIDBusCm:SpecificWOUsageFufillment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SpecificWOUsageFufillment">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:SpecificWOFufillment">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourcePool" type="SIDBusCm:ProjectResourcePool"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SpecificWOFufillment">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="CompoundProjectResourceSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectResourceSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectResourceHolding">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="GeneralProjectResourceAllocation" type="SIDBusCm:GeneralProjectResourceAllocation"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeneralProjectResourceAllocation">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectResourceAllocation">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceHolding" type="SIDBusCm:ProjectResourceHolding"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectResourceAllocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="allocationDate" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="reservedFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrderItem" type="SIDBusCm:WorkOrderItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorkOrderItem">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProjectElement" type="SIDBusCm:ProjectElement"/>
+          <xs:element minOccurs="0" name="WorkOrder" type="SIDBusCm:WorkOrder"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceAllocation" type="SIDBusCm:ProjectResourceAllocation"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrderFufillmentHas" type="SIDBusCm:WorkOrderFufillment"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrderFufillmentFor" type="SIDBusCm:WorkOrderFufillment"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkOrder">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="requestedDeliveryDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="possibleDeliveryDate" type="xs:date"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+          <xs:element minOccurs="0" name="ProjectElement" type="SIDBusCm:ProjectElement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WorkOrderItem" type="SIDBusCm:WorkOrderItem"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkOrderFufillment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WorkOrderItemFor" type="SIDBusCm:WorkOrderItem"/>
+      <xs:element minOccurs="0" name="WorkOrderItemHas" type="SIDBusCm:WorkOrderItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeneralWOFufillment">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResourceSpec" type="SIDBusCm:ProjectResourceSpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectResourceConsumptionAllocation">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:SpecificProjectResourceAllocation">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SpecificProjectResourceAllocation">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ProjectResourceAllocation">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WBSResourceUsage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="WBSElementForWBSResourceUsage" type="SIDBusCm:WBSElement"/>
+      <xs:element minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActivityResourceUsage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="ActivityForActivityResourceUsage" type="SIDBusCm:Activity"/>
+      <xs:element minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SpecificWOConsumptionFufillment">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:SpecificWOFufillment">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ProjectResource" type="SIDBusCm:ProjectResource"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WBSSpecResourceSpecUsage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="percentAllocation" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="WBSElementSpecForWBSSpecResourceSpecUsage" type="SIDBusCm:WBSElementSpec"/>
+      <xs:element minOccurs="0" name="ResourceSpecCostParameter" type="SIDBusCm:ResourceSpecCostParameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceMeasure">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActivitySpecCostParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="unit" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSSpecActivityParamUsageForActivitySpecCostParameter" type="SIDBusCm:WBSSpecActivityParamUsage"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivityParameterUsageForActivitySpecCostParameter" type="SIDBusCm:ActivityParameterUsage"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductSpecActivitySpecAllocation" type="SIDBusCm:ProductSpecActivitySpecAllocation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WBSSpecActivityParamUsage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="perventAllocation" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="WBSElementSpecForWBSSpecActivityParamUsage" type="SIDBusCm:WBSElementSpec"/>
+      <xs:element minOccurs="0" name="ActivitySpecCostParameter" type="SIDBusCm:ActivitySpecCostParameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActivityParameterUsage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="ActivityForActivityParameterUsage" type="SIDBusCm:Activity"/>
+      <xs:element minOccurs="0" name="ActivitySpecCostParameter" type="SIDBusCm:ActivitySpecCostParameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProductSpecActivitySpecAllocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qty" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpecCostParameter" type="SIDBusCm:ActivitySpecCostParameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompoundActivitySpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ActivitySpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ActivitySpec" type="SIDBusCm:ActivitySpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CompoundWBSSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:WBSElementSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElementSpec" type="SIDBusCm:WBSElementSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectRisk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="probability" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="severity" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="minimalisationStrategies" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="contingencies" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorksProgram">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="desc" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+      <xs:element minOccurs="0" name="duration" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="budget" type="SIDBusCm:Money"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CompoundWorksProgram" type="SIDBusCm:CompoundWorksProgram"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompoundWorksProgram">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:WorksProgram">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WorksProgram" type="SIDBusCm:WorksProgram"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectCalendar">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:CompoundCalendar">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CompoundCalendar">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Calendar">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Calendar" type="SIDBusCm:Calendar"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Calendar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="calendricalSystem" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+      <xs:element minOccurs="0" name="TimeZone" type="SIDBusCm:TimeZone"/>
+      <xs:element minOccurs="0" name="Language" type="SIDBusCm:Language"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CompoundCalendar" type="SIDBusCm:CompoundCalendar"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompoundProject">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Project">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Motivation">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Project" type="SIDBusCm:Project"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompoundWBSElement">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:WBSElement">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElement" type="SIDBusCm:WBSElement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessDeliverable">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PerformanceMeasure">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="qty" type="SIDBusCm:Quantity"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WBSElement" type="SIDBusCm:WBSElement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ActivityEventEntry">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:CalendarEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CalendarEvent">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:CalendarActionEntry">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="freeBusyType" type="xs:anySimpleType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ActivityStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sequenceNr" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompoundActivity">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Activity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Trigger">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Event">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="triggerId" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="status" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Activity" type="SIDBusCm:Activity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Event" type="SIDBusCm:Event"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarPartyRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarEntryCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarEntryAttachment">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarEntryOrganizer">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:CalendarPartyRole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalendarEntryOrganizerHas" type="SIDBusCm:CalendarEntryOrganizer"/>
+          <xs:element minOccurs="0" name="CalendarEntryOrganizerFor" type="SIDBusCm:CalendarEntryOrganizer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TemporalExpression">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="calendricalSystem" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CalendarEntry" type="SIDBusCm:CalendarEntry"/>
+      <xs:element minOccurs="0" name="TimeZone" type="SIDBusCm:TimeZone"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarEntryAssociation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="CalendarEntryFor" type="SIDBusCm:CalendarEntry"/>
+      <xs:element minOccurs="0" name="CalendarEntryHas" type="SIDBusCm:CalendarEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarEntryParticipation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="participationType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="requestedParticipation" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="respondedParticipation" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="requestStatus" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="CalendarEntryForCalendarEntryParticipation" type="SIDBusCm:CalendarEntry"/>
+      <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RecurrenceTemporalExpression">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:TemporalExpression">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Individual">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Party">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="gender" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="placeOfBirth" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="nationality" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="maritalStatus" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="skills" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="disabilities" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="aliveDuring" type="SIDBusCm:TimePeriod"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="IndividualName" type="SIDBusCm:IndividualName"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="IndividualIdentification" type="SIDBusCm:IndividualIdentification"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Country" type="SIDBusCm:Country"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="IndividualName">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PartyName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="formattedName" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="legalName" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="aristocraticTitle" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="formOfAddress" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="generation" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="givenNames" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="preferredGivenName" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="middleNames" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="familyNamePrefix" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="familyNames" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="familyGeneration" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="qualifications" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Individual" type="SIDBusCm:Individual"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="IndividualIdentification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PartyIdentification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Individual" type="SIDBusCm:Individual"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentificationSpecification">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyIdentification" type="SIDBusCm:PartyIdentification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlacePhysicalResourceAssoc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="modifier" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="placeRole" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="PlaceForPlacePhysicalResourceAssoc" type="SIDBusCm:Place"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PhysicalResource" type="SIDBusRe:PhysicalResource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ManagementDomain">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagedEntity" type="SIDBusCm:ManagedEntity"/>
+          <xs:element minOccurs="0" name="ManagementDomainHas" type="SIDBusCm:ManagementDomain"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagementDomainFor" type="SIDBusCm:ManagementDomain"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Collection">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="orderMethod" type="xs:int"/>
+          <xs:element minOccurs="0" name="type" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ManagedEntity" type="SIDBusCm:ManagedEntity"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LocalPlace">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Place">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GeographicSite" type="SIDBusCm:GeographicSite"/>
+          <xs:element minOccurs="0" name="PhysicalResource" type="SIDBusRe:PhysicalResource"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeographicSite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicPlace">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="code" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="status" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicSiteRole" type="SIDBusCm:GeographicSiteRole"/>
+          <xs:element minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalPlace" type="SIDBusCm:LocalPlace"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeographicSiteRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicSite">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="GeographicSite" type="SIDBusCm:GeographicSite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Representation">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PhysicalResourceSpec" type="SIDBusRe:PhysicalResourceSpec"/>
+      <xs:element minOccurs="0" name="PhysicalResource" type="SIDBusRe:PhysicalResource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocalLocation">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:LocalPlace">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="orientation" type="SIDBusCm:AbsoluteLocalOrientation"/>
+          <xs:element minOccurs="0" name="PhysicalResourceSpec" type="SIDBusRe:PhysicalResourceSpec"/>
+          <xs:element minOccurs="0" name="LocalAddress" type="SIDBusCm:LocalAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalLocationRelationshipHas" type="SIDBusCm:LocalLocationRelationship"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalLocationRelationshipFor" type="SIDBusCm:LocalLocationRelationship"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AbsoluteLocalOrientation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="theta" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="pi" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="psi" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocalAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:LocalPlace">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="positionNr" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="fullAddress" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="CompoundLocalAddress" type="SIDBusCm:CompoundLocalAddress"/>
+          <xs:element minOccurs="0" name="AbstractGeographicAddress" type="SIDBusCm:AbstractGeographicAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalLocation" type="SIDBusCm:LocalLocation"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CompoundLocalAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:LocalAddress">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalAddress" type="SIDBusCm:LocalAddress"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AbstractGeographicAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicPlace">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalAddress" type="SIDBusCm:LocalAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AddressContactMediumRoleForAbstractGeographicAddress" type="SIDBusCm:AddressContactMediumRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AddressContactMediumRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="timePeriod" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="AbstractGeographicAddress" type="SIDBusCm:AbstractGeographicAddress"/>
+      <xs:element minOccurs="0" name="ContactMediumForAddressContactMediumRole" type="SIDBusCm:ContactMedium"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactMedium">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PostalDeliveryAddress" type="SIDBusCm:PostalDeliveryAddress"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AddressContactMediumRole" type="SIDBusCm:AddressContactMediumRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PostalDeliveryAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:LogicalAddress">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ContactMedium" type="SIDBusCm:ContactMedium"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LogicalAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GeographicAddress" type="SIDBusCm:GeographicAddress"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeographicAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:AbstractGeographicAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="stateOrProvince" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicSubAddress" type="SIDBusCm:GeographicSubAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogicalAddress" type="SIDBusCm:LogicalAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+          <xs:element minOccurs="0" name="StreetSegmentGeoAddressRelationshipForGeographicAddress" type="SIDBusCm:StreetSegmentGeoAddressRelationship"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeographicSubAddress">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:AbstractGeographicAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GeographicAddress" type="SIDBusCm:GeographicAddress"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="StreetSegmentGeoAddressRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relationshipType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="StreetSegmentForStreetSegmentGeoAddressRelationship" type="SIDBusCm:StreetSegment"/>
+      <xs:element minOccurs="0" name="GeographicAddress" type="SIDBusCm:GeographicAddress"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StreetSegment">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicLocation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="suburb" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="Street" type="SIDBusCm:Street"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="StreetSegmentGeoAddressRelationship" type="SIDBusCm:StreetSegmentGeoAddressRelationship"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Street">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicPlace">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="StreetName" type="SIDBusCm:StreetName"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="StreetSegment" type="SIDBusCm:StreetSegment"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="StreetName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="streetType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="nameType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="Street" type="SIDBusCm:Street"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocalLocationRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="role" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="interactionType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="LocalLocationFor" type="SIDBusCm:LocalLocation"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="LocalLocationHas" type="SIDBusCm:LocalLocation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="lifecycleStatus" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TemplateBlock" type="SIDBusCm:TemplateBlock"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Usage" type="SIDBusCm:Usage"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecVersion" type="SIDBusCm:UsageSpecVersion"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharUse" type="SIDBusCm:UsageSpecCharUse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemplateBlock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="templateId" type="xs:short"/>
+      <xs:element minOccurs="0" name="schemaName" type="xs:string"/>
+      <xs:element minOccurs="0" name="typeName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FieldDescriptor" type="SIDBusCm:FieldDescriptor"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecification" type="SIDBusCm:UsageSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRSPData" type="SIDBusCm:IPDRSPData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FieldDescriptor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="typeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="FieldId" type="xs:int"/>
+      <xs:element minOccurs="0" name="fieldName" type="xs:string"/>
+      <xs:element minOccurs="0" name="isEnabled" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TemplateBlock" type="SIDBusCm:TemplateBlock"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecCharacteristic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="derivationFormula" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FieldDescriptor" type="SIDBusCm:FieldDescriptor"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="UsageCharacteristicCategory" type="SIDBusCm:UsageCharacteristicCategory"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharacteristicValue" type="SIDBusCm:UsageSpecCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageCharacteristicSumSpec" type="SIDBusCu:UsageCharacteristicSumSpec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharRelationshipHas" type="SIDBusCm:UsageSpecCharRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageCharacteristicValue" type="SIDBusCm:UsageCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharRelationshipFor" type="SIDBusCm:UsageSpecCharRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharUseForUsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharUse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageCharacteristicCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecCharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="valueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="_default" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="unitOfMeasure" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueFrom" type="xs:string"/>
+      <xs:element minOccurs="0" name="valueTo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rangeInterval" type="xs:string"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharacteristic"/>
+      <xs:element minOccurs="0" name="vaildFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageCharacteristicValue" type="SIDBusCm:UsageCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharValueRelationshipHas" type="SIDBusCm:UsageSpecCharValueRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageSpecCharValueRelationshipFor" type="SIDBusCm:UsageSpecCharValueRelationship"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageCharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="Usage" type="SIDBusCm:Usage"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristicValue" type="SIDBusCm:UsageSpecCharacteristicValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharacteristic"/>
+      <xs:element minOccurs="0" name="UsageCharacteristicValueHas" type="SIDBusCm:UsageCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageCharacteristicValueFor" type="SIDBusCm:UsageCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageCharacteristicSum" type="SIDBusCu:UsageCharacteristicSum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Usage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usageDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="usageStatus" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRType" type="SIDBusCm:IPDRType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRSPData" type="SIDBusCm:IPDRSPData"/>
+      <xs:element minOccurs="0" name="UsageSpecification" type="SIDBusCm:UsageSpecification"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageCharacteristicValue" type="SIDBusCm:UsageCharacteristicValue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ProductPrice" type="SIDBusPr:ProductPrice"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Place" type="SIDBusCm:Place"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageRelationshipHas" type="SIDBusCm:UsageRelationship"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="UsageRelationshipFor" type="SIDBusCm:UsageRelationship"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPDRType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDR" type="SIDBusCm:IPDR"/>
+      <xs:element minOccurs="0" name="IPDRCreationTime" type="SIDBusCm:IPDRCreationTime"/>
+      <xs:element minOccurs="0" name="seqNum" type="SIDBusCm:seqNum"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Usage" type="SIDBusCm:Usage"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPDR">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRType" type="SIDBusCm:IPDRType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRDoc" type="SIDBusCm:IPDRDoc"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPDRDoc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="docId" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="version" type="xs:string"/>
+      <xs:element minOccurs="0" name="creationTime" type="xs:date"/>
+      <xs:element minOccurs="0" name="IPDRRecorderInfo" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDR" type="SIDBusCm:IPDR"/>
+      <xs:element minOccurs="0" name="IPDRDocEnd" type="SIDBusCm:IPDRDocEnd"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPDRDocEnd">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="endTime" type="xs:date"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRDoc" type="SIDBusCm:IPDRDoc"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPDRCreationTime">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="creationTime" type="xs:date"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRType" type="SIDBusCm:IPDRType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="seqNum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="seqNum" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="IPDRType" type="SIDBusCm:IPDRType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPDRSPData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="header" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="templateId" type="xs:short"/>
+      <xs:element minOccurs="0" name="configId" type="xs:short"/>
+      <xs:element minOccurs="0" name="flags" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="sequenceNum" type="xs:long"/>
+      <xs:element minOccurs="0" name="dataRecord" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TemplateBlock" type="SIDBusCm:TemplateBlock"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Usage" type="SIDBusCm:Usage"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceLevelAgreementItem">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:AgreementItem">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceLevelSpecification" type="SIDBusSe:ServiceLevelSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerAccountInteractionRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionRole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerAccount" type="SIDBusCu:CustomerAccount"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Response">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteraction">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyVariable">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ValueConstraintDetails" type="SIDBusCm:ValueConstraintDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OperatorConstraintDetails" type="SIDBusCm:OperatorConstraintDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyStatement" type="SIDBusCm:PolicyStatement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ValueConstraintDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="valueConstraint" type="xs:string"/>
+          <xs:element minOccurs="0" name="PolicyVariableForValueConstraintDetails" type="SIDBusCm:PolicyVariable"/>
+          <xs:element minOccurs="0" name="PolicyValue" type="SIDBusCm:PolicyValue"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyValue">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ValueConstraintDetailsForPolicyValue" type="SIDBusCm:ValueConstraintDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyStatement" type="SIDBusCm:PolicyStatement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyStatement">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PolicyActionAtomic" type="SIDBusCm:PolicyActionAtomic"/>
+          <xs:element minOccurs="0" name="PolicyConditionAtomic" type="SIDBusCm:PolicyConditionAtomic"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyVariable" type="SIDBusCm:PolicyVariable"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyValue" type="SIDBusCm:PolicyValue"/>
+          <xs:element minOccurs="0" name="PolicyOperator" type="SIDBusCm:PolicyOperator"/>
+          <xs:element minOccurs="0" name="PolicyStatementSpec" type="SIDBusCm:PolicyStatementSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyActionAtomic">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyAction">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="actionSequenceNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="hasExecuted" type="xs:int"/>
+          <xs:element minOccurs="0" name="hasSubActions" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="PolicyStatement" type="SIDBusCm:PolicyStatement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyAction">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ContainedPolicyActionDetailsHas" type="SIDBusCm:ContainedPolicyActionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyActionRuleDetailsForPolicyAction" type="SIDBusCm:PolicyActionRuleDetails"/>
+          <xs:element minOccurs="0" name="ContainedPolicyActionDetailsFor" type="SIDBusCm:ContainedPolicyActionDetails"/>
+          <xs:element minOccurs="0" name="PolicyActionSpec" type="SIDBusCm:PolicyActionSpec"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RevenueAssuranceConsequence" type="SIDBusEn:RevenueAssuranceConsequence"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ContainedPolicyActionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="containedActionOrder" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyActionFor" type="SIDBusCm:PolicyAction"/>
+          <xs:element minOccurs="0" name="PolicyActionHas" type="SIDBusCm:PolicyAction"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyActionRuleDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="order" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyRuleForPolicyActionRuleDetails" type="SIDBusCm:PolicyRule"/>
+          <xs:element minOccurs="0" name="PolicyAction" type="SIDBusCm:PolicyAction"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyRule">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicySet">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isCNF" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="hasSubRules" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EventTriggerDetails" type="SIDBusCm:EventTriggerDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyActionRuleDetails" type="SIDBusCm:PolicyActionRuleDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyConditionRuleDetails" type="SIDBusCm:PolicyConditionRuleDetails"/>
+          <xs:element minOccurs="0" name="PolicyRuleSpec" type="SIDBusCm:PolicyRuleSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EventTriggerDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="retryNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="retryPolicy" type="xs:int"/>
+          <xs:element minOccurs="0" name="triggerStartTime" type="xs:date"/>
+          <xs:element minOccurs="0" name="triggerEndTime" type="xs:date"/>
+          <xs:element minOccurs="0" name="triggerConstraints" type="xs:string"/>
+          <xs:element minOccurs="0" name="PolicyRuleForEventTriggerDetails" type="SIDBusCm:PolicyRule"/>
+          <xs:element minOccurs="0" name="PolicyEvent" type="SIDBusCm:PolicyEvent"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyEvent">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Collection">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="hasEventEvaluated" type="xs:int"/>
+          <xs:element minOccurs="0" name="eventSequenceNumber" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyGroupExecutionDetailsForPolicyEvent" type="SIDBusCm:PolicyGroupExecutionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyEventHas" type="SIDBusCm:PolicyEvent"/>
+          <xs:element minOccurs="0" name="PolicyEventFor" type="SIDBusCm:PolicyEvent"/>
+          <xs:element minOccurs="0" name="PolicyEventComposite" type="SIDBusCm:PolicyEventComposite"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="EventTriggerDetailsForPolicyEvent" type="SIDBusCm:EventTriggerDetails"/>
+          <xs:element minOccurs="0" name="PolicyEventSpec" type="SIDBusCm:PolicyEventSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyGroupExecutionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="executionFilter" type="xs:string"/>
+          <xs:element minOccurs="0" name="executionStartTime" type="xs:date"/>
+          <xs:element minOccurs="0" name="executionEndTime" type="xs:date"/>
+          <xs:element minOccurs="0" name="executionConstraints" type="xs:string"/>
+          <xs:element minOccurs="0" name="PolicyGroupForPolicyGroupExecutionDetails" type="SIDBusCm:PolicyGroup"/>
+          <xs:element minOccurs="0" name="PolicyEvent" type="SIDBusCm:PolicyEvent"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyGroup">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicySet">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PolicyGroupExecutionDetails" type="SIDBusCm:PolicyGroupExecutionDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyEventComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyEvent">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyEvent" type="SIDBusCm:PolicyEvent"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyEventSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyEvent" type="SIDBusCm:PolicyEvent"/>
+          <xs:element minOccurs="0" name="PolicyEventSpecComposite" type="SIDBusCm:PolicyEventSpecComposite"/>
+          <xs:element minOccurs="0" name="PolicyEventSpecType" type="SIDBusCm:PolicyEventSpecType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyEventSpecComposite">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyEventSpec">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyEventSpec" type="SIDBusCm:PolicyEventSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyEventSpecType">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyEventSpec" type="SIDBusCm:PolicyEventSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyConditionRuleDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isNegated" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="groupNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyRuleForPolicyConditionRuleDetails" type="SIDBusCm:PolicyRule"/>
+          <xs:element minOccurs="0" name="PolicyCondition" type="SIDBusCm:PolicyCondition"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyCondition">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ContainedPolicyConditionDetailsHas" type="SIDBusCm:ContainedPolicyConditionDetails"/>
+          <xs:element minOccurs="0" name="ContainedPolicyConditionDetailsFor" type="SIDBusCm:ContainedPolicyConditionDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyConditionRuleDetailsForPolicyCondition" type="SIDBusCm:PolicyConditionRuleDetails"/>
+          <xs:element minOccurs="0" name="PolicyConditionSpec" type="SIDBusCm:PolicyConditionSpec"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ContainedPolicyConditionDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="containedConditionIsNegated" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="containedConditionGroupNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicyConditionFor" type="SIDBusCm:PolicyCondition"/>
+          <xs:element minOccurs="0" name="PolicyConditionHas" type="SIDBusCm:PolicyCondition"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyConditionSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyCondition" type="SIDBusCm:PolicyCondition"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyRuleSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicySetSpec">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="executionStrategy" type="xs:int"/>
+          <xs:element minOccurs="0" name="sequencedActions" type="xs:int"/>
+          <xs:element minOccurs="0" name="policyActionSelectCriteria" type="xs:string"/>
+          <xs:element minOccurs="0" name="policyConditionSelectCriteria" type="xs:string"/>
+          <xs:element minOccurs="0" name="policyEventSelectCriteria" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyRule" type="SIDBusCm:PolicyRule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicySetSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="decisionStrategy" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicySet" type="SIDBusCm:PolicySet"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyActionSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyAction" type="SIDBusCm:PolicyAction"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TroubleTicket">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteraction">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="troubleTicketState" type="xs:string"/>
+          <xs:element minOccurs="0" name="troubleDetectionDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="serviceRestoredDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="troubleState" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="TroubleTicketItem" type="SIDBusCm:TroubleTicketItem"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TroubleTicketItem">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TroubleTicket" type="SIDBusCm:TroubleTicket"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionSpec">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteraction" type="SIDBusCm:BusinessInteraction"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PolicyConditionAtomic">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PolicyCondition">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="conditionSequenceNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="hasEvaluated" type="xs:int"/>
+          <xs:element minOccurs="0" name="hasSubConditions" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="PolicyStatement" type="SIDBusCm:PolicyStatement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyOperator">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Policy">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="opType" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyStatement" type="SIDBusCm:PolicyStatement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OperatorConstraintDetailsForPolicyOperator" type="SIDBusCm:OperatorConstraintDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OperatorConstraintDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="operatorConstraint" type="xs:string"/>
+          <xs:element minOccurs="0" name="PolicyVariableForOperatorConstraintDetails" type="SIDBusCm:PolicyVariable"/>
+          <xs:element minOccurs="0" name="PolicyOperator" type="SIDBusCm:PolicyOperator"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyStatementSpec">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Specification">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyStatement" type="SIDBusCm:PolicyStatement"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UsageRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="UsageFor" type="SIDBusCm:Usage"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="UsageHas" type="SIDBusCm:Usage"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecCharValueRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="charValueRelationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristicValueFor" type="SIDBusCm:UsageSpecCharacteristicValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristicValueHas" type="SIDBusCm:UsageSpecCharacteristicValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecCharRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="charRelationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="charSpecSeq" type="xs:int"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristicFor" type="SIDBusCm:UsageSpecCharacteristic"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristicHas" type="SIDBusCm:UsageSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecCharUse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="_package" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="canBeOveridden" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="UsageSpecificationForUsageSpecCharUse" type="SIDBusCm:UsageSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="UsageSpecCharacteristic" type="SIDBusCm:UsageSpecCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsageSpecVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usageSpecRevisionType" type="xs:string"/>
+      <xs:element minOccurs="0" name="usageSpecRevisionNumber" type="xs:int"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="usageSpecRevisionDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="UsageSpecification" type="SIDBusCm:UsageSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Capacity">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:RootEntity">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ManagementInfo">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="retrievalMethodCurrent" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="retrievalMethodsSupported" type="xs:int"/>
+          <xs:element minOccurs="0" name="mgmtInfoValidFor" type="SIDBusCm:TimePeriod"/>
+          <xs:element minOccurs="0" name="Device" type="SIDBusRe:Device"/>
+          <xs:element minOccurs="0" name="DescribedMgmtInfoDetailsForManagementInfo" type="SIDBusRe:DescribedMgmtInfoDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeographicLocationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+      <xs:element minOccurs="0" name="symbol" type="SIDBusCm:Symbology"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Symbology">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="color" type="xs:anySimpleType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeographicLocationRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="role" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="interactionType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="GeographicLocationFor" type="SIDBusCm:GeographicLocation"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="GeographicLocationHas" type="SIDBusCm:GeographicLocation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocalCoordinateSystem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="xUnits" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="yUnits" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="zUnits" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="localOrientation" type="SIDBusCm:AbsoluteLocalOrientation"/>
+      <xs:element minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinearReferenceSystem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StandardWorkCalendar">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:SimpleCalendar">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicLocation" type="SIDBusCm:GeographicLocation"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SimpleCalendar">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Calendar">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PartyRoleType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="description" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyProfileType" type="SIDBusMa:PartyProfileType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="MarketingCampaign" type="SIDBusMa:MarketingCampaign"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="State">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicLocation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="code" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="GeographicArea" type="SIDBusCm:GeographicArea"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="businessInteractionRevisionType" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessInteractionRevisionNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessInteractionRevisionDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="BusinessInteraction" type="SIDBusCm:BusinessInteraction"/>
+      <xs:element minOccurs="0" name="businessInteractionRevisionDate" type="SIDBusCm:TimePeriod"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdministrativeArea">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:GeographicLocation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="xs:anySimpleType"/>
+          <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PlacePartyRoleAssoc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="placeRole" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="relativeModifier" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="PlaceForPlacePartyRoleAssoc" type="SIDBusCm:Place"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyRoleCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categoryName" type="xs:anySimpleType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyRole" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyRoleAssociation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="associationType" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="status" type="xs:anySimpleType"/>
+      <xs:element minOccurs="0" name="PartyRoleFor" type="SIDBusCm:PartyRole"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="PartyRoleHas" type="SIDBusCm:PartyRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectElementRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProjectElementFor" type="SIDBusCm:ProjectElement"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="ProjectElementHas" type="SIDBusCm:ProjectElement"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValueNetworkRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:PartyRole">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AdministerServiceDetails" type="SIDBusSe:AdministerServiceDetails"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AdministerResourceDetailsForValueNetworkRole" type="SIDBusRe:AdministerResourceDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceInteractionRole">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:BusinessInteractionRole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResourceRole" type="SIDBusRe:ResourceRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ScopedPolicyDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PolicyApplication" type="SIDBusCm:PolicyApplication"/>
+          <xs:element minOccurs="0" name="PolicyDomainForScopedPolicyDetails" type="SIDBusCm:PolicyDomain"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyDomain">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:ManagementDomain">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyDomainHas" type="SIDBusCm:PolicyDomain"/>
+          <xs:element minOccurs="0" name="PolicyDomainFor" type="SIDBusCm:PolicyDomain"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ScopedPolicyDetails" type="SIDBusCm:ScopedPolicyDetails"/>
+          <xs:element minOccurs="0" name="PolicyAppliesToDetailsForPolicyDomain" type="SIDBusCm:PolicyAppliesToDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyAppliesToDetails">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="operatorAccess" type="xs:string"/>
+          <xs:element minOccurs="0" name="resourceAccess" type="xs:string"/>
+          <xs:element minOccurs="0" name="PolicyForPolicyAppliesToDetails" type="SIDBusCm:Policy"/>
+          <xs:element minOccurs="0" name="PolicyDomain" type="SIDBusCm:PolicyDomain"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolicyRepository">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Collection">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PolicyRepositoryHas" type="SIDBusCm:PolicyRepository"/>
+          <xs:element minOccurs="0" name="PolicyRepositoryFor" type="SIDBusCm:PolicyRepository"/>
+          <xs:element minOccurs="0" name="Policy" type="SIDBusCm:Policy"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ContainedPolicySetsDetail">
+    <xs:complexContent>
+      <xs:extension base="SIDBusCm:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="enabled" type="xs:int"/>
+          <xs:element minOccurs="0" name="priority" type="xs:int"/>
+          <xs:element minOccurs="0" name="PolicySetFor" type="SIDBusCm:PolicySet"/>
+          <xs:element minOccurs="0" name="PolicySetHas" type="SIDBusCm:PolicySet"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntitySpecCharUse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="unique" type="xs:string"/>
+      <xs:element minOccurs="0" name="_package" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="canBeOveridden" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="minCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="maxCardinality" type="xs:int"/>
+      <xs:element minOccurs="0" name="extensible" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element minOccurs="0" name="EntitySpecificationForEntitySpecCharUse" type="SIDBusCm:EntitySpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceNetworkAddressSpecification">
+    <xs:complexContent>
+      <xs:extension base="SIDBusRe:NetworkAddressSpecification">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NetworkAddressSpecification" type="SIDBusRe:NetworkAddressSpecification"/>
+          <xs:element minOccurs="0" name="ResourceSpecificationForPerformanceNetworkAddressSpecification" type="SIDBusRe:ResourceSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PerformanceCharacteristicValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="Performance" type="SIDBusCm:Performance"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecification" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecValue" type="SIDBusCm:CharacteristicSpecValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CharSpecValueRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="charValueRelationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecValueFor" type="SIDBusCm:CharacteristicSpecValue"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecValueHas" type="SIDBusCm:CharacteristicSpecValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CharacteristicSpecRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="charRelationshipType" type="xs:string"/>
+      <xs:element minOccurs="0" name="charSpecSeq" type="xs:int"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecificationFor" type="SIDBusCm:CharacteristicSpecification"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="CharacteristicSpecificationHas" type="SIDBusCm:CharacteristicSpecification"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="BusinessInteractionFor" type="SIDBusCm:BusinessInteraction"/>
+      <xs:element minOccurs="0" name="validFor" type="SIDBusCm:TimePeriod"/>
+      <xs:element minOccurs="0" name="BusinessInteractionHas" type="SIDBusCm:BusinessInteraction"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessInteractionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteraction" type="SIDBusCm:BusinessInteraction"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionTypeHas" type="SIDBusCm:BusinessInteractionType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessInteractionTypeFor" type="SIDBusCm:BusinessInteractionType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xsd:schema>
