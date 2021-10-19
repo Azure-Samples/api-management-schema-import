@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.ApiManagement.WsdlProcessor.Common;
 using System;
 using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace TestConsole
@@ -10,9 +11,13 @@ namespace TestConsole
         static void Main(string[] args)
         {
             var log = new ConsoleLog();
-            var wsdlString = File.ReadAllText("API-0767 WSDL\\1.wsdl");
+            var wsdlfile = "GetVehicleWearItemDataRS_Service";
+            var wsdlString = File.ReadAllText(wsdlfile + ".wsdl");
             var xDocument = XDocument.Parse(wsdlString);
             WsdlDocument wsdlDocument = WsdlDocument.LoadAsync(xDocument.Root, log).Result;
+            FileStream fs = new FileStream(@"C:\Temp\" + wsdlfile + "-processed.wsdl", FileMode.Create);
+            wsdlDocument.Save(XmlWriter.Create(fs, new XmlWriterSettings() { Indent = true }));
+            fs.Close();
             Console.ReadLine();
         }
     }
