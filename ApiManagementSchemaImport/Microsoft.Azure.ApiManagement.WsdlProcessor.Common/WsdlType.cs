@@ -19,6 +19,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
         public XElement SchemaElement { get; set; }
 
+        public IList<XAttribute> Attributes { get; set; }
+
         public static IEnumerable<WsdlType> GetTypes(XElement schema)
         {
             var types = new List<WsdlType>();
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             {
                 TargetNamespace = targetNamespace,
                 Name = targetNamespace + e.Attribute("name").Value,
+                Attributes = e.Attributes().ToList(),
                 SchemaElement = e
             };
 

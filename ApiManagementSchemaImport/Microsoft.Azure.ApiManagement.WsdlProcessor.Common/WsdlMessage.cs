@@ -36,12 +36,12 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             XAttribute messageUnqualifiedName = messageElement.Attribute("name");
             if (messageUnqualifiedName == null)
             {
-                //throw new DocumentParsingException(string.Format(Properties.Resources.WsdlMessageNameAttributeNotFound, messageElement.Name));
+                throw new DocumentParsingException(string.Format(CommonResources.WsdlMessageNameAttributeNotFound, messageElement.Name));
             }
-
+            var targetNamespace = messageElement.Attributes("parentTargetNamespace").Count() > 0 ? messageElement.Attribute("parentTargetNamespace").Value : parent.TargetNamespace;
             var message = new WsdlMessage(parent.WsdlNamespace)
             {
-                Name = parent.TargetNamespace + messageUnqualifiedName.Value,
+                Name = targetNamespace + messageUnqualifiedName.Value,
                 Documentation = WsdlDocumentation.Load(messageElement.Element(parent.WsdlNamespace + "Documentation"))
             };
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     WsdlType wsdlType;
                     if (!parent.Types.TryGetValue(typeName, out wsdlType))
                     {
-                        //throw new DocumentParsingException(string.Format(Properties.Resources.CannotResolveType, typeName));
+                        throw new DocumentParsingException(string.Format(CommonResources.CannotResolveType, typeName));
                     }
 
                     message.Parts.Add(part.Attribute("name").Value, wsdlType);
@@ -92,8 +92,12 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             if (this.Type != null)
             {
                 writer.WriteStartElement("part", this.WsdlNamespace.NamespaceName);
-                writer.WriteAttributeString("name", "parameters");
-                writer.WriteAttributeString("element", "tns:" + this.Type.Name.LocalName);
+                foreach (var attribute in this.Type.Attributes)
+                {
+                    writer.WriteAttributeString(attribute.Name.LocalName, attribute.Value);
+                }
+                //writer.WriteAttributeString("name", this.Type.Name.LocalName);
+                //writer.WriteAttributeString("element", this.Type.Name.ToString());
                 writer.WriteEndElement();
             }
 

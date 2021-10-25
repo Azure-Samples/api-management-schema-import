@@ -8,6 +8,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 {
     using System.Xml;
     using System.Xml.Linq;
+    using System.Linq;
 
     public class WsdlOperation
     {
@@ -21,9 +22,10 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
         public static WsdlOperation Load(WsdlDocument parent, XElement operationElement)
         {
+            var targetNamespace = operationElement.Attributes("parentTargetNamespace").Count() > 0 ? operationElement.Attribute("parentTargetNamespace").Value : parent.TargetNamespace;
             var op = new WsdlOperation
             {
-                Name = parent.TargetNamespace.GetName(operationElement.Attribute("name").Value),
+                Name = targetNamespace + operationElement.Attribute("name").Value,
                 Documentation = WsdlDocumentation.Load(operationElement.Element(parent.WsdlNamespace + "documentation"))
             };
 
@@ -37,7 +39,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     WsdlMessage wsdlMessage;
                     if (!parent.Messages.TryGetValue(messageName, out wsdlMessage))
                     {
-                        //throw new DocumentParsingException(string.Format(Properties.Resources.InputMessageNotFound, messageName));
+                        throw new DocumentParsingException(string.Format(CommonResources.InputMessageNotFound, messageName));
                     }
 
                     op.Input = wsdlMessage;
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     XName messageName = WsdlDocument.MakeReferenceGlobal(operationElement, outputMessageElement.Attribute("message").Value);
                     if (!parent.Messages.ContainsKey(messageName))
                     {
-                        //throw new DocumentParsingException(string.Format(Properties.Resources.OutputMessageNotFound, messageName));
+                        throw new DocumentParsingException(string.Format(CommonResources.OutputMessageNotFound, messageName));
                     }
 
                     op.Output = parent.Messages[messageName];
