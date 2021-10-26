@@ -32,6 +32,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         public const string Wsdl11Namespace = "http://schemas.xmlsoap.org/wsdl/";
 
         public const string Wsdl20Namespace = "http://www.w3.org/ns/wsdl";
+
+        public const string DefaultPrefix = "MS";
         public string Prefix { get; set; }
 
         public IList<XAttribute> RootAttributes { get; set; }
@@ -296,10 +298,10 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 var newAttributes = xDocument.Attributes().Where(a => a.ToString().Contains("xmlns:") && !rootAttributes.Contains(a.ToString().Split('=')[0])).ToHashSet();
                 var targetNamespace = xDocument.Attributes().Where(a => a.Name.LocalName.Equals("targetNamespace")).FirstOrDefault().Value;
                 attributesToAdd.AddRange(newAttributes);
-                var elements = xDocument.Elements().Reverse().ToList();
-                var parentElements = documentElement.Elements().ToList();
-                elements.ForEach(i => ChangeAttributeToHierarchy(i, xDocument.Attribute("targetNamespace").Value, documentElement));
-                parentElements.ForEach(i => ChangeAttributeToHierarchy(i, xDocument.Attribute("targetNamespace").Value, documentElement));
+                var elements = xDocument.Elements().Reverse();
+                //var parentElements = documentElement.Elements().ToList();
+                //elements.ForEach(i => ChangeAttributeToHierarchy(i, xDocument.Attribute("targetNamespace").Value, documentElement));
+                //parentElements.ForEach(i => ChangeAttributeToHierarchy(i, xDocument.Attribute("targetNamespace").Value, documentElement));
                 elementsToAdd.AddRange(elements);
                 //We need to check for new wsdl:imports
                 var newImports = xDocument.Elements(doc.WsdlNamespace + "import")
@@ -313,6 +315,46 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             }
             elementsToAdd.ForEach(i => documentElement.AddFirst(i));
             attributesToAdd.ForEach(a => documentElement.Add(a));
+            ChangeElementsToParentTargetNamespace(doc, documentElement);
+        }
+
+        private static void ChangeElementsToParentTargetNamespace(WsdlDocument doc, XElement documentElement)
+        {
+            //Searching for wsdl:portType and getting all the inputs, outputs and faults
+            var prefixParentNamespace = documentElement.GetPrefixOfNamespace(documentElement.Attribute("targetNamespace").Value);
+            var operationChildren = documentElement.Elements(doc.WsdlNamespace + "portType").Elements(doc.WsdlNamespace + "operation")
+                .Elements().Where(e => e.Name.LocalName.Equals("input") || e.Name.LocalName.Equals("output") || e.Name.LocalName.Equals("fault"));
+            foreach (var item in operationChildren)
+            {
+                var attribute = item.Attribute("message");
+                if (attribute != null && attribute.Value.Count(i => i == ':') == 1 && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
+                        && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
+                {
+                    var splitValue = attribute.Value.Split(':');
+                    var childNamespace = documentElement.GetNamespaceOfPrefix(splitValue[0]);
+                    if (!childNamespace.NamespaceName.Equals(prefixParentNamespace))
+                    {
+                        attribute.Value = prefixParentNamespace + ":" + splitValue[1];
+                    }
+                }
+            }
+
+            //Searching for binding/type
+            var bindingsType = documentElement.Elements(doc.WsdlNamespace + "binding");
+            foreach (var item in bindingsType)
+            {
+                var attribute = item.Attribute("type");
+                if (attribute != null && attribute.Value.Count(i => i == ':') == 1 && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
+                        && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
+                {
+                    var splitValue = attribute.Value.Split(':');
+                    var childNamespace = documentElement.GetNamespaceOfPrefix(splitValue[0]);
+                    if (!childNamespace.NamespaceName.Equals(prefixParentNamespace))
+                    {
+                        attribute.Value = prefixParentNamespace + ":" + splitValue[1];
+                    }
+                }
+            }
         }
 
         private static void ChangeAttributeToHierarchy(XElement element, string childTargetNamespace, XElement documentElement)
