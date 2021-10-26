@@ -411,40 +411,24 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             }
         }
 
-        private static void ChangeAttributeToHierarchy(XElement element, string childTargetNamespace, XElement documentElement)
-        {
-            var prefixParentNamespace = documentElement.GetPrefixOfNamespace(documentElement.Attribute("targetNamespace").Value);
-            if (!element.Name.LocalName.Equals("part"))
-            {
-                foreach (var attribute in element.Attributes())
-                {
-                    if ((attribute.Value.Count(i => i == ':') == 1) && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
-                        && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
-                    {
-                        var splitValue = attribute.Value.Split(':');
-                        var childNamespace = element.GetNamespaceOfPrefix(splitValue[0]);
-                        if (childNamespace.NamespaceName.Equals(childTargetNamespace))
-                        {
-                            attribute.Value = prefixParentNamespace + ":" + splitValue[1];
-                        }
-                    }
-                }
-            }
-            foreach (var item in element.Elements())
-            {
-                ChangeAttributeToHierarchy(item, childTargetNamespace, documentElement);
-            }
-        }
-
         private static void MergeSchemas(XElement schema, IList<XElement> schemas)
         {
             foreach (XElement dupSchema in schemas)
             {
                 foreach (XAttribute attribute in dupSchema.Attributes())
                 {
-                    if (schema.Attribute(attribute.Name) == null)
+                    var schemaAttribute = schema.Attribute(attribute.Name);
+                    if (schemaAttribute == null)
                     {
                         schema.Add(new XAttribute(attribute.Name, attribute.Value));
+                    }
+                    else
+                    {
+                        if (schemaAttribute.Name.LocalName.Equals(attribute.Name.LocalName) && 
+                            !schemaAttribute.Value.Equals(attribute.Value))
+                        {
+                            AddXmlnsAndChangePrefixReferenced(schema, dupSchema.Elements(), new Dictionary<string, string>() { { attribute.Value, attribute.Name.LocalName } });
+                        }
                     }
                 }
 
