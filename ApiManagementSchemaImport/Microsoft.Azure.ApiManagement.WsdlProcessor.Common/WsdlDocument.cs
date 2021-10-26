@@ -239,7 +239,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                         })
                         .ToHashSet();
             documentElement.Elements(doc.WsdlNamespace + "import").Remove();
-            var rootAttributes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).Select(a => a.ToString().Split('=')[0]).ToHashSet();
+            //var rootAttributes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).Select(a => a.ToString().Split('=')[0]).ToHashSet();
             var attributesToAdd = new List<XAttribute>();
             var elementsToAdd = new List<XElement>();
             while (wsdlImports.Count > 0)
@@ -295,13 +295,15 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 //importXDocument.Root.Name = ns + importXDocument.Root.Name.LocalName;
                 var xDocument = importXDocument.Root;
                 //We generate a list of namespaces in root
-                var newAttributes = xDocument.Attributes().Where(a => a.ToString().Contains("xmlns:") && !rootAttributes.Contains(a.ToString().Split('=')[0])).ToHashSet();
+                //var newAttributes = xDocument.Attributes().Where(a => a.ToString().Contains("xmlns:") && !rootAttributes.Contains(a.ToString().Split('=')[0])).ToHashSet();
                 var targetNamespace = xDocument.Attributes().Where(a => a.Name.LocalName.Equals("targetNamespace")).FirstOrDefault().Value;
-                attributesToAdd.AddRange(newAttributes);
+                //attributesToAdd.AddRange(newAttributes);
                 var elements = xDocument.Elements().Reverse();
                 //var parentElements = documentElement.Elements().ToList();
                 //elements.ForEach(i => ChangeAttributeToHierarchy(i, xDocument.Attribute("targetNamespace").Value, documentElement));
                 //parentElements.ForEach(i => ChangeAttributeToHierarchy(i, xDocument.Attribute("targetNamespace").Value, documentElement));
+                AddXmlnsAndChangePrefixReferenced(documentElement, elements, xDocument.Attributes().
+                    Where(a => a.ToString().Contains("xmlns:")).ToDictionary(a => a.Value, a => a.Name.LocalName));
                 elementsToAdd.AddRange(elements);
                 //We need to check for new wsdl:imports
                 var newImports = xDocument.Elements(doc.WsdlNamespace + "import")
@@ -314,8 +316,60 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 wsdlImports.Union(newImports);
             }
             elementsToAdd.ForEach(i => documentElement.AddFirst(i));
-            attributesToAdd.ForEach(a => documentElement.Add(a));
+            //attributesToAdd.ForEach(a => documentElement.Add(a));
             ChangeElementsToParentTargetNamespace(doc, documentElement);
+        }
+
+        private static void AddXmlnsAndChangePrefixReferenced(XElement documentElement, IEnumerable<XElement> newElements, Dictionary<string, string> namespaces)
+        {
+            var parentNamespaces = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
+                Select(a => new { 
+                Prefix = a.Name.LocalName,
+                Namespace = a.Value
+                }).ToDictionary(a => a.Namespace, a => a.Prefix);
+            foreach (var item in namespaces)
+            {
+                string prefix = string.Empty;
+                if (parentNamespaces.ContainsKey(item.Key))
+                {
+                    prefix = parentNamespaces[item.Key];
+                }
+                else
+                {
+                    prefix = GenerateNewNamespace(documentElement, parentNamespaces, item);
+                }
+
+                //Modify attributes from elements with the same prefix
+                var prefixValue = item.Value + ":";
+                foreach (var element in newElements.DescendantsAndSelf())
+                {
+                    //Go through all attributes and modify if they have the prefix
+                    var attributes = element.Attributes().Where(e => e.Value.Contains(prefixValue));
+                    foreach (var attribute in attributes)
+                    {
+                        if (attribute.Value.Count(i => i == ':') == 1 && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
+                        && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
+                        {
+                            var splitValue = attribute.Value.Split(':');
+                            attribute.Value = prefix + ":" + splitValue[1];
+                        }
+                    }
+                }
+            }
+        }
+
+        private static string GenerateNewNamespace(XElement documentElement, Dictionary<string, string> parentNamespaces, KeyValuePair<string, string> item)
+        {
+            var newNamespaces = parentNamespaces.Values.Where(v => v.Contains(WsdlDocument.DefaultPrefix));
+            var initialValue = 1;
+            if (newNamespaces.Count() > 0)
+            {
+                initialValue = newNamespaces.Select(i => i.Substring(2)).Max(i => int.Parse(i)) + 1;
+            }
+            var newPrefix = DefaultPrefix + initialValue.ToString();
+            documentElement.Add(new XAttribute(XNamespace.Xmlns + newPrefix, item.Key));
+            parentNamespaces.Add(item.Key, newPrefix);
+            return newPrefix;
         }
 
         private static void ChangeElementsToParentTargetNamespace(WsdlDocument doc, XElement documentElement)
@@ -332,7 +386,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 {
                     var splitValue = attribute.Value.Split(':');
                     var childNamespace = documentElement.GetNamespaceOfPrefix(splitValue[0]);
-                    if (!childNamespace.NamespaceName.Equals(prefixParentNamespace))
+                    if (childNamespace != null && !childNamespace.NamespaceName.Equals(prefixParentNamespace))
                     {
                         attribute.Value = prefixParentNamespace + ":" + splitValue[1];
                     }

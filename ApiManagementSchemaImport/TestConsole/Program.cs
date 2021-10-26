@@ -11,7 +11,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             var log = new ConsoleLog();
-            var wsdlfile = "API-0140_1";
+            var wsdlfile = "API-0164_1";
             var wsdlString = File.ReadAllText(wsdlfile + ".wsdl");
             var xDocument = XDocument.Parse(wsdlString);
             WsdlDocument wsdlDocument = WsdlDocument.LoadAsync(xDocument.Root, log).Result;
