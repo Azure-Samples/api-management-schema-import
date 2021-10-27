@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions name="CRM_Star" targetNamespace="http://www.starstandard.org/STAR/5" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.starstandard.org/STAR/5">
+  <WL5G3N0:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.starstandard.org/STAR/5" xmlns="http://www.starstandard.org/STAR/5" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:star="http://www.starstandard.org/STAR/5" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="1.xsd"/>
+      <xsd:include schemaLocation="1_20.xsd"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="AcknowledgeSalesLead">
+    <WL5G3N0:part element="WL5G3N1:AcknowledgeSalesLead" name="AcknowledgeSalesLead"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ProcessSalesLead">
+    <WL5G3N0:part element="WL5G3N1:ProcessSalesLead" name="ProcessSalesLead"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="sales_lead">
+    <WL5G3N0:operation name="processSalesLead">
+      <WL5G3N0:input message="WL5G3N1:ProcessSalesLead"/>
+      <WL5G3N0:output message="WL5G3N1:AcknowledgeSalesLead"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+</WL5G3N0:definitions>

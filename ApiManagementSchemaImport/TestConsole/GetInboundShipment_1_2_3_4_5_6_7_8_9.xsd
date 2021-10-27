@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema targetNamespace="urn:com:gm:gpsc:service:schema:InboundShipment:1" version="1.0" xmlns="urn:com:gm:gpsc:service:schema:InboundShipment:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="InboundShipmentRequest">
+    <xsd:annotation>
+      <xsd:documentation>This request for Inbound Shipment</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="plantCode" type="xsd:string"/>
+        <xsd:element name="sidNumber" type="xsd:string"/>
+        <xsd:element name="dunsNumber" type="xsd:string"/>
+        <xsd:element name="dock" type="xsd:string"/>
+        <xsd:element name="transMode" type="xsd:string"/>
+        <xsd:element name="scac" type="xsd:string"/>
+        <xsd:element name="manifest" type="xsd:string"/>
+        <xsd:element name="begShipDate" type="xsd:string"/>
+        <xsd:element name="endShipDate" type="xsd:string"/>
+        <xsd:element name="begEda" type="xsd:string"/>
+        <xsd:element name="endEda" type="xsd:string"/>
+        <xsd:element name="trailerNbr" type="xsd:string"/>
+        <xsd:element name="part" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="InboundShipmentResponseList">
+    <xsd:annotation>
+      <xsd:documentation>This Response for Inbound Shipment List</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="noOfRecords" type="xsd:string"/>
+        <xsd:element name="noOfSid" type="xsd:string"/>
+        <xsd:element name="date" type="xsd:string"/>
+        <xsd:element name="time" type="xsd:string"/>
+        <xsd:element name="systemMessage" type="xsd:string"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="InboundShipmentResponse" type="InboundShipmentResponse"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="InboundShipmentResponse">
+    <xsd:annotation>
+      <xsd:documentation>This Response for Inbound Shipment</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="InboundShipmentResponseHeader" type="InboundShipmentResponseHeader"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="InboundShipmentResponseDetail" type="InboundShipmentResponseDetail"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InboundShipmentResponseHeader">
+    <xsd:sequence>
+      <xsd:element name="plantCode" type="xsd:string"/>
+      <xsd:element name="sidNumber" type="xsd:string"/>
+      <xsd:element name="dunsNumber" type="xsd:string"/>
+      <xsd:element name="ciscoDock" type="xsd:string"/>
+      <xsd:element name="dock" type="xsd:string"/>
+      <xsd:element name="asnDate" type="xsd:string"/>
+      <xsd:element name="asnTime" type="xsd:string"/>
+      <xsd:element name="weight" type="xsd:string"/>
+      <xsd:element name="totalQty" type="xsd:string"/>
+      <xsd:element name="transMode" type="xsd:string"/>
+      <xsd:element name="requiredDate" type="xsd:string"/>
+      <xsd:element name="premRespCd" type="xsd:string"/>
+      <xsd:element name="shipmentPickup" type="xsd:string"/>
+      <xsd:element name="carrierScac" type="xsd:string"/>
+      <xsd:element name="trailerScac" type="xsd:string"/>
+      <xsd:element name="manifest" type="xsd:string"/>
+      <xsd:element name="asnTypeCode" type="xsd:string"/>
+      <xsd:element name="status" type="xsd:string"/>
+      <xsd:element name="cntlSourceCisco" type="xsd:string"/>
+      <xsd:element name="shipDate" type="xsd:string"/>
+      <xsd:element name="lastUpdateUserId" type="xsd:string"/>
+      <xsd:element name="lastUpdateDate" type="xsd:string"/>
+      <xsd:element name="nsrType" type="xsd:string"/>
+      <xsd:element name="seal" type="xsd:string"/>
+      <xsd:element name="tempAsnDate" type="xsd:string"/>
+      <xsd:element name="tempAsnTime" type="xsd:string"/>
+      <xsd:element name="blRecvDate" type="xsd:string"/>
+      <xsd:element name="blRecvTime" type="xsd:string"/>
+      <xsd:element name="claimTransmitDate" type="xsd:string"/>
+      <xsd:element name="pro" type="xsd:string"/>
+      <xsd:element name="documentScac" type="xsd:string"/>
+      <xsd:element name="eda" type="xsd:string"/>
+      <xsd:element name="eta" type="xsd:string"/>
+      <xsd:element name="freightClaimCode" type="xsd:string"/>
+      <xsd:element name="statusDate" type="xsd:string"/>
+      <xsd:element name="statusTime" type="xsd:string"/>
+      <xsd:element name="tallyNbr" type="xsd:string"/>
+      <xsd:element name="numberOfContainers" type="xsd:string"/>
+      <xsd:element name="comments" type="xsd:string"/>
+      <xsd:element name="gatePassNbt" type="xsd:string"/>
+      <xsd:element name="receiveAtDuns" type="xsd:string"/>
+      <xsd:element name="rma" type="xsd:string"/>
+      <xsd:element name="shipmentPickupTime" type="xsd:string"/>
+      <xsd:element name="edaCalcFlag" type="xsd:string"/>
+      <xsd:element name="edaVarHours" type="xsd:string"/>
+      <xsd:element name="edaVarMins" type="xsd:string"/>
+      <xsd:element name="orgiEda" type="xsd:string"/>
+      <xsd:element name="orgiEta" type="xsd:string"/>
+      <xsd:element name="trailerNbr" type="xsd:string"/>
+      <xsd:element name="destCisco" type="xsd:string"/>
+      <xsd:element name="pta" type="xsd:string"/>
+      <xsd:element name="asnType" type="xsd:string"/>
+      <xsd:element name="changeStatusId" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InboundShipmentResponseDetail">
+    <xsd:sequence>
+      <xsd:element name="sidNumber" type="xsd:string"/>
+      <xsd:element name="plantCode" type="xsd:string"/>
+      <xsd:element name="dunsNumber" type="xsd:string"/>
+      <xsd:element name="part" type="xsd:string"/>
+      <xsd:element name="ecl" type="xsd:string"/>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="quantity" type="xsd:string"/>
+      <xsd:element name="asnDate" type="xsd:string"/>
+      <xsd:element name="FU" type="xsd:string"/>
+      <xsd:element name="CS" type="xsd:string"/>
+      <xsd:element name="poNumber" type="xsd:string"/>
+      <xsd:element name="uom" type="xsd:string"/>
+      <xsd:element name="containerInd" type="xsd:string"/>
+      <xsd:element name="dunnageInd" type="xsd:string"/>
+      <xsd:element name="packInd" type="xsd:string"/>
+      <xsd:element name="numberBoxes" type="xsd:string"/>
+      <xsd:element name="containerNbr" type="xsd:string"/>
+      <xsd:element name="serialNbr" type="xsd:string"/>
+      <xsd:element name="nonGmPart" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

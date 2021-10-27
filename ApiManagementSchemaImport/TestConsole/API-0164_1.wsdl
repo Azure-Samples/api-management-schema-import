@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions targetNamespace="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:import location="GetVehicleWearItemDataRS_Service.wsdl" namespace="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1"/>
+  <WL5G3N0:binding name="__soap_GetVehicleWearItemDataRS_VehicleWearItemDataServicePortType" type="WL5G3N1:GetVehicleWearItemDataServicePortType">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="GetVehicleWearItemData">
+      <WL5G3N2:operation soapAction="GetVehicleWearItemData" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+        <WL5G3N2:header message="WL5G3N1:SecurityHeader" part="Security" use="literal"/>
+        <WL5G3N2:header message="WL5G3N1:ServiceControlHeader" part="ServiceControl" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+        <WL5G3N2:header message="WL5G3N1:ServiceControlHeader" part="ServiceControl" use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="GetVehicleWearItemDataFault">
+        <WL5G3N2:fault name="GetVehicleWearItemDataFault" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="GetVehicleWearItemDataRS_Service">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N1:__soap_GetVehicleWearItemDataRS_VehicleWearItemDataServicePortType" name="__soap_GetVehicleWearItemDataRS_VehicleWearItemDataServicePortType">
+      <WL5G3N2:address location="https://gsmc-osb-na-uat.gm.com:443/GetVehicleWearItemData/GetVehicleWearItemDataRS_Service"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions name="GetVehicleWearItemData" targetNamespace="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="urn:com:onstar:global:common:schema:ServiceControl:2" xmlns:WL5G3N2="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:WL5G3N3="urn:com:onstar:global:common:schema:VehicleWearItemData:1" xmlns:WL5G3N4="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:WL5G3N5="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1">
+  <WL5G3N0:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:com:onstar:global:common:schema:VehicleWearItemData:1" xmlns:eacn="urn:com:onstar:global:common:schema:VehicleWearItemData:1" xmlns:eacsc="urn:com:onstar:global:common:schema:ServiceControl:2" xmlns:eaflt="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="GetVehicleWearItemDataRS_Service.xsd"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:com:onstar:global:common:schema:ServiceControl:2" xmlns:eacn="urn:com:onstar:global:common:schema:VehicleWearItemData:1" xmlns:eacsc="urn:com:onstar:global:common:schema:ServiceControl:2" xmlns:eaflt="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="GetVehicleWearItemDataRS_Service_21.xsd"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:eacn="urn:com:onstar:global:common:schema:VehicleWearItemData:1" xmlns:eacsc="urn:com:onstar:global:common:schema:ServiceControl:2" xmlns:eaflt="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="GetVehicleWearItemDataRS_Service_22.xsd"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:eacn="urn:com:onstar:global:common:schema:VehicleWearItemData:1" xmlns:eacsc="urn:com:onstar:global:common:schema:ServiceControl:2" xmlns:eaflt="urn:com:onstar:global:common:schema:GenericFault:2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:com:onstar:global:common:wsdl:GetVehicleWearItemData:1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="GetVehicleWearItemDataRS_Service_23.xsd"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="ServiceControlHeader">
+    <WL5G3N0:part element="WL5G3N1:ServiceControl" name="ServiceControl">
+      <WL5G3N0:documentation>Mandatory Service Control block.</WL5G3N0:documentation>
+    </WL5G3N0:part>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetVehicleWearItemDataFault">
+    <WL5G3N0:part element="WL5G3N2:GenericFault" name="GenericFault"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetVehicleWearItemDataRequest">
+    <WL5G3N0:part element="WL5G3N3:GetVehicleWearItemData" name="GetVehicleWearItemData">
+      <WL5G3N0:documentation>The LocationRequest schema containing the Location BOD</WL5G3N0:documentation>
+    </WL5G3N0:part>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetVehicleWearItemDataResponse">
+    <WL5G3N0:part element="WL5G3N3:ShowVehicleWearItemData" name="ShowVehicleWearItemData">
+      <WL5G3N0:documentation>The GetVehicleWearItemData Response schema containing the GetVehicleWearItemData Bod</WL5G3N0:documentation>
+    </WL5G3N0:part>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SecurityHeader">
+    <WL5G3N0:part element="WL5G3N4:Security" name="Security">
+      <WL5G3N0:documentation>The security block.</WL5G3N0:documentation>
+    </WL5G3N0:part>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="GetVehicleWearItemDataServicePortType">
+    <WL5G3N0:operation name="GetVehicleWearItemData">
+      <WL5G3N0:input message="WL5G3N5:GetVehicleWearItemDataRequest"/>
+      <WL5G3N0:output message="WL5G3N5:GetVehicleWearItemDataResponse"/>
+      <WL5G3N0:fault message="WL5G3N5:GetVehicleWearItemDataFault" name="GetVehicleWearItemDataFault"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+</WL5G3N0:definitions>

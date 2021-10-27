@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xs:schema targetNamespace="urn:com:gm:gpsc:service:schema:GenericFault:1" version="1.0" xmlns="urn:com:gm:gpsc:service:schema:GenericFault:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GenericFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="errorCode" type="xs:string"/>
+        <xs:element name="errorMessage" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

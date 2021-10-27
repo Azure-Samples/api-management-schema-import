@@ -1,0 +1,3835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><!--edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Vikas Pratap Singh(IG Team) (ONSTAR)--><!--Version     	Date		Description
+_______     	__________	____________________________
+4.1		2013-01-10	Added AccountInfo of AccountInfoType to CarrierAccountType. Added MarketType to AccountInfoType
+4.2		2013-03-10	Added CarrierAccount of type CarrierAccountType to OrderType.
+4.3		2013-07-10	Added PDF and TEXT to UrlResourceTypeEnum. Added MANAGE_AUDIO_FILE_ALERT_SERVICE_TYPE to Valid Values for ServiceRequestType.
+4.4		2013-10-28	Added UsePaymentMethodOnFileType to OrderInformationType
+4.5		2013-04-11	Added element CurrentMileage to VehicleWearItemDataType and MaintenanceCompletedFlag to WearItemDataType
+4.6		2013-11-20	Added OrderStatus of type OrderStatusType to OrderType.Also defined OrderStatusType as ActionCriteriaType
+4.7		2013-11-21	Added StationID,OdometerReading and Retailer to VehicleProfileType for syncing global with domain schema.
+4.8		2014-04-02	Updated DeliveryChannelType to make SubscriberID as optional and added attribute Default for Default Channel
+4.9		2014-04-04	Added New Feature Proposal types for refactoring Service Entitlement without SID schemas
+4.10		2014-04-04	Added AccountID to ServiceEntitlementType
+4.11		2014-04-09	Added Alert of type AlertType to VehicleProfileType
+4.12		2014-04-14	Updated ServiceEntitlementType to VehicleServiceEntitlementType and added IsNotificationCapableFlag to FeatureType
+4.13		2014-04-23	Updated VehicleServiceEntitlementType to add StationID
+4.14		2014-04-29	Added MarketingCategoryType
+4.15		2014-05-05	Updated definition for DeliveryChannelType to add ChannelUseCode
+4.16		2014-05-05	Removed VehicleServiceEntitlementType, PartnerAppType, OperatingSystemType, VersionType and moved to the noun xsd for Service Entitlement.Removed vuds import
+4.17		2014-05-12	Added definition for OnstarServiceConfigType. Added ServicePlace to MaintenanceRecordsDataType as it was missed
+4.18		2014-05-23	Added ResponseCode and Desc to ServicesType and moved ServiceConfig to ServiceType
+4.19		2014-07-08	Added Partner ID, AccountType and moved NotificationID inside preference
+4.20		2014-08-01	Added ProfileID to ServiceType.
+4.21		2014-10-30	Added Common Semantic definition for Offers,Products and Discounts
+4.22		2014-10-24	Added Product, Cancellation and Order elements to OnstarProgramType
+4.23		2014-11-06	Added Price in OrderLineItemType
+				Added Type and ValidFor in PriceType
+				Added Quantity of type UsageType to FeatureType
+				Added ClassificationDescription to OfferCharacteristic
+				Added ProdComponentsType to Products
+				Updated NewProductType with Type,Price,ProdComponents, Taxes and Features
+				Updated ProductCharacteristicType
+				Added complexType TaxType
+				Added IsSupplementalOffer, IsBundledProduct, PackageID, PackageDescription ,and Products
+4.24		2014-11-21	Added LastSubscriberFlag to SubscriberProgramType
+4.25		2014-12-05	Created global OrderInformation element and referred from OrderType
+				Added OrderInformation reference from AccountType
+4.26		2014-12-22	Modified OrderLineItemType to add Price
+				Made Products/Product/Price unbounded
+				Made LineItem element of Type OrderLineItemType instead of extension base.
+4.27		2015-01-06	Removed LastSubscriberFlag from SubscriberProgramType. Added LastSubscriberFlag to OnstarProgramType
+4.28		2015-01-07	Added MNOCustomerDetails element to DocumentAcceptance.
+4.29      2015-01-21   Defined ClassificationDescription as string Type. 
+								Added IsTrial to ProductCharacteristicType--><xsd:schema targetNamespace="urn:com:onstar:global:common:schema:components:4" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.17" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:com:onstar:global:common:schema:components:4" xmlns:SIDBusCu="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" xmlns:SIDBusPr="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" xmlns:SIDBusSe="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" xmlns:oagis="http://www.openapplications.org/oagis/9" xmlns:star="http://www.starstandard.org/STAR/5" xmlns:sqdt="http://www.starstandard.org/STAR/5/qualifieddatatypes/1.0" xmlns:xfUOMcl="http://www.xfront.com/UnitsOfMeasure" xmlns:veh2="urn:com:onstar:global:common:schema:VehicleServicesTypes:3">
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Customer" schemaLocation="GetVehicleWearItemDataRS_Service_8.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Product" schemaLocation="GetVehicleWearItemDataRS_Service_9.xsd"/>
+  <xsd:import namespace="http://www.tmforum.org/NGOSS/SID/Business/8.0/Service" schemaLocation="GetVehicleWearItemDataRS_Service_11.xsd"/>
+  <xsd:import namespace="http://www.starstandard.org/STAR/5" schemaLocation="GetVehicleWearItemDataRS_Service_15.xsd"/>
+  <xsd:import namespace="http://www.starstandard.org/STAR/5/qualifieddatatypes/1.0" schemaLocation="GetVehicleWearItemDataRS_Service_16.xsd"/>
+  <xsd:import namespace="http://www.openapplications.org/oagis/9" schemaLocation="GetVehicleWearItemDataRS_Service_1.xsd"/>
+  <xsd:import namespace="http://www.xfront.com/UnitsOfMeasure" schemaLocation="GetVehicleWearItemDataRS_Service_18.xsd"/>
+  <xsd:import namespace="urn:com:onstar:global:common:schema:VehicleServicesTypes:3" schemaLocation="GetVehicleWearItemDataRS_Service_20.xsd"/>
+  <xsd:complexType name="ResultValueType">
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:StringType">
+        <xsd:attribute name="uom" type="oagis:StringType" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DTCSystemType">
+    <xsd:sequence>
+      <xsd:element name="SystemName" type="NameCodeDescriptionType">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DTCSubSystem" type="DTCSubSystemType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DTCSubSystemType">
+    <xsd:sequence>
+      <xsd:element name="SubSystemName" type="NameCodeDescriptionType">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ModuleID" type="oagis:IdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>The module ID for the in-vehicle electronic modules.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="SoftwarePartType">
+    <xsd:sequence>
+      <xsd:element name="SoftwareName" type="oagis:StringType"/>
+      <xsd:element name="SoftwareValue" type="oagis:StringType"/>
+      <xsd:element name="SoftwareAlphaName" type="oagis:StringType"/>
+      <xsd:element name="SoftwareAlphaValue" type="oagis:StringType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ModuleDataType">
+    <xsd:sequence>
+      <xsd:element name="DTCHistory" type="DTCHistoryType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SoftwarePart" type="SoftwarePartType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="HardwareVersion" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="ModuleID">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ModuleSourceCode" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ResultCode" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SoftwareVersion" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="StatusMask" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Timestamp" type="oagis:DateTimeType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DTCHistoryType">
+    <xsd:sequence>
+      <xsd:element name="DTCCode" type="NameCodeDescriptionType">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DTCSeverityCode" type="oagis:LongNumericType">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="ModuleID">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="StatusByte" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SubscriberStatusDescription" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SymptomByte" type="oagis:StringType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Timestamp" type="oagis:DateTimeType">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EngineeringStatusDescription" type="NameCodeDescriptionType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DTCSystem" type="DTCSystemType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleDataReadingType">
+    <xsd:sequence>
+      <xsd:element name="ResultID" type="oagis:IdentifierType"/>
+      <xsd:element name="ResultValue" type="ResultValueType"/>
+      <xsd:element name="Status" type="oagis:StringType"/>
+      <xsd:element name="Timestamp" type="oagis:DateTimeType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="CustomerFacingService" type="CustomerFacingServiceType"/>
+  <xsd:complexType name="CustomerFacingServiceType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies about product services.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SIDBusSe:CustomerFacingService">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SubscriberProgram" type="SubscriberProgramType"/>
+  <xsd:complexType name="SubscriberProgramType">
+    <xsd:annotation>
+      <xsd:documentation>The Subscriber Program type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OnStarProgramInfoType">
+        <xsd:sequence>
+          <xsd:element ref="SubscriberID"/>
+          <xsd:element ref="VehicleID" minOccurs="0"/>
+          <xsd:element ref="AccountID" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="NotificationProgram" type="NotificationProgramType"/>
+  <xsd:complexType name="NotificationProgramType">
+    <xsd:annotation>
+      <xsd:documentation>The NotificationProgram type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Preference" type="PreferenceType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The Notification Preference program details associated with each
+						Notification Program</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Contact" type="star:PersonType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Notification Contact</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="InVehicleVoiceMessageStatus" type="NameCodeDescriptionType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The IVVM Status</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PreferenceType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="NotificationID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Notification ID for this Vehicle/Account</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EventType">
+    <xsd:sequence>
+      <xsd:element name="EventDetails" type="NameCodeDescriptionType" minOccurs="0"/>
+      <xsd:element name="DeliveryChannel" type="DeliveryChannelType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeliveryChannelType">
+    <xsd:sequence>
+      <xsd:element name="ChannelDetail" type="NameCodeDescriptionType"/>
+      <xsd:element name="ChannelUseCode" type="oagis:StringType" minOccurs="0"/>
+      <xsd:choice>
+        <xsd:element name="SubscriberID" type="oagis:StringType" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="PartnerID" type="oagis:StringType" minOccurs="0" maxOccurs="1"/>
+      </xsd:choice>
+    </xsd:sequence>
+    <xsd:attribute name="Default" type="xsd:boolean" default="false"/>
+  </xsd:complexType>
+  <xsd:complexType name="TriggerPreferenceType">
+    <xsd:sequence>
+      <xsd:element name="TriggerName" type="oagis:StringType" nillable="true"/>
+      <xsd:element name="FirstOptInDate" type="oagis:DateType" nillable="true"/>
+      <xsd:element name="FirstOptOutDate" type="oagis:DateType" nillable="true"/>
+      <xsd:element name="OptInDate" type="oagis:DateType" nillable="true"/>
+      <xsd:element name="OptOutDate" type="oagis:DateType" nillable="true"/>
+      <xsd:element name="NextFireDate" type="oagis:DateType" nillable="true"/>
+      <xsd:element name="LastFireDate" type="oagis:DateType" nillable="true"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="InsuranceCompanyDiscountProgram" type="InsuranceCompanyDiscountProgramInfoType"/>
+  <xsd:complexType name="InsuranceCompanyDiscountProgramInfoType">
+    <xsd:annotation>
+      <xsd:documentation>The Insurance Company Discount gram information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="star:InsuranceCompanyName">
+        <xsd:annotation>
+          <xsd:documentation>Insurance Company Name</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="star:StateOrProvinceCountrySub-DivisionID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The State Or Province.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="star:CountryID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Country.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="InsuranceProgramRequest" type="NameCodeDescriptionType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Includes the discount code associated with
+						Insurance Carrier program.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="InsuranceCarrierProgram" type="NameCodeDescriptionType" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>Includes the Insurance Carrier program info.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="InsuranceProgramEligibilityCriteria" type="InsuranceCompanyDiscountCriteriaType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Includes the discount criteria including the
+						value (mileage) associated with Insurance Carrier program.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OptInStatus" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The current Program Opt-In Status for the
+						Vehicle and/or Subscriber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Reason" type="NameCodeDescriptionType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The reason code, name, and description for opt in/out of the program.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Characteristic" type="ProgramCharacteristicType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The Program Characteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InsuranceCompanyDiscountCriteriaType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="Value" type="oagis:MeasureType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Measure value on the vehicle when the OnStar unit was installed in the
+								vehicle..</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UOM" type="xfUOMcl:LengthUnitsContentType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The mileage units specify either miles or kilometers.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleProgramType">
+    <xsd:annotation>
+      <xsd:documentation>The Vehicle Program type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OnStarProgramInfoType">
+        <xsd:sequence>
+          <xsd:element ref="VehicleID"/>
+          <xsd:element ref="AccountID" minOccurs="0"/>
+          <xsd:element ref="AccountType" minOccurs="0"/>
+          <xsd:element name="TriggerPreferenceInfo" type="TriggerPreferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Contains the trigger preferences.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NextFireDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>...</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LastFireDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>...</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="InsuranceCompanyDiscountProgram" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="NotificationProgram" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OnStarProgramInfoType">
+    <xsd:annotation>
+      <xsd:documentation>The base object containing program information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="EligibleIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The indicator that the Account, Vehicle, and Subscriber are eligible
+						for the program.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Program" type="NameCodeDescriptionType">
+        <xsd:annotation>
+          <xsd:documentation>The Program Name, Code, and Description.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FirstOptInDate" type="oagis:DateType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FirstOptOutDate" type="oagis:DateType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LastOptInDate" type="oagis:DateType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LastOptOutDate" type="oagis:DateType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LastOptInStatus" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The previous Program Opt-In Status for the
+						Vehicle and/or Subscriber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OptInStatus" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The current Program Opt-In Status for the
+						Vehicle and/or Subscriber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Reason" type="NameCodeDescriptionType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The reason code, name, and description for opt in/out of the program.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Characteristic" type="ProgramCharacteristicType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The Program Characteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OnStarProgramInfo" type="OnStarProgramInfoType"/>
+  <xsd:complexType name="SectionRollupType">
+    <xsd:sequence>
+      <xsd:element name="SectionType" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="RollupFlag" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="RollupMessage" type="oagis:StringType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HardBounceStatusType">
+    <xsd:sequence>
+      <xsd:element ref="SubscriberID"/>
+      <xsd:element name="DeliveryErrorCode" type="oagis:StringType"/>
+      <xsd:element name="DeliveryErrorDesc" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="DeliverySendDate" type="oagis:DateTimeType" minOccurs="0"/>
+      <xsd:element name="DeliveryChannel" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="DeliveryAddress" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="SuggestedAction" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="HardBounceExclusionFlag" type="oagis:StringType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EmailType">
+    <xsd:sequence>
+      <xsd:element name="XMLEmail" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="HTMLEmail" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="SectionRollup" type="SectionRollupType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ReportDetails" type="ReportDetailsType"/>
+  <xsd:complexType name="ReportDetailsType">
+    <xsd:sequence>
+      <xsd:element name="ReportHeader" type="ReportHeaderType"/>
+      <xsd:element name="Email" type="EmailType" minOccurs="0"/>
+      <xsd:element name="HardBounceStatus" type="HardBounceStatusType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReportHeaderType">
+    <xsd:sequence>
+      <xsd:element name="MessageID" type="oagis:IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element ref="SubscriberID" minOccurs="0"/>
+      <xsd:element ref="EventData" minOccurs="0"/>
+      <xsd:element name="DeliveryDate" type="oagis:DateTimeType" minOccurs="0"/>
+      <xsd:element name="DeliveryStatus" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="EmailStatus" type="oagis:StringType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="StockPortfolio" type="StockPortfolioType"/>
+  <xsd:complexType name="StockPortfolioType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element name="TickerSymbol" type="oagis:StringType" minOccurs="0"/>
+          <xsd:element name="CompanyName" type="oagis:StringType" minOccurs="0"/>
+          <xsd:element name="Status" type="oagis:StringType" minOccurs="0"/>
+          <xsd:element name="ExchangeName" type="oagis:StringType" minOccurs="0"/>
+          <xsd:element name="OpenPrice" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="ClosePrice" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="NetChange" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="Volume" type="oagis:DoubleNumericType" minOccurs="0"/>
+          <xsd:element name="HighPrice" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="LowPrice" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="DateTime" type="oagis:DateTimeType" minOccurs="0"/>
+          <xsd:element name="PeRatio" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="YearHigh" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="YearLow" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="MarketClosedIndicator" type="oagis:IndicatorType" minOccurs="0"/>
+          <xsd:element name="LastPrice" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="NetValue" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="NetAssetValue" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="EPSRatio" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="MarketCap" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="AvgVolume" type="oagis:DoubleNumericType" minOccurs="0"/>
+          <xsd:element name="Share" type="oagis:ShortNumericType" minOccurs="0"/>
+          <xsd:element name="BetaRatio" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="DayGain" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="CostBasis" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="MarketValue" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="Gain" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="PercentGain" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="OverallReturn" type="oagis:AmountType" minOccurs="0"/>
+          <xsd:element name="Transaction" type="TransactionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TransactionType">
+    <xsd:sequence>
+      <xsd:element name="Type" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="DateTime" type="oagis:DateTimeType" minOccurs="0"/>
+      <xsd:element name="Share" type="oagis:ShortNumericType" minOccurs="0"/>
+      <xsd:element name="Price" type="oagis:AmountType" minOccurs="0"/>
+      <xsd:element name="Commission" type="oagis:AmountType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ExternalReference" type="ExternalReferenceType"/>
+  <xsd:complexType name="ExternalReferenceType">
+    <xsd:sequence>
+      <xsd:element name="ID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PartyID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EventData" type="EventDataType"/>
+  <xsd:complexType name="EventDataType">
+    <xsd:sequence>
+      <xsd:element name="EventAction" type="oagis:StringType"/>
+      <xsd:element name="Event" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="IgnoreMinDayRuleIndicator" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the RTE Email process should ignore
+						the minimum day rule checking for processing an email message
+						event.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DeliveryChannel" type="oagis:StringType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EventDataIdentifier" type="EventDataIdentifierType"/>
+  <xsd:complexType name="EventDataIdentifierType">
+    <xsd:sequence>
+      <xsd:element ref="AccountID" minOccurs="0"/>
+      <xsd:element ref="VehicleID" minOccurs="0"/>
+      <xsd:element ref="SubscriberID" minOccurs="0"/>
+      <xsd:element name="SubscriberEmail" type="oagis:StringType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="MessageID" type="oagis:IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="StartDate" type="oagis:DateTimeType" minOccurs="0"/>
+      <xsd:element name="EndDate" type="oagis:DateTimeType" minOccurs="0"/>
+      <xsd:element name="DealerCode" type="oagis:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DivisionCode" type="oagis:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAssociateCode" type="oagis:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="VehicleWearItemData" type="VehicleWearItemDataType"/>
+  <xsd:complexType name="VehicleWearItemDataType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element name="Vehicle" type="star:VehicleABIEType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Vehicle for Make, Model, Year, and
+								Manufacturer.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CurrentMileage" type="sqdt:LengthMeasureType" minOccurs="0"/>
+          <xsd:element name="WearItemData" type="WearItemDataType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Wear Item Data like Wear Item, Mileage, Offset Min Value, Offset Max
+								Value</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="WearItemDataType">
+    <xsd:complexContent>
+      <xsd:extension base="star:PartsProductItemType">
+        <xsd:sequence>
+          <xsd:element name="WearItemMileage" type="sqdt:LengthMeasureType" minOccurs="0"/>
+          <xsd:element name="WearItemOffsetMinValue" type="sqdt:LengthMeasureType" minOccurs="0"/>
+          <xsd:element name="WearItemOffsetMaxValue" type="sqdt:LengthMeasureType" minOccurs="0"/>
+          <xsd:element name="WearItemURL" type="UrlResourceType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="MaintenanceCompletedFlag" type="oagis:IndicatorType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="VehicleWarrantyData" type="VehicleWarrantyDataType"/>
+  <xsd:complexType name="VehicleWarrantyDataType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element ref="VehicleID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A unique Vehicle Identification Number
+								provided for a vehicle. An intelligent code that uniquely
+								identifies a Vehicle. Example Data: 1G1AW37V9LR005234;
+								3CS44E1JN313584; 2G1AN69HXD1258661</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="WarrantyBlock" type="WarrantyBlockType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Vehicle Warranty Block Code</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="WarrantyData" type="WarrantyDataType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Vehicle Warranty Data like Warranty Code, Description, Start Date,
+								Start Mileage, Exp Date, Exp Mileage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="WarrantyBlockType">
+    <xsd:sequence>
+      <xsd:element name="WarrantyBlockType" type="NameCodeDescriptionType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Warranty Code, Name , Description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="WarrantyBlockDate" type="oagis:DateTimeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Date on which the warranty block became effective</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="WarrantyBlockLaborOperation" type="star:ServiceLaborHistoryType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Description of blocked labor operations</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="WarrantyBlockTransactionType" type="oagis:StringType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Blocked transaction types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WarrantyDataType">
+    <xsd:complexContent>
+      <xsd:extension base="star:RemarketingWarrantyType">
+        <xsd:annotation>
+          <xsd:documentation>Vehicle Warranty Base Type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="WarrantyStatus" type="oagis:TextType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RecallCampaign" type="RecallCampaignType"/>
+  <xsd:complexType name="RecallCampaignType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="DisplayText" type="oagis:DescriptionType" minOccurs="0"/>
+          <xsd:element name="CampaignDate" type="oagis:DateType" minOccurs="0"/>
+          <xsd:element name="URL" type="UrlResourceType" minOccurs="0"/>
+          <xsd:element name="EmergencyIndicator" type="oagis:IndicatorType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="VehicleProfile" type="VehicleProfileType"/>
+  <xsd:complexType name="VehicleProfileType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element ref="AccountID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The unique number identifying the account</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="VehicleID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A unique Vehicle Identification Number
+								provided for a vehicle. An intelligent code that uniquely
+								identifies a Vehicle. Example Data: 1G1AW37V9LR005234;
+								3CS44E1JN313584; 2G1AN69HXD1258661</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="StationID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The StationID of the vehicle's Unit.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="VehicleStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The list of valid STATUS_CD for a given
+								VEHICLE. INACTIVE, ACTIVE, IN-SETUP, CANCELLED.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AccountVehicleStartDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date a vehicle was associated to the
+								account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="License" type="VehicleLicenseType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The license plate number of the vehicle.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DeliveryDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date the vehicle was delivered by a dealer
+								to a subscriber.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UsedVehicleIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if the vehicle
+								is used.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SoldDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date a vehicle was sold to a subscriber by
+								a selling dealer</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BBWCIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>First Call Indicator. An indicator used to
+								determine if the Blue Button Welcome Call has been completed for
+								a vehicle. Values are: Y = first call completed, N = first call
+								not completed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BBWCDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date Blue Button Welcome Call (first call)
+								completed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Tenure" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The tenure for the vehicle.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="GMFamilyFirstIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								is a GM Family First Customer, or not. Values are: True = GM
+								Family First Cust, False = Not a GM Family First Cust.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StatusReason" type="NameCodeDescriptionType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Provide multiple reasons for scenarios
+								including Cancel, Decline, Deactivate, Nuisance. Use name, code,
+								and descriptions to capture appropriate reason details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SalesPerson" type="OnStarPersonType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Sales Person who sold the vehicle.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SoldByDealer" type="DealerType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PreferredDealer" type="DealerType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="GarageAddress" type="AddressType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Garage Address</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NuisanceVehicleIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a vehicle is
+								a nuisance vehicle or not.Values are: True = nuisance vehicle,
+								False = not a nuisance vehicle. Note: A nuisance vehicle
+								generally has a sensitive AACN sensor and calls into the Call
+								Center looking like an Emergency Call, however there is no
+								emergency â the sensor is erroneously calling in.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NuisanceVehicleFollowUpDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date that OnStar contacted subscriber to
+								ensure that a nuisance vehicle issue is remedied. Note:
+								Depending on the problem OnStar may recommend that the
+								subscriber take their vehicle to a dealer, or OnStar may just
+								pass the case onto OSTA. Once OnStar performs the follow-up and
+								the problem is remedied, the nuisance vehicle iflag is
+								turned-off (set to N.)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="RoadSideAssistanceProvider" type="RoadSideAssistanceProviderType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Insurance" type="InsuranceType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PSAPColorName" type="oagis:NameType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Vehicle driver's preferred description for a
+								vehicle's make, model, etc.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="VehicleSubscribers" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the list of Subscriber information
+								associated with the vehicle.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BillingVehicle" type="BillingVehicleType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Vehicle details for Billing.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Additional information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EventUsage" type="EventUsageType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Details related event usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NickName" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="GracePeriodDate" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UFRDate" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>This is the up for renewal date on the base
+								product for a given vehicle.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="OdometerReading" type="OdometerReadingType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Odometer reading captured for Aftermarket vehicles</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Retailer" type="RetailerType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Retailer information for Aftermarket vehicles</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Alert" type="AlertType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AlertType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="Status" type="oagis:IndicatorType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DealerType">
+    <xsd:complexContent>
+      <xsd:extension base="star:PartyABIEType">
+        <xsd:sequence>
+          <xsd:element name="ID" type="oagis:IdentifierType" minOccurs="0"/>
+          <xsd:element name="DealerCode" type="oagis:CodeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BusinessAssociateCode" type="oagis:CodeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SellingSourceCode" type="oagis:CodeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DMNSupportIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indictes if the dealer supports the DMN
+								program.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Url" type="UrlResourceType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Support multiple Urls for Dealer Marketing
+								content. Url Name will be utilized for identifying the type
+								(i.e. 'Dealer', 'DealerRequest', 'Coupon')</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ActiveIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if the dealer
+								is currently active.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="Address" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Includes the physical and mailing address.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RoadSideAssistanceProviderType">
+    <xsd:complexContent>
+      <xsd:extension base="star:PartyABIEType">
+        <xsd:sequence>
+          <xsd:element name="RoadSideAssistanceProviderName" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The name of the roadside assitance provider</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PolicyNumberText" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A unique identification number assigned to a
+								roadside assistance insurance policy.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="roadSideAssistanceProviderType" type="RoadSideAssistanceProviderTypeEnum">
+          <xsd:annotation>
+            <xsd:documentation>The list of valid road side assistance provider
+							type. PRIMARY, SECONDARY</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="RoadSideAssistanceProviderTypeEnum">
+    <xsd:restriction base="oagis:StringType">
+      <xsd:enumeration value="PRIMARY"/>
+      <xsd:enumeration value="SECONDARY"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="InsuranceType">
+    <xsd:complexContent>
+      <xsd:extension base="star:InsuranceType">
+        <xsd:sequence>
+          <xsd:element name="VehicleInsuranceID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Code that represents the Insurance Type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="InsuranceType" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Code that represents the Insurance Type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="VehicleSubscribers" type="VehicleSubscribersType"/>
+  <xsd:complexType name="VehicleSubscribersType">
+    <xsd:complexContent>
+      <xsd:extension base="ListElementType">
+        <xsd:sequence>
+          <xsd:element ref="SubscriberList" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The list of Subscribers.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BillingVehicleType">
+    <xsd:annotation>
+      <xsd:documentation>The BillingVehicle type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="star:VehicleABIEType">
+        <xsd:sequence>
+          <xsd:element name="EffectiveDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The effective date for the billing transaction
+								(cancel, update, and transfer).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UFRDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Up For Renewal Date.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EventUsageType">
+    <xsd:annotation>
+      <xsd:documentation>Details for event usage for billing update.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="EventClassCode" type="oagis:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Event class code. Valid values: 'Usage'</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EventTypeCode" type="oagis:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Event type code. Valid values: 'Prepaid Usage'</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EventSubTypeCode" type="oagis:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Event subtype code. Valid value: 'Limited Route'</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SwitchDate" type="oagis:DateType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The event usage date.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Volume" type="QuantityType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Specifies the number by which the duartion of a
+						product can be extended by an offer.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AdditionalInfo" type="NameValueType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Additional information.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SubscriberList" type="SubscriberListType"/>
+  <xsd:complexType name="SubscriberListType">
+    <xsd:sequence>
+      <xsd:element ref="SubscriberID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Subscriber ID.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PrimaryDriverIndicator" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>An indicator used to identify the subscriber is
+						the primary driver of the vehicle.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Start of New Offer Proposal-->
+  <xsd:element name="Offers" type="OffersType"/>
+  <xsd:element name="Products" type="ProductsType"/>
+  <xsd:element name="Features" type="FeaturesType"/>
+  <xsd:element name="Value" type="xsd:string"/>
+  <xsd:element name="Type" type="xsd:string"/>
+  <xsd:element name="Price" type="PriceType"/>
+  <xsd:element name="validFor" type="TimePeriodType"/>
+  <xsd:element name="Discounts" type="DiscountsType"/>
+  <xsd:complexType name="OffersType">
+    <xsd:sequence>
+      <xsd:element name="Offer" type="OfferType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OfferType">
+    <xsd:sequence>
+      <xsd:element ref="ID" minOccurs="0"/>
+      <xsd:element ref="Name" minOccurs="0"/>
+      <xsd:element ref="Description" minOccurs="0"/>
+      <xsd:element ref="Type" minOccurs="0"/>
+      <xsd:element ref="Products" minOccurs="0"/>
+      <xsd:element ref="validFor" minOccurs="0"/>
+      <xsd:element name="OfferCharacteristic" type="OfferCharacteristicType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DiscountsType">
+    <xsd:sequence>
+      <xsd:element name="Discount" type="DiscountType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Added as part of R5.3 P&P-->
+  <xsd:complexType name="ProdComponentsType">
+    <xsd:sequence>
+      <xsd:element name="ProdComponent" type="ProdComponentType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProdComponentType">
+    <xsd:sequence>
+      <xsd:element name="ComponentID" minOccurs="0"/>
+      <xsd:element ref="Description" minOccurs="0"/>
+      <xsd:element ref="Price" minOccurs="0"/>
+      <xsd:element ref="Discounts" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Added as part of R5.3 P&P-->
+  <xsd:complexType name="DiscountType">
+    <xsd:sequence>
+      <xsd:element ref="ID" minOccurs="0"/>
+      <xsd:element ref="Name" minOccurs="0"/>
+      <xsd:element ref="validFor" minOccurs="0"/>
+      <xsd:element name="Price" type="PriceType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OfferCharacteristicType">
+    <xsd:sequence>
+      <xsd:element name="UpsellOfferingID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ShortDescription" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="HFCOperationType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Rank" type="RankType" minOccurs="0"/>
+      <xsd:element name="Classification" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="PaymentMethodOnFileRequired" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="ClassificationDescription" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RankType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="type" type="xsd:string" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProductsType">
+    <xsd:sequence>
+      <xsd:element name="Product" type="NewProductType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NewProductType">
+    <xsd:annotation>
+      <xsd:documentation>Use ID for Product Code (currently Product -> ProductSpecification -> productNumber) - CORE, HFC, LTUSG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="ID" minOccurs="0"/>
+      <xsd:element ref="Name" minOccurs="0"/>
+      <xsd:element ref="Description" minOccurs="0"/>
+      <xsd:element ref="validFor" minOccurs="0"/>
+      <!--Added as part of R5.3 P&P-->
+      <xsd:element ref="Type" minOccurs="0"/>
+      <xsd:element ref="Price" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="ProdComponents" type="ProdComponentsType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element ref="Discounts" minOccurs="0"/>
+      <xsd:element name="Taxes" type="TaxType" minOccurs="0"/>
+      <xsd:element name="Features" type="FeaturesType" minOccurs="0"/>
+      <!--Added as part of R5.3 P&P-->
+      <xsd:element name="ProductCharacteristic" type="ProductCharacteristicType" minOccurs="0"/>
+      <xsd:element name="ProductOfferCharacteristic" type="ProductOfferCharacteristicType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProductCharacteristicType">
+    <xsd:sequence>
+      <xsd:element name="ServiceOrderCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="CarrierDataShareGroup" type="xsd:string" minOccurs="0"/>
+      <!--Added as part of R5.3 P&P-->
+      <xsd:element name="ExternalOrderNumber" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ExternalProductInstanceID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ExternalChangeType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Seller" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="HFCOperationType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="BundleLineNum" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="SequenceNumber" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="PricePlan" type="xsd:string" minOccurs="0"/>
+      <!--Added as part of R5.3 P&P-->
+      <xsd:element name="IsTrial" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Added as part of R5.3 P&P-->
+  <xsd:complexType name="TaxType">
+    <xsd:sequence>
+      <xsd:element name="Tax" type="oagis:TaxAmountType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Added as part of R5.3 P&P-->
+  <xsd:complexType name="ProductOfferCharacteristicType">
+    <xsd:sequence>
+      <xsd:element name="Sequence" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="BundleLineNum" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Duration" type="DurationType" minOccurs="0"/>
+      <xsd:element name="PricePlan" type="ProgramCharacteristicType" minOccurs="0"/>
+      <xsd:element name="MonthlyPrice" type="PriceType" minOccurs="0"/>
+      <xsd:element name="AnnualPrice" type="PriceType" minOccurs="0"/>
+      <xsd:element name="OverageAmount" type="PriceType" minOccurs="0"/>
+      <xsd:element name="ServiceQuantity" type="UsageType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UsageType">
+    <xsd:sequence>
+      <xsd:element ref="Value" minOccurs="0"/>
+      <xsd:element name="UnitofMeasure" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DurationType">
+    <xsd:sequence>
+      <xsd:element ref="Type" minOccurs="0"/>
+      <xsd:element name="DurationUpperLimit" type="xsd:duration" minOccurs="0"/>
+      <xsd:element name="DurationLowerLimit" type="xsd:duration" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TimePeriodType">
+    <xsd:sequence>
+      <xsd:element name="startDateTime" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="endDateTime" type="xsd:dateTime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PriceType">
+    <xsd:sequence>
+      <xsd:element name="Amount" type="xsd:double" minOccurs="0"/>
+      <xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element ref="Type" minOccurs="0"/>
+      <xsd:element ref="validFor" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--End of New Offer Proposal-->
+  <xsd:element name="OnStarBundledProductOffering" type="OnStarBundledProductOfferingType"/>
+  <xsd:complexType name="OnStarBundledProductOfferingType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies information about the offerings
+				associated with the products.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SIDBusPr:BundledProductOffering">
+        <xsd:sequence>
+          <xsd:element name="Characteristic" type="ProgramCharacteristicType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Product" type="ProductType"/>
+  <xsd:complexType name="ProductType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies information about the products that are
+				effective on a vehicle over time</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SIDBusPr:Product">
+        <xsd:sequence>
+          <xsd:element ref="OnStarProductOffering" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="OnStarProductOffering" type="OnStarProductOfferingType"/>
+  <xsd:complexType name="OnStarProductOfferingType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies information about the offers associated
+				with the products.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SIDBusPr:ProductOffering">
+        <xsd:sequence>
+          <xsd:element name="Characteristic" type="ProgramCharacteristicType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProgramCharacteristicType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="Value" type="ValueType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The value for this characteristic.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MaintenanceRecords" type="MaintenanceRecordsType"/>
+  <xsd:complexType name="MaintenanceRecordsType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element ref="VehicleID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A unique Vehicle Identification Number
+								provided for a vehicle. An intelligent code that uniquely
+								identifies a Vehicle. Example Data: 1G1AW37V9LR005234;
+								3CS44E1JN313584; 2G1AN69HXD1258661</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AccountID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The account number an OnStar account is
+								identified by.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StartDate" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Maintenance Service start date.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EndDate" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Maintenance Service end date.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ShowDealerDataIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicate whether to display dealer data or not</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MaintenanceRecordsData" type="MaintenanceRecordsDataType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Vehicle Maintenance Service data</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MaintenanceRecordsDataType">
+    <xsd:complexContent>
+      <xsd:extension base="star:InServiceType">
+        <xsd:sequence>
+          <xsd:element name="ServicePlace" type="oagis:TextType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Dealer place where service was done.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SourceOfData" type="ServiceSourceOfData" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Source of Service data e.g. Subscriber, DPP,
+								DD.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CostOfService" type="oagis:AmountType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Total cost for service.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Comment" type="oagis:TextType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Comments from subscriber.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ServiceSourceOfData">
+    <xsd:restriction base="oagis:StringType">
+      <xsd:enumeration value="Subscriber_Manual">
+        <xsd:annotation>
+          <xsd:documentation>Manual service data entry by Subscriber</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="US_Dealer_Feed">
+        <xsd:annotation>
+          <xsd:documentation>Service data feed from US Dealer application</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CA_Dealer_Feed">
+        <xsd:annotation>
+          <xsd:documentation>Service data feed from Canada Dealer application</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="UrlResource" type="UrlResourceType"/>
+  <xsd:complexType name="UrlResourceType">
+    <xsd:complexContent>
+      <xsd:extension base="UrlResourceBaseType">
+        <xsd:attribute name="languageID" type="oagis:NormalizedStringType">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the language-country associated with the Url Resource.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UrlResourceBaseType">
+    <xsd:sequence>
+      <xsd:element name="ResourceType" type="UrlResourceTypeEnum" nillable="true" minOccurs="0"/>
+      <xsd:element name="ImageType" type="ImageFormatContentEnum" nillable="true" minOccurs="0"/>
+      <xsd:element name="Name" type="oagis:NameType"/>
+      <xsd:element name="URL" type="oagis:URIType"/>
+      <xsd:element name="ImageContentType" type="CodeDescriptionType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>- A code to represent the Image Content Type
+						- A desc to represent the Image Content Type (Front Seat Image,
+						Marketing Color Image, etc.)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Description" type="oagis:DescriptionType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Url Text Description.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="UrlResourceTypeEnum">
+    <xsd:restriction base="oagis:StringType">
+      <xsd:enumeration value="WEB_PAGE"/>
+      <xsd:enumeration value="IMAGE"/>
+      <xsd:enumeration value="PDF"/>
+      <xsd:enumeration value="TEXT"/>
+      <xsd:enumeration value="UNKNOWN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ImageFormatContentEnum">
+    <xsd:annotation>
+      <xsd:documentation>This code list represents Image File Formats.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:normalizedString">
+      <xsd:enumeration value="jpeg"/>
+      <xsd:enumeration value="tiff"/>
+      <xsd:enumeration value="raw"/>
+      <xsd:enumeration value="png"/>
+      <xsd:enumeration value="gif"/>
+      <xsd:enumeration value="bmp"/>
+      <xsd:enumeration value="ppm"/>
+      <xsd:enumeration value="pgm"/>
+      <xsd:enumeration value="pbm"/>
+      <xsd:enumeration value="pnm"/>
+      <xsd:enumeration value="cgm"/>
+      <xsd:enumeration value="svg"/>
+      <xsd:enumeration value="other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="NameIDDescriptionType">
+    <xsd:complexContent>
+      <xsd:extension base="IDDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="Name" type="oagis:NameType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IDDescriptionType">
+    <xsd:sequence>
+      <xsd:element name="ID" type="oagis:IdentifierType"/>
+      <xsd:element name="Description" type="oagis:DescriptionType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="QuantityType">
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:MeasureType">
+        <xsd:attribute name="uom" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>The quantity of an item measured with a unit of measure.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="BaseNounType">
+    <xsd:sequence>
+      <xsd:element name="ID" type="oagis:IdentifierType" nillable="false" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NameValueType">
+    <xsd:annotation>
+      <xsd:documentation>The name value type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="oagis:StringType">
+        <xsd:annotation>
+          <xsd:documentation>The name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Value" type="ValueType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The value type.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValueType">
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:StringType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:element name="AccountType" type="NameCodeDescriptionType">
+    <xsd:annotation>
+      <xsd:documentation>-A unique code for a given account type e.g., P
+				for PERSONAL, B for BUSINESS.
+				-The name of the account type
+				-The text
+				description of the account type</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="AccountType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element ref="AccountID">
+            <xsd:annotation>
+              <xsd:documentation>The account number an OnStar account is
+								identified by.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StartDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date the account was activated.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EndDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date the account was inactivated.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CreatedDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date the account was created. This is
+								different from the activation date, since it can be setup to be
+								activated on a future date.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="GracePeriodDate" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="AccountType" minOccurs="0"/>
+          <xsd:element ref="AccountStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Account Status. See AccountStatus for details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StatusReason" type="NameCodeDescriptionType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Provide multiple reasons for scenarios
+								including Cancel, Decline, Deactivate, Nuisance. Use name, code,
+								and descriptions to capture appropriate reason details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PaymentMethodOnFileIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used for status.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DeclinePaymentMethodIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator for declining to provide payment
+								method information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CompensationAlertCode" type="oagis:CodeType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A code assigned to an account based on
+								analysis of history of providing compensations to the same
+								account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PasswordOnlyIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if an account
+								is a password only account. That is a password is required.
+								Values are: True = password required, False = password not
+								required.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NotificationIndicator" type="NameIndicatorType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if account
+								subscribers want to receive notifications by Call, Mail, Email,
+								etc.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="Address" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Specifies the physical address</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="InfoIndicator" type="NameIndicatorType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if there is any
+								critical information missing on the account</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="AccountSubscribers" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the list of Subscriber IDs associated
+								with the account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AccountVehicles" type="AccountVehiclesType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the list of Vehicle IDs associated
+								with the account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="BillingAccount" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Includes the Billing Account Details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CarrierAccount" type="CarrierAccountType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Includes the Carrier Account Details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Organization" type="star:OrganizationABIEType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The fleet organization.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Additional information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DoNotCallIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a
+								does not want to receive phone calls at their home from OnStar.
+								Values are: True = don't call, False = can call.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DoNotMailIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								does not want to receive mail at their home from OnStar. Values
+								are: True = don't mail, False = can mail.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DoNotEmailIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								does not want to receive Email from OnStar. Values are: True =
+								don't Email, False = can Email.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MissingCriticalInfoIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if there is any
+								critical information missing on the account</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BillingDay" type="oagis:DayDateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The day of the month, this account is billed.
+								Once the account is officially started, this cannot be changed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="BillingStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Account Billing Status . See
+								AccountBillingStatus for details</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="CancelReason" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The reason for canceling the account. See
+								CancelReason for details</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UpForRenewalDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date that an account is up for renewal. This
+								date is also known as the Price Lock Through Date</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="CreditCard" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>credit card associated with the account</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="OrderInformation" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BillingStatus" type="NameCodeDescriptionType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies the valid types that can be used to
+				classify an account's billing status. Examples include: currently
+				paid, written off, past due, credit card pending, credit card
+				denied, normal.
+				- The code indicating the status of account billing.
+				- The word or words that an account billing status type is known by.
+				Examples include: currently paid, written off, past due, credit card
+				pending, credit card denied, normal.
+				- Additional information about
+				an account billing status type.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="CancelReason" type="NameCodeDescriptionType">
+    <xsd:annotation>
+      <xsd:documentation>- The code for canceling the account
+				- The name for
+				canceling the account
+				- The description for canceling the account</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="AccountID" type="oagis:IdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>The account number an OnStar account is identified
+				by.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="NameCodeDescriptionType">
+    <xsd:complexContent>
+      <xsd:extension base="CodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="Name" type="oagis:NameType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CodeDescriptionType">
+    <xsd:sequence>
+      <xsd:element name="Code" type="oagis:CodeType"/>
+      <xsd:element name="Description" type="oagis:DescriptionType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="AccountStatus" type="NameCodeDescriptionType">
+    <xsd:annotation>
+      <xsd:documentation>-A unique code provided to this account status
+				value
+				-The name of the account status type
+				-The text description of
+				the account status type</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="NameIndicatorType">
+    <xsd:annotation>
+      <xsd:documentation>This entity includes an indicator value for each
+				name.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="oagis:StringType" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>The name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Indicator" type="oagis:IndicatorType" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>An indicator used for the name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Address" type="AddressType"/>
+  <xsd:complexType name="AddressType">
+    <xsd:complexContent>
+      <xsd:extension base="star:AddressABIEType">
+        <xsd:sequence>
+          <xsd:element name="ZipCodePlus4" type="oagis:CodeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Zip code plus 4.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PreferredName" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Preferred name for an address (destination,)
+								provided by a subscriber on the account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DownloadDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date an address (destination) was downloaded
+								to a vehicle belonging to an account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SavedDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date an address (destination) was saved by a
+								subscriber</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PrimaryIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if an address
+								for an account is the primary mailing address</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SecondaryIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if an address
+								for an account is the secondary mailing address</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LocationID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="AccountSubscribers" type="AccountSubscribersType"/>
+  <xsd:complexType name="AccountSubscribersType">
+    <xsd:complexContent>
+      <xsd:extension base="ListElementType">
+        <xsd:sequence>
+          <xsd:element name="Subscriber" type="SubscriberType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The list of Subscribers.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ListElementType">
+    <xsd:sequence>
+      <xsd:choice minOccurs="0">
+        <xsd:element ref="oagis:Get">
+          <xsd:annotation>
+            <xsd:documentation>The Get contains the attributes for Recordset
+							managment on the request.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="oagis:Show">
+          <xsd:annotation>
+            <xsd:documentation>The Show contains the attributes for Recordset
+							managment on the response.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubscriberType">
+    <xsd:complexContent>
+      <xsd:extension base="OnStarPersonType">
+        <xsd:sequence>
+          <xsd:element ref="SubscriberID">
+            <xsd:annotation>
+              <xsd:documentation>The subscriber ID.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Type" type="NameCodeDescriptionType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The subscriber ID.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SubscriberDriverLicenseNumber" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SubscriberPasswordText" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The word or words that identify a subscriber's
+								security password. Business rules: minimum 8 characters;
+								comprised of at least one number and one letter; letters are not
+								case sensitive; store as a hashed value; mask input password.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EmailNotProvidedReason" type="NameCodeDescriptionType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								has opted in for email service, or not. This is for all emails
+								from Onstar. Values are: True = Allow email, False = Don't allow
+								email.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EmailOptInIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								has opted in for email service, or not. This is for all emails
+								from Onstar. Values are: True = Allow email, False = Don't allow
+								email.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EmailOptInDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date that a subscriber opts in or out of email
+								service.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="GMFamilyFirstCustomerIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								is a GM Family First Customer, or not. Values are: True = GM
+								Family First Cust, False = Not a GM Family First Cust.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PrimaryEmergencyContact" type="star:ContactABIEType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SecondaryEmergencyContact" type="star:ContactABIEType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SubscriberSinceDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date that a subscriber is enrolled.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SubscriberPasswordIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								password is the default password. Values are: True = current
+								password is the default password, False = current password is
+								not the default password.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ICEOptInIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								has chosen to either include or not include ICE data. Values
+								are: True = Include ICE data, False = Don't include ICE data.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ICEOptInDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Date that a subscriber opts in or out of email
+								service.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EmergencyContact" type="OnStarPersonType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Emergency Contact details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="SubscriberAccounts" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the list of Account IDs associated
+								with the subscriber.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="SubscriberVehicles" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the list of Vehicle information
+								associated with the subscriber.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Additional Subscriber preferences</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="VAProfileDomain" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Contains Virtual Advisor domain information
+								(weather, stock, traffic) and their correspoonding content.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="SubscriberRole" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Specifies information about the roles that a
+								subscriber may have in relationship to an account. For example,
+								Account Owner, Subscriber, Owner Proxy.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DocumentAcceptance" type="DocumentAcceptanceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OnStarPersonType">
+    <xsd:complexContent>
+      <xsd:extension base="star:PersonType">
+        <xsd:sequence>
+          <xsd:element ref="NationalityID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The NationalityID to uniquely identify an individual such as
+								GovernmentID, Driver Liscense Number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PreferredLanguageCode" type="PreferredLanguageType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Specifies the persons preferred language.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonType">
+    <xsd:complexContent>
+      <xsd:extension base="star:PersonType">
+        <xsd:sequence>
+          <xsd:element name="PreferredLanguageCode" type="PreferredLanguageType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Specifies the persons preferred language.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="NationalityID" type="NationalityIDType"/>
+  <xsd:complexType name="NationalityIDType">
+    <xsd:annotation>
+      <xsd:documentation>The NationalityID to uniquely identify an individual such as
+				GovernmentID, Driver Liscense Number.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:IdentifierType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of nationality id (i.e. GovernmentID, Drivers License.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PreferredLanguageType">
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:LanguageCodeType">
+        <xsd:attribute name="type" type="oagis:NormalizedStringType">
+          <xsd:annotation>
+            <xsd:documentation source="http://www.openapplications.org/oagis/9">Indicate the type of the preferred language (primary, secondary).</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:element name="SubscriberID" type="oagis:IdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>Represents the Subscriber Identifier</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DocumentAcceptanceType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element name="Document" type="oagis:DocumentReferenceBaseType"/>
+          <xsd:element name="AcceptanceIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a subscriber
+								consented to the legal document.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AcceptanceDateTime" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date/time at which subscriber responded to
+								the legal acceptance notice.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MNOCustomerDetails" type="MNOCustomerDetailsType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Additional attributes optionally required by the
+								various carriers in Europe when accepting Terms and Conditions.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MNOCustomerDetailsType">
+    <xsd:annotation>
+      <xsd:documentation>Additional Customer Information required as per MNO Legal/Regulatory requirements</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="mobileContactNumber" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="dateOfBirth" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="placeOfBirth" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fiscalCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="secondSurname" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="idType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="idNumber" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="nationality" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="bankAccountNumber" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="patronymic" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SubscriberAccounts" type="SubscriberAccountsType"/>
+  <xsd:complexType name="SubscriberAccountsType">
+    <xsd:complexContent>
+      <xsd:extension base="ListElementType">
+        <xsd:sequence>
+          <xsd:element ref="SubscriberAccountList" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The list of Accounts and corresponding roles.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SubscriberAccountList" type="SubscriberAccountListType"/>
+  <xsd:complexType name="SubscriberAccountListType">
+    <xsd:sequence>
+      <xsd:element ref="AccountID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The list of Account IDs.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AccountSubscriberStatus" type="NameCodeDescriptionType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Account Subscriber Status.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="SubscriberRole" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Specifies information about the roles that a
+						subscriber may have in relationship to an account. For example,
+						Account Owner, Subscriber, Owner Proxy.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SubscriberRole" type="NameCodeDescriptionType">
+    <xsd:annotation>
+      <xsd:documentation>- Name: The word or words that an account
+				subscriber's role is known by. For example, Account Owner,
+				Subscriber, Owner Proxy.
+				- Description: Additional information about
+				an account subscriber role.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="VehicleList" type="VehicleListType"/>
+  <xsd:complexType name="VehicleListType">
+    <xsd:sequence>
+      <xsd:element ref="VehicleID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The list of Vehicle IDs.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CreatedDate" type="oagis:DateType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The date this driver was associated with this
+						vehicle.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PreferedDescription" type="oagis:DescriptionType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Vehicle driver's preferred description for a
+						vehicle's make, model, etc.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SubscriberVehicles" type="SubscriberVehiclesType"/>
+  <xsd:complexType name="SubscriberVehiclesType">
+    <xsd:complexContent>
+      <xsd:extension base="ListElementType">
+        <xsd:sequence>
+          <xsd:element ref="SubscriberVehicleList" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The list of Vehicle IDs.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SubscriberVehicleList" type="SubscriberVehicleListType"/>
+  <xsd:complexType name="SubscriberVehicleListType">
+    <xsd:sequence>
+      <xsd:element ref="VehicleID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Vehicle ID.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="VehicleID" type="VehicleIdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>Represents the Vehicle Identification Number (VIN)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="VehicleIdentifierType">
+    <xsd:simpleContent>
+      <xsd:restriction base="oagis:IdentifierType">
+        <xsd:maxLength value="17"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:element name="VAProfileDomain" type="VAProfileDomainType"/>
+  <xsd:complexType name="VAProfileDomainType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:annotation>
+          <xsd:documentation>This is the type of domain (Weather, Traffic,
+						Quote)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="ID" type="oagis:IdentifierType" minOccurs="0"/>
+          <xsd:element name="DefaultIndicator" type="oagis:IndicatorType" minOccurs="0"/>
+          <xsd:element name="EnabledIndicator" type="oagis:IndicatorType" minOccurs="0"/>
+          <xsd:element name="Content" type="DomainContentType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The VA profile domain content information</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Content" type="DomainContentType"/>
+  <xsd:complexType name="DomainContentType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="ID" type="oagis:IdentifierType" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="AccountVehicles" type="AccountVehiclesType"/>
+  <xsd:complexType name="AccountVehiclesType">
+    <xsd:complexContent>
+      <xsd:extension base="ListElementType">
+        <xsd:sequence>
+          <xsd:element name="Vehicle" type="VehicleType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleType">
+    <xsd:annotation>
+      <xsd:documentation>The Vehicle represents a vehicle that has or may
+				have an OnStar unit installed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="star:VehicleABIEType">
+        <xsd:sequence>
+          <xsd:element name="ManufacturerDescription" type="oagis:DescriptionType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Manufacturer description.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MakeDescription" type="oagis:DescriptionType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Make description.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PhoneticName" type="PhoneticNameType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="VehicleStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The list of valid STATUS_CD for a given
+								VEHICLE. INACTIVE, ACTIVE, IN-SETUP, CANCELLED.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PhoneticName" type="PhoneticNameType"/>
+  <xsd:complexType name="PhoneticNameType">
+    <xsd:sequence>
+      <xsd:element name="LanguageCode" type="oagis:LanguageCodeType"/>
+      <xsd:element name="Name" type="oagis:NameType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="VehicleStatus" type="NameCodeDescriptionType">
+    <xsd:annotation>
+      <xsd:documentation>- Code: The code indicating the status of account
+				billing
+				- Name: The word or words that an account billing status type
+				is known by. Examples include: currently paid, written off, past
+				due, credit card pending, credit card denied, normal.
+				- Description:
+				Additional information about an status type.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CarrierAccountType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element ref="AccountID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Carrier Billing Account Number or BAN</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="VehicleID" minOccurs="0"/>
+          <xsd:element ref="AccountType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The carrier account type.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="AccountStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The carrier account status.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Carrier" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The carrier identifier</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AccountInfo" type="AccountInfoType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The carrier plan details</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Address" type="AddressType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The Address from Carrier</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Subscriber" type="SubscriberType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Subscriber details from Carrier.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Additional information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MarketType">
+    <xsd:sequence>
+      <xsd:element name="Area" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="SubArea" type="oagis:StringType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AccountInfoType">
+    <xsd:sequence>
+      <xsd:element name="Market" type="MarketType" minOccurs="0"/>
+      <xsd:element name="DataShareGroup" type="oagis:StringType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="AuthorizedUsers" type="oagis:StringType" minOccurs="0"/>
+      <xsd:element name="AvailableLinesToUse" type="oagis:StringType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="BillingAccount" type="BillingAccountType"/>
+  <xsd:complexType name="BillingAccountHistoryInfoType">
+    <xsd:sequence>
+      <xsd:element ref="AccountID">
+        <xsd:annotation>
+          <xsd:documentation>The account number an OnStar account is
+						identified by.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="VehicleID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Vehicle ID.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BalanceAmount" type="oagis:AmountType" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>The account balance.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AccountingDate" type="oagis:AccountingDateType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The effective date for this request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Payment" type="BillingAccountPaymentType" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>The Payment details.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="Order" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Order details.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Adjustment" type="BillingAdjustmentType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>A billing adjustment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Invoice" type="BillingAccountInvoiceType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Price Plan.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BillingAccountPaymentType">
+    <xsd:complexContent>
+      <xsd:extension base="BillingAccountPaymentBaseType">
+        <xsd:sequence>
+          <xsd:element name="ID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The payment id.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Status" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Payment Status.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BankID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A unique identifier that identifies a bank.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BatchID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A unique id assigned to check payments that
+								are processed by banks in batches.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BatchItemNumber" type="oagis:LongNumericType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A sequential number assigned to items within a batch processed by
+								a bank.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ChequeBatchDepositDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date the check was deposited by the bank.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ProcessDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date the payment or refund is applied to
+								the account balance.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="OnStarDebitCard" type="DebitCardType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The debit card payment method (extending
+								type).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BillingAccountPaymentBaseType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:PaymentType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of nationality id (i.e. GovernmentID, Drivers License.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BillingAccountType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:FinancialAccountType">
+        <xsd:sequence>
+          <xsd:element name="Status" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing account status.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StatusReason" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing account status reason.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="AccountPaymentMethod" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Contains the payment method types and
+								associated details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="PaymentMethod" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Contains the payment method types and
+								associated details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ReportingLevel" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing account reporting level. Indicates
+								invoice or statement.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BillCycleDay" type="oagis:DayDateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing day of the month.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AccountingDate" type="oagis:AccountingDateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The effective date for this request.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BalanceAmount" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The account balance.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="FraudAlert" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The account balance.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="InvoiceFormat" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing invoice format.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Priority" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing priority.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Complexity" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing complexity.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Configuration" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing configuration.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Classification" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The billing classification.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="BillingAdjustment" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A billing adjustment.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Invoice" type="BillingAccountInvoiceType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The billing account invoices.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PaymentReceipt" type="BillingAccountPaymentReceiptType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The billing account payment receipts.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Additional information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PaymentMethod" type="AccountPaymentMethodType"/>
+  <xsd:element name="AccountPaymentMethod" type="AccountPaymentMethodType"/>
+  <xsd:complexType name="AccountPaymentMethodType">
+    <xsd:annotation>
+      <xsd:documentation>This entity holds the payment method details.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Type" type="NameCodeDescriptionType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>-A unique code for a given payment method type e.g., CC for Credit
+						Card, CA for Checking Account.
+						-The name of the payment method type
+						-The text description of the payment method type</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CreditCard" type="CreditCardType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>credit card associated with the account</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DebitCard" type="DebitCardType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The debit card payment method (extending type).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BankAccount" type="BankAccountType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>bank savings or checking account associated with
+						the account</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CashPickup" type="CashPickupPaymentMethodType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>cash pickup payment method.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PhoneBanking" type="PhoneBankingPaymentMethodType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>phone banking payment method.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DebitContract" type="DebitContractPaymentMethodType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>debit contract payment method.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PrepaidCard" type="PrepaidCardPaymentMethodType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>prepaid card payment method.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="WireMoneyTransfer" type="WireMoneyTransferPaymentMethodType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>wire money transfer payment method.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ExternalPayment" type="oagis:PaymentAuthorizationType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>external payment method Eg: Electronic transfer
+						using web...</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="CreditCard" type="CreditCardType"/>
+  <xsd:complexType name="CreditCardType">
+    <xsd:complexContent>
+      <xsd:extension base="star:CreditCardType">
+        <xsd:sequence>
+          <xsd:element name="PartyID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DeclinedIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a
+								subscriber's credit card has been denied</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Communication" type="oagis:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The credit card communication details
+								including address and phone.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CardHolderName" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Display name on credit card in Pin Yin.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BankName" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Bank Name of the credit card.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Status" type="NameCodeDescriptionType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Card Status of the credit card.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DebitCardType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:DebitCardType">
+        <xsd:sequence>
+          <xsd:element name="PartyID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DeclinedIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine if a
+								subscriber's credit card has been denied</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ATMNetworkOptOutIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine the option to
+								use the Debit Card on the Credit Card network.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BankAccount" type="BankAccountType"/>
+  <xsd:complexType name="BankAccountType">
+    <xsd:complexContent>
+      <xsd:extension base="star:FinancialAccountABIEType">
+        <xsd:annotation>
+          <xsd:documentation>The Bank Account details.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="AccountHolderName" type="oagis:StringType">
+            <xsd:annotation>
+              <xsd:documentation>The Account Holder name.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CashPickupPaymentMethodType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:AccountInformationType">
+        <xsd:sequence>
+          <xsd:element name="DateTime" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The datetime of pickup.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Communication" type="oagis:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The cash pickup communication details
+								including address and phone.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PhoneBankingPaymentMethodType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:EFTDetailType">
+        <xsd:sequence>
+          <xsd:element name="Communication" type="oagis:CommunicationABIEType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The phone banking communication details
+								including the phone number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DebitContractPaymentMethodType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:EFTDetailType">
+        <xsd:sequence>
+          <xsd:element name="Status" type="NameCodeDescriptionType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The debit contract status.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ExpirationDateTime" type="oagis:DateTimeType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The debit contract expiration date/time.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PaymentNumber" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The debit contract payment number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PrepaidCardPaymentMethodType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:DebitCardType">
+        <xsd:sequence>
+          <xsd:element name="Communication" type="oagis:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The prepaid card communication details
+								including address and phone.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Status" type="NameCodeDescriptionType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The prepaid card Status.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="WireMoneyTransferPaymentMethodType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:EFTDetailType">
+        <xsd:sequence>
+          <xsd:element name="Communication" type="oagis:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The wire money transfer communication details
+								including address and phone.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DateTime" type="oagis:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The datetime of pickup.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="FraudAlert" type="FraudAlertType"/>
+  <xsd:complexType name="FraudAlertType">
+    <xsd:sequence>
+      <xsd:element name="OverrideStatus" type="NameCodeDescriptionType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Fraud Alert Status Override.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Reason" type="NameCodeDescriptionType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Fraud Alert Reason.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OverrideUntilDate" type="oagis:DateType" nillable="true" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Fraud Alert Status Override until date.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="BillingAdjustment" type="BillingAdjustmentType"/>
+  <xsd:complexType name="BillingAdjustmentType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:AllowanceType">
+        <xsd:sequence>
+          <xsd:element name="InvoiceText" type="oagis:TextType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The adjustment invoice text.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Tax" type="oagis:TaxAmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The tax details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UseACHDebitAccountIndicator" type="oagis:IndicatorType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Use ACH Debit Account On File Indicator.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BillingAccountInvoiceType">
+    <xsd:complexContent>
+      <xsd:extension base="BillingAccountInvoiceBaseType">
+        <xsd:sequence>
+          <xsd:element name="ID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The invoice id.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CreatedDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The date on which the invoice was generated.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="TotalAmountDue" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The total outstanding balance as of the date
+								the invoice was generated.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PreviousBalanceAmount" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The amount due before current charges,
+								payments, refunds and adjustments.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CurrentChargesAmount" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The sum of the charges incurred since the
+								previous invoice.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CurrentTaxAmount" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The sum of the current taxes.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CurrentAdjustmentsAmount" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The sum of the current adjustments.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CurrentPaymentsAmount" type="oagis:AmountType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The sum of the current payments.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DueDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The due date based on a configurable number of
+								days after the invoice date.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="OrderID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Order ID.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="XMLInvoice" type="oagis:StringType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the Invoice document in XML format.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BillingAccountInvoiceBaseType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:InvoiceReferenceType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of nationality id (i.e. GovernmentID, Drivers License.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="OrderID" type="oagis:IdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>The order number identifier.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="BillingAccountPaymentReceiptType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:PaymentType">
+        <xsd:sequence>
+          <xsd:element name="ID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The payment id.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="OrderID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Order ID.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="XMLReceipt" type="oagis:StringType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the Receipt document in XML format.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="StationID" type="oagis:IdentifierType">
+    <xsd:annotation>
+      <xsd:documentation>The station ID of the OnStar unit.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="NameTypeCodeDescriptionType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of name/code description.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EventDateTimeType">
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:DateTimeType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of the event (i.e. Payment, Start, End, Decline)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:element name="HFCDetail" type="HFCDetailType"/>
+  <xsd:complexType name="HFCDetailType">
+    <xsd:sequence>
+      <xsd:element name="Operation" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>ValidValues: Set | Clear | Add | Subtract</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Quantity" type="oagis:ShortNumericType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The number of HFC Minutes</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ExpirationDate" type="oagis:DateTimeType" nillable="false" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The expiration date/time of the HFC Minutes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderInformationType">
+    <xsd:complexContent>
+      <xsd:extension base="SIDBusCu:CustomerOrder">
+        <xsd:annotation>
+          <xsd:documentation>The Order details.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="Payment" type="OrderPaymentMethodType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the payment method types and
+								associated details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PaymentMethod" type="OrderPaymentMethodType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains the payment method types and
+								associated details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PayerAccountID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Payer Account ID associated with the
+								order.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BundledProductOfferingID" type="oagis:IdentifierType" minOccurs="0"/>
+          <xsd:element name="Characteristic" type="ProgramCharacteristicType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="ProvisioningRequiredIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>An indicator used to determine whether or not
+								any product on the order required provisioning before requesting
+								payment.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LineItem" type="OrderLineItemType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The Order Line Item Details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UsePaymentMethodOnFileType" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates the file (GCC/Carrier) being
+								used to fetch the payment information for this order.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UsePaymentMethodOnFileIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if the credit card on files is being
+								used for this order.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="IncludeAccountBalanceIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if the account balance is to be
+								returned.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DealerInformation" minOccurs="0">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="PartyID" type="oagis:IdentifierType" minOccurs="0">
+                  <xsd:annotation>
+                    <xsd:documentation/>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="DealerCode" type="oagis:CodeType" minOccurs="0">
+                  <xsd:annotation>
+                    <xsd:documentation/>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="SellingSourceCode" type="oagis:CodeType" minOccurs="0">
+                  <xsd:annotation>
+                    <xsd:documentation/>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="BusinessAssociateCode" type="oagis:CodeType" minOccurs="0">
+                  <xsd:annotation>
+                    <xsd:documentation/>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="EventDateTime" type="EventDateTimeType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The UFR and Cancel Dates.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Refund" type="RefundType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Order refund information</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="UnsettledPaymentIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Indicates if there is an unsettled payment on
+								the order.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="TransactionDetail" type="TransactionDetailType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Details related to an order transfer</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="oagis:StringType" use="optional"/>
+        <xsd:attribute name="action" type="oagis:StringType" use="optional"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OrderPaymentMethodType">
+    <xsd:complexContent>
+      <xsd:extension base="AccountPaymentMethodType">
+        <xsd:sequence>
+          <xsd:element name="LockBox" type="OrderLockBoxType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains Check Payment details for LockBox.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OrderLockBoxType">
+    <xsd:complexContent>
+      <xsd:extension base="oagis:ChequeType">
+        <xsd:sequence>
+          <xsd:element name="BatchID" type="oagis:IdentifierType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Batch Number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ItemID" type="oagis:IdentifierType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Item Number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DepositDateTime" type="oagis:DateTimeType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Deposit DateTime.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Order" type="OrderType"/>
+  <xsd:complexType name="OrderType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element name="AccountID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Account ID associated with the order.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ToAccountID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Account ID associated with the order.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AccountType" type="NameCodeDescriptionType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>-A unique code for a given account type e.g., P for PERSONAL, B
+								for BUSINESS.
+								-The name of the account type
+								-The text description of the account type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Vehicle" type="star:VehicleABIEType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Vehicle for Make, Model, Year, and
+								Manufacturer.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ToVehicle" type="star:VehicleABIEType" nillable="false" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Vehicle for Make, Model, Year, and
+								Manufacturer.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EventDateTime" type="EventDateTimeType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The UFR and Cancel Dates.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="GarageAddress" type="AddressType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Garage Address of the Vehicle</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="HFCDetail" type="OrderHFCDetailType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>HFC Minutes</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="OutstandingBalanceAmount" type="oagis:AmountType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Outstanding Balance Amount</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="OrderInformation" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="ShipToCountryID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CarrierAccount" type="CarrierAccountType" minOccurs="0"/>
+          <xsd:element name="OrderStatus" type="OrderStatusType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Contains Order Status information</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Additional information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="oagis:StringType" use="optional"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OrderStatusType">
+    <xsd:sequence>
+      <xsd:element ref="oagis:ResponseCriteria" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderLineItemType">
+    <xsd:complexContent>
+      <xsd:extension base="SIDBusCu:CustomerOrderItem">
+        <xsd:annotation>
+          <xsd:documentation>The Order Line Item details.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="EventUsage" type="EventUsageType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EventDateTime" type="EventDateTimeType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The Old and New Effective Dates.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Tax" type="oagis:TaxAmountType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The tax details.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="RefundIndicator" type="RefundIndicatorType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Refund Indicator. (Cancel, Void or Override)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="RefundableStatus" type="NameCodeDescriptionType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Specifies the refundable status of the order
+								line item</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="OrderRefundableStatus" type="RefundableStatusType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Used in GetOrder service only.Refund
+								Indicator. (Cancel, Void or Override)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="TransactionOperation" type="oagis:StringType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Transaction Operation</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="IsRefundedIndicator" type="oagis:IndicatorType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>A flag to determine if the refund has been
+								issued.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--Added as part of R5.3 P&P-->
+          <xsd:element name="IsSupplementalOffer" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="IsBundledProduct" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="PackageID" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="PackageDescription" type="xsd:string" minOccurs="0"/>
+          <xsd:element ref="Products" minOccurs="0"/>
+          <xsd:element ref="Price" minOccurs="0" maxOccurs="unbounded"/>
+          <!--Added as part of R5.3 P&P-->
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RefundableStatusType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of Refund. Valid Values:
+							Cancel, Void</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RefundIndicatorType">
+    <xsd:simpleContent>
+      <xsd:extension base="oagis:IndicatorType">
+        <xsd:attribute name="type" type="oagis:StringType" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the type of Refund. Valid Values:
+							Cancel, Void or Override</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="RefundType">
+    <xsd:sequence>
+      <xsd:element name="RefundRequiredIndicator" type="oagis:IndicatorType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>True if a refund is required.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PreferredMethod" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The preferred refund method. ex. Acct Credit /
+						Cash</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Recipient" type="oagis:PersonType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The preferred refund method. ex. Acct Credit /
+						Cash</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="RecipientNationalityID" type="NationalityIDType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TransactionDetailType">
+    <xsd:sequence>
+      <xsd:element name="MarketingChannel" type="CodeDescriptionType" minOccurs="0"/>
+      <xsd:element name="PricePlan" type="NameCodeDescriptionType" minOccurs="0"/>
+      <xsd:element name="OfferingRank" type="NameCodeDescriptionType" minOccurs="0"/>
+      <xsd:element name="RefundMethod" type="NameCodeDescriptionType" minOccurs="0"/>
+      <xsd:element name="PaymentID" type="oagis:IdentifierType" minOccurs="0"/>
+      <xsd:element name="TransactionReason" type="NameCodeDescriptionType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UnitConfigurationType">
+    <xsd:sequence>
+      <xsd:element name="CurrentConfigurationStates" type="NameValueType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="OldConfigurationStates" type="NameValueType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="NewUnitConfigurationStates" type="NameValueType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="NewUnitCapability" type="NameValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderHFCDetailType">
+    <xsd:complexContent>
+      <xsd:extension base="HFCDetailType">
+        <xsd:sequence>
+          <xsd:element name="OrderDetail" type="OrderDetailType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Order details related to the HFC</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OrderDetailType">
+    <xsd:sequence>
+      <xsd:element name="OrderNumber" type="oagis:StringType">
+        <xsd:annotation>
+          <xsd:documentation>Order number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OrderLineItemNumber" type="oagis:StringType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Order number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleServicesType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element name="VehicleID" type="oagis:IdentifierType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The VIN of the vehicle.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="StationID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The StationID of the vehicle's Unit.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="VehicleServicesRequest" type="veh2:VehicleServicesRequestType">
+            <xsd:annotation>
+              <xsd:documentation/>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceRequestData">
+    <xsd:sequence>
+      <xsd:element name="ServiceRequestType" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>LOCK_UNLOCK_SERVICE_TYPE,
+						PCU_MANAGEMENT_SERVICE_TYPE,
+						ALERT_SERVICE_TYPE,
+						VEHICLE_TRACKING_SERVICE_TYPE,
+						LOCATION_HISTORY_SERVICE_TYPE,
+						POI_DOWNLOAD_SERVICE_TYPE,
+						VEHICLE_EVENT_RESET_SERVICE_TYPE,
+						DESTINATION_DOWNLOAD_SERVICE_TYPE,
+						VEHICLE_BUS_SERVICE_TYPE,
+						VEHICLE_DIAGNOSTICS_SERVICE_TYPE,
+						ACTIVATE_UNIT_SERVICE_TYPE,
+						DEACTIVATE_UNIT,
+						CALL_CENTER_PHONE_NUMBERS_SERVICE_TYPE,
+						MOBILE_NUMBER_SETTINGS_SERVICE_TYPE,
+						GET_PACKET_DATA_REGISTRATION_SERVICE_TYPE,
+						SET_PACKET_DATA_REGISTRATION_SERVICE_TYPE,
+						SET_OTASP_NUMBER_SERVICE_TYPE,
+						OUTDATED_PRL_FLAG_SERVICE_TYPE,
+						MOBILE_CONFIGURATION_SERVICE_TYPE,
+						RECONFIGURE_UNIT_SERVICE_TYPE,
+						PRL_VERSION_SERVICE_TYPE,
+						PLMN_VERSION_SERVICE_TYPE,
+						CLEAR_VDU_TRIGGER_SERVICE_TYPE,
+						REFRESH_VDU_TRIGGER_SERVICE_TYPE,
+						SET_VDU_TRIGGER_SERVICE_TYPE,
+						ESTABLISH_CONNECTION_SERVICE_TYPE,
+						MOBILE_NUMBER_CHANGE_SERVICE_TYPE,
+						DISABLE_SLOWDOWN_SERVICE_TYPE,
+						INHIBIT_IGNITION_SERVICE_TYPE,
+						REMOTE_START_STOP_SERVICE_TYPE,
+						RESET_SLOWDOWN_SERVICE_TYPE,
+						VEHICLE_SLOWDOWN_SERVICE_TYPE,
+						VEHICLE_TRACKING_SERVICE_TYPE,
+						UPDATE_FREE_NUMBER_SERVICE_TYPE
+						MANAGE_AUDIO_FILE_ALERT_SERVICE_TYPE</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OdometerReadingType">
+    <xsd:sequence>
+      <xsd:element name="Value" type="oagis:MeasureType">
+        <xsd:annotation>
+          <xsd:documentation>Measure value for the time duration.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RetailerType">
+    <xsd:complexContent>
+      <xsd:extension base="NameCodeDescriptionType">
+        <xsd:sequence>
+          <xsd:element name="TelephoneCommunication" type="oagis:CommunicationABIEType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>The phone number(s) for the retailer.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="Address" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Includes the physical and mailing address.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleLicenseType">
+    <xsd:sequence>
+      <xsd:element name="VehicleLicenseText" type="oagis:StringType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The license plate number of the vehicle.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="StateOrProvinceCountrySub-DivisonID" type="oagis:IdentifierType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier. (on ONS_VEHICLE this
+						represents the government entity that has licensed the Vehicle
+						License Plate.)In US, it is State</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="star:CountryID" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Carrier" type="CarrierOrganizationType"/>
+  <xsd:complexType name="CarrierOrganizationType">
+    <xsd:complexContent>
+      <xsd:extension base="star:OrganizationABIEType">
+        <xsd:sequence>
+          <xsd:element name="CarrierCode" type="oagis:CodeType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The carrier code.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="NetworkCellularDeviceType">
+    <xsd:annotation>
+      <xsd:documentation>The cellular device type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DeviceID" type="oagis:IdentifierType" nillable="false" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The Device ID (MEID)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NetworkCapabilityType">
+    <xsd:annotation>
+      <xsd:documentation>The type of a capability</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="NameValueType">
+        <xsd:sequence>
+          <xsd:element name="AvailableIndicator" type="oagis:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The available indicator for the network
+								capability.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MobileNumberRegistrationType">
+    <xsd:sequence>
+      <xsd:element ref="Carrier" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>The carrier organization.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SID" type="oagis:IdentifierType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>SID.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EventDateTime" type="EventDateTimeType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Registration and expiration Datetimes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OnStarProgramType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <xsd:element ref="AccountStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Account Status Optional, utilized for program eligibility</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="VehicleStatus" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Vehicle Status Optional, utilized for program eligibility</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="VehicleProgram" type="VehicleProgramType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="SubscriberProgram" type="SubscriberProgramType" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="VehicleID" minOccurs="0"/>
+          <xsd:element ref="AccountID" minOccurs="0"/>
+          <xsd:element ref="SubscriberID" minOccurs="0"/>
+          <xsd:element name="OnStarProgramInfoList" type="OnStarProgramInfoListType" minOccurs="0"/>
+          <xsd:element name="Product" type="NewProductType" minOccurs="0"/>
+          <xsd:element name="Cancellation" type="CancellationType" minOccurs="0"/>
+          <xsd:element name="Order" type="OrderType" minOccurs="0"/>
+          <xsd:element name="LastSubscriberFlag" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Cancellation" type="CancellationType"/>
+  <xsd:complexType name="CancellationType">
+    <xsd:complexContent>
+      <xsd:extension base="BaseNounType">
+        <xsd:sequence>
+          <!--Key-->
+          <xsd:element ref="VehicleID"/>
+          <xsd:element ref="AccountID" minOccurs="0"/>
+          <xsd:element ref="StationID" minOccurs="0"/>
+          <!--<xsd:element ref="eac:VehicleUnit" minOccurs="1" maxOccurs="1" nillable="false"/>
+					<xsd:element ref="eac:Account" minOccurs="0" maxOccurs="1" nillable="false"/>
+					<xsd:element ref="eac:VehicleProfile" minOccurs="0" maxOccurs="1" nillable="false"/>
+					<xsd:element ref="eac:Product" minOccurs="0" maxOccurs="unbounded" nillable="false"/>-->
+          <xsd:element name="UnitStatus" type="oagis:StringType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Unit State</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="EligibilityType" type="oagis:StringType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Possible values could be Deactivation,NotEligible,Connected</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="InEligibleReason" type="oagis:StringType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The reason for not being eligible for deactivation.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DeactivationDate" type="oagis:DateType" nillable="true" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Returns the future date for deactivation.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdditionalInfo" type="NameValueType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Contains additional information that might need to be passed</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OnStarProgramInfoListType">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="OnStarProgramInfo" minOccurs="0"/>
+      <xsd:element ref="VehicleProgramInfo" minOccurs="0"/>
+      <xsd:element ref="SubscriberProgramInfo" minOccurs="0"/>
+      <xsd:element ref="InsuranceCompanyDiscountProgramInfo" minOccurs="0"/>
+      <xsd:element ref="DMNProgramInfo" minOccurs="0"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:element name="SubscriberProgramInfo" type="SubscriberProgramInfoType"/>
+  <xsd:complexType name="SubscriberProgramInfoType">
+    <xsd:annotation>
+      <xsd:documentation>The Subscriber Program information.  Includes the OVD Program.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OnStarProgramInfoType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="InsuranceCompanyDiscountProgramInfo" type="InsuranceCompanyDiscountProgramInfoType"/>
+  <xsd:element name="DMNProgramInfo" type="DMNProgramInfoType"/>
+  <xsd:complexType name="DMNProgramInfoType">
+    <xsd:annotation>
+      <xsd:documentation>The Insurance Company Discount gram information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OnStarProgramInfoType">
+        <xsd:sequence>
+          <xsd:element name="DataSharingDealer" type="DealerType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>The Dealer that the subscriber has indicated to receive data about their vehicle from OnStar.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="VehicleProgramInfo" type="VehicleProgramInfoType"/>
+  <xsd:complexType name="VehicleProgramInfoType">
+    <xsd:annotation>
+      <xsd:documentation>The Vehicle Program information.  Includes the OVD Program.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OnStarProgramInfoType">
+        <xsd:sequence>
+          <xsd:element name="TriggerPreferenceInfo" type="TriggerPreferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Contains the trigger preferences.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NextFireDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>...</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LastFireDate" type="oagis:DateType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>...</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!--Start of New Features Proposal-->
+  <xsd:element name="ID" type="xsd:string"/>
+  <xsd:element name="Name" type="xsd:string"/>
+  <xsd:element name="Description" type="xsd:string"/>
+  <xsd:element name="Code" type="xsd:string"/>
+  <xsd:complexType name="FeaturesType">
+    <xsd:sequence>
+      <xsd:element name="Feature" type="FeatureType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FeatureType">
+    <xsd:annotation>
+      <xsd:documentation>Features (Services)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="ID" minOccurs="0"/>
+      <xsd:element ref="Name" minOccurs="0"/>
+      <xsd:element ref="Description" minOccurs="0"/>
+      <xsd:element name="IsCustomerFacing" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="IsEntitled" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="IsNotificationCapable" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="ChannelsEntitled" type="ChannelsEntitledType" minOccurs="0"/>
+      <xsd:element name="InEligibleReason" type="InEligibleReasonType" minOccurs="0"/>
+      <xsd:element name="ExpirationDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="ProductType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Category" type="CategoryType" minOccurs="0"/>
+      <xsd:element name="Quantity" type="UsageType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CategoryType">
+    <xsd:sequence>
+      <xsd:element ref="Name"/>
+      <xsd:element ref="Description"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ChannelsEntitledType">
+    <xsd:sequence>
+      <xsd:element name="Channel" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InEligibleReasonType">
+    <xsd:sequence>
+      <xsd:element ref="Code" minOccurs="0"/>
+      <xsd:element ref="Description" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--End of New Features Proposal-->
+  <xsd:complexType name="OnstarServiceConfigType">
+    <xsd:sequence>
+      <xsd:element ref="VehicleID"/>
+      <xsd:element name="Services" type="ServicesType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element ref="AccountType" minOccurs="0"/>
+      <xsd:element name="IsAsyncResponseExpected" type="xsd:boolean"/>
+      <xsd:element name="ConfigType" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServicesType">
+    <xsd:sequence>
+      <xsd:element name="ServiceCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Service" type="ServiceType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="VehicleConfig" type="VehicleConfigType" minOccurs="0"/>
+      <xsd:element name="OperationPerformed" type="xsd:string" minOccurs="0"/>
+      <xsd:element ref="NotificationProgram" minOccurs="0"/>
+      <xsd:element name="ResponseCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ResponseDesc" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceConfigType">
+    <xsd:sequence>
+      <xsd:element name="KeyValue" type="KeyValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceType">
+    <xsd:sequence>
+      <xsd:element name="PartnerID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ProfileID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ServiceConfig" type="ServiceConfigType" minOccurs="0"/>
+      <xsd:element name="OptInStatus" type="xsd:boolean"/>
+      <xsd:element name="OptInDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="OptOutDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="DataAccessType" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleConfigType">
+    <xsd:sequence>
+      <xsd:element name="TaskStatus" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="TaskSetDate" type="xsd:date" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketingCategoryType">
+    <xsd:annotation>
+      <xsd:documentation>Marketing Category</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CategoryCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="SegmentCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="MessageCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="IsMarketable" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="CategorySeverity" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="CategoryPriority" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="KeyValue" type="KeyValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KeyValueType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string" use="optional"/>
+        <xsd:attribute name="uom" type="xsd:string" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:element name="OrderInformation" type="OrderInformationType"/>
+</xsd:schema>

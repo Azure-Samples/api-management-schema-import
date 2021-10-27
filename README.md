@@ -1,39 +1,57 @@
 # Project Name
 
-(short, 1-3 sentenced, description of the project)
+This repo contains the source code for process WSDL files that contains wsdl:imports, also xsd imports and includes. It merges WSDL file with all those references.
 
 ## Features
 
 This project framework provides the following features:
 
-* Feature 1
-* Feature 2
-* ...
+* Detect/resolve/inline all wsdl:imports
+* Detect/resolve/inline all xsd:imports in xml schemas
+* Detect/resolve/inline all xsd:includes in xml schemas
+* Merge all xml schemas with the same targetnamespace into a single schema
+* The tool produces a single wsdl file next to existing one with "-processed" suffix in name, e.g. mywsdl.wsdl -> mywsdl-processed.wsdl
+* The tool is able to resolve following types of references:
+    * http/https absolute urls. Any non-200 response is a failure.
+    * Absolute local filesystem location.
+    * Relative local filesystem location. For the base location the tool uses current file location, **not root file location and not the location of the tool itself**.
 
 ## Getting Started
 
 ### Prerequisites
 
-(ideally very short, if any)
 
-- OS
-- Library version
-- ...
+- OS: Windows, Linux, MacOS.
+- Library version: .NET 5.0
+- .NET Command Line
 
 ### Installation
 
-(ideally very short)
+When you have the .NET Command Line installed on your OS of choice, you can download the code and go to Microsoft.Azure.ApiManagement.WsdlProcessor.App directory. 
 
-- npm install [package name]
-- mvn install
-- ...
+First, you will need to restore the packages:
+	
+	dotnet restore
+	
+This will restore all of the packages that are specified in the csproj file of the given project.
+
+Compiling to IL is done using:
+	
+	dotnet build
+
+This will drop a binary in `./bin/[configuration]/[net5.0]/[Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe]` that you can just run.
+
+You can run the binary in this way:
+	
+	c:\folder\Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe "mywsdlfile.wsdl"
+	
 
 ### Quickstart
 (Add steps to get up and running quickly)
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+1. git clone https://github.com/Azure-Samples/api-management-schema-import.git
+2. cd **api-management-schema-import**
+3. 
 
 
 ## Demo
