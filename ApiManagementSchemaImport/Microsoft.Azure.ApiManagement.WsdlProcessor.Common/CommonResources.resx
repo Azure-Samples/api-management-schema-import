@@ -228,6 +228,12 @@
   <data name="XsdImport" xml:space="preserve">
     <value>Location: '{0}' TargetNamespace: '{1}'.</value>
   </data>
+  <data name="XsdImportBegin" xml:space="preserve">
+    <value>FROM: '{0}' BEGIN</value>
+  </data>
+  <data name="XsdImportEnd" xml:space="preserve">
+    <value>FROM: '{0}' END</value>
+  </data>
   <data name="XsdImportFailure" xml:space="preserve">
     <value>Location '{0}' cannot be resolved. Cannot resolve WSDL Imports that use relative URLs.</value>
   </data>

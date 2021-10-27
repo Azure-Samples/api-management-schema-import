@@ -394,6 +394,24 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FROM: &apos;{0}&apos; BEGIN.
+        /// </summary>
+        internal static string XsdImportBegin {
+            get {
+                return ResourceManager.GetString("XsdImportBegin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FROM: &apos;{0}&apos; END.
+        /// </summary>
+        internal static string XsdImportEnd {
+            get {
+                return ResourceManager.GetString("XsdImportEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location &apos;{0}&apos; cannot be resolved. Cannot resolve WSDL Imports that use relative URLs..
         /// </summary>
         internal static string XsdImportFailure {
