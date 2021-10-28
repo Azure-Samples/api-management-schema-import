@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.ApiManageme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.ApiManagement.WsdlProcessor.Common", "Microsoft.Azure.ApiManagement.WsdlProcessor.Common\Microsoft.Azure.ApiManagement.WsdlProcessor.Common.csproj", "{FFC31B5C-03C1-4303-96C7-E25052186877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{44D72813-AB99-4230-985C-FFD0E40092A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{44D72813-AB99-4230-985C-FFD0E40092A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App", "Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App.csproj", "{5233A8EC-5B87-43AD-B993-655CCC6EB455}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common", "Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common.csproj", "{8FC578CA-8FD6-412A-9B46-48152458D816}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{44D72813-AB99-4230-985C-FFD0E40092A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44D72813-AB99-4230-985C-FFD0E40092A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44D72813-AB99-4230-985C-FFD0E40092A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5233A8EC-5B87-43AD-B993-655CCC6EB455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5233A8EC-5B87-43AD-B993-655CCC6EB455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5233A8EC-5B87-43AD-B993-655CCC6EB455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5233A8EC-5B87-43AD-B993-655CCC6EB455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC578CA-8FD6-412A-9B46-48152458D816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC578CA-8FD6-412A-9B46-48152458D816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC578CA-8FD6-412A-9B46-48152458D816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC578CA-8FD6-412A-9B46-48152458D816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
