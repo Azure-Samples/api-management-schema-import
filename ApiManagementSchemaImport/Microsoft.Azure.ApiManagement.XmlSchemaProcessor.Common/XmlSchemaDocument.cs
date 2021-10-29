@@ -43,6 +43,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             if (Directory.Exists(outputDirectory) && Directory.GetFiles(outputDirectory).Length > 0)
             {
                 logger.Error($"{outputDirectory} directory should not have files before executing the tool.");
+                return;
             }
             else if (!Directory.Exists(outputDirectory))
             {
