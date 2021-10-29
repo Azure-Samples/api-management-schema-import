@@ -2,27 +2,15 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App
+namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole
 {
-    class Program
+    public class Program
     {
         static async Task Main(string[] args)
         {
             var log = new ConsoleLog();
-            if (args.Length == 1)
-            {
-                var xsdDirectory = args[0];
-                await XmlSchemaDocument.LoadAsync(xsdDirectory, log);
-            }else if (args.Length == 2)
-            {
-                var xsdDirectory = args[0];
-                var outputDirectory = args[1];
-                await XmlSchemaDocument.LoadAsync(xsdDirectory, log, outputDirectory);
-            }
-            else
-            {
-                log.Error("Directory path should be provided as a parameter of the tool.");
-            }
+            var directoryPath = @"C:\proj\api-management-schema-import\ApiManagementSchemaImport\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole";
+            await XmlSchemaDocument.LoadAsync(directoryPath, log);
         }
     }
 

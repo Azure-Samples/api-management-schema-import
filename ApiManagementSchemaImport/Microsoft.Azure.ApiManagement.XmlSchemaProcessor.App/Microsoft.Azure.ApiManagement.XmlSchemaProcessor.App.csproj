@@ -5,4 +5,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common.csproj" />
+  </ItemGroup>
+
 </Project>
