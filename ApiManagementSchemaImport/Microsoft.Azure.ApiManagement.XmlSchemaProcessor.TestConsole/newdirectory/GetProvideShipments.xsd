@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="urn:com:gm:gpsc:service:schema:ProvideShipments:1" xmlns:oagis="http://www.openapplications.org/oagis/9" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:com:gm:gpsc:service:schema:ProvideShipments:1" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="/schemas//schemas/GetProvideShipments-1-2-3-4-5-6-7-8-9" />
+  <xsd:import schemaLocation="/schemas//schemas/GetProvideShipments-1" namespace="http://www.openapplications.org/oagis/9" />
+  <xsd:element name="GetProvideShipments" type="GetProvideShipmentsType">
+    <xsd:annotation>
+      <xsd:documentation>This is the BOD for GetProvideShipments</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="GetProvideShipmentsType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="oagis:BusinessObjectDocumentType">
+        <xsd:sequence>
+          <xsd:element name="DataArea" type="GetProvideShipmentsDataAreaType">
+            <xsd:annotation>
+              <xsd:documentation>Is where the information that the BOD message carries is provided.
+								The information consists of a Verb and one or more Nouns. The
+								verb indicates the action to be performed on the Noun.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetProvideShipmentsDataAreaType">
+    <xsd:sequence>
+      <xsd:element ref="oagis:Get" />
+      <xsd:element ref="ProvideShipmentsRequest" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

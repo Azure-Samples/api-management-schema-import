@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:clm66411="http://www.openapplications.org/oagis/9/unitcode/66411:2001" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.openapplications.org/oagis/9/unitcode/66411:2001" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="UnitCodeContentType">
+    <xsd:restriction base="xsd:normalizedString">
+      <xsd:enumeration value="ea">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Each</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="bx">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Box</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="case">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Case</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ctn">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Carton</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="gal">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Gallon</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="qt">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Quart</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="pt">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Pint</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ft">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Feet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="yd">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Yard</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="in">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Inches</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="L">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Liters</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="m">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Meters</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="cm">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Centimeters</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="kg">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Kilogram</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="g">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Gram</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="other">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Unknown or undefined</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="tn">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">Ton</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="km">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">kilometers</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="mi">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">miles</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="hp">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">horsepower</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="kw">
+        <xsd:annotation>
+          <xsd:documentation source="http://www.starstandard.org/">kilowatt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="UnitCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="clm66411:UnitCodeContentType" />
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

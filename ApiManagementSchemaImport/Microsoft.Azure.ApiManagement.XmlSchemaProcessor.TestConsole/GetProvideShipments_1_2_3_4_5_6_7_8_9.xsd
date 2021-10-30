@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema targetNamespace="urn:com:gm:gpsc:service:schema:ProvideShipments:1" version="1.0" xmlns="urn:com:gm:gpsc:service:schema:ProvideShipments:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ProvideShipmentsRequest">
+    <xsd:annotation>
+      <xsd:documentation>This is the Noun for Provide Shipment Request</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="plantCode" type="xsd:string"/>
+        <xsd:element name="manifestNumber" type="xsd:string"/>
+        <xsd:element name="scac" type="xsd:string"/>
+        <xsd:element name="trailer" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ProvideShipmentsResponse">
+    <xsd:annotation>
+      <xsd:documentation>This is the Noun for ProvideShipments Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ProvideShipmentsResponseHeader" type="ProvideShipmentsResponseHeader"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="ProvideShipmentsResponseDetail" type="ProvideShipmentsResponseDetail"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ProvideShipmentsResponseHeader">
+    <xsd:sequence>
+      <xsd:element name="plantCode" type="xsd:string"/>
+      <xsd:element name="systemMessage" type="xsd:string"/>
+      <xsd:element name="manifestNumber" type="xsd:string"/>
+      <xsd:element name="scac" type="xsd:string"/>
+      <xsd:element name="trailer" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProvideShipmentsResponseDetail">
+    <xsd:sequence>
+      <xsd:element name="sid" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
