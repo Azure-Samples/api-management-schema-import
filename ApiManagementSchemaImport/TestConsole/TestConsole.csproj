@@ -142,9 +142,6 @@
     <None Update="2_9.xsd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Addressing.xsd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="API-0140_1.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -227,15 +224,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="API-0767_1.wsdl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="datafilename.xsd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="DepotRegnskab-14.0-MODIFIED.wsdl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="FileTransferInfo.xsd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="GetInboundShipment.xsd">
@@ -371,12 +359,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="GetVehicleWearItemDataRS_Service_9.xsd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="SoapFault.wsdl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="SoapHeader.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
