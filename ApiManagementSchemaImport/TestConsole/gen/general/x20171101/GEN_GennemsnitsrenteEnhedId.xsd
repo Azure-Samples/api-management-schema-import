@@ -1,0 +1,15 @@
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by Pernille Borgstroem (PFA Pension A/S) --><schema targetNamespace="schemas/src/gen/general/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genGen201711="schemas/src/gen/general/x20171101">
+	<include schemaLocation="GEN_GennemsnitsrenteId.xsd"/>
+	<include schemaLocation="GEN_KRPolicenummer.xsd"/>
+	<element name="GennemsnitsrenteEnhedId" type="genGen201711:GennemsnitsrenteEnhedIdType">
+		<annotation>
+			<documentation>Reference til en JuridiskEnhedId og virksomhedskunde i PFA</documentation>
+		</annotation>
+	</element>
+	<complexType name="GennemsnitsrenteEnhedIdType">
+		<sequence>
+			<element ref="genGen201711:GennemsnitsrenteId"/>
+			<element ref="genGen201711:KRPolicenummer" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

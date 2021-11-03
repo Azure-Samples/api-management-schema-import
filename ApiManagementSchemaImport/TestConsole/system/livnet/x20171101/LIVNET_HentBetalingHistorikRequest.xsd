@@ -1,0 +1,17 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/system/livnet/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen201003="dk/pfa/si/schemas/common/2010/03/01" xmlns:gen200809="dk/pfa/si/schemas/common/2008/09/01" xmlns:genCon201711="schemas/src/gen/contract/x20171101" xmlns:livnet201711="schemas/src/system/livnet/x20171101">
+	<import namespace="schemas/src/gen/contract/x20171101" schemaLocation="../../../gen/contract/x20171101/GEN_Periodiseringsmodel.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2008/09/01" schemaLocation="../../../gen/contract/x200809/GEN_OpsparerAftaleNr.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../../../gen/contract/x201003/GEN_KvitteringPeriode.xsd"/>
+	<element name="HentBetalingHistorikRequest" type="livnet201711:HentBetalingHistorikRequestType">
+		<annotation>
+			<documentation>Forespoergsel paa betalingshistorik paa en given kunde og periode</documentation>
+		</annotation>
+	</element>
+	<complexType name="HentBetalingHistorikRequestType">
+		<sequence>
+			<element ref="gen200809:OpsparerAftaleNr"/>
+			<element ref="genCon201711:Periodiseringsmodel"/>
+			<element ref="gen201003:KvitteringPeriode"/>
+		</sequence>
+	</complexType>
+</schema>

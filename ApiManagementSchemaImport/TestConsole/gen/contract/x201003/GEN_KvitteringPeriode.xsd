@@ -1,0 +1,8 @@
+<schema targetNamespace="dk/pfa/si/schemas/common/2010/03/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen200802="dk/pfa/si/schemas/common/2008/02/01" xmlns:gen201003="dk/pfa/si/schemas/common/2010/03/01">
+	<import namespace="dk/pfa/si/schemas/common/2008/02/01" schemaLocation="../../general/x2008/GEN_Periode.xsd"/>
+	<element name="KvitteringPeriode" type="gen200802:PeriodeType">
+		<annotation>
+			<documentation>Kvitteringsperiode for en indbetaling eller overfoersel</documentation>
+		</annotation>
+	</element>
+</schema>

@@ -1,0 +1,96 @@
+<wsdl:definitions name="sales_leadExport1_sales_leadHttp_Service" targetNamespace="http://www.starstandard.org/STAR/5/Binding" xmlns:WL5G3N1="http://www.starstandard.org/STAR/5" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N3="http://www.starstandard.org/STAR/5/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsp:Policy wsu:Id="sales_leadExport1_sales_leadHttpBindingQSPort_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+    <wsp:Policy wsu:Id="sales_leadExport1_sales_leadHttpBindingQSPort_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <sp:Body/>
+            <sp:Header Namespace="http://www.w3.org/2005/08/addressing"/>
+            <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+            <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0"/>
+        </sp:SignedParts>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="sales_leadExport1_sales_leadHttpBindingQSPort_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+    <wsp:Policy wsu:Id="wss10_saml_token_with_message_integrity_service_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy>
+                <sp:InitiatorToken>
+                    <wsp:Policy>
+                        <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+                            <wsp:Policy>
+                                <sp:WssX509V3Token10/>
+                            </wsp:Policy>
+                        </sp:X509Token>
+                    </wsp:Policy>
+                </sp:InitiatorToken>
+                <sp:RecipientToken>
+                    <wsp:Policy>
+                        <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+                            <wsp:Policy>
+                                <sp:WssX509V3Token10/>
+                            </wsp:Policy>
+                        </sp:X509Token>
+                    </wsp:Policy>
+                </sp:RecipientToken>
+                <sp:AlgorithmSuite>
+                    <wsp:Policy>
+                        <sp:Basic128/>
+                    </wsp:Policy>
+                </sp:AlgorithmSuite>
+                <sp:Layout>
+                    <wsp:Policy>
+                        <sp:Lax/>
+                    </wsp:Policy>
+                </sp:Layout>
+                <sp:OnlySignEntireHeadersAndBody/>
+            </wsp:Policy>
+        </sp:AsymmetricBinding>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy/>
+        </sp:Wss10>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy>
+                <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                    <wsp:Policy>
+                        <sp:WssSamlV11Token10/>
+                    </wsp:Policy>
+                </sp:SamlToken>
+            </wsp:Policy>
+        </sp:SignedSupportingTokens>
+    </wsp:Policy>
+    <wsdl:import location="1.wsdl" namespace="http://www.starstandard.org/STAR/5"/>
+    <wsdl:binding name="sales_leadExport1_sales_leadHttpBinding" type="WL5G3N1:sales_lead">
+        <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsp:PolicyReference URI="#wss10_saml_token_with_message_integrity_service_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+        <wsdl:operation name="processSalesLead">
+            <WL5G3N2:operation soapAction="https://pleadoptimization.gm.com/process/sales_lead_bod"/>
+            <wsdl:input>
+                <WL5G3N2:body use="literal"/>
+                <wsp:PolicyReference URI="#sales_leadExport1_sales_leadHttpBindingQSPort_Input_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:input>
+            <wsdl:output>
+                <WL5G3N2:body use="literal"/>
+                <wsp:PolicyReference URI="#sales_leadExport1_sales_leadHttpBindingQSPort_Output_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="sales_leadExport1_sales_leadHttpBindingQSService">
+        <wsdl:port binding="WL5G3N3:sales_leadExport1_sales_leadHttpBinding" name="sales_leadExport1_sales_leadHttpBindingQSPort">
+            <WL5G3N2:address location="https://gmcl.cm2solutions.com/services/oss/t/ProcessSalesLead"/>
+            <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+                <wsa:Address>https://dcmimvmgif040.edc.nam.gm.com:7001/wssaml/CRM/SalesLead/1.0</wsa:Address>
+                <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+                    <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                        <dsig:X509Data>
+                            <dsig:X509Certificate>MIIE3jCCA8agAwIBAgIOAgAAAAABQhAl+bZXr7QwDQYJKoZIhvcNAQEFBQAwRjEXMBUGA1UEChMOQ3liZXJ0cnVzdCBJbmMxKzApBgNVBAMTIkN5YmVydHJ1c3QgUHVibGljIFN1cmVTZXJ2ZXIgU1YgQ0EwHhcNMTMxMDMxMjAxMzQyWhcNMTYxMDMxMjAxMzQyWjCBgDELMAkGA1UEBhMCVVMxETAPBgNVBAgTCE1pY2hpZ2FuMRAwDgYDVQQHEwdNaWxmb3JkMRswGQYDVQQKExJHZW5lcmFsIE1vdG9ycyBMTEMxDTALBgNVBAsTBEdNSVQxIDAeBgNVBAMTF2dtYjJjc2FtbC1wcC5pbnQuZ20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjValk5CPojgQYszBuss93lqxNErHseq+ZfOLX4pJ8c0PdNpI6Vlx9gfjvPn7wnkv3vDRN4oVo3AeP0wUbQltajOw063E5cTEMkL3azZ8SlXZdtLxkZ+EpWg/3UGf9ofDzLm0NaWCpmVRYeLSO78OY84C1F0kDHuc41SUOWoQtj0ZwyITurrNEdeRYZIByDj+DgdpJEfwWrNiCwyOowxxkap2Cg/ifoeSjWlf0IS9tqn3oGnUjxDw1GcMYQgneTDBE3MWxNPySOeC5kIDgkGb2h1olL0rgyZ2TRWRK9X7AFJGIJp2oGwppRA3iGYz7ftZnTPecQrQPuXOEGXqXEXpfwIDAQABo4IBjTCCAYkwHwYDVR0jBBgwFoAUBJhg34AblkldZVYtpSwJJArs3LkwPwYDVR0fBDgwNjA0oDKgMIYuaHR0cDovL2NybC5vbW5pcm9vdC5jb20vUHVibGljU3VyZVNlcnZlclNWLmNybDAdBgNVHQ4EFgQUm6bXQph3XBQ/K+akEchbRNJJsrQwCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMBEGCWCGSAGG+EIBAQQEAwIGwDCBuAYDVR0RBIGwMIGtghdnbWIyY3NhbWwtcHAuaW50LmdtLmNvbYIXZ21iMmNzb2EyLXBwLmludC5nbS5jb22CF2dtYjJjb3NiMi1wcC5pbnQuZ20uY29tghdnbWIyY3NvYTEtcHAuaW50LmdtLmNvbYIXZ21iMmNvc2IxLXBwLmludC5nbS5jb22CFmdtYjJjc29hLXBwLmludC5nbS5jb22CFmdtYjJjb3NiLXBwLmludC5nbS5jb20wDQYJKoZIhvcNAQEFBQADggEBAEmX8MeZQvd2xhI1ybrmj5Ivwd3eKKR9/mjMlsZO233WwATktfJoZjeBpRFeSN8VFS12DEKpSVKqK4oS1YjvDAYTOOU1LqfFB02wdRewc5a8Yrpr7CKQhWBCVcm4MDsKyI8EJeonNs0wHTnrpV6LZWK5EH5Dmro1vaW9kbP+PEkvfVlQ7SgNi5mpFSK+2j0SmABcI/6jTCVn68+BzSo36QrQFD7KaISQi/nIIofnpdZONvttc+k1sWs55+M/5KL67V1lGMOskFTZ/s8DMMUlGMBbPe32XlzTVo1lGTrYv0Vu+VBAiR2sezhcoKdQJIB+H8SnByNpCh7xaxdZas4xhII=</dsig:X509Certificate>
+                            <dsig:X509IssuerSerial>
+                                <dsig:X509IssuerName>CN=Cybertrust Public SureServer SV CA, O=Cybertrust Inc</dsig:X509IssuerName>
+                                <dsig:X509SerialNumber>40564819207326547938528779022260</dsig:X509SerialNumber>
+                            </dsig:X509IssuerSerial>
+                            <dsig:X509SubjectName>CN=gmb2csaml-pp.int.gm.com, OU=GMIT, O=General Motors LLC, L=Milford, ST=Michigan, C=US</dsig:X509SubjectName>
+                            <dsig:X509SKI>m6bXQph3XBQ/K+akEchbRNJJsrQ=</dsig:X509SKI>
+                        </dsig:X509Data>
+                    </dsig:KeyInfo>
+                </wsid:Identity>
+            </wsa:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

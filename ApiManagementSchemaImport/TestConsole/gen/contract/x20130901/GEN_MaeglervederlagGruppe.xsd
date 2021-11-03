@@ -1,0 +1,21 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_EtableringVederlagGruppe.xsd"/>
+	<include schemaLocation="GEN_LoebendeVederlagGruppe.xsd"/>
+	<include schemaLocation="GEN_TransaktionOmkostningerBeloeb.xsd"/>
+	<include schemaLocation="GEN_AnnulleretVederlagBeloeb.xsd"/>
+	<include schemaLocation="GEN_MaeglervederlagSumBeloeb.xsd"/>
+	<element name="MaeglervederlagGruppe" type="genCon201309:MaeglervederlagGruppeType">
+		<annotation>
+			<documentation>Gruppering af vederlagsomkostninger</documentation>
+		</annotation>
+	</element>
+	<complexType name="MaeglervederlagGruppeType">
+		<sequence>
+			<element ref="genCon201309:EtableringVederlagGruppe" minOccurs="0"/>
+			<element ref="genCon201309:LoebendeVederlagGruppe" minOccurs="0"/>
+			<element ref="genCon201309:TransaktionOmkostningerBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AnnulleretVederlagBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:MaeglervederlagSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

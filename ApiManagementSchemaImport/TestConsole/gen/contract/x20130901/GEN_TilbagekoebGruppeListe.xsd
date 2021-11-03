@@ -1,0 +1,19 @@
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201211="schemas/src/gen/contract/x20121101" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_TilbagekoebNettoBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20121101" schemaLocation="../x20121101/GEN_TilbagekoebDato.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20121101" schemaLocation="../x20121101/GEN_TilbagekoebBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20121101" schemaLocation="../x20121101/GEN_UdbetaltNegativPALBeloeb.xsd"/>
+	<element name="TilbagekoebGruppeListe" type="genCon201309:TilbagekoebGruppeListeType">
+		<annotation>
+			<documentation>Liste med udbetalinger i forbindelse med Tilbagekoeb fra LivNet</documentation>
+		</annotation>
+	</element>
+	<complexType name="TilbagekoebGruppeListeType">
+		<sequence>
+			<element ref="genCon201211:TilbagekoebDato"/>
+			<element ref="genCon201211:TilbagekoebBeloeb"/>
+			<element ref="genCon201211:UdbetaltNegativPALBeloeb"/>
+			<element ref="genCon201309:TilbagekoebNettoBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

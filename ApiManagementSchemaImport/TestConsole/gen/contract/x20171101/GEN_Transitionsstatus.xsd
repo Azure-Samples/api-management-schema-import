@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201711="schemas/src/gen/contract/x20171101" targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="Transitionsstatus" type="genCon201711:TransitionsstatusType">
+		<annotation>
+			<documentation>Angiver status for transitionen</documentation>
+		</annotation>
+	</element>
+	<simpleType name="TransitionsstatusType">
+		<restriction base="string">
+			<enumeration value="Transitionstilbud"/>
+			<enumeration value="Hovedtilbud"/>
+			<enumeration value="Under Transition"/>
+			<enumeration value="Faerdig"/>
+			<enumeration value="Under Annullering"/>
+			<enumeration value="Annulleret"/>			
+		</restriction>
+	</simpleType>
+</schema>

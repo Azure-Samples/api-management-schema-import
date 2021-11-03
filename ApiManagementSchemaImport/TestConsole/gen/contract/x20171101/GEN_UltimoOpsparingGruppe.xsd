@@ -1,0 +1,21 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<include schemaLocation="GEN_UltimoGennemsnitsrenteKontoBeloeb.xsd"/>
+	<include schemaLocation="GEN_UltimoKundeKapitalNedsparingBeloeb.xsd"/>
+	<include schemaLocation="GEN_UltimoKundeKapitalOpsparingBeloeb.xsd"/>
+	<include schemaLocation="GEN_UltimoOpsparingVaerdiSumBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_UltimoOpsparingKontoBeloeb.xsd"/>	
+	<element name="UltimoOpsparingGruppe" type="genCon201711:UltimoOpsparingGruppeType">
+		<annotation>
+			<documentation>Beloeb for kontoen Ultimo</documentation>
+		</annotation>
+	</element>
+	<complexType name="UltimoOpsparingGruppeType">
+		<sequence>
+			<element ref="genCon201309:UltimoOpsparingKontoBeloeb" minOccurs="0"/>		
+			<element ref="genCon201711:UltimoGennemsnitsrenteKontoBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:UltimoKundeKapitalNedsparingBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:UltimoKundeKapitalOpsparingBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:UltimoOpsparingVaerdiSumBeloeb" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

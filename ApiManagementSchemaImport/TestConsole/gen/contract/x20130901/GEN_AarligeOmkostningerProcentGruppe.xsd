@@ -1,0 +1,17 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_AarligeOmkostningerProcentDirekte.xsd"/>
+	<include schemaLocation="GEN_AarligeOmkostningerProcentIndirekte.xsd"/>
+	<include schemaLocation="GEN_AarligeOmkostningerProcentSum.xsd"/>
+	<element name="AarligeOmkostningerProcentGruppe" type="genCon201309:AarligeOmkostningerProcentGruppeType">
+		<annotation>
+			<documentation>Procent tal af opsparingen for direkte og indirekte aarlige omkostninge paa kontoen</documentation>
+		</annotation>
+	</element>
+	<complexType name="AarligeOmkostningerProcentGruppeType">
+		<sequence>
+			<element ref="genCon201309:AarligeOmkostningerProcentDirekte" minOccurs="0"/>
+			<element ref="genCon201309:AarligeOmkostningerProcentIndirekte" minOccurs="0"/>
+			<element ref="genCon201309:AarligeOmkostningerProcentSum"/>
+		</sequence>
+	</complexType>
+</schema>

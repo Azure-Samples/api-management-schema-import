@@ -1,0 +1,21 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_ServiceRaadgivningProcentAfIndbetalingBeloeb.xsd"/>
+	<include schemaLocation="GEN_ServiceRaadgivningProcentAfSaldoBeloeb.xsd"/>
+	<include schemaLocation="GEN_ServiceRaadgivningFastBeloeb.xsd"/>
+	<include schemaLocation="GEN_OmkostningerGodtgoerelseBeloeb.xsd"/>
+	<include schemaLocation="GEN_ServiceRaadgivningSumBeloeb.xsd"/>
+	<element name="ServiceRaadgivningGruppe" type="genCon201309:ServiceRaadgivningGruppeType">
+		<annotation>
+			<documentation>Gruppering beloeb vedroerende serviceraadgivning</documentation>
+		</annotation>
+	</element>
+	<complexType name="ServiceRaadgivningGruppeType">
+		<sequence>
+			<element ref="genCon201309:ServiceRaadgivningProcentAfIndbetalingBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:ServiceRaadgivningProcentAfSaldoBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:ServiceRaadgivningFastBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:OmkostningerGodtgoerelseBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:ServiceRaadgivningSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

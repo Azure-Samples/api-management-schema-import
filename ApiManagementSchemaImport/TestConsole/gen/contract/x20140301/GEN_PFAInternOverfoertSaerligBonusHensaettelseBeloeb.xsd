@@ -1,0 +1,8 @@
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20140301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:div201105="schemas/src/IM/Diverse/x20110501" xmlns:genCon201403="schemas/src/gen/contract/x20140301">
+	<import namespace="schemas/src/IM/Diverse/x20110501" schemaLocation="../../../IM/Diverse/x20110501/Beloeb2Decimal.xsd"/>
+	<element name="PFAInternOverfoertSaerligBonusHensaettelseBeloeb" type="div201105:Beloeb2DecimalType">
+		<annotation>
+			<documentation>Saerlige bonushensaettelser fra PFA Plus-ekstern (men PFA koncern intern) police. Individualiseres i forbindelse med overfoerslen.</documentation>
+		</annotation>
+	</element>
+</schema>

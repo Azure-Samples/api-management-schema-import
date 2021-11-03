@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201209="schemas/src/gen/contract/x20120901" targetNamespace="schemas/src/gen/contract/x20120901" elementFormDefault="qualified" attributeFormDefault="unqualified">	
+	<element name="OverfoerselErIntern" type="boolean">
+		<annotation>
+			<documentation>Angiver hvorvidt en overfoersel er intern</documentation>
+		</annotation>
+	</element>
+
+</schema>

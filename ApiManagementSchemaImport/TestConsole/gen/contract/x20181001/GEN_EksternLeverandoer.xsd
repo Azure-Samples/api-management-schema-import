@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201810="schemas/src/gen/contract/x20181001" targetNamespace="schemas/src/gen/contract/x20181001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="EksternLeverandoer" type="genCon201810:EksternLeverandoerType">
+		<annotation>
+			<documentation>Angiver leverndoer for ekstern daekning</documentation>
+		</annotation>
+	</element>
+	<simpleType name="EksternLeverandoerType">
+		<restriction base="string">
+		</restriction>
+	</simpleType>
+</schema>

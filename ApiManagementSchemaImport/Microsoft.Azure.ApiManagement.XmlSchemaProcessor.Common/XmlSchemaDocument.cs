@@ -15,7 +15,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
     public class XmlSchemaDocument
     {
         private const string SchemaPath = "/schemas/";
-        private const string NewDirectory = "newdirectory";
+        //private const string NewDirectory = "newdirectory";
         private static Dictionary<string, string> Schemas { get; set; }
 
         private static Dictionary<string, XmlSchema> PathXmlSchemaPair { get; set; }
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
 
         private static string DirectoryPath { get; set; }
 
-        public static async Task LoadAsync(string directoryPath, ILog logger, string outputDirectory = null)
+        public static async Task LoadAsync(string directoryPath, ILog logger, string outputDirectory)
         {
             directoryPath = Path.IsPathRooted(directoryPath) ? directoryPath : Path.Join(Directory.GetCurrentDirectory(), directoryPath);
             DirectoryPath = directoryPath;
-            outputDirectory = outputDirectory ?? NewDirectory;
+            //outputDirectory = outputDirectory ?? NewDirectory;
             outputDirectory = Path.IsPathRooted(outputDirectory) ? outputDirectory : Path.Join(DirectoryPath, outputDirectory);
             Schemas = new Dictionary<string, string>();
             PathXmlSchemaPair = new Dictionary<string, XmlSchema>();

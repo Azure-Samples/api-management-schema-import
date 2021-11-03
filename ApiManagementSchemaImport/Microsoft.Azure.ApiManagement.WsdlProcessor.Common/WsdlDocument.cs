@@ -160,6 +160,23 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     }
                 }
             }
+
+            //Removing third party elements from documentElement
+            var listToRemove = new List<XElement>();
+            var allowedPrefixes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
+                Select(a => a.Name.LocalName).ToHashSet();
+            documentElement.Elements().Where(e => !e.Name.LocalName.Equals("types")).DescendantsAndSelf().Where(x => !x.Name.NamespaceName.Equals(XsdSchemaNamespace.NamespaceName) && !allowedPrefixes.Contains(x.GetPrefixOfNamespace(x.Name.Namespace))).ToList().ForEach(i => listToRemove.Add(i));
+
+            //Another approach to remove third party elements is with Schema Validation.
+            listToRemove.ForEach(i => i.Remove());
+        }
+
+        public static void DumpInvalidNodes(XElement el)
+        {
+            if (el.GetSchemaInfo().Validity != XmlSchemaValidity.Valid)
+                el.Remove();
+            foreach (XElement child in el.Elements())
+                DumpInvalidNodes(child);
         }
 
         /// <summary>

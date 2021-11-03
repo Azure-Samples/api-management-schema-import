@@ -43,7 +43,7 @@ This will drop a binary in `./bin/[configuration]/[net5.0]/[Microsoft.Azure.ApiM
 
 You can run the binary in this way:
 	
-	c:\folder\Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe "mywsdlfile.wsdl"
+	c:\folder\Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe "mywsdlfile.wsdl" "outputfolder"
 	
 
 ### Quickstart

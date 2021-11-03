@@ -1,0 +1,15 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<include schemaLocation="GEN_KundeKapitalType.xsd"/>
+	<include schemaLocation="GEN_KundeKapitalTypeBeloeb.xsd"/>	
+	<element name="OpsparingKKPerTypeGruppe" type="genCon201711:OpsparingKKPerTypeGruppeType">
+		<annotation>
+			<documentation>Beloeb for kontoen Ultimo</documentation>
+		</annotation>
+	</element>
+	<complexType name="OpsparingKKPerTypeGruppeType">
+		<sequence>
+			<element ref="genCon201711:KundeKapitalType" minOccurs="0"/>
+			<element ref="genCon201711:KundeKapitalTypeBeloeb" minOccurs="0"/>			
+		</sequence>
+	</complexType>
+</schema>

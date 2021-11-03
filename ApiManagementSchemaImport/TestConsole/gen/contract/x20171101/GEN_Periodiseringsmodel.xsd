@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201711="schemas/src/gen/contract/x20171101" targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="Periodiseringsmodel" type="genCon201711:PeriodiseringsmodelType">
+		<annotation>
+			<documentation>Viser de muligheder der findes for afkastperioder</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PeriodiseringsmodelType">
+		<restriction base="string">
+			<enumeration value="Skattepaavirkning"/>
+			<enumeration value="Depotpaavirkning"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -142,10 +142,16 @@
     <None Update="2_9.xsd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Addressing.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="API-0140_1.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="API-0164_1.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="API-0427.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="API-0767 WSDL\1.wsdl">
@@ -221,6 +227,876 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="API-0767_1.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ApplicationPropertyHeader.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="datafilename.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DepotRegnskab-14.0-MODIFIED-processed.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DepotRegnskab-14.0-MODIFIED.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DepotRegnskab-14.0.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Filetransfer.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="FileTransferInfo.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\company\x200809\GEN_FirmaNavn.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\company\x201003\GEN_CVRnr.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x200809\GEN_OpsparerAftaleNr.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x200812\GEN_GebyrType.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x200904\GEN_TransaktionNavn.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x200911\GEN_ValoerDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x201003\GEN_AfgivendeSelskab.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x201003\GEN_IndbetalingOverfoerselTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x201003\GEN_KvitteringPeriode.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x201003\GEN_OverfoerselTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x201003\GEN_SidsteKvitteringDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20120901\GEN_IndbetalerFirmaEllerPrivat.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20120901\GEN_IndbetalingSpecifikationKode.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20120901\GEN_OverfoerselErIntern.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_OverfoerselUdBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_OverfoerselUdDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_OverfoerselUdTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_OverfoertPALBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_TilbagekoebBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_TilbagekoebDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_TilbagekoebTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_UdbetalingTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20121101\GEN_UdbetaltNegativPALBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130301\GEN_OverfoerselRegistreringDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130301\GEN_TilskudArt.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130301\GEN_TilskudFraEgenkapitalenGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerAarstal.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKronerDirekteBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKronerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKronerIndirekteBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKronerSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKundeKapitalGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKundeKapitalKronerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerKundeKapitalProcent.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerProcentDirekte.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerProcentGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerProcentIndirekte.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AarligeOmkostningerProcentSum.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdministrationOmkostningerForsikringBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdministrationOmkostningerOpsparingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdministrationOmkostningerSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdministrationOmkostningerUdbetalingGarantiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdministrativKorrektionAfrunding.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdministrativKorrektionSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AdminstrationOmkostningerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfgivendePoliceSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfkastSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfregnetAfkastSkatGroenlandVaerdiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfregnetAMBBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfregnetPALGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfregnetPALSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfregnetPALVaerdiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfskrivningAdHocSaldoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfskrivningAfrundningBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfskrivningGaeldBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfskrivningGaeldEfterAftaleBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfskrivningGammelGaeldBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AfskrivningGruppeSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AlderspensionEngangUdbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AlderspensionLilleYdelseBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AlderspensionLoebendeUdbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AlderspensionUdbetalingerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AlderspensionUdbetalingerGruppeSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_AnnulleretVederlagBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_BasiskapitalOmkostningerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_BetalingForForsikringerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_BetalingForForsikringSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_BevaegelseGruppeSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_DaekningAfPALAfregning.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangIndbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangUdbetalingBruttoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangUdbetalingDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangUdbetalingGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangUdbetalingHerafUdbetaltNegativPALBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangUdbetalingNettoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EngangUdbetalingTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ErPoliceIFejl.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EtableringVederlagFastBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EtableringVederlagGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EtableringVederlagProcentAfIndbetaling.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EtableringVederlagProcentAfSaldo.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_EtableringVederlagSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ForsikringBegivenhederGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ForsikringBegivenhederSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_HandelOmkostningerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IkkeKonteredeBevaegelserBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IkkePALPligtigKorrektionGruppeSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndberetningPeriodeFraDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndberetningPeriodeGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndberetningPeriodeTilDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndbetalingerSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndbetalingIndregnetDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndbetalingKvitteringDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndbetalingSikringBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_IndbetalingTilAftaleGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_KonteretAfkastBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_KontoRegnskabKontrolBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LatentPALVaerdiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionBruttoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionMidlertidigGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionMidlertidigYdelseBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionMidlertidigYdelseTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionMidlertidigYdelseUdbetalingDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionPALBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeAlderspensionTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeIndbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeVederlagFastBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeVederlagGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeVederlagProcentAfIndbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeVederlagProcentAfSaldoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_LoebendeVederlagSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_MaeglervederlagGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_MaeglervederlagSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ManuelKorrektionAfkastBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ManuelKorrektionBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_MarkedsprisLivForsikringBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_MarkedsprisOevrigForsikringBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ModtagetIndbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OevrigeDirekteOmkostninger.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OevrigeDirekteOmkostningerSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OmkostningerGodtgoerelseBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OmkostningerOgVederlagSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OmkostningerSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OpsparingSikringRisikoPrisBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerselGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerselIndregnetDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerselKvitteringDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerselUdGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerselUdMorarenteBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerIndBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerIndGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerIndKundeKapitalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerIndSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerUdBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerUdGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverfoerslerUdSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_OverlevelseGevinstBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PALPligtigKorrektionSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PengeIndSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PengeUdSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PoliceSammenlaegningBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoCashflowKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoFlytteKontiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoHandelKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoKorrektionForIkkeKonteredeBevaegelser.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoOpsparingKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoUdbetalingKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_PrimoVaerdiSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_RabatIndirekteFondOmkostningerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_RealiseringAfNegativLatentPAL.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_RealtidForKontoRegnskabTidspunkt.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ReduktionVedSamleverDoedBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_RefusionTransaktionOmkostningerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_RisikoOverskudBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_SamlingAfPolicerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ServiceGebyrBetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ServiceRaadgivningFastBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ServiceRaadgivningGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ServiceRaadgivningProcentAfIndbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ServiceRaadgivningProcentAfSaldoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ServiceRaadgivningSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilbagekoebGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilbagekoebNettoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilbagekoebVaerdiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilskudFlytteomkostningerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilskudGrundetUdbetalingssikring.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilskudOverfoerselProcentBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TilskudVelkomstBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TransaktionGebyrBetalingVaerdiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TransaktionOmkostningerBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TransaktionOmkostningerBeloebGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_TransaktionOmkostningerSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UdbetalingHistorikGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoCashflowKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoFlytteKontiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoHandelKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoKorrektionForIkkeKonteredeBevaegelser.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoOpsparingKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoUdbetalingKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_UltimoVaerdiSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ValoerPeriodeFra.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_ValoerPeriodeTil.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20130901\GEN_VederlagGebyrBetalingVaerdiBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20131101\GEN_AfgiftBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20131101\GEN_AfskrivningAfgiftsberigtigelseBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20131101\GEN_AfskrivningGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20140301\GEN_PFAInternOverfoerselTillaegBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20140301\GEN_PFAInternOverfoertSaerligBonusHensaettelseBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20140601\GEN_ServiceGebyrBetalingGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20140601\GEN_TilskudEtableringsomkostningBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20140601\GEN_TransaktionGebyrBetalingGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20140601\GEN_VederlagGebyrBetalingGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20150601\GEN_HerafEksternDaekningBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20150601\GEN_PrisForEksternDaekningBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20160601\GEN_ForsikringerLoebendeUdbetalingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20160601\GEN_PengeUdGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20161101\GEN_OpsparingKonceptBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20161101\GEN_OpsparingSkatteKodeBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_AdministrativKorrektionGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_AfkastGennemsnitsrente.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_AfkastGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_IkkePALPligtigKorrektionGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_IndbetalingHistorikInfo.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_KRPolicenummer.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_KundeKapitalType.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_KundeKapitalTypeBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OmkostningerGennemsnitsrente.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OmkostningerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OmkostningerVederlagGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OpsparingEnhedBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OpsparingKKPerTypeGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OpsparingPerEnhedGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_OpsparingPerSkattekodeGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PALPligtigKorrektionGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PengeIndGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_Periodiseringsmodel.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PrimoGennemsnitsrenteKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PrimoKundeKapitalNedsparingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PrimoKundeKapitalOpsparingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PrimoOpsparingGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PrimoOpsparingVaerdiSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_PrimoVaerdiGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_SkatteKodeOgIkkeAngivet.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_TransitionBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_TransitionGruppeListe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_TransitionIndBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_TransitionOprettelsesdato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_Transitionsdato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_Transitionsstatus.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_TransitionTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_UltimoGennemsnitsrenteKontoBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_UltimoKundeKapitalNedsparingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_UltimoKundeKapitalOpsparingBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_UltimoOpsparingGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_UltimoOpsparingVaerdiSumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_UltimoVaerdiGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_Vaerdi83Gruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20171101\GEN_Vaerdi83SumBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20180301\GEN_OpsparingPerKonceptGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20180301\GEN_UdvidetKoncept.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20180401\GEN_IkkeBetaltUnderskudsPalAar.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20180401\GEN_IkkeBetaltUnderskudsPalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20180401\GEN_IkkeBetaltUnderskudsPalGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20181001\GEN_EksternDaekningGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20181001\GEN_EksternDaekningPris.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20181001\GEN_EksternDaekningTilskud.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20181001\GEN_EksternLeverandoer.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20191101\GEN_AcontoAskatSKK45.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20191101\GEN_BevaegelserGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20191101\GEN_KontoRegnskabGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20210201\GEN_AarligeOmkostningerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20210201\GEN_AarligeOmkostningerKronerGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20210201\GEN_AarligeOmkostningerKronerInvesteringsomkostningerSamletBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20210201\GEN_AarligeOmkostningerKronerOmkostningsOgRisikoresultatBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20210201\GEN_AarligeOmkostningerKronerRisikoforrentningBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\contract\x20210201\GEN_KontoRegnskabNoterGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\deprecated\x2006\GEN_DeprecatedCompanyNumber.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x200809\GEN_Beloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x200809\GEN_GenerelBeloebType.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x200809\GEN_Valuta.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x200812\GEN_GenerelBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x2008\GEN_Fejl.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x2008\GEN_FejlKode.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x2008\GEN_FejlTekst.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x2008\GEN_Indbetaler.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x2008\GEN_Periode.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x201003\GEN_Beloeb2Dec.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x20171101\GEN_GennemsnitsrenteEnhedId.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x20171101\GEN_GennemsnitsrenteId.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\general\x20171101\GEN_KRPolicenummer.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20110501\GEN_ModtagetOverfoerselBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20130301\GEN_AfgivendePoliceBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20130301\GEN_AfgivendePolicenummer.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20130301\GEN_Flytteomkostninger.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20130301\GEN_SamlingAfPolicerValoerDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20130302\GEN_AfgivendePoliceTegningDato.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\haendelse\x20130303\GEN_AfgivendePoliceGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\indbetaling\x200812\GEN_IndbetalingTotalBeloeb.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\indbetaling\x20170601\GEN_IndbetalingInfoGruppe.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="gen\scheme\x20140601\GEN_TransaktionTypeId.xsd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="GetInboundShipment.xsd">
@@ -356,6 +1232,39 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="GetVehicleWearItemDataRS_Service_9.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="IM\Diverse\x20110501\Beloeb2Decimal.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="IM\Pensionsordning\Basal\x20140301\Pensionsordningsnummer.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="service\DepotRegnskab\x20171101\HentBetalingHistorikResponse.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SoapFault.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SoapFault.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SoapHeader.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="system\ksd\x201003\KSD_ElementId.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="system\ksd\x201003\KSD_FirmaIndbetalerIdent.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="system\livnet\x20130901\LIVNET_HentKontoRegnskabRequest.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="system\livnet\x20171101\LIVNET_HentBetalingHistorikRequest.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="system\livnet\x20210201\LIVNET_HentKontoRegnskabResponse.xsd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

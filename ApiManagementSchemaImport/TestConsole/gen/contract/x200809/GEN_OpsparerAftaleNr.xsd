@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:gen200809="dk/pfa/si/schemas/common/2008/09/01" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="dk/pfa/si/schemas/common/2008/09/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<element name="OpsparerAftaleNr" type="gen200809:OpsparerAftaleNrType">
+		<annotation>
+			<documentation>KD2 - PFA's kontrakt/police id element. Dette element identificerer en opspareraftale entydigt.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="OpsparerAftaleNrType">
+		<restriction base="nonNegativeInteger">
+			<minInclusive value="0"/>
+			<maxInclusive value="99999999"/>
+		</restriction>
+	</simpleType>
+</schema>

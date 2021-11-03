@@ -1,0 +1,21 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<include schemaLocation="GEN_PrimoGennemsnitsrenteKontoBeloeb.xsd"/>
+	<include schemaLocation="GEN_PrimoKundeKapitalOpsparingBeloeb.xsd"/>
+	<include schemaLocation="GEN_PrimoKundeKapitalNedsparingBeloeb.xsd"/>
+	<include schemaLocation="GEN_PrimoOpsparingVaerdiSumBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_PrimoOpsparingKontoBeloeb.xsd"/>
+	<element name="PrimoOpsparingGruppe" type="genCon201711:PrimoOpsparingGruppeType">
+		<annotation>
+			<documentation>Gruppering af primo opsparing</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrimoOpsparingGruppeType">
+		<sequence>
+			<element ref="genCon201309:PrimoOpsparingKontoBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:PrimoGennemsnitsrenteKontoBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:PrimoKundeKapitalOpsparingBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:PrimoKundeKapitalNedsparingBeloeb" minOccurs="0"/>
+			<element ref="genCon201711:PrimoOpsparingVaerdiSumBeloeb" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

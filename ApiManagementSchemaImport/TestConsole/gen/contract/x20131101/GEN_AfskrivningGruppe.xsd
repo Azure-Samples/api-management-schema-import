@@ -1,0 +1,25 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20131101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201311="schemas/src/gen/contract/x20131101">
+	<include schemaLocation="GEN_AfskrivningAfgiftsberigtigelseBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AfskrivningGaeldBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AfskrivningGaeldEfterAftaleBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AfskrivningGammelGaeldBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AfskrivningAdHocSaldoBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AfskrivningAfrundningBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AfskrivningGruppeSumBeloeb.xsd"/>
+	<element name="AfskrivningGruppe" type="genCon201311:AfskrivningGruppeType">
+		<annotation>
+			<documentation>Gruppering af afskrivningsomkostninger</documentation>
+		</annotation>
+	</element>
+	<complexType name="AfskrivningGruppeType">
+		<sequence>
+			<element ref="genCon201309:AfskrivningGaeldBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AfskrivningGaeldEfterAftaleBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AfskrivningGammelGaeldBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AfskrivningAdHocSaldoBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AfskrivningAfrundningBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AfskrivningGruppeSumBeloeb"/>
+			<element ref="genCon201311:AfskrivningAfgiftsberigtigelseBeloeb" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

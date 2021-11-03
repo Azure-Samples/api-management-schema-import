@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:ksd201003="dk/pfa/si/schemas/ksd/2010/03/01" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="dk/pfa/si/schemas/ksd/2010/03/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<attribute name="ElementId" type="ksd201003:ElementIdType">
+		<annotation>
+			<documentation>KSD element ID: Anvendes i GenerelAttributGruppe for elementer der ikke er KSD parter. Et element er f.eks adresse, FI, FH, underenhed</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="ElementIdType">
+		<restriction base="string">
+			<pattern value="[0-9]{1,10}"/>
+		</restriction>
+	</simpleType>
+</schema>

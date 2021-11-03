@@ -1,0 +1,27 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201403="schemas/src/gen/contract/x20140301" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<import namespace="schemas/src/gen/contract/x20140301" schemaLocation="../x20140301/GEN_PFAInternOverfoerselTillaegBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20140301" schemaLocation="../x20140301/GEN_PFAInternOverfoertSaerligBonusHensaettelseBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_TilskudGrundetUdbetalingssikring.xsd"/>		
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ManuelKorrektionAfkastBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_TilskudOverfoerselProcentBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_TilskudVelkomstBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_RabatIndirekteFondOmkostningerBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_PALPligtigKorrektionSumBeloeb.xsd"/>
+	<element name="PALPligtigKorrektionGruppe" type="genCon201711:PALPligtigKorrektionGruppeType">
+		<annotation>
+			<documentation>Gruppering beloeb veroende PAL pligtige korrektioner</documentation>
+		</annotation>
+	</element>
+	<complexType name="PALPligtigKorrektionGruppeType">
+		<sequence>
+			<element ref="genCon201309:ManuelKorrektionAfkastBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:TilskudOverfoerselProcentBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:TilskudVelkomstBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:RabatIndirekteFondOmkostningerBeloeb" minOccurs="0"/>
+			<element ref="genCon201403:PFAInternOverfoerselTillaegBeloeb" minOccurs="0"/>
+			<element ref="genCon201403:PFAInternOverfoertSaerligBonusHensaettelseBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:TilskudGrundetUdbetalingssikring" minOccurs="0"/>			
+			<element ref="genCon201309:PALPligtigKorrektionSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

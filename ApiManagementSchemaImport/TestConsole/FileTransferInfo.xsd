@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.pfa.dk/alsb/filetransferinfo/1/0/"
+	targetNamespace="http://www.pfa.dk/alsb/filetransferinfo/1/0/"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xs:element name="FileTransferInfo" type="FileTransferInfoType"/>
+
+	<xs:complexType name="FileTransferInfoType">
+		<xs:sequence>
+			<xs:element name="URI" type="xs:anyURI">
+				<xs:annotation>
+					<xs:documentation>//hostname[: port][ absolute-path] absolute-path: /shareName/folder/fileName.example example uri: smb://pfadsb02/FileInterface/IS/testFile.txt</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BinaryFormat" type="xs:boolean"/>
+			<xs:element name="Encoding" type="EncodingType" minOccurs="0" />
+			<xs:element name="SHA256Checksum" type="SHA256ChecksumType" minOccurs="0"/>
+			<xs:element name="MimeType" type="MimeTypeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="EncodingType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+			<xs:pattern value="[A-Z]{3}-?[0-9]+(-[0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="SHA256ChecksumType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9a-f]{64}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MimeTypeType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+			<xs:pattern value="\w+/\w+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

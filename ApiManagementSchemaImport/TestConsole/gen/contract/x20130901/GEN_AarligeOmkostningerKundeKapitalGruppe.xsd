@@ -1,0 +1,15 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_AarligeOmkostningerKundeKapitalKronerBeloeb.xsd"/>
+	<include schemaLocation="GEN_AarligeOmkostningerKundeKapitalProcent.xsd"/>
+	<element name="AarligeOmkostningerKundeKapitalGruppe" type="genCon201309:AarligeOmkostningerKundeKapitalGruppeType">
+		<annotation>
+			<documentation>Beloeb og procent for aarlige omkostninger paa kundekapital</documentation>
+		</annotation>
+	</element>
+	<complexType name="AarligeOmkostningerKundeKapitalGruppeType">
+		<sequence>
+			<element ref="genCon201309:AarligeOmkostningerKundeKapitalKronerBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AarligeOmkostningerKundeKapitalProcent" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

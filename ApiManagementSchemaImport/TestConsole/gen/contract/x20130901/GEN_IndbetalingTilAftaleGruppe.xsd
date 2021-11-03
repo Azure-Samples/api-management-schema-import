@@ -1,0 +1,19 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_LoebendeIndbetalingBeloeb.xsd"/>
+	<include schemaLocation="GEN_RisikoOverskudBeloeb.xsd"/>
+	<include schemaLocation="GEN_EngangIndbetalingBeloeb.xsd"/>
+	<include schemaLocation="GEN_IndbetalingerSumBeloeb.xsd"/>
+	<element name="IndbetalingTilAftaleGruppe" type="genCon201309:IndbetalingTilAftaleGruppeType">
+		<annotation>
+			<documentation>Gruppering af indbetalinger</documentation>
+		</annotation>
+	</element>
+	<complexType name="IndbetalingTilAftaleGruppeType">
+		<sequence>
+			<element ref="genCon201309:LoebendeIndbetalingBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:RisikoOverskudBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:EngangIndbetalingBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:IndbetalingerSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

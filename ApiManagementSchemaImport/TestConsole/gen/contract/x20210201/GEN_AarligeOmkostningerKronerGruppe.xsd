@@ -1,0 +1,23 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20210201" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon202102="schemas/src/gen/contract/x20210201">
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AarligeOmkostningerKronerDirekteBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AarligeOmkostningerKronerIndirekteBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AarligeOmkostningerKronerSumBeloeb.xsd"/>
+	<include schemaLocation="GEN_AarligeOmkostningerKronerInvesteringsomkostningerSamletBeloeb.xsd"/>
+	<include schemaLocation="GEN_AarligeOmkostningerKronerOmkostningsOgRisikoresultatBeloeb.xsd"/>
+	<include schemaLocation="GEN_AarligeOmkostningerKronerRisikoforrentningBeloeb.xsd"/>
+	<element name="AarligeOmkostningerKronerGruppe" type="genCon202102:AarligeOmkostningerKronerGruppeType">
+		<annotation>
+			<documentation>Beloeb vedroerende direkte og indirekte aarlige omkostninger paa  kontoen</documentation>
+		</annotation>
+	</element>
+	<complexType name="AarligeOmkostningerKronerGruppeType">
+		<sequence>
+			<element ref="genCon201309:AarligeOmkostningerKronerDirekteBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AarligeOmkostningerKronerIndirekteBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AarligeOmkostningerKronerSumBeloeb"/>
+			<element ref="genCon202102:AarligeOmkostningerKronerInvesteringsomkostningerSamletBeloeb" minOccurs="0"/>
+			<element ref="genCon202102:AarligeOmkostningerKronerOmkostningsOgRisikoresultatBeloeb" minOccurs="0"/>
+			<element ref="genCon202102:AarligeOmkostningerKronerRisikoforrentningBeloeb" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

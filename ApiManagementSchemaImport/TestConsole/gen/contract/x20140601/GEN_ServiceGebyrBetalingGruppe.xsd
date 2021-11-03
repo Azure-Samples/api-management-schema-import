@@ -1,0 +1,19 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20140601" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon200911="dk/pfa/si/schemas/common/2009/11/01" xmlns:genSch201406="schemas/src/gen/scheme/x20140601" xmlns:genCon200812="dk/pfa/si/schemas/common/2008/12/22" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201406="schemas/src/gen/contract/x20140601">
+	<import namespace="dk/pfa/si/schemas/common/2009/11/01" schemaLocation="../x200911/GEN_ValoerDato.xsd"/>
+	<import namespace="schemas/src/gen/scheme/x20140601" schemaLocation="../../scheme/x20140601/GEN_TransaktionTypeId.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2008/12/22" schemaLocation="../x200812/GEN_GebyrType.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ServiceGebyrBetalingBeloeb.xsd"/>
+	<element name="ServiceGebyrBetalingGruppe" type="genCon201406:ServiceGebyrBetalingGruppeType">
+		<annotation>
+			<documentation>Data vedroerende service gebyrer</documentation>
+		</annotation>
+	</element>
+	<complexType name="ServiceGebyrBetalingGruppeType">
+		<sequence>
+			<element ref="genCon200911:ValoerDato"/>
+			<element ref="genSch201406:TransaktionTypeId"/>
+			<element ref="genCon200812:GebyrType"/>
+			<element ref="genCon201309:ServiceGebyrBetalingBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.pfa.dk/alsb/filetransfer" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.pfa.dk/alsb/filetransfer">
+	<xs:complexType name="FileRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="traceId" type="xs:string"/>
+			<xs:element name="encoding" type="xs:string" minOccurs="0"/>
+			<xs:element name="fileBinary" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="mimetype" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageProperties" type="MessageProperties"/>
+			<xs:element name="callbackProxy" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MoveFileRequest" type="MoveFileRequest"/>
+	<xs:complexType name="MoveFileRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="fromUri" type="xs:string"/>
+					<xs:element name="toUri" type="xs:string"/>
+					<xs:element name="archiveUri" type="xs:string" minOccurs="0"/>
+					<xs:element name="renameProperties" type="RenameProperties" minOccurs="0"/>
+					<xs:element name="returnSMBUri" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PublishFileRequest" type="PublishFileRequest"/>
+	<xs:complexType name="PublishFileRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="fromUri" type="xs:string"/>
+					<xs:element name="PublishFileSubscribers" type="PublishFileSubscribers" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PublishFileSubscribers">
+		<xs:sequence>
+			<xs:element name="subscriberApp" type="xs:string"/>
+			<xs:element name="moveToDB" type="xs:string" minOccurs="0"/>
+			<xs:element name="toUri" type="xs:string"/>
+			<xs:element name="archiveUri" type="xs:string" minOccurs="0"/>
+			<xs:element name="renameProperties" type="RenameProperties" minOccurs="0"/>
+			<xs:element name="receiver" type="Receiver" minOccurs="0"/>
+			<xs:element name="returnSMBUri" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MoveFilesRequest" type="MoveFilesRequest"/>
+	<xs:complexType name="MoveFilesRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="fromDir" type="xs:string"/>
+					<xs:element name="toDir" type="xs:string"/>
+					<xs:element name="fileMask" type="xs:string"/>
+					<xs:element name="archiveUri" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MoveFileToDBRequest" type="MoveFileToDBRequest"/>
+	<xs:complexType name="MoveFileToDBRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:choice>
+					<xs:sequence>
+						<xs:element name="fromUri" type="xs:string"/>
+						<xs:element name="archiveUri" type="xs:string" minOccurs="0"/>
+						<xs:element name="receiver" type="Receiver"/>
+					</xs:sequence>
+					<xs:sequence>
+						<xs:element name="payload" type="xs:string"/>
+					</xs:sequence>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MoveFileToDBandFileShareRequest" type="MoveFileToDBandFileShareRequest"/>
+	<xs:complexType name="MoveFileToDBandFileShareRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:choice>
+					<xs:sequence>
+						<xs:element name="fromUri" type="xs:string"/>
+						<xs:element name="toUri" type="xs:string"/>
+						<xs:element name="archiveUri" type="xs:string" minOccurs="0"/>
+						<xs:element name="receiver" type="Receiver"/>
+						<xs:element name="returnSMBUri" type="xs:boolean"/>
+					</xs:sequence>
+					<xs:sequence>
+						<xs:element name="payload" type="xs:string"/>
+					</xs:sequence>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="Receiver">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BS2000"/>
+			<xs:enumeration value="SAPBW"/>
+			<xs:enumeration value="SAPCRM"/>
+			<xs:enumeration value="SAPFICO"/>
+			<xs:enumeration value="SAPHR"/>
+			<xs:enumeration value="SAPLOEN"/>
+			<xs:enumeration value="SAPPO"/>
+			<xs:enumeration value="SYSTEMADMINISTRATION"/>
+			<xs:enumeration value="SAPKR"/>
+			<xs:enumeration value="KR-IS-KSD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ZipAndMoveFileRequest" type="ZipAndMoveFileRequest"/>
+	<xs:complexType name="ZipAndMoveFileRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="fromUri" type="xs:string"/>
+					<xs:element name="toUri" type="xs:string"/>
+					<xs:element name="archiveUri" type="xs:string"/>
+					<xs:element name="renameProperties" type="RenameProperties" minOccurs="0"/>
+					<xs:element name="returnSMBUri" type="xs:boolean"/>
+					<xs:choice>
+						<xs:element name="filesToZip" type="FilesToZip"/>
+						<xs:element name="controlFile" type="xs:string"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FilesToZip">
+		<xs:sequence>
+			<xs:element name="fileToZip" type="FileToZip" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="FileToZip">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:element name="MoveFileAndUnzipRequest" type="MoveFileAndUnzipRequest"/>
+	<xs:complexType name="MoveFileAndUnzipRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="fromUri" type="xs:string"/>
+					<xs:element name="toUri" type="xs:string"/>
+					<xs:element name="archiveUri" type="xs:string" minOccurs="0"/>
+					<xs:element name="fileMappings" type="FileMappings"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CreateTriggerRequest" type="CreateTriggerRequest"/>
+	<xs:complexType name="CreateTriggerRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="triggerFileType" type="xs:string"/>
+					<xs:element name="triggerFileuri" type="xs:string"/>
+					<xs:element name="datafileName" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MoveFileAndTransformRequest" type="MoveFileAndTransformRequest"/>
+	<xs:complexType name="MoveFileAndTransformRequest">
+		<xs:complexContent>
+			<xs:extension base="FileRequest">
+				<xs:sequence>
+					<xs:element name="fromUri" type="xs:string"/>
+					<xs:element name="toUri" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="renameProperties" type="RenameProperties" minOccurs="0"/>
+					<xs:element name="returnSMBUri" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="FiletransferResponse" type="FiletransferResponse"/>
+	<xs:complexType name="FiletransferResponse">
+		<xs:sequence>
+			<xs:element name="toUri" type="xs:string"/>
+			<xs:element name="encoding" type="xs:string"/>
+			<xs:element name="binary" type="xs:boolean"/>
+			<xs:element name="mimetype" type="xs:string"/>
+			<xs:element name="traceId" type="xs:string"/>
+			<xs:element name="messageProperties" type="MessageProperties" minOccurs="0"/>
+			<xs:element name="callbackProxy" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MoveFilesResponse" type="MoveFilesResponse"/>
+	<xs:complexType name="MoveFilesResponse">
+		<xs:sequence>
+			<xs:element name="traceId" type="xs:string"/>
+			<xs:element name="callbackProxy" type="xs:string" minOccurs="0"/>
+			<xs:element name="fileMask" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PublishFileResponse" type="PublishFileResponse"/>
+	<xs:complexType name="PublishFileResponse">
+		<xs:complexContent>
+			<xs:extension base="FiletransferResponse">
+				<xs:sequence>
+					<xs:element name="traceId" type="xs:string"/>
+					<xs:element name="callbackProxy" type="xs:string" minOccurs="0"/>
+					<xs:element name="fileMask" type="xs:string"/>
+					<xs:element name="PublishFileSubscribers" type="PublishFileSubscribers" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ErrorResponse" type="ErrorResponse"/>
+	<xs:complexType name="ErrorResponse">
+		<xs:sequence>
+			<xs:element name="invokedBy" type="xs:string"/>
+			<xs:element name="errorMsg" type="xs:string"/>
+			<xs:element name="exceptionNodeName" type="xs:string"/>
+			<xs:element name="stackTrace" type="xs:string"/>
+			<xs:element name="instanceId" type="xs:string"/>
+			<xs:element name="processName" type="xs:string"/>
+			<xs:element name="resendable" type="xs:boolean"/>
+			<xs:element name="originalMsg" type="FileRequest"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageProperties">
+		<xs:sequence>
+			<xs:element name="from" type="xs:string"/>
+			<xs:element name="to" type="xs:string"/>
+			<xs:element name="serviceName" type="xs:string"/>
+			<xs:element name="operationName" type="xs:string"/>
+			<xs:element name="major" type="xs:int"/>
+			<xs:element name="minor" type="xs:int"/>
+			<xs:element name="stage" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RenameProperties">
+		<xs:sequence>
+			<xs:element name="extension" type="xs:string"/>
+			<xs:element name="useFilename" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="useTimestamp" type="xs:boolean" use="optional" default="true"/>
+		<!--  missing useTimestamp-attribute is equivalent to useTimestamp="true" -->
+	</xs:complexType>
+	<xs:complexType name="FileMappings">
+		<xs:sequence>
+			<xs:element name="fileMapping" type="FileMapping" minOccurs="0" maxOccurs="20"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FileMapping">
+		<xs:sequence>
+			<xs:element name="pattern" type="xs:string"/>
+			<xs:element name="path" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

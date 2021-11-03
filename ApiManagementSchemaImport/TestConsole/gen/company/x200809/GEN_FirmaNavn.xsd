@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen200809="dk/pfa/si/schemas/common/2008/09/01" targetNamespace="dk/pfa/si/schemas/common/2008/09/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<element name="FirmaNavn" type="gen200809:FirmaNavnType">
+		<annotation>
+			<documentation>Firmanavn. Boer vaere det firmanavn som er registreret i CVR registeret.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="FirmaNavnType">
+		<restriction base="string">
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+</schema>

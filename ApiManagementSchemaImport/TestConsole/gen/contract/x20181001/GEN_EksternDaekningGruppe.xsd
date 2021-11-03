@@ -1,0 +1,17 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20181001" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201810="schemas/src/gen/contract/x20181001">
+	<include schemaLocation="GEN_EksternLeverandoer.xsd"/>
+	<include schemaLocation="GEN_EksternDaekningPris.xsd"/>
+	<include schemaLocation="GEN_EksternDaekningTilskud.xsd"/>
+	<element name="EksternDaekningGruppe" type="genCon201810:EksternDaekningGruppeType">
+		<annotation>
+			<documentation>Gruppering af elementet prisforeksterndaekningbeloeb</documentation>
+		</annotation>
+	</element>
+	<complexType name="EksternDaekningGruppeType">
+		<sequence>
+			<element ref="genCon201810:EksternLeverandoer"/>
+			<element ref="genCon201810:EksternDaekningPris"/>
+			<element ref="genCon201810:EksternDaekningTilskud" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

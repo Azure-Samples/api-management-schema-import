@@ -1,0 +1,14 @@
+<schema targetNamespace="dk/pfa/si/schemas/common/2008/09/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen200809="dk/pfa/si/schemas/common/2008/09/01">
+	<include schemaLocation="GEN_Valuta.xsd"/>
+	<include schemaLocation="GEN_Beloeb.xsd"/>
+	<element name="GenerelBeloeb" type="gen200809:GenerelBeloebType"/>
+	<complexType name="GenerelBeloebType">
+		<annotation>
+			<documentation>Dette er den generiske beloebstype som anvendes for et beloebselement.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="gen200809:Beloeb"/>
+			<element ref="gen200809:Valuta"/>
+		</sequence>
+	</complexType>
+</schema>

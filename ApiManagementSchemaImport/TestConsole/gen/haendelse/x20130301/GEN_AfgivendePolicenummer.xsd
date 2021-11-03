@@ -1,0 +1,8 @@
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) --><schema targetNamespace="schemas/src/gen/haendelse/x20130301" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:gen200809="dk/pfa/si/schemas/common/2008/09/01" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genHae201303="schemas/src/gen/haendelse/x20130301">
+	<import namespace="dk/pfa/si/schemas/common/2008/09/01" schemaLocation="../../contract/x200809/GEN_OpsparerAftaleNr.xsd"/>
+	<element name="AfgivendePolicenummer" type="gen200809:OpsparerAftaleNrType">
+		<annotation>
+			<documentation>Nummer paa den afgivende police i forbindelse med samling af policer</documentation>
+		</annotation>
+	</element>
+</schema>

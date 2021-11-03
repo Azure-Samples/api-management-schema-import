@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201803="schemas/src/gen/contract/x20180301" targetNamespace="schemas/src/gen/contract/x20180301" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="UdvidetKoncept" type="genCon201803:UdvidetKonceptType">
+		<annotation>
+			<documentation>Viser de muligheder der findes for koncepter i R51, R52 samt PFA Valgfri, Kundekapital og Gennemsnitsrente</documentation>
+		</annotation>
+	</element>
+	<simpleType name="UdvidetKonceptType">
+		<restriction base="string">
+			<enumeration value="PFA Investerer"/>
+			<enumeration value="Du Investerer"/>
+			<enumeration value="Oktogonen"/>
+			<enumeration value="PFA Valgfri"/>
+			<enumeration value="KundeKapital"/>
+			<enumeration value="Gennemsnitsrente"/>
+		</restriction>
+	</simpleType>
+</schema>

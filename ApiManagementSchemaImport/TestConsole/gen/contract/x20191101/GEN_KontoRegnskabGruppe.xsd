@@ -1,0 +1,25 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20191101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201711="schemas/src/gen/contract/x20171101" xmlns:genCon201911="schemas/src/gen/contract/x20191101">
+	<include schemaLocation="GEN_BevaegelserGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20171101" schemaLocation="../x20171101/GEN_PrimoVaerdiGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20171101" schemaLocation="../x20171101/GEN_UltimoVaerdiGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ValoerPeriodeFra.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ValoerPeriodeTil.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ErPoliceIFejl.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_KontoRegnskabKontrolBeloeb.xsd"/>
+	<element name="KontoRegnskabGruppe" type="genCon201911:KontoRegnskabGruppeType">
+		<annotation>
+			<documentation>Indeholder overordnet data og grupper af data vedroerende konto regnskabet</documentation>
+		</annotation>
+	</element>
+	<complexType name="KontoRegnskabGruppeType">
+		<sequence>
+			<element ref="genCon201309:ValoerPeriodeFra"/>
+			<element ref="genCon201309:ValoerPeriodeTil"/>
+			<element ref="genCon201309:ErPoliceIFejl"/>
+			<element ref="genCon201309:KontoRegnskabKontrolBeloeb"/>
+			<element ref="genCon201711:PrimoVaerdiGruppe"/>
+			<element ref="genCon201911:BevaegelserGruppe" minOccurs="0"/>
+			<element ref="genCon201711:UltimoVaerdiGruppe"/>
+		</sequence>
+	</complexType>
+</schema>

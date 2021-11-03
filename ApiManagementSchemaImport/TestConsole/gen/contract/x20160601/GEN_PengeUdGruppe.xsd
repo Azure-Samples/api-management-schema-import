@@ -1,0 +1,21 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20160601" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201606="schemas/src/gen/contract/x20160601">
+	<include schemaLocation="GEN_ForsikringerLoebendeUdbetalingBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_OverfoerslerUdGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_TilbagekoebVaerdiBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AlderspensionUdbetalingerGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_PengeUdSumBeloeb.xsd"/>
+	<element name="PengeUdGruppe" type="genCon201606:PengeUdGruppeType">
+		<annotation>
+			<documentation>Gruppering af penge ud fra kontoen</documentation>
+		</annotation>
+	</element>
+	<complexType name="PengeUdGruppeType">
+		<sequence>
+			<element ref="genCon201309:OverfoerslerUdGruppe" minOccurs="0"/>
+			<element ref="genCon201309:TilbagekoebVaerdiBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:AlderspensionUdbetalingerGruppe" minOccurs="0"/>
+			<element ref="genCon201606:ForsikringerLoebendeUdbetalingBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:PengeUdSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

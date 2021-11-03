@@ -1,0 +1,29 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen200812="dk/pfa/si/schemas/common/2008/12/22" xmlns:gen201003="dk/pfa/si/schemas/common/2010/03/01" xmlns:genInd201706="schemas/src/gen/indbetaling/x20170601" xmlns:genCon201003="dk/pfa/si/schemas/common/2010/03/01" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201506="schemas/src/gen/contract/x20150601" xmlns:genCon201706="schemas/src/gen/contract/x20170601" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<include schemaLocation="GEN_TransitionGruppeListe.xsd"/>
+	<include schemaLocation="GEN_TransitionTotalBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20150601" schemaLocation="../x20150601/GEN_PrisForEksternDaekningBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_OverfoerselGruppeListe.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2008/12/22" schemaLocation="../../indbetaling/x200812/GEN_IndbetalingTotalBeloeb.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../x201003/GEN_SidsteKvitteringDato.xsd"/>
+	<import namespace="schemas/src/gen/indbetaling/x20170601" schemaLocation="../../indbetaling/x20170601/GEN_IndbetalingInfoGruppe.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../x201003/GEN_OverfoerselTotalBeloeb.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../x201003/GEN_IndbetalingOverfoerselTotalBeloeb.xsd"/>
+	<element name="IndbetalingHistorikInfo" type="genCon201711:IndbetalingHistorikInfoType">
+		<annotation>
+			<documentation>Gruppering af beloeb vedroerende Indbetalingshistorik. IndbetalingInfoGruppe er data fra LivNet beriget med FirmaNavn fra KSD.</documentation>
+		</annotation>
+	</element>
+	<complexType name="IndbetalingHistorikInfoType">
+		<sequence>
+			<element ref="genCon201003:SidsteKvitteringDato" minOccurs="0"/>
+			<element ref="genInd201706:IndbetalingInfoGruppe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201309:OverfoerselGruppeListe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201711:TransitionGruppeListe" minOccurs="0" maxOccurs="unbounded"/>			
+			<element ref="gen200812:IndbetalingTotalBeloeb"/>
+			<element ref="gen201003:OverfoerselTotalBeloeb"/>
+			<element ref="genCon201711:TransitionTotalBeloeb"/>
+			<element ref="gen201003:IndbetalingOverfoerselTotalBeloeb"/>
+			<element ref="genCon201506:PrisForEksternDaekningBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

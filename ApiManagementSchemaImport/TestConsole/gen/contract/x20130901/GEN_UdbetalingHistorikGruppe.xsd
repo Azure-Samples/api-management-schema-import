@@ -1,0 +1,33 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201211="schemas/src/gen/contract/x20121101" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_LoebendeAlderspensionMidlertidigGruppeListe.xsd"/>
+	<include schemaLocation="GEN_LoebendeAlderspensionMidlertidigYdelseTotalBeloeb.xsd"/>
+	<include schemaLocation="GEN_LoebendeAlderspensionGruppeListe.xsd"/>
+	<include schemaLocation="GEN_LoebendeAlderspensionTotalBeloeb.xsd"/>
+	<include schemaLocation="GEN_EngangUdbetalingGruppeListe.xsd"/>
+	<include schemaLocation="GEN_EngangUdbetalingTotalBeloeb.xsd"/>
+	<include schemaLocation="GEN_TilbagekoebGruppeListe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20121101" schemaLocation="../x20121101/GEN_TilbagekoebTotalBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20121101" schemaLocation="../x20121101/GEN_OverfoerselUdTotalBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20121101" schemaLocation="../x20121101/GEN_UdbetalingTotalBeloeb.xsd"/>
+	<include schemaLocation="GEN_OverfoerselUdGruppeListe.xsd"/>
+	<element name="UdbetalingHistorikGruppe" type="genCon201309:UdbetalingHistorikGruppeType">
+		<annotation>
+			<documentation>Gruppering af beloeb vedroerende udbetalingshistorik</documentation>
+		</annotation>
+	</element>
+	<complexType name="UdbetalingHistorikGruppeType">
+		<sequence>
+			<element ref="genCon201309:LoebendeAlderspensionMidlertidigGruppeListe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201309:LoebendeAlderspensionMidlertidigYdelseTotalBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:LoebendeAlderspensionGruppeListe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201309:LoebendeAlderspensionTotalBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:EngangUdbetalingGruppeListe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201309:EngangUdbetalingTotalBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:TilbagekoebGruppeListe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201211:TilbagekoebTotalBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:OverfoerselUdGruppeListe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201211:OverfoerselUdTotalBeloeb" minOccurs="0"/>
+			<element ref="genCon201211:UdbetalingTotalBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

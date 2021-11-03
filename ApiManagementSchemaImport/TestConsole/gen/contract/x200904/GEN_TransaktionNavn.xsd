@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:gen200904="dk/pfa/si/schemas/gen/2009/04/17" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="dk/pfa/si/schemas/gen/2009/04/17" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<element name="TransaktionNavn" type="gen200904:TransaktionNavnType">
+		<annotation>
+			<documentation>Navnet paa en transaktion</documentation>
+		</annotation>
+	</element>
+	<simpleType name="TransaktionNavnType">
+		<restriction base="string">
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

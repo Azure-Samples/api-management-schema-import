@@ -1,0 +1,19 @@
+<!-- edited with XMLSpy v2014 (x64) (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/service/DepotRegnskab/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen2008="dk/pfa/si/schemas/common/2008/02/01" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201706="schemas/src/gen/contract/x20170601" xmlns:genCon201711="schemas/src/gen/contract/x20171101" xmlns:tns="schemas/src/service/DepotRegnskab/x20171101">
+	<import namespace="dk/pfa/si/schemas/common/2008/02/01" schemaLocation="../../../gen/general/x2008/GEN_Fejl.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20171101" schemaLocation="../../../gen/contract/x20171101/GEN_IndbetalingHistorikInfo.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../../../gen/contract/x20130901/GEN_UdbetalingHistorikGruppe.xsd"/>
+	<element name="HentBetalingHistorikResponse" type="tns:HentBetalingHistorikResponseType">
+		<annotation>
+			<documentation>Beskriver betalingshistorik for en given kunde og periode. IndbetalingHistorikInfo er data fra LivNet beriget med FirmaNavne fra KSD</documentation>
+		</annotation>
+	</element>
+	<complexType name="HentBetalingHistorikResponseType">
+		<choice>
+			<sequence>
+				<element ref="genCon201711:IndbetalingHistorikInfo" minOccurs="0"/>
+				<element ref="genCon201309:UdbetalingHistorikGruppe" minOccurs="0"/>
+			</sequence>
+			<element ref="gen2008:Fejl"/>
+		</choice>
+	</complexType>
+</schema>

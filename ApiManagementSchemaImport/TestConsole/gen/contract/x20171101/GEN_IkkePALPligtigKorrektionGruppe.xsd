@@ -1,0 +1,23 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201311="schemas/src/gen/contract/x20131101" xmlns:genCon201406="schemas/src/gen/contract/x20140601" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<import namespace="schemas/src/gen/contract/x20140601" schemaLocation="../x20140601/GEN_TilskudEtableringsomkostningBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ManuelKorrektionBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_TilskudFlytteomkostningerBeloeb.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_DaekningAfPALAfregning.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20131101" schemaLocation="../x20131101/GEN_AfskrivningGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_IkkePALPligtigKorrektionGruppeSumBeloeb.xsd"/>
+	<element name="IkkePALPligtigKorrektionGruppe" type="genCon201711:IkkePALPligtigKorrektionGruppeType">
+		<annotation>
+			<documentation>Gruppering af beloeb vedroerende ikkePAL pligtige korrektioner</documentation>
+		</annotation>
+	</element>
+	<complexType name="IkkePALPligtigKorrektionGruppeType">
+		<sequence>
+			<element ref="genCon201309:ManuelKorrektionBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:TilskudFlytteomkostningerBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:DaekningAfPALAfregning" minOccurs="0"/>
+			<element ref="genCon201406:TilskudEtableringsomkostningBeloeb" minOccurs="0"/>
+			<element ref="genCon201311:AfskrivningGruppe" minOccurs="0"/>
+			<element ref="genCon201309:IkkePALPligtigKorrektionGruppeSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

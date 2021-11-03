@@ -1,0 +1,8 @@
+<schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pb201403="schemas/src/IM/Pensionsordning/Basal/x20140301" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<import namespace="schemas/src/IM/Pensionsordning/Basal/x20140301" schemaLocation="../../../IM/Pensionsordning/Basal/x20140301/Pensionsordningsnummer.xsd"/>
+	<element name="KRPolicenummer" type="pb201403:PensionsordningsnummerType">
+		<annotation>
+			<documentation>KR policenummer.</documentation>
+		</annotation>
+	</element>
+</schema>

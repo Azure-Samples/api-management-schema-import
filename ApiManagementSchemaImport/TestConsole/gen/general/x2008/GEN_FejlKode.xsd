@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen2008="dk/pfa/si/schemas/common/2008/02/01" targetNamespace="dk/pfa/si/schemas/common/2008/02/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<element name="FejlKode" type="gen2008:FejlKodeType">
+		<annotation>
+			<documentation>
+				Fejlkode til en fejl
+			</documentation>
+		</annotation>
+	</element>	
+	<simpleType name="FejlKodeType">
+		<restriction base="string" >
+			<maxLength value="256"/>
+		</restriction>			
+	</simpleType>
+</schema>

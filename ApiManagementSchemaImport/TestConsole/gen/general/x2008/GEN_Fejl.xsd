@@ -1,0 +1,16 @@
+<schema targetNamespace="dk/pfa/si/schemas/common/2008/02/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen2008="dk/pfa/si/schemas/common/2008/02/01">
+<include schemaLocation="GEN_FejlTekst.xsd"/>
+<include schemaLocation="GEN_FejlKode.xsd"/>
+	<element name="Fejl" type="gen2008:FejlType"/>
+	<complexType name="FejlType">
+		<annotation>
+			<documentation>
+				Denne datatype modellerer en fejl.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="gen2008:FejlKode"/>
+			<element ref="gen2008:FejlTekst"/>
+		</sequence>
+	</complexType>
+</schema>

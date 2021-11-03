@@ -1,0 +1,15 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201303="schemas/src/gen/contract/x20130301" xmlns:genGen201003="dk/pfa/si/schemas/common/2010/03/01">
+	<include schemaLocation="GEN_TilskudArt.xsd"/>
+	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../../general/x201003/GEN_Beloeb2Dec.xsd"/>
+	<element name="TilskudFraEgenkapitalenGruppe" type="genCon201303:TilskudFraEgenkapitalenGruppeType">
+		<annotation>
+			<documentation>Gruppe med information om tilskud type og beloeb</documentation>
+		</annotation>
+	</element>
+	<complexType name="TilskudFraEgenkapitalenGruppeType">
+		<sequence>
+			<element ref="genCon201303:TilskudArt"/>
+			<element ref="genGen201003:Beloeb2Dec"/>
+		</sequence>
+	</complexType>
+</schema>

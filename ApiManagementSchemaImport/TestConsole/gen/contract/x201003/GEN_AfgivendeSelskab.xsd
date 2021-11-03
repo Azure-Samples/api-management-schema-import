@@ -1,0 +1,8 @@
+<schema targetNamespace="dk/pfa/si/schemas/common/2010/03/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen201003="dk/pfa/si/schemas/common/2010/03/01">
+	<include schemaLocation="../../company/x201003/GEN_CVRnr.xsd"/>
+	<element name="AfgivendeSelskab" type="gen201003:CVRnrType">
+		<annotation>
+			<documentation>Identifikation af selskab der sender en overfoersel</documentation>
+		</annotation>
+	</element>
+</schema>

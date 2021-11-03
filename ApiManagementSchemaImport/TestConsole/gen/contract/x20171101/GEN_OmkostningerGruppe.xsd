@@ -1,0 +1,23 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" xmlns:genCon201711="schemas/src/gen/contract/x20171101">
+	<include schemaLocation="GEN_OmkostningerGennemsnitsrente.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_AdminstrationOmkostningerGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_TransaktionOmkostningerBeloebGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_ServiceRaadgivningGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_OevrigeDirekteOmkostninger.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20130901" schemaLocation="../x20130901/GEN_OmkostningerSumBeloeb.xsd"/>
+	<element name="OmkostningerGruppe" type="genCon201711:OmkostningerGruppeType">
+		<annotation>
+			<documentation>Gruppering beloeb vedroerende omkostningerr</documentation>
+		</annotation>
+	</element>
+	<complexType name="OmkostningerGruppeType">
+		<sequence>
+			<element ref="genCon201309:AdminstrationOmkostningerGruppe" minOccurs="0"/>
+			<element ref="genCon201309:TransaktionOmkostningerBeloebGruppe" minOccurs="0"/>
+			<element ref="genCon201309:ServiceRaadgivningGruppe" minOccurs="0"/>
+			<element ref="genCon201309:OevrigeDirekteOmkostninger" minOccurs="0"/>
+			<element ref="genCon201711:OmkostningerGennemsnitsrente" minOccurs="0"/>
+			<element ref="genCon201309:OmkostningerSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>

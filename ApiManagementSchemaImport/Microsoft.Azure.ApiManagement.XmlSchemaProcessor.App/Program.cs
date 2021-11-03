@@ -9,11 +9,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App
         static async Task Main(string[] args)
         {
             var log = new ConsoleLog();
-            if (args.Length == 1)
-            {
-                var xsdDirectory = args[0];
-                await XmlSchemaDocument.LoadAsync(xsdDirectory, log);
-            }else if (args.Length == 2)
+            if (args.Length == 2)
             {
                 var xsdDirectory = args[0];
                 var outputDirectory = args[1];
@@ -21,7 +17,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App
             }
             else
             {
-                log.Error("Directory path should be provided as a parameter of the tool.");
+                log.Error("XSD Directory path and output directory should be provided as a parameter of the tool.");
             }
         }
     }

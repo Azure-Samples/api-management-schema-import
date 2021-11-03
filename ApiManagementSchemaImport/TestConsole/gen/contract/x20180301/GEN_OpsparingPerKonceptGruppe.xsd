@@ -1,0 +1,19 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20180301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201611="schemas/src/gen/contract/x20161101" xmlns:genCon201711="schemas/src/gen/contract/x20171101" xmlns:genCon201803="schemas/src/gen/contract/x20180301">
+	<include schemaLocation="GEN_UdvidetKoncept.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20171101" schemaLocation="../x20171101/GEN_OpsparingPerEnhedGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20171101" schemaLocation="../x20171101/GEN_OpsparingKKPerTypeGruppe.xsd"/>
+	<import namespace="schemas/src/gen/contract/x20161101" schemaLocation="../x20161101/GEN_OpsparingKonceptBeloeb.xsd"/>
+	<element name="OpsparingPerKonceptGruppe" type="genCon201803:OpsparingPerKonceptGruppeType">
+		<annotation>
+			<documentation>Ultimosaldoen opdelt pr. koncept</documentation>
+		</annotation>
+	</element>
+	<complexType name="OpsparingPerKonceptGruppeType">
+		<sequence>
+			<element ref="genCon201803:UdvidetKoncept"/>
+			<element ref="genCon201611:OpsparingKonceptBeloeb"/>
+			<element ref="genCon201711:OpsparingPerEnhedGruppe" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="genCon201711:OpsparingKKPerTypeGruppe" minOccurs="0" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+</schema>

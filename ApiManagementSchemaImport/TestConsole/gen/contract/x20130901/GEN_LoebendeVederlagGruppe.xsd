@@ -1,0 +1,19 @@
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by PFA Pension (PFA Pension) --><schema targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901">
+	<include schemaLocation="GEN_LoebendeVederlagFastBeloeb.xsd"/>
+	<include schemaLocation="GEN_LoebendeVederlagProcentAfIndbetalingBeloeb.xsd"/>
+	<include schemaLocation="GEN_LoebendeVederlagProcentAfSaldoBeloeb.xsd"/>
+	<include schemaLocation="GEN_LoebendeVederlagSumBeloeb.xsd"/>
+	<element name="LoebendeVederlagGruppe" type="genCon201309:LoebendeVederlagGruppeType">
+		<annotation>
+			<documentation>Gruppering af vederlagsomkostninger</documentation>
+		</annotation>
+	</element>
+	<complexType name="LoebendeVederlagGruppeType">
+		<sequence>
+			<element ref="genCon201309:LoebendeVederlagFastBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:LoebendeVederlagProcentAfIndbetalingBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:LoebendeVederlagProcentAfSaldoBeloeb" minOccurs="0"/>
+			<element ref="genCon201309:LoebendeVederlagSumBeloeb"/>
+		</sequence>
+	</complexType>
+</schema>
