@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2007 (http://www.altova.com) by Klaus Langelund Larsen (PFA Pension A/S) -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201211="schemas/src/gen/contract/x20121101" targetNamespace="schemas/src/gen/contract/x20121101" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<element name="OverfoerselUdDato" type="date">
-		<annotation>
-			<documentation>Valoerdato for hvornaar overfoerslen er trukket i opsparingen.</documentation>
-		</annotation>
-	</element>
-</schema>

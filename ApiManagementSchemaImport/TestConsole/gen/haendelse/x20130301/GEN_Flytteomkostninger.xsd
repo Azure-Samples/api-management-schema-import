@@ -1,8 +1,0 @@
-<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) --><schema targetNamespace="schemas/src/gen/haendelse/x20130301" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:gen201003="dk/pfa/si/schemas/common/2010/03/01" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genHae201303="schemas/src/gen/haendelse/x20130301">
-	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../../general/x201003/GEN_Beloeb2Dec.xsd"/>
-	<element name="Flytteomkostninger" type="gen201003:Beloeb2DecType">
-		<annotation>
-			<documentation>Vaerdi af flytteomkostningerne ifm samling af policerne</documentation>
-		</annotation>
-	</element>
-</schema>

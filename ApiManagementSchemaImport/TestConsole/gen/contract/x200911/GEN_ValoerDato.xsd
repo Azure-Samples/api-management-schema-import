@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="dk/pfa/si/schemas/common/2009/11/01" xmlns:gen200911="dk/pfa/si/schemas/common/2009/11/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
-	<element name="ValoerDato" type="date">
-		<annotation>
-			<documentation>Valoerdato</documentation>
-		</annotation>
-	</element>
-</schema>

@@ -1,8 +1,0 @@
-<schema targetNamespace="dk/pfa/si/schemas/common/2008/12/22" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:gen200809="dk/pfa/si/schemas/common/2008/09/01" xmlns:gen200812="dk/pfa/si/schemas/common/2008/12/22" xmlns="http://www.w3.org/2001/XMLSchema">
-	<import namespace="dk/pfa/si/schemas/common/2008/09/01" schemaLocation="../../general/x200809/GEN_GenerelBeloebType.xsd"/>
-	<element name="IndbetalingTotalBeloeb" type="gen200809:GenerelBeloebType">
-		<annotation>
-			<documentation>Summen af indbetalinger i en given periode</documentation>
-		</annotation>
-	</element>
-</schema>

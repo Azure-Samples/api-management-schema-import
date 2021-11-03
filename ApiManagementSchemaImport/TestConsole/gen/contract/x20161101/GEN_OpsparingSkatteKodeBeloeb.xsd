@@ -1,8 +1,0 @@
-<schema targetNamespace="schemas/src/gen/contract/x20161101" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:gen20081222="dk/pfa/si/schemas/common/2008/12/22" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201611="schemas/src/gen/contract/x20161101">
-	<import namespace="dk/pfa/si/schemas/common/2008/12/22" schemaLocation="../../general/x200812/GEN_GenerelBeloeb.xsd"/>
-	<element name="OpsparingSkatteKodeBeloeb" type="gen20081222:GenerelBeloebType">
-		<annotation>
-			<documentation>Opsparing paa en skattekode</documentation>
-		</annotation>
-	</element>
-</schema>

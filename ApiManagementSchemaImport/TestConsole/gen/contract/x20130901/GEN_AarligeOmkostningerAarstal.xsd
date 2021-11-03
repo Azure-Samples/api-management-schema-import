@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<element name="AarligeOmkostningerAarstal" type="gYear">
-		<annotation>
-			<documentation>Indeholder angivelse af det aar som omkostningerne drejer sig om</documentation>
-		</annotation>
-	</element>
-</schema>

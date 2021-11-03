@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201309="schemas/src/gen/contract/x20130901" targetNamespace="schemas/src/gen/contract/x20130901" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
-	<element name="EngangUdbetalingDato" type="date">
-		<annotation>
-			<documentation>Valoerdato for engangsudbetaling</documentation>
-		</annotation>
-	</element>
-</schema>

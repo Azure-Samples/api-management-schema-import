@@ -1,8 +1,0 @@
-<!-- edited with XMLSpy v2011 (http://www.altova.com) by IT (PFA Pension) --><schema targetNamespace="schemas/src/gen/haendelse/x20110501" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen20110501="schemas/src/gen/haendelse/x20110501" xmlns:gen20100301="dk/pfa/si/schemas/common/2010/03/01">
-	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../../general/x201003/GEN_Beloeb2Dec.xsd"/>
-	<element name="ModtagetOverfoerselBeloeb" type="gen20100301:Beloeb2DecType">
-		<annotation>
-			<documentation>Det samlede overfoerte beloeb</documentation>
-		</annotation>
-	</element>
-</schema>

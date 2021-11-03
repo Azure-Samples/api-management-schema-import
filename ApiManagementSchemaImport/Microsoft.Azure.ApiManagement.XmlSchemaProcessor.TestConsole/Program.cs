@@ -10,7 +10,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole
         {
             var log = new ConsoleLog();
             var directoryPath = @"C:\proj\api-management-schema-import\ApiManagementSchemaImport\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole";
-            await XmlSchemaDocument.LoadAsync(directoryPath, log);
+            await XmlSchemaDocument.LoadAsync(directoryPath, log, directoryPath);
         }
     }
 

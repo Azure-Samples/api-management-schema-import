@@ -1,8 +1,0 @@
-<!-- edited with XMLSpy v2007 (http://www.altova.com) by Klaus Langelund Larsen (PFA Pension A/S) --><schema targetNamespace="schemas/src/gen/contract/x20121101" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gen201003="dk/pfa/si/schemas/common/2010/03/01" xmlns:genCon201211="schemas/src/gen/contract/x20121101">
-	<import namespace="dk/pfa/si/schemas/common/2010/03/01" schemaLocation="../../general/x201003/GEN_Beloeb2Dec.xsd"/>
-	<element name="OverfoertPALBeloeb" type="gen201003:Beloeb2DecType">
-		<annotation>
-			<documentation>PAL beloeb som overfoeres til andet selskab.</documentation>
-		</annotation>
-	</element>
-</schema>

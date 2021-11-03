@@ -1,8 +1,0 @@
-<schema targetNamespace="dk/pfa/si/schemas/ksd/2010/03/01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:ksd201003="dk/pfa/si/schemas/ksd/2010/03/01" xmlns="http://www.w3.org/2001/XMLSchema">
-<include schemaLocation="KSD_ElementId.xsd"/>
-	<element name="FirmaIndbetalerIdent" type="ksd201003:ElementIdType">
-		<annotation>
-			<documentation>FirmaIndbetaler ID: KSD Ident for FI</documentation>
-		</annotation>
-	</element>
-</schema>

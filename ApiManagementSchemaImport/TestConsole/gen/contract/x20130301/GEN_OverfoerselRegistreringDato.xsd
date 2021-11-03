@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201303="schemas/src/gen/contract/x20130301" targetNamespace="schemas/src/gen/contract/x20130301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
-	<element name="OverfoerselRegistreringDato" type="date">
-		<annotation>
-			<documentation>Dato for hvornaar en overfoersel skal registreres paa en opspareraftale</documentation>
-		</annotation>
-	</element>
-</schema>

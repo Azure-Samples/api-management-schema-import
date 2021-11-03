@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201804="schemas/src/gen/contract/x20180401" targetNamespace="schemas/src/gen/contract/x20180401" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<element name="IkkeBetaltUnderskudsPalAar" type="gYear">
-		<annotation>
-			<documentation>Angiver de fulde aar hvor vi har beregnet underskudspal</documentation>
-		</annotation>
-	</element>
-</schema>

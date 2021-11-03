@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by IT (PFA Pension) -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:genCon201711="schemas/src/gen/contract/x20171101" targetNamespace="schemas/src/gen/contract/x20171101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
-	<element name="Transitionsdato" type="date">
-		<annotation>
-			<documentation>Angiver valoerdato for denne enheds transition</documentation>
-		</annotation>
-	</element>
-</schema>

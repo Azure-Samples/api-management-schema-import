@@ -1,8 +1,0 @@
-<schema targetNamespace="schemas/src/gen/contract/x20181001" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:div201105="schemas/src/IM/Diverse/x20110501">
-	<import namespace="schemas/src/IM/Diverse/x20110501" schemaLocation="../../../IM/Diverse/x20110501/Beloeb2Decimal.xsd"/>
-	<element name="EksternDaekningTilskud" type="div201105:Beloeb2DecimalType">
-		<annotation>
-			<documentation>Tilskuddet til den enkelte eksterne daekning.</documentation>
-		</annotation>
-	</element>
-</schema>
