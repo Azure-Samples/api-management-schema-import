@@ -10,7 +10,7 @@ This project framework provides the following features:
 * Detect/resolve/inline all xsd:imports in xml schemas
 * Detect/resolve/inline all xsd:includes in xml schemas
 * Merge all xml schemas with the same targetnamespace into a single schema
-* The tool produces a single wsdl file next to existing one with "-processed" suffix in name, e.g. mywsdl.wsdl -> mywsdl-processed.wsdl
+* The tool produces a single wsdl file to a path passed as a second parameter: **tool.exe "c:\foo\bar\in.wsdl" "d:\buzz\quix\out.wsdl"**
 * The tool is able to resolve following types of references:
     * http/https absolute urls. Any non-200 response is a failure.
     * Absolute local filesystem location.
@@ -43,7 +43,7 @@ This will drop a binary in `./bin/[configuration]/[net5.0]/[Microsoft.Azure.ApiM
 
 You can run the binary in this way:
 	
-	c:\folder\Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe "mywsdlfile.wsdl"
+	c:\folder\Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe "mywsdlfile.wsdl" "myoutputwsdlfile-processed.wsdl""
 	
 
 ### Quickstart

@@ -13,20 +13,31 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
         static async Task Main(string[] args)
         {
             var log = new ConsoleLog();
-            string wsdlFile = string.Empty;
-            if (args.Length == 1)
+            string wsdlFile;
+            string outputFile;
+            if (args.Length == 2)
             {
                 wsdlFile = args[0];
                 wsdlFile = wsdlFile.Contains(".wsdl") ? wsdlFile : wsdlFile + ".wsdl";
+                outputFile = args[1];
+                outputFile = outputFile.Contains(".wsdl") ? outputFile : outputFile + ".wsdl";
+                outputFile = Path.IsPathRooted(outputFile) ? outputFile : Path.Join(Directory.GetCurrentDirectory(), outputFile);
+                var attr = File.GetAttributes(outputFile);
+                if (attr.HasFlag(FileAttributes.Directory))
+                {
+                    Console.WriteLine("Second parameter should be a file, not a directory.");
+                    return;
+                }
             }
             else
             {
-                Console.WriteLine("Please enter a wsdl file to process.");
+                Console.WriteLine("Please enter a wsdl file to process and output folder.");
+                return;
             }
             var wsdlString = File.ReadAllText(wsdlFile);
             var xDocument = XDocument.Parse(wsdlString);
             await WsdlDocument.LoadAsync(xDocument.Root, log);
-            xDocument.Root.Save(Path.GetFileNameWithoutExtension(wsdlFile) + "-processed.wsdl");
+            xDocument.Root.Save(outputFile);
             //Directory.GetCurrentDirectory();
         }
     }

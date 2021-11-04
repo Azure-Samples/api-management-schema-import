@@ -148,6 +148,9 @@
     <None Update="API-0164_1.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="API-0427.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="API-0767 WSDL\1.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
