@@ -80,13 +80,13 @@
                 <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
                     <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
                         <dsig:X509Data>
-                            <dsig:X509Certificate>MIIE3jCCA8agAwIBAgIOAgAAAAABQhAl+bZXr7QwDQYJKoZIhvcNAQEFBQAwRjEXMBUGA1UEChMOQ3liZXJ0cnVzdCBJbmMxKzApBgNVBAMTIkN5YmVydHJ1c3QgUHVibGljIFN1cmVTZXJ2ZXIgU1YgQ0EwHhcNMTMxMDMxMjAxMzQyWhcNMTYxMDMxMjAxMzQyWjCBgDELMAkGA1UEBhMCVVMxETAPBgNVBAgTCE1pY2hpZ2FuMRAwDgYDVQQHEwdNaWxmb3JkMRswGQYDVQQKExJHZW5lcmFsIE1vdG9ycyBMTEMxDTALBgNVBAsTBEdNSVQxIDAeBgNVBAMTF2dtYjJjc2FtbC1wcC5pbnQuZ20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjValk5CPojgQYszBuss93lqxNErHseq+ZfOLX4pJ8c0PdNpI6Vlx9gfjvPn7wnkv3vDRN4oVo3AeP0wUbQltajOw063E5cTEMkL3azZ8SlXZdtLxkZ+EpWg/3UGf9ofDzLm0NaWCpmVRYeLSO78OY84C1F0kDHuc41SUOWoQtj0ZwyITurrNEdeRYZIByDj+DgdpJEfwWrNiCwyOowxxkap2Cg/ifoeSjWlf0IS9tqn3oGnUjxDw1GcMYQgneTDBE3MWxNPySOeC5kIDgkGb2h1olL0rgyZ2TRWRK9X7AFJGIJp2oGwppRA3iGYz7ftZnTPecQrQPuXOEGXqXEXpfwIDAQABo4IBjTCCAYkwHwYDVR0jBBgwFoAUBJhg34AblkldZVYtpSwJJArs3LkwPwYDVR0fBDgwNjA0oDKgMIYuaHR0cDovL2NybC5vbW5pcm9vdC5jb20vUHVibGljU3VyZVNlcnZlclNWLmNybDAdBgNVHQ4EFgQUm6bXQph3XBQ/K+akEchbRNJJsrQwCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMBEGCWCGSAGG+EIBAQQEAwIGwDCBuAYDVR0RBIGwMIGtghdnbWIyY3NhbWwtcHAuaW50LmdtLmNvbYIXZ21iMmNzb2EyLXBwLmludC5nbS5jb22CF2dtYjJjb3NiMi1wcC5pbnQuZ20uY29tghdnbWIyY3NvYTEtcHAuaW50LmdtLmNvbYIXZ21iMmNvc2IxLXBwLmludC5nbS5jb22CFmdtYjJjc29hLXBwLmludC5nbS5jb22CFmdtYjJjb3NiLXBwLmludC5nbS5jb20wDQYJKoZIhvcNAQEFBQADggEBAEmX8MeZQvd2xhI1ybrmj5Ivwd3eKKR9/mjMlsZO233WwATktfJoZjeBpRFeSN8VFS12DEKpSVKqK4oS1YjvDAYTOOU1LqfFB02wdRewc5a8Yrpr7CKQhWBCVcm4MDsKyI8EJeonNs0wHTnrpV6LZWK5EH5Dmro1vaW9kbP+PEkvfVlQ7SgNi5mpFSK+2j0SmABcI/6jTCVn68+BzSo36QrQFD7KaISQi/nIIofnpdZONvttc+k1sWs55+M/5KL67V1lGMOskFTZ/s8DMMUlGMBbPe32XlzTVo1lGTrYv0Vu+VBAiR2sezhcoKdQJIB+H8SnByNpCh7xaxdZas4xhII=</dsig:X509Certificate>
+                            <dsig:X509Certificate>test</dsig:X509Certificate>
                             <dsig:X509IssuerSerial>
-                                <dsig:X509IssuerName>CN=Cybertrust Public SureServer SV CA, O=Cybertrust Inc</dsig:X509IssuerName>
-                                <dsig:X509SerialNumber>40564819207326547938528779022260</dsig:X509SerialNumber>
+                                <dsig:X509IssuerName>CN=test Public SureServer SV CA, O=test Inc</dsig:X509IssuerName>
+                                <dsig:X509SerialNumber>123456789123456789123456789123456789</dsig:X509SerialNumber>
                             </dsig:X509IssuerSerial>
-                            <dsig:X509SubjectName>CN=gmb2csaml-pp.int.gm.com, OU=GMIT, O=General Motors LLC, L=Milford, ST=Michigan, C=US</dsig:X509SubjectName>
-                            <dsig:X509SKI>m6bXQph3XBQ/K+akEchbRNJJsrQ=</dsig:X509SKI>
+                            <dsig:X509SubjectName>CN=test.gm.com, OU=GMIT, O=General Motors LLC, L=Test, ST=Test, C=Test</dsig:X509SubjectName>
+                            <dsig:X509SKI>testkey</dsig:X509SKI>
                         </dsig:X509Data>
                     </dsig:KeyInfo>
                 </wsid:Identity>
