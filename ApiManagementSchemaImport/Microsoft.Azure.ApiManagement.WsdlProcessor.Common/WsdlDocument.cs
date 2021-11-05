@@ -356,7 +356,9 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
             if (result)
             {
-                using (var httpClient = new HttpClient())
+                var clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+                using (var httpClient = new HttpClient(clientHandler))
                 {
                     HttpResponseMessage response;
                     var uri = new Uri(location, UriKind.RelativeOrAbsolute);
