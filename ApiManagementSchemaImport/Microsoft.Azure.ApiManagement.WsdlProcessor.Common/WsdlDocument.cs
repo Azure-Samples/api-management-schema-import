@@ -144,17 +144,17 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             }
             foreach (var schema in doc.Schemas)
             {
-                if (!types.Elements(XsdSchemaNamespace + "schema").Any(i => schema.Key.NamespaceName.Equals(i.Attribute("targetNamespace").Value)))
+                if (!types.Elements(XsdSchemaNamespace + "schema").Any(i => i.ToString().Equals(schema.Value.ToString(), StringComparison.InvariantCultureIgnoreCase) || schema.Key.NamespaceName.Equals(i.Attribute("targetNamespace")?.Value)))
                 {
                     types.Add(schema.Value);
                 }
             }
             //Adding imports to each schema
-            foreach (var schema in types.Elements(XsdSchemaNamespace + "schema")) 
+            foreach (var schema in types.Elements(XsdSchemaNamespace + "schema").Where(e => e.Attribute("targetNamespace") != null))
             {
-                if (doc.Imports.ContainsKey(schema.Attribute("targetNamespace").Value))
+                if (doc.Imports.TryGetValue(schema.Attribute("targetNamespace")?.Value, out var imports))
                 {
-                    foreach (var item in doc.Imports[schema.Attribute("targetNamespace").Value])
+                    foreach (var item in imports)
                     {
                         schema.AddFirst(new XElement(XsdSchemaNamespace + "import", new XAttribute("namespace", item)));
                     }
@@ -169,14 +169,6 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
             //Another approach to remove third party elements is with Schema Validation.
             listToRemove.ForEach(i => i.Remove());
-        }
-
-        public static void DumpInvalidNodes(XElement el)
-        {
-            if (el.GetSchemaInfo().Validity != XmlSchemaValidity.Valid)
-                el.Remove();
-            foreach (XElement child in el.Elements())
-                DumpInvalidNodes(child);
         }
 
         /// <summary>
@@ -266,7 +258,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             foreach (var item in doc.Schemas)
             {
                 item.Value.Elements(XsdSchemaNamespace + "include").Remove();
-                item.Value.Attributes("schemaLocation").Remove();
+                item.Value.Elements(XsdSchemaNamespace + "import").Remove();
             }
             // Resolve the schemas and add to existing ones
             while (schemasToProcess.Count > 0)
