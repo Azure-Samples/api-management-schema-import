@@ -163,15 +163,6 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 }
             }
 
-            //Moving value from targetnamespace to xmlns, just if XsdSchemaNamespace appears more than once
-            //foreach (var element in doc.Schemas.Values)
-            //{
-            //    if (element.Attributes().Count(x => x.Value.Equals(XsdSchemaNamespace.NamespaceName)) > 1 && element.Attribute("xmlns").Value.Equals(XsdSchemaNamespace.NamespaceName))
-            //    {
-            //        element.Attribute("xmlns").Value = element.Attribute("targetNamespace").Value;
-            //    }
-            //}
-
             //Removing third party elements from documentElement
             var listToRemove = new List<XElement>();
             var allowedPrefixes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
