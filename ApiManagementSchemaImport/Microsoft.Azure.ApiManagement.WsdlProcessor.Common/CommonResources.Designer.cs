@@ -268,6 +268,15 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Schemas only allow Imports or Includes..
+        /// </summary>
+        internal static string SchemaOnlyAllowsIncludeOrImport {
+            get {
+                return ResourceManager.GetString("SchemaOnlyAllowsIncludeOrImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A soap:address element with location attribute is required in the wsdl:port element named &apos;{0}&apos; of the WSDL document..
         /// </summary>
         internal static string SoapAddressLocationRequired {
