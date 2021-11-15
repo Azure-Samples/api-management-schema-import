@@ -52,7 +52,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             logger.Informational($"Generating new names for schemas");
             await GenerateNewNameForSchemas(schemaPaths, logger);
             logger.Informational($"Starting process of xsd files");
-            await ProcessXsdImportsIncludes(schemaPaths, logger);
+            await ProcessXsdImportsIncludes(new string[] { schemaPaths[0] }, logger);
 
             //new xsd files
             logger.Informational($"Generating new files in {outputDirectory}");
@@ -116,9 +116,6 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         private async static Task<bool> FindOrder(string schemaLocation, HashSet<string> importedNamespaces, HashSet<string> visitedNamespaces, IList<string> orderedListOfSchemas, ILog logger)
         {
             logger.Informational($"Processing {Path.GetFileName(schemaLocation)} schema file.");
-            var documentText = await GetStringDocumentFromPath(schemaLocation, logger);
-            var xmlSchema = GetXmlSchema(documentText, logger);
-            PathXmlSchemaPair[schemaLocation] = xmlSchema;
             if (importedNamespaces.Contains(schemaLocation))
             {
                 logger.Error($"There is a circular dependency in the xml schemas. {Path.GetFileName(schemaLocation)} is in a cycle of schema dependencies");
@@ -127,8 +124,13 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
 
             if (visitedNamespaces.Contains(schemaLocation))
             {
+                logger.Informational($"Already visited {schemaLocation}");
                 return true;
             }
+
+            var documentText = await GetStringDocumentFromPath(schemaLocation, logger);
+            var xmlSchema = GetXmlSchema(documentText, logger);
+            PathXmlSchemaPair[schemaLocation] = xmlSchema;
 
             importedNamespaces.Add(schemaLocation);
             visitedNamespaces.Add(schemaLocation);

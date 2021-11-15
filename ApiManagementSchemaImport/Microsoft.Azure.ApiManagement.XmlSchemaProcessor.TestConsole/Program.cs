@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole
@@ -9,8 +10,8 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole
         static async Task Main(string[] args)
         {
             var log = new ConsoleLog();
-            var directoryPath = @"C:\proj\api-management-schema-import\ApiManagementSchemaImport\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.TestConsole";
-            await XmlSchemaDocument.LoadAsync(directoryPath, log, directoryPath);
+            var directoryPath = @"C:\proj\GMFiles\XSD with Include\GetProvideShipments";
+            await XmlSchemaDocument.LoadAsync(directoryPath, log, Path.Combine(directoryPath, "myoutput"));
         }
     }
 
