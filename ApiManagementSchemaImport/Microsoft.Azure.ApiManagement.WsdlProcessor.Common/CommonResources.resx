@@ -186,6 +186,9 @@
   <data name="RecursiveTypesNotSupported" xml:space="preserve">
     <value>Element named '{0}' has a recursive definition. Recursive types are not supported.</value>
   </data>
+  <data name="SchemaOnlyAllowsIncludeOrImport" xml:space="preserve">
+    <value>Schemas only allow Imports or Includes.</value>
+  </data>
   <data name="SoapAddressLocationRequired" xml:space="preserve">
     <value>A soap:address element with location attribute is required in the wsdl:port element named '{0}' of the WSDL document.</value>
   </data>

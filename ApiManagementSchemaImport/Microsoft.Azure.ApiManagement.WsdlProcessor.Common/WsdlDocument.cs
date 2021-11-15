@@ -49,6 +49,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
         public static XNamespace XsdSchemaInstanceNamespace = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
 
+        public static string[] XsdTypes = new string[] { "anyURI", "base64Binary", "boolean", "date", "dateTime", "decimal", "double", "duration", "float", "hexBinary", "gDay", "gMonth", "gMonthDay", "gYear", "gYearMonth", "NOTATION", "QName", "string", "time", "integer" };
+
         public XNamespace TargetNamespace { get; set; }
 
         public WsdlVersionLiteral WsdlVersion { get; set; }
@@ -169,6 +171,34 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
             //Another approach to remove third party elements is with Schema Validation.
             listToRemove.ForEach(i => i.Remove());
+
+            //Adding prefix to each type attribute inside schemas, avoiding xsd primitive types
+            //foreach (var element in doc.Schemas.Values)
+            //{
+            //    if (element.Attribute("xmlns")!= null && !element.Attribute("xmlns").Value.Equals(element.Attribute("targetNamespace").Value))
+            //    {
+            //        var prefix = element.GetPrefixOfNamespace(element.Attribute("targetNamespace").Value);
+            //        if (!string.IsNullOrEmpty(prefix))
+            //        {
+            //            var attributes = element.DescendantsAndSelf().Attributes().
+            //                Where(i => (i.Name.LocalName.Equals("type") || i.Name.LocalName.Equals("base") || i.Name.LocalName.Equals("ref")) && 
+            //                !i.Value.Contains(":") && !XsdTypes.Contains(i.Value)).ToList();
+            //            attributes.ForEach(a =>
+            //            {
+            //                if (!a.Value.Equals("ID") || 
+            //                element.Elements().Attributes().
+            //                Any(i => i.Name.LocalName.Equals("name") && (i.Value.Equals("ID") || i.Value.Equals($"{prefix}:{a.Value}"))))
+            //                {
+            //                    a.Value = $"{prefix}:{a.Value}";
+            //                }
+            //            });
+            //        }
+            //        else if (element.Attribute("xmlns") != null)
+            //        {
+            //            element.Attribute("xmlns").Value = element.Attribute("targetNamespace").Value;
+            //        }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -241,7 +271,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 .Select(i => new
                 {
                     TargetNamespace = i.Attribute("namespace")?.Value,
-                    SchemaLocation = i.Attribute("schemaLocation")?.Value
+                    SchemaLocation = i.Attribute("schemaLocation")?.Value,
+                    Type = "import"
                 })
                 .ToList();
             //Adding includes in 
@@ -251,9 +282,11 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 .Select(i => new
                 {
                     TargetNamespace = i.Parent.Attribute("namespace")?.Value,
-                    SchemaLocation = i.Attribute("schemaLocation")?.Value
+                    SchemaLocation = i.Attribute("schemaLocation")?.Value,
+                    Type = "include"
                 })
                 .ToList());
+            //Includes and imports removed from schemas
             schemasToProcess.ForEach(i => schemaNames.Add(i.SchemaLocation));
             foreach (var item in doc.Schemas)
             {
@@ -290,7 +323,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                             schemasToProcess.Add(new
                             {
                                 TargetNamespace = xmlTargetNamespace,
-                                SchemaLocation = schemaLocation
+                                SchemaLocation = schemaLocation,
+                                Type = item is XmlSchemaImport ? "import" : "include"
                             });
                         }
                         if (item is XmlSchemaImport)
@@ -301,7 +335,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     }
                     else
                     {
-                        //throw new CoreValidationException(CommonResources.ApiManagementSchemaOnlyAllowsIncludeOrImport);
+                        throw new WsdlDocumentException(CommonResources.SchemaOnlyAllowsIncludeOrImport);
                     }
                 }
                 includesToRemove.ForEach(x => xmlSchema.Includes.Remove(x));
@@ -309,13 +343,27 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 xmlSchema.Write(sw);
                 schemaText = sw.ToString();
                 var schemaElement = XElement.Parse(schemaText, LoadOptions.SetLineInfo);
+                //BEGIN track schema comment
                 schemaElement.AddFirst(new XComment(string.Format(CommonResources.XsdImportBegin, import.SchemaLocation)));
                 schemaElement.Add(new XComment(string.Format(CommonResources.XsdImportEnd, import.SchemaLocation)));
+                //END track schema comment
                 XNamespace targetNamespace = import.TargetNamespace ?? GetTargetNamespace(schemaElement);
                 if (doc.Schemas.ContainsKey(targetNamespace))
                 {
                     XElement existingSchema = doc.Schemas[targetNamespace];
-                    MergeSchemas(existingSchema, new List<XElement>() { schemaElement });
+                    var existingSchemaXmlns = existingSchema.Attribute("xmlns")?.Value;
+                    var schemaelementXmlns = schemaElement.Attribute("xmlns")?.Value;
+                    if (!existingSchemaXmlns.Equals(schemaelementXmlns))
+                    {
+                        if (existingSchema.HasElements)
+                            throw new WsdlDocumentException($"The xmlns attribute is not the same between schemas with targetNamespace {targetNamespace.NamespaceName}");
+                        existingSchema.Parent.Element(existingSchema.Name).Remove();
+                        doc.Schemas[targetNamespace] = schemaElement;
+                    }
+                    else
+                    {
+                        MergeSchemas(existingSchema, new List<XElement>() { schemaElement });
+                    }
                 }
                 else
                 {
@@ -511,7 +559,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     }
                     else
                     {
-                        if (schemaAttribute.Name.LocalName.Equals(attribute.Name.LocalName) && 
+                        if (schemaAttribute.Name.LocalName.Equals(attribute.Name.LocalName) &&
                             !schemaAttribute.Value.Equals(attribute.Value))
                         {
                             AddXmlnsAndChangePrefixReferenced(schema, dupSchema.Elements(), new Dictionary<string, string>() { { attribute.Value, attribute.Name.LocalName } });
