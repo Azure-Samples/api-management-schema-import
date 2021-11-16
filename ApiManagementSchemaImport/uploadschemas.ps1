@@ -1,4 +1,5 @@
 param ([Parameter(Mandatory)]$file, [Parameter(Mandatory)]$apimresource)
+Write-Output "Starting Azure login"
 az login
 Write-Output "Starting the process"
 $ErrorActionPreference = "Stop"
@@ -15,9 +16,9 @@ $json.psobject.properties | ForEach-Object {
     $schema = Join-Path -Path $directoryPath -ChildPath $childPath
     $uri = $apimresource + "/schemas/" + $_.Value + "?api-version=2021-04-01-preview"
     Write-Output "Reading $schema"
-    $content = Get-Content -Path $schema -Raw
+    $content = Get-Content -Path $schema -Raw -Encoding utf8
     Write-Output "Updating schema to $uri"
-    $res = iwr -UseBasicParsing -Method Put -Headers $headers -Uri $uri -ContentType "application/json" `
+    $res = iwr -UseBasicParsing -Method Put -Headers $headers -Uri $uri -ContentType "application/json; charset=utf-8" `
  -Body (@{ `
              "properties" = @{ `
                  "schemaType" = "xml"; `
