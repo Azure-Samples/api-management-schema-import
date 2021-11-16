@@ -167,38 +167,11 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             var listToRemove = new List<XElement>();
             var allowedPrefixes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
                 Select(a => a.Name.LocalName).ToHashSet();
-            documentElement.Elements().Where(e => !e.Name.LocalName.Equals("types")).DescendantsAndSelf().Where(x => !x.Name.NamespaceName.Equals(XsdSchemaNamespace.NamespaceName) && !allowedPrefixes.Contains(x.GetPrefixOfNamespace(x.Name.Namespace))).ToList().ForEach(i => listToRemove.Add(i));
+            documentElement.Elements().Where(e => !e.Name.LocalName.Equals("types")).DescendantsAndSelf().
+                Where(x => !x.Name.NamespaceName.Equals(Wsdl11Namespace) && !x.Name.NamespaceName.Equals(XsdSchemaNamespace.NamespaceName) && !allowedPrefixes.Contains(x.GetPrefixOfNamespace(x.Name.Namespace))).ToList().ForEach(i => listToRemove.Add(i));
 
             //Another approach to remove third party elements is with Schema Validation.
             listToRemove.ForEach(i => i.Remove());
-
-            //Adding prefix to each type attribute inside schemas, avoiding xsd primitive types
-            //foreach (var element in doc.Schemas.Values)
-            //{
-            //    if (element.Attribute("xmlns")!= null && !element.Attribute("xmlns").Value.Equals(element.Attribute("targetNamespace").Value))
-            //    {
-            //        var prefix = element.GetPrefixOfNamespace(element.Attribute("targetNamespace").Value);
-            //        if (!string.IsNullOrEmpty(prefix))
-            //        {
-            //            var attributes = element.DescendantsAndSelf().Attributes().
-            //                Where(i => (i.Name.LocalName.Equals("type") || i.Name.LocalName.Equals("base") || i.Name.LocalName.Equals("ref")) && 
-            //                !i.Value.Contains(":") && !XsdTypes.Contains(i.Value)).ToList();
-            //            attributes.ForEach(a =>
-            //            {
-            //                if (!a.Value.Equals("ID") || 
-            //                element.Elements().Attributes().
-            //                Any(i => i.Name.LocalName.Equals("name") && (i.Value.Equals("ID") || i.Value.Equals($"{prefix}:{a.Value}"))))
-            //                {
-            //                    a.Value = $"{prefix}:{a.Value}";
-            //                }
-            //            });
-            //        }
-            //        else if (element.Attribute("xmlns") != null)
-            //        {
-            //            element.Attribute("xmlns").Value = element.Attribute("targetNamespace").Value;
-            //        }
-            //    }
-            //}
         }
 
         /// <summary>
@@ -520,11 +493,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                         && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
                 {
                     var splitValue = attribute.Value.Split(':');
-                    var childNamespace = documentElement.GetNamespaceOfPrefix(splitValue[0]);
-                    if (childNamespace != null && !childNamespace.NamespaceName.Equals(prefixParentNamespace))
-                    {
-                        attribute.Value = prefixParentNamespace + ":" + splitValue[1];
-                    }
+                    attribute.Value = prefixParentNamespace + ":" + splitValue[1];
                 }
             }
 
@@ -537,11 +506,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                         && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
                 {
                     var splitValue = attribute.Value.Split(':');
-                    var childNamespace = documentElement.GetNamespaceOfPrefix(splitValue[0]);
-                    if (!childNamespace.NamespaceName.Equals(prefixParentNamespace))
-                    {
-                        attribute.Value = prefixParentNamespace + ":" + splitValue[1];
-                    }
+                    attribute.Value = prefixParentNamespace + ":" + splitValue[1];
                 }
             }
         }
