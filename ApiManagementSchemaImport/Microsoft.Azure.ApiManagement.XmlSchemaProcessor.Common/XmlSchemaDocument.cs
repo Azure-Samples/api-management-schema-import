@@ -234,12 +234,16 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
                     return result;
                 }
             }
-            catch (XmlException)
+            catch (XmlException e)
             {
+                logger.Error($"{e.Message}");
+                logger.Error($"Location {xmlSchema} contains invalid xml: {e.StackTrace}");
                 throw;
             }
-            catch (XmlSchemaException)
+            catch (XmlSchemaException e)
             {
+                logger.Error($"{e.Message}");
+                logger.Error($"Location {xmlSchema} contains invalid xml: {e.StackTrace}");
                 throw;
             }
         }

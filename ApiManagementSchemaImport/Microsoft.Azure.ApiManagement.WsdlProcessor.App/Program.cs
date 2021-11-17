@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
@@ -27,10 +28,21 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
                 Console.WriteLine("Please enter a wsdl file to process and output file.");
                 return;
             }
-            var wsdlString = File.ReadAllText(wsdlFile);
-            var xDocument = XDocument.Parse(wsdlString);
-            await WsdlDocument.LoadAsync(xDocument.Root, log);
-            xDocument.Root.Save(outputFile);
+            try
+            {
+                var wsdlString = File.ReadAllText(wsdlFile);
+                var xDocument = XDocument.Parse(wsdlString);
+                await WsdlDocument.LoadAsync(xDocument.Root, log);
+                xDocument.Root.Save(outputFile);
+            }catch(XmlException e)
+            {
+                log.Error($"{e.Message}");
+                log.Error($"Location {wsdlFile} contains invalid xml: {e.StackTrace}");
+            }catch(Exception e)
+            {
+                log.Error($"{e.Message}");
+                log.Error($"Stacktrace: {e.StackTrace}");
+            }
         }
     }
 
