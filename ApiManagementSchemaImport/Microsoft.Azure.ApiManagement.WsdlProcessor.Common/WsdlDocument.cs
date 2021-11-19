@@ -144,12 +144,13 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 doc.Schemas = new Dictionary<XNamespace, XElement>();
                 logger.Warning("LoadedSchemas", CommonResources.LoadedNoSchemas);
             }
+            types.Elements().Remove();
             foreach (var schema in doc.Schemas)
             {
-                if (!types.Elements(XsdSchemaNamespace + "schema").Any(i => i.ToString().Equals(schema.Value.ToString(), StringComparison.InvariantCultureIgnoreCase) || schema.Key.NamespaceName.Equals(i.Attribute("targetNamespace")?.Value)))
-                {
+                //if (!types.Elements(XsdSchemaNamespace + "schema").Any(i => i.ToString().Equals(schema.Value.ToString(), StringComparison.InvariantCultureIgnoreCase) || schema.Key.NamespaceName.Equals(i.Attribute("targetNamespace")?.Value)))
+                //{
                     types.Add(schema.Value);
-                }
+                //}
             }
             //Adding imports to each schema
             foreach (var schema in types.Elements(XsdSchemaNamespace + "schema").Where(e => e.Attribute("targetNamespace") != null))
@@ -326,7 +327,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     XElement existingSchema = doc.Schemas[targetNamespace];
                     var existingSchemaXmlns = existingSchema.Attribute("xmlns")?.Value;
                     var schemaelementXmlns = schemaElement.Attribute("xmlns")?.Value;
-                    if (!existingSchemaXmlns.Equals(schemaelementXmlns))
+                    if (existingSchemaXmlns != null && schemaelementXmlns != null && !existingSchemaXmlns.Equals(schemaelementXmlns))
                     {
                         if (existingSchema.HasElements)
                             throw new WsdlDocumentException($"The xmlns attribute is not the same between schemas with targetNamespace {targetNamespace.NamespaceName}");
