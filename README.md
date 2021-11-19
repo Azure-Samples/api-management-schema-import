@@ -41,7 +41,7 @@ This Powershell script(uploadschemas.ps1) provides the following features:
 * Iterates through schemas in json file and upload to the APIM service using HTTP calls.
 * Tools fails on first failure
 
-### PowerShell tool to upload generated XML Schemas
+### PowerShell tool to generate WSDL merged files and upload them to APIM
 This Powershell script(batchWsdlProcessor.ps1) provides the following features:
 * The tool accepts three command line parameters:
     * Full path of json config file that should look like:
@@ -52,7 +52,7 @@ This Powershell script(batchWsdlProcessor.ps1) provides the following features:
 * Iterates through json config file and generates new WSDL file with merged schemas, then It uploads the new WSDL file to the APIM service using HTTP calls.
 * Tools fails on first failure
 
-### PowerShell tool to upload generated XML Schemas
+### PowerShell tool to generate new XML schemas and upload them to APIM
 This Powershell script(batchXmlSchemaProcessor.ps1) provides the following features:
 * The tool accepts three command line parameters:
     * Full path of json config file that should look like:
