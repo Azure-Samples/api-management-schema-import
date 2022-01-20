@@ -52,7 +52,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             logger.Informational($"Generating new names for schemas");
             await GenerateNewNameForSchemas(schemaPaths, logger);
             logger.Informational($"Starting process of xsd files");
-            await ProcessXsdImportsIncludes(new string[] { schemaPaths[0] }, logger);
+            await ProcessXsdImportsIncludes(schemaPaths, logger);
 
             //new xsd files
             logger.Informational($"Generating new files in {outputDirectory}");
@@ -69,12 +69,10 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
                 logger.Informational($"File generated {Path.GetFileName(file.Name)}");
             }
 
-            var parentXsd = PathOrderListSchemas.OrderByDescending(x => x.Value.Count).First();
             var outputDictionary = new Dictionary<string, string>();
-            foreach (var item in parentXsd.Value)
-            {
-                outputDictionary[Path.GetFileName(item)] = Schemas[item];
-            }
+            PathOrderListSchemas.OrderByDescending(x => x.Value.Count).
+                SelectMany(x => x.Value).ToList().ForEach(item => outputDictionary[Path.GetFileName(item)] = Schemas[item]);
+            
             logger.Informational("Generating upload-plan.json file");
             var uploadPlan = JsonConvert.SerializeObject(outputDictionary, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(Path.Join(outputDirectory, "upload-plan.json"), uploadPlan);
@@ -88,18 +86,24 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         /// <returns></returns>
         private static async Task ProcessXsdImportsIncludes(string[] schemaPaths, ILog logger)
         {
+            var visitedSchemas = new HashSet<string>();
             foreach (var item in schemaPaths)
             {
-                logger.Informational($"Processing parent {Path.GetFileName(item)} schema file.");
-                var orderedListOfSchemas = new List<string>();
-                if (!(await FindOrder(item, new HashSet<string>(), new HashSet<string>(), orderedListOfSchemas, logger)))
+                if (!visitedSchemas.Contains(item))
                 {
-                    throw new InvalidOperationException($"There was an error trying to process {item}");
+                    logger.Informational($"Processing parent {Path.GetFileName(item)} schema file.");
+                    var orderedListOfSchemas = new List<string>();
+                    if (!(await FindOrder(item, new HashSet<string>(), new HashSet<string>(), orderedListOfSchemas, logger)))
+                    {
+                        throw new InvalidOperationException($"There was an error trying to process {item}");
+                    }
+                    else
+                    {
+                        PathOrderListSchemas[item] = orderedListOfSchemas;
+                        orderedListOfSchemas.ForEach(i => visitedSchemas.Add(i));
+                    }
                 }
-                else
-                {
-                    PathOrderListSchemas[item] = orderedListOfSchemas;
-                }
+                logger.Informational($"Schema file {Path.GetFileName(item)} is already processed.");
             }
         }
 
