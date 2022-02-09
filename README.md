@@ -1,9 +1,14 @@
 # Project Name
 
-This repo contains the source code for process WSDL files that contains wsdl:imports, also xsd imports and includes. It merges WSDL file with all those references.
-
+This repo contains the source code for many tools:
+* **WSDLProcessor**: Process WSDL files that contains wsdl:imports, also xsd imports and includes. It merges the WSDL file with all those references.
+* **XMLSchemaProcessor**: It generates an upload plan file for all the xsd files inside a folder. Also, It renamed xsd files to a compliant ARM resource name.
+* **PowerShell tools**:
+    * **uploadschemas.ps1**: This tool uploads the schemas (xsd files), to your Azure subscription, using the output of the XMLSchemaProcessor.
+    * **batchWsdlProcessor.ps1**: This tool iterates through a json file with all WSDL file locations and executes WSDLProcessor on them. Then, It uploads the WSDL files generated to your Azure subscription.
+    * **batchXmlSchemaProcessor.ps1**: This script iterates through a json file with all XML schema directories and executes XMLSchemaProcessor on them. Then, It uploads the generated xsd files.
 ## Features
-### WSdlProcessor
+### WSDLProcessor
 This project framework provides the following features:
 
 * Detect/resolve/inline all wsdl:imports
@@ -30,7 +35,7 @@ This tool provides the following features:
     * Replace schemaLocation with a reference to a well-formed ARM schema resource: foo.xsd -> /schemas/foo, foo_1_2.xsd -> /schemas/foo-1-2
     * Build dependency graph between all schema files
     * Write single json document in the output file with property names corresponding to file names and property values corresponding to ARM names in the order of dependency. Example: foo.xsd depends on foo_1_2.xsd. upload-plan.json should contain: { "foo_1_2.xsd": "foo-1-2", "foo.xsd": "foo" }
-* The tool fails on the first error with the descriptive error message in standard output
+* The tool fails on the first error with the descriptive error message in standard output.
 
 ### PowerShell tool to upload generated XML Schemas
 This Powershell script(uploadschemas.ps1) provides the following features:
@@ -39,7 +44,7 @@ This Powershell script(uploadschemas.ps1) provides the following features:
     * APIM resource url, e.g. https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.ApiManagement/service/{servicename}.
 * Acquires Azure auth token for current user.
 * Iterates through schemas in json file and upload to the APIM service using HTTP calls.
-* Tools fails on first failure
+* Tools fails on first failure.
 
 ### PowerShell tool to generate WSDL merged files and upload them to APIM
 This Powershell script(batchWsdlProcessor.ps1) provides the following features:
@@ -58,10 +63,10 @@ This Powershell script(batchXmlSchemaProcessor.ps1) provides the following featu
     * Full path of json config file that should look like:
 	`{"inputDirectoryWithSchemas" : "OutputDirectory", ...}`
     * APIM resource url, e.g. https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.ApiManagement/service/{servicename}.
-    * WSDL Processor Path, e.g. `C:\myPathParent\myPathChild\...\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App.exe`
+    * XML Schema Processor Path, e.g. `C:\myPathParent\myPathChild\...\Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App.exe`
 * Acquires Azure auth token for current user.
-* Iterates through json config file and generates new XML schema files and an upload-plan.json, then It uploads the new XML schema files to the APIM service using HTTP calls.
-* Tools fails on first failure
+* Iterates through json config file and generates new XML schema files and an upload-plan.json for each entry, then It uploads the new XML schema files to the APIM service using the upload plan files and HTTP calls.
+* Tools fails on first failure.
 ## Getting Started
 
 ### Prerequisites
@@ -103,22 +108,11 @@ You can run the binary in this way:
 2. cd **api-management-schema-import**
 
 
-## Demo
-
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
 ## Resources
 
 (Any additional resources or related projects)
 
-- Link to supporting information
-- Link to similar sample
+- [.NET 5.0](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
+- [.NET Command Line](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+- [WSDL Schema Files](http://schemas.xmlsoap.org/wsdl/)
 - ...
