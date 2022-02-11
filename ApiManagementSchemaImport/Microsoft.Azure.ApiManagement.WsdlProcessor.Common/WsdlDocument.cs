@@ -246,7 +246,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 {
                     TargetNamespace = i.Attribute("namespace")?.Value,
                     SchemaLocation = i.Attribute("schemaLocation")?.Value,
-                    Type = "import"
+                    Type = "import",
+                    SchemaDirectory = Directory.GetCurrentDirectory()
                 })
                 .ToList();
             //Adding includes in 
@@ -257,11 +258,12 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 {
                     TargetNamespace = i.Parent.Attribute("namespace")?.Value,
                     SchemaLocation = i.Attribute("schemaLocation")?.Value,
-                    Type = "include"
+                    Type = "include",
+                    SchemaDirectory = Directory.GetCurrentDirectory()
                 })
                 .ToList());
             //Includes and imports removed from schemas
-            schemasToProcess.ForEach(i => schemaNames.Add(i.SchemaLocation));
+            schemasToProcess.ForEach(i => schemaNames.Add(Path.GetFullPath(Path.Join(i.SchemaDirectory, i.SchemaLocation))));
             foreach (var item in doc.Schemas)
             {
                 item.Value.Elements(XsdSchemaNamespace + "include").Remove();
@@ -271,11 +273,11 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             while (schemasToProcess.Count > 0)
             {
                 var import = schemasToProcess.First();
+                var realSchemaDirectory = Path.GetDirectoryName(Path.GetFullPath(Path.Join(import.SchemaDirectory, import.SchemaLocation)));
                 schemasToProcess.Remove(import);
                 XmlSchema xmlSchema;
                 logger.Informational("XsdImportInclude", string.Format(CommonResources.XsdImport, import.SchemaLocation, import.TargetNamespace));
-
-                var schemaText = await GetStringDocumentFromUri(logger, import.SchemaLocation);
+                var schemaText = await GetStringDocumentFromUri(logger, Path.Join(import.SchemaDirectory, import.SchemaLocation));
                 xmlSchema = GetXmlSchema(schemaText);
                 var includesToRemove = new List<XmlSchemaExternal>();
                 var importsToAdd = new HashSet<string>();
@@ -284,22 +286,33 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     if (item is XmlSchemaImport || item is XmlSchemaInclude)
                     {
                         var schemaLocation = item.SchemaLocation;
-                        if (!schemaNames.Contains(schemaLocation))
+                        if (!schemaNames.Contains(Path.GetFullPath(Path.Join(realSchemaDirectory, item.SchemaLocation))))
                         {
                             var xmlTargetNamespace = xmlSchema.TargetNamespace;
+                            string itemType;
                             if (item is XmlSchemaImport importItem)
                             {
+                                logger.Informational("import");
+                                itemType = "import";
                                 xmlTargetNamespace = importItem.Namespace;
+                            }
+                            else
+                            {
+                                logger.Informational("include");
+                                itemType = "include";
                             }
                             //All new imports are added
                             importsToAdd.Add(xmlTargetNamespace);
-                            schemaNames.Add(schemaLocation);
-                            schemasToProcess.Add(new
+                            schemaNames.Add(Path.GetFullPath(Path.Join(realSchemaDirectory, item.SchemaLocation)));
+                            var newSchemaToProcess = new
                             {
                                 TargetNamespace = xmlTargetNamespace,
                                 SchemaLocation = schemaLocation,
-                                Type = item is XmlSchemaImport ? "import" : "include"
-                            });
+                                Type = itemType,
+                                SchemaDirectory = realSchemaDirectory
+                            };
+                            schemasToProcess.Add(newSchemaToProcess);
+                            logger.Informational($"SchemaLocation: {newSchemaToProcess.SchemaLocation}, SchemaDirectory: {newSchemaToProcess.SchemaDirectory}");
                         }
                         if (item is XmlSchemaImport)
                         {
