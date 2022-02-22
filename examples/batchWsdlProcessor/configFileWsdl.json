@@ -1,0 +1,5 @@
+{ 
+    "wsdlFileName1.wsdl" : "C:/myPathParent/myPathChild/",
+    "wsdlFileName2.wsdl" : "C:/myPathParent/myPathChild/",
+    "wsdlFileName3.wsdl" : "C:/myPathParent/myPathChild/"
+}

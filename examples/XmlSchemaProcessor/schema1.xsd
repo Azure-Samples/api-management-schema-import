@@ -1,0 +1,17 @@
+<xs:schema xmlns:tns="http://www.tempuri.org" targetNamespace="http://www.tempuri.org" xmlns:xs="http://www.w3.org/2001/XMLSchema">  
+  <xs:include schemaLocation="schema2.xsd" />  
+  <xs:element name="Customer">  
+    <xs:complexType>  
+      <xs:sequence>  
+        <xs:element name="FirstName" type="xs:string" />  
+        <xs:element name="LastName" type="tns:LastNameType" />  
+      </xs:sequence>  
+      <xs:attribute name="CustomerId" type="xs:positiveInteger" use="required" />  
+    </xs:complexType>  
+  </xs:element>  
+  <xs:simpleType name="LastNameType">  
+    <xs:restriction base="xs:string">  
+      <xs:maxLength value="20" />  
+    </xs:restriction>  
+  </xs:simpleType>  
+</xs:schema>  

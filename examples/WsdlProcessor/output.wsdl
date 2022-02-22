@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:def="http://www.w3.org/2002/ws/databinding/examples/6/09/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.w3.org/2002/ws/databinding/patterns/6/09/" xmlns:ex="http://www.w3.org/2002/ws/databinding/examples/6/09/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.w3.org/2002/ws/databinding/examples/6/09/">
+  <types>
+    <xs:schema xmlns="http://www.w3.org/2002/ws/databinding/examples/6/09/" targetNamespace="http://www.w3.org/2002/ws/databinding/examples/6/09/" elementFormDefault="qualified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.w3.org/2002/ws/databinding/patterns/6/09/" xmlns:ex="http://www.w3.org/2002/ws/databinding/examples/6/09/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="echoInclude">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="echoIncludeRequest">
+    <part element="ex:echoInclude" name="echoIncludeRequest" />
+  </message>
+  <message name="echoIncludeResponse">
+    <part element="ex:echoInclude" name="echoIncludeResponse" />
+  </message>
+  <portType name="IncludePortType">
+    <operation name="echoInclude">
+      <input message="def:echoIncludeRequest" />
+      <output message="def:echoIncludeResponse" />
+    </operation>
+  </portType>
+  <binding name="SoapBinding" type="def:IncludePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="echoInclude">
+      <soap:operation soapAction="http://www.w3.org/2002/ws/databinding/examples/6/09/#echoInclude" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IncludeService">
+    <port binding="def:SoapBinding" name="IncludePort">
+      <soap:address location="http://localhost/SoapPort" />
+    </port>
+  </service>
+</definitions>
