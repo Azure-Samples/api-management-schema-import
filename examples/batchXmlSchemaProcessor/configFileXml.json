@@ -1,0 +1,5 @@
+{ 
+    "C:/myPathParent/myPathChild/XmlSchemasFolder1/" : "C:/myPathParent/myPathChild/XmlSchemasFolder1/outputfolder",
+    "C:/myPathParent/myPathChild/XmlSchemasFolder2/" : "C:/myPathParent/myPathChild/XmlSchemasFolder2/outputfolder",
+    "C:/myPathParent/myPathChild/XmlSchemasFolder3/" : "C:/myPathParent/myPathChild/XmlSchemasFolder3/outputfolder"
+}

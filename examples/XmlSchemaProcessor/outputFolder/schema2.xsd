@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ipo="http://www.example.com/IPO" targetNamespace="http://www.example.com/IPO" xmlns="http://www.w3.org/2001/XMLSchema">
+  <annotation>
+    <documentation xml:lang="en">  
+        Addresses for International Purchase order schema  
+        Copyright 2000 Example.com. All rights reserved.  
+      </documentation>
+  </annotation>
+  <complexType name="Address">
+    <sequence>
+      <element name="name" type="string" />
+      <element name="street" type="string" />
+      <element name="city" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="USAddress">
+    <complexContent mixed="false">
+      <extension base="ipo:Address">
+        <sequence>
+          <element name="state" type="ipo:USState" />
+          <element name="zip" type="positiveInteger" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="USState">
+    <restriction base="string">
+      <enumeration value="AK" />
+      <enumeration value="AL" />
+      <enumeration value="AR" />
+    </restriction>
+  </simpleType>
+</schema>
