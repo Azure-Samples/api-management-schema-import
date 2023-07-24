@@ -108,7 +108,7 @@ The Powershell script **batchXmlSchemaProcessor.ps1** provides the following fea
 
         git clone https://github.com/Azure-Samples/api-management-schema-import.git
         
-        cd api-management-schema-import/Mcrosoft.Azure.ApiManagement.WsdlProcessor.App 
+        cd api-management-schema-import/ApiManagementSchemaImport/Microsoft.Azure.ApiManagement.WsdlProcessor.App 
 
 
 1. Restore the packages that are specified in the .csproj file of the project:
