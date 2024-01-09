@@ -1,8 +1,6 @@
 ﻿using Microsoft.Azure.ApiManagement.WsdlProcessor.Common;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -16,6 +14,13 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             var log = new ConsoleLog();
             string wsdlFile;
             string outputFile;
+
+            string wsdlName = "URACallCenter";
+
+            args = new string[2];
+            args[0] = @$"C:\Proj\Avanade\UHG\MergeWSDL\{wsdlName}.wsdl";
+            args[1] = @$"C:\Proj\Avanade\UHG\MergeWSDL\{wsdlName}-final.wsdl";
+
             if (args.Length == 2)
             {
                 wsdlFile = args[0];
@@ -34,11 +39,13 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
                 var xDocument = XDocument.Parse(wsdlString);
                 await WsdlDocument.LoadAsync(xDocument.Root, log);
                 xDocument.Root.Save(outputFile);
-            }catch(XmlException e)
+            }
+            catch (XmlException e)
             {
                 log.Error($"{e.Message}");
                 log.Error($"Location {wsdlFile} contains invalid xml: {e.StackTrace}");
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 log.Error($"{e.Message}");
                 log.Error($"Stacktrace: {e.StackTrace}");
