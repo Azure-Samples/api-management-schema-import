@@ -277,7 +277,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 schemasToProcess.Remove(import);
                 XmlSchema xmlSchema;
                 logger.Informational("XsdImportInclude", string.Format(CommonResources.XsdImport, import.SchemaLocation, import.TargetNamespace));
-                var schemaText = await GetStringDocumentFromUri(logger, Path.Join(import.SchemaDirectory + "/arquivos_schemas_ans_tiss", import.SchemaLocation));
+                var schemaText = await GetStringDocumentFromUri(logger, Path.Join(import.SchemaDirectory, import.SchemaLocation));
                 xmlSchema = GetXmlSchema(schemaText);
                 var includesToRemove = new List<XmlSchemaExternal>();
                 var importsToAdd = new HashSet<string>();
