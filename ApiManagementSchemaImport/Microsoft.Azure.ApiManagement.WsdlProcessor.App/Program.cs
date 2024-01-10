@@ -15,12 +15,6 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             string wsdlFile;
             string outputFile;
 
-            string wsdlName = "URACallCenter";
-
-            args = new string[2];
-            args[0] = @$"C:\Proj\Avanade\UHG\MergeWSDL\{wsdlName}.wsdl";
-            args[1] = @$"C:\Proj\Avanade\UHG\MergeWSDL\{wsdlName}-final.wsdl";
-
             if (args.Length == 2)
             {
                 wsdlFile = args[0];
