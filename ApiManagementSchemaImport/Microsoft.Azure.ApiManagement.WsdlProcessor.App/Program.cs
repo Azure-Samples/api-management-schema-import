@@ -1,8 +1,6 @@
 ﻿using Microsoft.Azure.ApiManagement.WsdlProcessor.Common;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -16,6 +14,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             var log = new ConsoleLog();
             string wsdlFile;
             string outputFile;
+
             if (args.Length == 2)
             {
                 wsdlFile = args[0];
@@ -34,11 +33,13 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
                 var xDocument = XDocument.Parse(wsdlString);
                 await WsdlDocument.LoadAsync(xDocument.Root, log);
                 xDocument.Root.Save(outputFile);
-            }catch(XmlException e)
+            }
+            catch (XmlException e)
             {
                 log.Error($"{e.Message}");
                 log.Error($"Location {wsdlFile} contains invalid xml: {e.StackTrace}");
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 log.Error($"{e.Message}");
                 log.Error($"Stacktrace: {e.StackTrace}");

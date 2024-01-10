@@ -149,7 +149,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             {
                 //if (!types.Elements(XsdSchemaNamespace + "schema").Any(i => i.ToString().Equals(schema.Value.ToString(), StringComparison.InvariantCultureIgnoreCase) || schema.Key.NamespaceName.Equals(i.Attribute("targetNamespace")?.Value)))
                 //{
-                    types.Add(schema.Value);
+                types.Add(schema.Value);
                 //}
             }
             //Adding imports to each schema
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         private static async Task ProcessWsdlImports(WsdlDocument doc, XElement documentElement, ILog logger)
         {
             var wsdlImports = documentElement.Elements(doc.WsdlNamespace + "import")
-                        .Select(e => new 
+                        .Select(e => new
                         {
                             Location = e.Attribute("location").Value,
                             Namespace = e.Attribute("namespace")?.Value
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 var importXDocument = XDocument.Parse(wsdlText);
                 var xDocument = importXDocument.Root;
                 var elements = xDocument.Elements().Reverse();
-                
+
                 //Modify the elements before adding them to WSDL parent
                 AddXmlnsAndChangePrefixReferenced(documentElement, elements, xDocument.Attributes().
                     Where(a => a.ToString().Contains("xmlns:")).ToDictionary(a => a.Value, a => a.Name.LocalName));
@@ -436,9 +436,10 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         private static void AddXmlnsAndChangePrefixReferenced(XElement documentElement, IEnumerable<XElement> newElements, Dictionary<string, string> namespaces)
         {
             var parentNamespaces = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
-                Select(a => new { 
-                Prefix = a.Name.LocalName,
-                Namespace = a.Value
+                Select(a => new
+                {
+                    Prefix = a.Name.LocalName,
+                    Namespace = a.Value
                 }).ToDictionary(a => a.Namespace, a => a.Prefix);
             foreach (var item in namespaces)
             {
