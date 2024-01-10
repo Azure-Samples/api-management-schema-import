@@ -195,6 +195,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             //var rootAttributes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).Select(a => a.ToString().Split('=')[0]).ToHashSet();
             var attributesToAdd = new List<XAttribute>();
             var elementsToAdd = new List<XElement>();
+
             while (wsdlImports.Count > 0)
             {
                 var import = wsdlImports.First();
@@ -273,11 +274,11 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             while (schemasToProcess.Count > 0)
             {
                 var import = schemasToProcess.First();
-                var realSchemaDirectory = Path.GetDirectoryName(Path.GetFullPath(Path.Join(import.SchemaDirectory, import.SchemaLocation)));
+                var realSchemaDirectory = import.SchemaLocation;
                 schemasToProcess.Remove(import);
                 XmlSchema xmlSchema;
                 logger.Informational("XsdImportInclude", string.Format(CommonResources.XsdImport, import.SchemaLocation, import.TargetNamespace));
-                var schemaText = await GetStringDocumentFromUri(logger, Path.Join(import.SchemaDirectory, import.SchemaLocation));
+                var schemaText = await GetStringDocumentFromUri(logger, import.SchemaLocation);
                 xmlSchema = GetXmlSchema(schemaText);
                 var includesToRemove = new List<XmlSchemaExternal>();
                 var importsToAdd = new HashSet<string>();
@@ -286,7 +287,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     if (item is XmlSchemaImport || item is XmlSchemaInclude)
                     {
                         var schemaLocation = item.SchemaLocation;
-                        if (!schemaNames.Contains(Path.GetFullPath(Path.Join(realSchemaDirectory, item.SchemaLocation))))
+                        if (!schemaNames.Contains(item.SchemaLocation))
                         {
                             var xmlTargetNamespace = xmlSchema.TargetNamespace;
                             string itemType;
@@ -303,7 +304,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                             }
                             //All new imports are added
                             importsToAdd.Add(xmlTargetNamespace);
-                            schemaNames.Add(Path.GetFullPath(Path.Join(realSchemaDirectory, item.SchemaLocation)));
+                            schemaNames.Add(item.SchemaLocation);
                             var newSchemaToProcess = new
                             {
                                 TargetNamespace = xmlTargetNamespace,
