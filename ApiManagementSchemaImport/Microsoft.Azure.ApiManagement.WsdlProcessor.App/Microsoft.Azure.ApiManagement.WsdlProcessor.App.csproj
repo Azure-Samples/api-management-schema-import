@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Azure.ApiManagement.WsdlProcessor.Common\Microsoft.Azure.ApiManagement.WsdlProcessor.Common.csproj" />
+    <ProjectReference Include="..\Microsoft.Azure.ApiManagement.Common\Microsoft.Azure.ApiManagement.Common.csproj" />
   </ItemGroup>
 
 </Project>

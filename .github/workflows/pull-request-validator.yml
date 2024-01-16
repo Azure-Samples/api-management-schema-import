@@ -1,0 +1,26 @@
+name: Pull Request Build Validator
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  dotnetVersion: 8.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.dotnetVersion }}
+
+      - name: Restore dependencies
+        run: dotnet restore ./ApiManagementSchemaImport/ApiManagementSchemaImport.sln
+
+      - name: Build
+        run: dotnet build dotnet restore ./ApiManagementSchemaImport/ApiManagementSchemaImport.sln --no-restore

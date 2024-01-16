@@ -7,8 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Schema;
+using Microsoft.Azure.ApiManagement.Common;
 
 namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
 {
@@ -35,11 +35,13 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             PathOrderListSchemas = new Dictionary<string, List<string>>();
             logger.Informational($"Getting all xsd files from folder {directoryPath}");
             var schemaPaths = Directory.GetFiles(directoryPath, "*.xsd");
+
             if (!schemaPaths.Any())
             {
                 logger.Error($"No xsd files in folder {directoryPath}");
                 return;
             }
+
             if (Directory.Exists(outputDirectory) && Directory.GetFiles(outputDirectory).Length > 0)
             {
                 logger.Error($"{outputDirectory} directory should not have files before executing the tool.");
@@ -49,30 +51,40 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             {
                 Directory.CreateDirectory(outputDirectory);
             }
+
             logger.Informational($"Generating new names for schemas");
             await GenerateNewNameForSchemas(schemaPaths, logger);
+
             logger.Informational($"Starting process of xsd files");
             await ProcessXsdImportsIncludes(schemaPaths, logger);
 
             //new xsd files
             logger.Informational($"Generating new files in {outputDirectory}");
+
             foreach (var xmlFile in PathXmlSchemaPair.Keys)
             {
                 logger.Informational($"Generating new file for {xmlFile}");
                 var newSchemaFile = PathXmlSchemaPair[xmlFile];
-                var file = new FileStream(Path.Join(outputDirectory, Schemas[xmlFile] + ".xsd"), FileMode.Create, FileAccess.ReadWrite);
+                var file = new FileStream(Path.Join(outputDirectory, Schemas[xmlFile] + ".xsd"),
+                FileMode.Create,
+                FileAccess.ReadWrite);
+
                 var xwriter = new XmlTextWriter(file, new UTF8Encoding())
                 {
                     Formatting = System.Xml.Formatting.Indented
                 };
+
                 newSchemaFile.Write(xwriter);
                 logger.Informational($"File generated {Path.GetFileName(file.Name)}");
             }
 
             var outputDictionary = new Dictionary<string, string>();
-            PathOrderListSchemas.OrderByDescending(x => x.Value.Count).
-                SelectMany(x => x.Value).ToList().ForEach(item => outputDictionary[Path.GetFileName(item)] = Schemas[item]);
-            
+            PathOrderListSchemas
+            .OrderByDescending(x => x.Value.Count)
+            .SelectMany(x => x.Value)
+            .ToList()
+            .ForEach(item => outputDictionary[Path.GetFileName(item)] = Schemas[item]);
+
             logger.Informational("Generating upload-plan.json file");
             var uploadPlan = JsonConvert.SerializeObject(outputDictionary, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(Path.Join(outputDirectory, "upload-plan.json"), uploadPlan);
@@ -87,12 +99,14 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         private static async Task ProcessXsdImportsIncludes(string[] schemaPaths, ILog logger)
         {
             var visitedSchemas = new HashSet<string>();
+
             foreach (var item in schemaPaths)
             {
                 if (!visitedSchemas.Contains(item))
                 {
                     logger.Informational($"Processing parent {Path.GetFileName(item)} schema file.");
                     var orderedListOfSchemas = new List<string>();
+
                     if (!(await FindOrder(item, new HashSet<string>(), new HashSet<string>(), orderedListOfSchemas, logger)))
                     {
                         throw new InvalidOperationException($"There was an error trying to process {item}");
@@ -117,9 +131,15 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         /// <param name="orderedListOfSchemas"></param>
         /// <param name="logger"></param>
         /// <returns>True if there is no problem processing. False if there is a circular dependency or a Redefine element in schema</returns>
-        private async static Task<bool> FindOrder(string schemaLocation, HashSet<string> importedNamespaces, HashSet<string> visitedNamespaces, IList<string> orderedListOfSchemas, ILog logger)
+        private async static Task<bool> FindOrder(
+            string schemaLocation,
+            HashSet<string> importedNamespaces,
+            HashSet<string> visitedNamespaces,
+            IList<string> orderedListOfSchemas,
+            ILog logger)
         {
             logger.Informational($"Processing {Path.GetFileName(schemaLocation)} schema file.");
+
             if (importedNamespaces.Contains(schemaLocation))
             {
                 logger.Error($"There is a circular dependency in the xml schemas. {Path.GetFileName(schemaLocation)} is in a cycle of schema dependencies");
@@ -139,9 +159,10 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             importedNamespaces.Add(schemaLocation);
             visitedNamespaces.Add(schemaLocation);
             logger.Informational("Processing Imports and Includes");
+
             foreach (XmlSchemaExternal element in xmlSchema.Includes)
             {
-                string location;
+                string location = string.Empty;
                 if (element is XmlSchemaImport || element is XmlSchemaInclude)
                 {
                     location = Path.IsPathRooted(element.SchemaLocation) ? element.SchemaLocation : Path.Join(DirectoryPath, element.SchemaLocation);
@@ -152,7 +173,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
                     logger.Error($"Redefine is not allowed in the tool.");
                     return false;
                 }
-                
+
                 if (!(await FindOrder(location, importedNamespaces, visitedNamespaces, orderedListOfSchemas, logger)))
                 {
                     return false;
@@ -213,12 +234,14 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         private async static Task<string> NormalizeWellFormedArmSchema(string schema, ILog logger)
         {
             Schemas.TryGetValue(schema, out var schemaNewName);
+
             if (string.IsNullOrEmpty(schemaNewName))
             {
                 logger.Warning($"No new name found for {schema}");
                 await GenerateNewNameForSchemas(schema, logger);
                 schemaNewName = Schemas[schema];
             }
+
             return string.Concat(SchemaPath, schemaNewName);
         }
 
@@ -229,12 +252,14 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
                 using (var doc = new StringReader(xmlSchema))
                 {
                     var result = XmlSchema.Read(doc, null);
+
                     if (string.IsNullOrEmpty(result.TargetNamespace))
                     {
                         var error = $"{xmlSchema} does not have targetNamespace attribute";
                         logger.Error(error);
                         throw new NullReferenceException(error);
                     }
+
                     return result;
                 }
             }
