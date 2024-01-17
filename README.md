@@ -110,8 +110,8 @@ The Powershell script **batchXmlSchemaProcessor.ps1** provides the following fea
 1.  When you have the .NET CLI installed on your OS of choice, download the code and go to the Microsoft.Azure.ApiManagement.WsdlProcessor.App directory:
 
         git clone https://github.com/Azure-Samples/api-management-schema-import.git
-
-        cd api-management-schema-import/Mcrosoft.Azure.ApiManagement.WsdlProcessor.App
+        
+        cd api-management-schema-import/ApiManagementSchemaImport/Microsoft.Azure.ApiManagement.WsdlProcessor.App 
 
 1.  Restore the packages that are specified in the .csproj file of the project:
 
@@ -166,7 +166,7 @@ The Powershell script **batchXmlSchemaProcessor.ps1** provides the following fea
 
 ## Resources
 
-- [WSDL Schema Files Specification](https://schemas.xmlsoap.org/wsdl/)
-- [API Management REST API](https://docs.microsoft.com/rest/api/apimanagement/current-ga/global-schema)
-- [Validation policies in API Management](https://docs.microsoft.com/azure/api-management/validation-policies)
-- [API Management schemas for content validation](https://docs.microsoft.com/azure/api-management/validation-policies#schemas-for-content-validation)
+* [WSDL Schema Files Specification](https://schemas.xmlsoap.org/wsdl/)
+* [API Management REST API](https://docs.microsoft.com/rest/api/apimanagement/current-ga/global-schema)
+* [Validation policies in API Management](https://docs.microsoft.com/azure/api-management/validation-policies)
+* [API Management schemas for content validation](https://docs.microsoft.com/azure/api-management/validation-policies#schemas-for-content-validation)
