@@ -11,12 +11,6 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
     {
         static async Task Main(string[] args)
         {
-            // string fileName = "tiss_ssa_30500";
-            // args = new string[2];
-            // args[0] = @$"C:\Proj\Avanade\UHG\MergeWSDL\{fileName}.wsdl";
-            // args[1] = @$"C:\Proj\Avanade\UHG\MergeWSDL\{fileName}-final.wsdl";
-            //args[2] = @"C:\Proj\Avanade\UHG\arquivos_schemas_ans_tiss\";
-
             string wsdlFile, outputFile, pathSchemaReference = string.Empty;
 
             var log = new ConsoleLog();
