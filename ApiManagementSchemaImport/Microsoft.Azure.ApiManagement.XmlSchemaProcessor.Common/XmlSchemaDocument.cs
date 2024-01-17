@@ -53,7 +53,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             }
 
             logger.Informational($"Generating new names for schemas");
-            await GenerateNewNameForSchemas(schemaPaths, logger);
+            GenerateNewNameForSchemas(schemaPaths, logger);
 
             logger.Informational($"Starting process of xsd files");
             await ProcessXsdImportsIncludes(schemaPaths, logger);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
                 return true;
             }
 
-            var documentText = await GetStringDocumentFromPath(schemaLocation, logger);
+            var documentText = await GetStringDocumentFromPathAsync(schemaLocation);
             var xmlSchema = GetXmlSchema(documentText, logger);
             PathXmlSchemaPair[schemaLocation] = xmlSchema;
 
@@ -163,10 +163,11 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             foreach (XmlSchemaExternal element in xmlSchema.Includes)
             {
                 string location = string.Empty;
+
                 if (element is XmlSchemaImport || element is XmlSchemaInclude)
                 {
                     location = Path.IsPathRooted(element.SchemaLocation) ? element.SchemaLocation : Path.Join(DirectoryPath, element.SchemaLocation);
-                    element.SchemaLocation = await NormalizeWellFormedArmSchema(location, logger);
+                    element.SchemaLocation = NormalizeWellFormedArmSchema(location, logger);
                 }
                 else
                 {
@@ -183,12 +184,13 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
             orderedListOfSchemas.Add(schemaLocation);
             importedNamespaces.Remove(schemaLocation);
             logger.Informational($"End of processing {Path.GetFileName(schemaLocation)} schema file.");
+
             return true;
         }
 
-        private static async Task GenerateNewNameForSchemas(string schemaPaths, ILog logger)
+        private static void GenerateNewNameForSchemas(string schemaPaths, ILog logger)
         {
-            await GenerateNewNameForSchemas(new string[] { schemaPaths }, logger);
+            GenerateNewNameForSchemas(new string[] { schemaPaths }, logger);
         }
 
         /// <summary>
@@ -196,9 +198,9 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         /// e.g. foo.xsd -> foo, foo_1.xsd -> foo-1, foo_1_2.xsd -> foo-1-2
         /// </summary>
         /// <param name="schemaPaths"></param>
-        /// /// <param name="logger"></param>
+        /// <param name="logger"></param>
         /// <returns></returns>
-        private static async Task GenerateNewNameForSchemas(string[] schemaPaths, ILog logger)
+        private static void GenerateNewNameForSchemas(string[] schemaPaths, ILog logger)
         {
             foreach (var item in schemaPaths)
             {
@@ -213,10 +215,9 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         /// <summary>
         /// Get string document from uri (URL or path)
         /// </summary>
-        /// <param name="logger"></param>
         /// <param name="location"></param>
         /// <returns>string document</returns>
-        private static async Task<string> GetStringDocumentFromPath(string location, ILog logger)
+        private static async Task<string> GetStringDocumentFromPathAsync(string location)
         {
             string documentText;
             var importLocation = Path.IsPathRooted(location) ? location : Path.Join(DirectoryPath, location);
@@ -231,14 +232,14 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         /// <param name="schema"></param>
         /// <param name="logger"></param>
         /// <returns></returns>
-        private async static Task<string> NormalizeWellFormedArmSchema(string schema, ILog logger)
+        private static string NormalizeWellFormedArmSchema(string schema, ILog logger)
         {
             Schemas.TryGetValue(schema, out var schemaNewName);
 
             if (string.IsNullOrEmpty(schemaNewName))
             {
                 logger.Warning($"No new name found for {schema}");
-                await GenerateNewNameForSchemas(schema, logger);
+                GenerateNewNameForSchemas(schema, logger);
                 schemaNewName = Schemas[schema];
             }
 
