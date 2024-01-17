@@ -23,4 +23,4 @@ jobs:
         run: dotnet restore ./ApiManagementSchemaImport/ApiManagementSchemaImport.sln
 
       - name: Build
-        run: dotnet build dotnet restore ./ApiManagementSchemaImport/ApiManagementSchemaImport.sln --no-restore
+        run: dotnet build ./ApiManagementSchemaImport/ApiManagementSchemaImport.sln --no-restore
