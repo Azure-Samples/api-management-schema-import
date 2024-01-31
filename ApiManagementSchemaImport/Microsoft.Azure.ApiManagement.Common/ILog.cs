@@ -1,13 +1,5 @@
-﻿// --------------------------------------------------------------------------
-//  <copyright file="ILog.cs" company="Microsoft">
-//      Copyright (c) Microsoft Corporation. All rights reserved.
-//  </copyright>
-// --------------------------------------------------------------------------
-
-namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
+namespace Microsoft.Azure.ApiManagement.Common
 {
-    using System;
-
     public interface ILog
     {
         void Verbose(string eventName);
@@ -59,5 +51,7 @@ namespace Microsoft.Azure.ApiManagement.XmlSchemaProcessor.Common
         void Critical(string eventName, string message, Exception ex);
 
         void Critical(string eventName, string message, Exception ex, params object[] args);
+
+        void Success(string msg);
     }
 }
