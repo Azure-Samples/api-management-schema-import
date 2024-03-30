@@ -27,8 +27,8 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
                 }
 
                 wsdlFile = wsdlFile.Contains(".wsdl") ? wsdlFile : wsdlFile + ".wsdl";
-                outputFile = wsdlFile.Replace(".wsdl", "-WSDLProcessed.wsdl");
-                pathSchemaReference = args.Length == 2 ? args[1] : string.Empty;
+                outputFile = args[1];
+                outputFile = Path.IsPathRooted(outputFile) ? outputFile : Path.Join(Directory.GetCurrentDirectory(), outputFile);
             }
             else
             {
