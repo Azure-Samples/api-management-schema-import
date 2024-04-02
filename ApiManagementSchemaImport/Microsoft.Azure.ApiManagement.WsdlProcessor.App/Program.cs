@@ -16,7 +16,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             var log = new ConsoleLog();
             int exitCode = 0;
 
-            if (args.Length == 1 || args.Length == 2)
+            if (args.Length == 2 || args.Length == 3)
             {
                 wsdlFile = args[0];
                 if (!File.Exists(wsdlFile))
@@ -27,12 +27,17 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
                 }
 
                 wsdlFile = wsdlFile.Contains(".wsdl") ? wsdlFile : wsdlFile + ".wsdl";
-                outputFile = wsdlFile.Replace(".wsdl", "-WSDLProcessed.wsdl");
-                pathSchemaReference = args.Length == 2 ? args[1] : string.Empty;
+
+                outputFile = args[1];
+                outputFile = Path.IsPathRooted(outputFile) ? outputFile : Path.Join(Directory.GetCurrentDirectory(), outputFile);
+
+                pathSchemaReference = args.Length == 3 ? args[2] : string.Empty;
             }
             else
             {
                 Console.WriteLine("Please enter a wsdl file to process and output file.");
+                Environment.Exit(1);
+
                 return;
             }
 
