@@ -16,7 +16,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             var log = new ConsoleLog();
             int exitCode = 0;
 
-            if (args.Length == 2 || args.Length == 3)
+            if (args.Length == 2)
             {
                 wsdlFile = args[0];
                 if (!File.Exists(wsdlFile))
@@ -33,7 +33,9 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             }
             else
             {
-                Console.WriteLine("Please enter a wsdl file to process and output file.");
+                Console.WriteLine("Please fill the corrects parameters.");
+                Console.WriteLine("Parameters 1 = WSDL file path.");
+                Console.WriteLine("Parameters 2 = Output file path.");
                 Environment.Exit(1);
 
                 return;
