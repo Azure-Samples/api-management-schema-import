@@ -11,7 +11,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
     {
         static async Task Main(string[] args)
         {
-            string wsdlFile, outputFile, pathSchemaReference = string.Empty;
+            string wsdlFile, outputFile = string.Empty;
 
             var log = new ConsoleLog();
             int exitCode = 0;
@@ -30,8 +30,6 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
 
                 outputFile = args[1];
                 outputFile = Path.IsPathRooted(outputFile) ? outputFile : Path.Join(Directory.GetCurrentDirectory(), outputFile);
-
-                pathSchemaReference = args.Length == 3 ? args[2] : string.Empty;
             }
             else
             {
@@ -45,7 +43,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.App
             {
                 var wsdlString = File.ReadAllText(wsdlFile);
                 var xDocument = XDocument.Parse(wsdlString);
-                await WsdlDocument.LoadAsync(xDocument.Root, log, pathSchemaReference);
+                await WsdlDocument.LoadAsync(xDocument.Root, log);
 
                 xDocument.Root.Save(outputFile);
 

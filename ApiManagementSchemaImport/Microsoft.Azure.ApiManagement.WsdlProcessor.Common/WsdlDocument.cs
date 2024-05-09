@@ -3,18 +3,16 @@
 //      Copyright (c) Microsoft Corporation. All rights reserved.
 //  </copyright>
 // --------------------------------------------------------------------------
+using Microsoft.Azure.ApiManagement.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
-
-using Microsoft.Azure.ApiManagement.Common;
 
 namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 {
@@ -101,7 +99,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         /// <param name="documentElement">The <see cref="XElement"/> containing the WSDL.</param>
         /// <param name="logger">A logger for parsing events.</param>
         /// <param name="pathSchemaLocation">A UNC Path about schemaLocations.</param>
-        public static async Task LoadAsync(XElement documentElement, ILog logger, string pathSchemaLocation)
+        public static async Task LoadAsync(XElement documentElement, ILog logger)
         {
             var doc = new WsdlDocument(logger)
             {
@@ -145,7 +143,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     return new { key = s.Key, value = schema };
                 }).ToDictionary(k => k.key, v => v.value);
 
-                await ProcessXsdImportsIncludes(doc, logger, pathSchemaLocation);
+                await ProcessXsdImportsIncludes(doc, logger);
 
                 logger.Informational("LoadedSchemas", string.Format(CommonResources.LoadedSchemas, doc.Schemas.Count));
             }
@@ -256,7 +254,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         /// <param name="logger"></param>
         /// <param name="pathSchemaLocation"></param>
         /// <returns></returns>
-        private static async Task ProcessXsdImportsIncludes(WsdlDocument doc, ILog logger, string pathSchemaLocation)
+        private static async Task ProcessXsdImportsIncludes(WsdlDocument doc, ILog logger)
         {
             if (doc.Schemas == null)
             {
@@ -272,7 +270,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     TargetNamespace = i.Attribute("namespace")?.Value,
                     SchemaLocation = i.Attribute("schemaLocation")?.Value,
                     Type = "import",
-                    SchemaDirectory = pathSchemaLocation ?? Directory.GetCurrentDirectory()
+                    SchemaDirectory = Directory.GetCurrentDirectory()
                 })
                 .ToList();
 
@@ -285,7 +283,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     TargetNamespace = i.Parent.Attribute("namespace")?.Value,
                     SchemaLocation = i.Attribute("schemaLocation")?.Value,
                     Type = "include",
-                    SchemaDirectory = pathSchemaLocation ?? Directory.GetCurrentDirectory()
+                    SchemaDirectory = Directory.GetCurrentDirectory()
                 })
                 .ToList());
             //Includes and imports removed from schemas
@@ -316,14 +314,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
                 string schemaText = string.Empty;
 
-                if (pathSchemaLocation != null && pathSchemaLocation != string.Empty)
-                {
-                    schemaText = Path.Join(pathSchemaLocation, import.SchemaLocation);
-                }
-                else
-                {
-                    schemaText = await GetStringDocumentFromUri(logger, import.SchemaLocation);
-                }
+                schemaText = await GetStringDocumentFromUri(logger, import.SchemaLocation);
 
                 xmlSchema = GetXmlSchema(schemaText, logger);
                 var includesToRemove = new List<XmlSchemaExternal>();

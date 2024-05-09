@@ -14,7 +14,7 @@ namespace TestConsole
             var wsdlfile = "API-0427";
             var wsdlString = File.ReadAllText(wsdlfile + ".wsdl");
             var xDocument = XDocument.Parse(wsdlString);
-            await WsdlDocument.LoadAsync(xDocument.Root, log, string.Empty);
+            await WsdlDocument.LoadAsync(xDocument.Root, log);
             //WsdlDocument.DumpInvalidNodes(xDocument.Root);
             xDocument.Root.Save(wsdlfile + "-processed.wsdl");
             //FileStream fs = new FileStream(@"C:\Temp\" + wsdlfile + "-processed.wsdl", FileMode.Create);
