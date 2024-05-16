@@ -19,4 +19,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Azure.ApiManagement.Common\Microsoft.Azure.ApiManagement.Common.csproj" />
+  </ItemGroup>
+
 </Project>

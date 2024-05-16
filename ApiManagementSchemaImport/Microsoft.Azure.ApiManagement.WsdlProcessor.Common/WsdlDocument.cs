@@ -3,19 +3,19 @@
 //      Copyright (c) Microsoft Corporation. All rights reserved.
 //  </copyright>
 // --------------------------------------------------------------------------
+using Microsoft.Azure.ApiManagement.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using System.Xml;
-    using System.Xml.Linq;
-    using System.Xml.Schema;
-
     // WS-I Basic Profile 1.1 : use SOAP 1.1, WSDL 1.1 and UDDI 2.0 
     // WS-I Basic Profile 1.2 (9th Nov, 2010) specifies the usage of SOAP 1.1, WSDL 1.1, UDDI 2.0, WS-Addressing 1.0 and MTOM
     // WS-I Basic Profile 2.0 (9th Nov, 2010) specifies the usage of SOAP 1.2, WSDL 1.1, UDDI 2.0, WS-Addressing and MTOM.
@@ -79,6 +79,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         {
             XNamespace targetNamespace = XNamespace.None;
             XAttribute attr = element.Attribute("targetNamespace");
+
             if (attr != null)
             {
                 targetNamespace = XNamespace.Get(attr.Value);
@@ -97,6 +98,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         /// </remarks>
         /// <param name="documentElement">The <see cref="XElement"/> containing the WSDL.</param>
         /// <param name="logger">A logger for parsing events.</param>
+        /// <param name="pathSchemaLocation">A UNC Path about schemaLocations.</param>
         public static async Task LoadAsync(XElement documentElement, ILog logger)
         {
             var doc = new WsdlDocument(logger)
@@ -108,13 +110,17 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 Imports = new Dictionary<XNamespace, HashSet<string>>()
             };
 
-            logger.Informational("WsdlIdentification", string.Format(CommonResources.WsdlIdentification, doc.WsdlVersion, doc.TargetNamespace.NamespaceName));
+            logger.Informational("WsdlIdentification", string.Format(
+                CommonResources.WsdlIdentification,
+                doc.WsdlVersion,
+                doc.TargetNamespace.NamespaceName));
 
             await ProcessWsdlImports(doc, documentElement, logger);
 
             //doc.RootAttributes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).ToList();
 
             XElement types = documentElement.Element(doc.WsdlNamespace + "types");
+
             if (types != null)
             {
                 ILookup<XNamespace, XElement> targetNamespaces = types.Elements(XsdSchemaNamespace + "schema")
@@ -122,7 +128,9 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                                 k =>
                                 {
                                     XNamespace key = GetTargetNamespace(k);
-                                    logger.Informational("LoadedSchema", string.Format(CommonResources.LoadedSchema, key.NamespaceName));
+                                    logger.Informational("LoadedSchema", string.Format(
+                                        CommonResources.LoadedSchema,
+                                        key.NamespaceName));
                                     return key;
                                 },
                                 v => v);
@@ -144,7 +152,9 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 doc.Schemas = new Dictionary<XNamespace, XElement>();
                 logger.Warning("LoadedSchemas", CommonResources.LoadedNoSchemas);
             }
+
             types.Elements().Remove();
+
             foreach (var schema in doc.Schemas)
             {
                 //if (!types.Elements(XsdSchemaNamespace + "schema").Any(i => i.ToString().Equals(schema.Value.ToString(), StringComparison.InvariantCultureIgnoreCase) || schema.Key.NamespaceName.Equals(i.Attribute("targetNamespace")?.Value)))
@@ -152,6 +162,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 types.Add(schema.Value);
                 //}
             }
+
             //Adding imports to each schema
             foreach (var schema in types.Elements(XsdSchemaNamespace + "schema").Where(e => e.Attribute("targetNamespace") != null))
             {
@@ -166,10 +177,19 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
             //Removing third party elements from documentElement
             var listToRemove = new List<XElement>();
-            var allowedPrefixes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
-                Select(a => a.Name.LocalName).ToHashSet();
+
+            var allowedPrefixes = documentElement
+            .Attributes()
+            .Where(a => a.ToString().Contains("xmlns:"))
+            .Select(a => a.Name.LocalName)
+            .ToHashSet();
+
             documentElement.Elements().Where(e => !e.Name.LocalName.Equals("types")).DescendantsAndSelf().
-                Where(x => !x.Name.NamespaceName.Equals(Wsdl11Namespace) && !x.Name.NamespaceName.Equals(XsdSchemaNamespace.NamespaceName) && !allowedPrefixes.Contains(x.GetPrefixOfNamespace(x.Name.Namespace))).ToList().ForEach(i => listToRemove.Add(i));
+                Where(x => !x.Name.NamespaceName.Equals(Wsdl11Namespace)
+                    && !x.Name.NamespaceName.Equals(XsdSchemaNamespace.NamespaceName)
+                    && !allowedPrefixes.Contains(x.GetPrefixOfNamespace(x.Name.Namespace)))
+                .ToList()
+                .ForEach(i => listToRemove.Add(i));
 
             //Another approach to remove third party elements is with Schema Validation.
             listToRemove.ForEach(i => i.Remove());
@@ -195,6 +215,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             //var rootAttributes = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).Select(a => a.ToString().Split('=')[0]).ToHashSet();
             var attributesToAdd = new List<XAttribute>();
             var elementsToAdd = new List<XElement>();
+
             while (wsdlImports.Count > 0)
             {
                 var import = wsdlImports.First();
@@ -221,6 +242,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                         .ToHashSet();
                 wsdlImports.Union(newImports);
             }
+
             elementsToAdd.ForEach(i => documentElement.AddFirst(i));
             ChangeElementsToParentTargetNamespace(doc, documentElement);
         }
@@ -230,6 +252,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         /// </summary>
         /// <param name="doc">doc.Schemas where all the imports are added</param>
         /// <param name="logger"></param>
+        /// <param name="pathSchemaLocation"></param>
         /// <returns></returns>
         private static async Task ProcessXsdImportsIncludes(WsdlDocument doc, ILog logger)
         {
@@ -250,6 +273,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                     SchemaDirectory = Directory.GetCurrentDirectory()
                 })
                 .ToList();
+
             //Adding includes in 
             schemasToProcess.AddRange(doc.Schemas
                 .SelectMany(e => e.Value.Elements(XsdSchemaNamespace + "include"))
@@ -263,7 +287,9 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 })
                 .ToList());
             //Includes and imports removed from schemas
-            schemasToProcess.ForEach(i => schemaNames.Add(Path.GetFullPath(Path.Join(i.SchemaDirectory, i.SchemaLocation))));
+
+            schemasToProcess.ForEach(i => schemaNames.Add(i.SchemaLocation));
+
             foreach (var item in doc.Schemas)
             {
                 item.Value.Elements(XsdSchemaNamespace + "include").Remove();
@@ -273,23 +299,38 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             while (schemasToProcess.Count > 0)
             {
                 var import = schemasToProcess.First();
-                var realSchemaDirectory = Path.GetDirectoryName(Path.GetFullPath(Path.Join(import.SchemaDirectory, import.SchemaLocation)));
+
+                var realSchemaDirectory = import.SchemaLocation != string.Empty
+                ? import.SchemaLocation
+                : Path.GetDirectoryName(Path.GetFullPath(Path.Join(import.SchemaDirectory, import.SchemaLocation)));
+
                 schemasToProcess.Remove(import);
                 XmlSchema xmlSchema;
-                logger.Informational("XsdImportInclude", string.Format(CommonResources.XsdImport, import.SchemaLocation, import.TargetNamespace));
-                var schemaText = await GetStringDocumentFromUri(logger, Path.Join(import.SchemaDirectory, import.SchemaLocation));
-                xmlSchema = GetXmlSchema(schemaText);
+
+                logger.Informational("XsdImportInclude", string.Format(
+                    CommonResources.XsdImport,
+                    import.SchemaLocation,
+                    import.TargetNamespace));
+
+                string schemaText = string.Empty;
+
+                schemaText = await GetStringDocumentFromUri(logger, import.SchemaLocation);
+
+                xmlSchema = GetXmlSchema(schemaText, logger);
                 var includesToRemove = new List<XmlSchemaExternal>();
                 var importsToAdd = new HashSet<string>();
+
                 foreach (XmlSchemaExternal item in xmlSchema.Includes)
                 {
                     if (item is XmlSchemaImport || item is XmlSchemaInclude)
                     {
                         var schemaLocation = item.SchemaLocation;
-                        if (!schemaNames.Contains(Path.GetFullPath(Path.Join(realSchemaDirectory, item.SchemaLocation))))
+
+                        if (!schemaNames.Contains(item.SchemaLocation))
                         {
                             var xmlTargetNamespace = xmlSchema.TargetNamespace;
                             string itemType;
+
                             if (item is XmlSchemaImport importItem)
                             {
                                 logger.Informational("import");
@@ -301,9 +342,11 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                                 logger.Informational("include");
                                 itemType = "include";
                             }
+
                             //All new imports are added
                             importsToAdd.Add(xmlTargetNamespace);
-                            schemaNames.Add(Path.GetFullPath(Path.Join(realSchemaDirectory, item.SchemaLocation)));
+                            schemaNames.Add(item.SchemaLocation);
+
                             var newSchemaToProcess = new
                             {
                                 TargetNamespace = xmlTargetNamespace,
@@ -311,13 +354,18 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                                 Type = itemType,
                                 SchemaDirectory = realSchemaDirectory
                             };
+
                             schemasToProcess.Add(newSchemaToProcess);
-                            logger.Informational($"SchemaLocation: {newSchemaToProcess.SchemaLocation}, SchemaDirectory: {newSchemaToProcess.SchemaDirectory}");
+                            logger.Informational(
+                                @$"SchemaLocation: {newSchemaToProcess.SchemaLocation},
+                                 SchemaDirectory: {newSchemaToProcess.SchemaDirectory}");
                         }
+
                         if (item is XmlSchemaImport)
                         {
                             item.SchemaLocation = null;
                         }
+
                         includesToRemove.Add(item);
                     }
                     else
@@ -325,25 +373,32 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                         throw new WsdlDocumentException(CommonResources.SchemaOnlyAllowsIncludeOrImport);
                     }
                 }
+
                 includesToRemove.ForEach(x => xmlSchema.Includes.Remove(x));
+
                 var sw = new StringWriter();
                 xmlSchema.Write(sw);
                 schemaText = sw.ToString();
+
                 var schemaElement = XElement.Parse(schemaText, LoadOptions.SetLineInfo);
                 //BEGIN track schema comment
                 schemaElement.AddFirst(new XComment(string.Format(CommonResources.XsdImportBegin, import.SchemaLocation)));
                 schemaElement.Add(new XComment(string.Format(CommonResources.XsdImportEnd, import.SchemaLocation)));
                 //END track schema comment
                 XNamespace targetNamespace = import.TargetNamespace ?? GetTargetNamespace(schemaElement);
+
                 if (doc.Schemas.ContainsKey(targetNamespace))
                 {
                     XElement existingSchema = doc.Schemas[targetNamespace];
                     var existingSchemaXmlns = existingSchema.Attribute("xmlns")?.Value;
                     var schemaelementXmlns = schemaElement.Attribute("xmlns")?.Value;
+
                     if (existingSchemaXmlns != null && schemaelementXmlns != null && !existingSchemaXmlns.Equals(schemaelementXmlns))
                     {
                         if (existingSchema.HasElements)
-                            throw new WsdlDocumentException($"The xmlns attribute is not the same between schemas with targetNamespace {targetNamespace.NamespaceName}");
+                            throw new WsdlDocumentException(
+                                $"The xmlns attribute is not the same between schemas with targetNamespace {targetNamespace.NamespaceName}");
+
                         existingSchema.Parent.Element(existingSchema.Name).Remove();
                         doc.Schemas[targetNamespace] = schemaElement;
                     }
@@ -358,6 +413,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
                 }
                 importsToAdd.Remove(targetNamespace.NamespaceName);
+
                 if (doc.Imports.ContainsKey(targetNamespace))
                 {
                     doc.Imports[targetNamespace].UnionWith(importsToAdd);
@@ -381,39 +437,63 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
             //We need to check if is URL or a File location
             var result = Uri.TryCreate(location, UriKind.Absolute, out var uriResult)
                     && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
             if (result)
             {
                 var clientHandler = new HttpClientHandler();
                 clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+                HttpResponseMessage response = null;
+
                 using (var httpClient = new HttpClient(clientHandler))
                 {
-                    HttpResponseMessage response;
                     var uri = new Uri(location, UriKind.RelativeOrAbsolute);
-                    try
-                    {
-                        response = await httpClient.GetAsync(uri);
-                    }
-                    catch (HttpRequestException ex)
-                    {
-                        logger.Warning("FailedToImport", string.Format(CommonResources.FailedToImport, uri.OriginalString, nameof(HttpRequestException), ex.Message));
-                        throw;
-                    }
 
                     try
                     {
+                        response = await httpClient.GetAsync(uri);
+
                         documentText = await response.Content.ReadAsStringAsync();
+
+                        if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                        {
+                            // NOTE(daviburg): when the status code was failed, the return string if one is an error message rather than the schema.
+                            logger.Error("FailedToImport", string.Format(
+                                CommonResources.FailedToImport,
+                                uri.OriginalString,
+                                response.StatusCode,
+                                documentText));
+
+                            throw new Exception("Failed to import schema from external url");
+                        }
                     }
                     catch (InvalidOperationException ex)
                     {
                         // NOTE(daviburg): this can happen when the content type header charset value of the response is invalid.
-                        logger.Warning("FailedToImport", string.Format(CommonResources.FailedToParseImportedSchemaResponse, uri.OriginalString, response.StatusCode, nameof(InvalidOperationException), ex.Message));
+                        logger.Error("FailedToImport", string.Format(
+                            CommonResources.FailedToParseImportedSchemaResponse,
+                            uri.OriginalString,
+                            response.StatusCode,
+                            nameof(InvalidOperationException),
+                            ex.StackTrace));
                         throw;
                     }
-
-                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                    catch (HttpRequestException ex)
                     {
-                        // NOTE(daviburg): when the status code was failed, the return string if one is an error message rather than the schema.
-                        logger.Warning("FailedToImport", string.Format(CommonResources.FailedToImport, uri.OriginalString, response.StatusCode, documentText));
+                        logger.Error("FailedToImport from external url", string.Format(
+                            CommonResources.FailedToImport,
+                            uri.OriginalString,
+                            nameof(HttpRequestException),
+                            ex.StackTrace));
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("FailedToImport from external url", string.Format(
+                            CommonResources.FailedToImport,
+                            uri.OriginalString,
+                            nameof(Exception),
+                            ex.StackTrace));
+                        throw;
                     }
                 }
             }
@@ -433,18 +513,26 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         /// <param name="documentElement">XElement where the method will add New namespaces</param>
         /// <param name="newElements">List of XElements where attributes value are going to change if have prefixes</param>
         /// <param name="namespaces">Namespaces of the newElements</param>
-        private static void AddXmlnsAndChangePrefixReferenced(XElement documentElement, IEnumerable<XElement> newElements, Dictionary<string, string> namespaces)
+        private static void AddXmlnsAndChangePrefixReferenced(
+            XElement documentElement,
+            IEnumerable<XElement> newElements,
+            Dictionary<string, string> namespaces)
         {
-            var parentNamespaces = documentElement.Attributes().Where(a => a.ToString().Contains("xmlns:")).
-                Select(a => new
-                {
-                    Prefix = a.Name.LocalName,
-                    Namespace = a.Value
-                }).ToDictionary(a => a.Namespace, a => a.Prefix);
+            var parentNamespaces = documentElement
+            .Attributes()
+            .Where(a => a.ToString()
+            .Contains("xmlns:"))
+            .Select(a => new
+            {
+                Prefix = a.Name.LocalName,
+                Namespace = a.Value
+            }).ToDictionary(a => a.Namespace, a => a.Prefix);
+
             foreach (var item in namespaces)
             {
                 //string prefix = string.Empty;
                 parentNamespaces.TryGetValue(item.Key, out string prefix);
+
                 if (prefix == null)
                 {
                     prefix = GenerateNewNamespace(documentElement, parentNamespaces, item);
@@ -452,13 +540,18 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
                 //Modify attributes from elements with the same prefix
                 var prefixValue = item.Value + ":";
+
                 foreach (var element in newElements.DescendantsAndSelf())
                 {
                     //Go through all attributes and modify if they have the prefix
-                    var attributes = element.Attributes().Where(e => e.Value.Contains(prefixValue));
+                    var attributes = element
+                    .Attributes()
+                    .Where(e => e.Value.Contains(prefixValue));
+
                     foreach (var attribute in attributes)
                     {
-                        if (attribute.Value.Count(i => i == ':') == 1 && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
+                        if (attribute.Value.Count(i => i == ':') == 1
+                        && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
                         && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
                         {
                             var splitValue = attribute.Value.Split(':');
@@ -476,17 +569,23 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         /// <param name="parentNamespaces">All namespaces of XElement<Namespace, prefix></param>
         /// <param name="item">Namespace, prefix KeyValuepair</param>
         /// <returns></returns>
-        private static string GenerateNewNamespace(XElement documentElement, Dictionary<string, string> parentNamespaces, KeyValuePair<string, string> item)
+        private static string GenerateNewNamespace(
+            XElement documentElement,
+            Dictionary<string, string> parentNamespaces,
+            KeyValuePair<string, string> item)
         {
             var newNamespaces = parentNamespaces.Values.Where(v => v.Contains(WsdlDocument.DefaultPrefix));
             var initialValue = 1;
+
             if (newNamespaces.Any())
             {
                 initialValue = newNamespaces.Select(i => i.Substring(2)).Max(i => int.Parse(i)) + 1;
             }
+
             var newPrefix = DefaultPrefix + initialValue.ToString();
             documentElement.Add(new XAttribute(XNamespace.Xmlns + newPrefix, item.Key));
             parentNamespaces.Add(item.Key, newPrefix);
+
             return newPrefix;
         }
 
@@ -499,13 +598,23 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
         {
             //Searching for wsdl:portType and getting all the inputs, outputs and faults
             var prefixParentNamespace = documentElement.GetPrefixOfNamespace(documentElement.Attribute("targetNamespace").Value);
-            var operationChildren = documentElement.Elements(doc.WsdlNamespace + "portType").Elements(doc.WsdlNamespace + "operation")
-                .Elements().Where(e => e.Name.LocalName.Equals("input") || e.Name.LocalName.Equals("output") || e.Name.LocalName.Equals("fault"));
+            var operationChildren = documentElement
+            .Elements(doc.WsdlNamespace + "portType")
+            .Elements(doc.WsdlNamespace + "operation")
+            .Elements()
+            .Where(e => e.Name.LocalName.Equals("input")
+                || e.Name.LocalName.Equals("output")
+                || e.Name.LocalName.Equals("fault"));
+
             foreach (var item in operationChildren)
             {
                 var attribute = item.Attribute("message");
-                if (attribute != null && attribute.Value.Count(i => i == ':') == 1 && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
-                        && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
+
+                if (attribute != null
+                && attribute.Value.Count(i => i == ':') == 1
+                && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
+                        && (uriResult.Scheme == Uri.UriSchemeHttp
+                        || uriResult.Scheme == Uri.UriSchemeHttps)))
                 {
                     var splitValue = attribute.Value.Split(':');
                     attribute.Value = prefixParentNamespace + ":" + splitValue[1];
@@ -514,11 +623,16 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
             //Searching for binding/type
             var bindingsType = documentElement.Elements(doc.WsdlNamespace + "binding");
+
             foreach (var item in bindingsType)
             {
                 var attribute = item.Attribute("type");
-                if (attribute != null && attribute.Value.Count(i => i == ':') == 1 && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
-                        && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
+
+                if (attribute != null
+                && attribute.Value.Count(i => i == ':') == 1
+                && !(Uri.TryCreate(attribute.Value, UriKind.Absolute, out var uriResult)
+                        && (uriResult.Scheme == Uri.UriSchemeHttp
+                        || uriResult.Scheme == Uri.UriSchemeHttps)))
                 {
                     var splitValue = attribute.Value.Split(':');
                     attribute.Value = prefixParentNamespace + ":" + splitValue[1];
@@ -533,6 +647,7 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                 foreach (XAttribute attribute in dupSchema.Attributes())
                 {
                     var schemaAttribute = schema.Attribute(attribute.Name);
+
                     if (schemaAttribute == null)
                     {
                         schema.Add(new XAttribute(attribute.Name, attribute.Value));
@@ -542,7 +657,13 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
                         if (schemaAttribute.Name.LocalName.Equals(attribute.Name.LocalName) &&
                             !schemaAttribute.Value.Equals(attribute.Value))
                         {
-                            AddXmlnsAndChangePrefixReferenced(schema, dupSchema.Elements(), new Dictionary<string, string>() { { attribute.Value, attribute.Name.LocalName } });
+                            AddXmlnsAndChangePrefixReferenced(
+                                schema,
+                                dupSchema.Elements(),
+                                new Dictionary<string, string>()
+                                {
+                                    { attribute.Value, attribute.Name.LocalName }
+                                });
                         }
                     }
                 }
@@ -552,46 +673,39 @@ namespace Microsoft.Azure.ApiManagement.WsdlProcessor.Common
 
         private static WsdlVersionLiteral DetermineVersion(XNamespace wsdlNS)
         {
-            switch (wsdlNS.NamespaceName)
+            return wsdlNS.NamespaceName switch
             {
-                case Wsdl11Namespace:
-                    return WsdlVersionLiteral.Wsdl11;
-
-                case Wsdl20Namespace:
-                    return WsdlVersionLiteral.Wsdl20;
-
-                default:
-                    throw new DocumentParsingException(string.Format(CommonResources.UnknownWsdlVersion, wsdlNS.NamespaceName));
-            }
+                Wsdl11Namespace => WsdlVersionLiteral.Wsdl11,
+                Wsdl20Namespace => WsdlVersionLiteral.Wsdl20,
+                _ => throw new DocumentParsingException(string.Format(CommonResources.UnknownWsdlVersion, wsdlNS.NamespaceName))
+            };
         }
 
-        private static XmlSchema GetXmlSchema(string xmlSchema)
+        private static XmlSchema GetXmlSchema(string xmlSchema, ILog logger)
         {
             try
             {
+                if (File.Exists(xmlSchema))
+                {
+                    xmlSchema = new StreamReader(xmlSchema).ReadToEnd();
+                }
+
                 using (var doc = new StringReader(xmlSchema))
                 {
                     var result = XmlSchema.Read(doc, null);
                     return result;
                 }
             }
-            catch (XmlException)
+            catch (XmlException ex)
             {
+                logger.Error("GetXmlSchema XmlException", ex);
                 throw;
             }
-            catch (XmlSchemaException)
+            catch (XmlSchemaException ex)
             {
+                logger.Error("GetXmlSchema XmlSchemaException", ex);
                 throw;
             }
-
-        }
-    }
-
-    [Serializable]
-    public class WsdlDocumentException : Exception
-    {
-        public WsdlDocumentException(string message) : base(message)
-        {
         }
     }
 }
