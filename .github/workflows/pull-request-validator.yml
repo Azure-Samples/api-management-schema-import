@@ -3,8 +3,6 @@ name: Pull Request Build Validator created by ${{ github.actor }}
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  workflow_dispatch:
-    
 
 env:
   dotnetVersion: 9.x
