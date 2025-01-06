@@ -100,7 +100,7 @@ The Powershell script **batchXmlSchemaProcessor.ps1** provides the following fea
 ### Prerequisites
 
 - OS: Windows, Linux, macOS
-- [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 9.0](https://dotnet.microsoft.com/download/dotnet/9.0)
 - [.NET CLI](https://docs.microsoft.com//dotnet/core/tools/)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 - [PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)
@@ -121,7 +121,7 @@ The Powershell script **batchXmlSchemaProcessor.ps1** provides the following fea
 
         dotnet build
 
-    This will drop a binary in `./bin/[configuration]/[net8.0]/[Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe]`
+    This will drop a binary in `./bin/[configuration]/[net9.0]/[Microsoft.Azure.ApiManagement.WsdlProcessor.App.exe]`
 
 1.  Run the binary:
     1.1. Scenario 1 (with all schemaReference at http URL)
@@ -146,7 +146,7 @@ The Powershell script **batchXmlSchemaProcessor.ps1** provides the following fea
 
         dotnet build
 
-    This will drop a binary in `./bin/[configuration]/[net8.0]/[Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App.exe]`
+    This will drop a binary in `./bin/[configuration]/[net9.0]/[Microsoft.Azure.ApiManagement.XmlSchemaProcessor.App.exe]`
 
 1.  Run the binary:
 

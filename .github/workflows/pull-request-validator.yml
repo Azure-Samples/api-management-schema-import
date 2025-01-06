@@ -1,10 +1,11 @@
-name: Pull Request Build Validator
+name: Pull Request Build Validator created by ${{ github.actor }} 
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 env:
-  dotnetVersion: 8.x
+  dotnetVersion: 9.x
 
 jobs:
   build:
