@@ -1,4 +1,5 @@
-name: Pull Request Build Validator created by ${{ github.actor }} 
+name: Pull Request Build Validator
+run-name: Pull Request Build Validator created by ${{ github.actor }} 
 
 on:
   pull_request:
